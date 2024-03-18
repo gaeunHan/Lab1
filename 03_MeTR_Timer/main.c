@@ -123,14 +123,19 @@ float PWMOut(float dutyratio){
 }
 
 float GetAngle(){
-	signed int encbit;
+	int encbit;
+	signed int signed_encbit;
 	float rotationDeg;
 
 	// masking: left only the last 16bits
 	encbit = *ENCPOSR & 0xFFFF;
 
+	// converse into signed number
+	if (encbit <= 0x7FFF) signed_encbit = encbit;
+	else signed_encbit = encbit - 65536;
+
 	// calc rotattion degree depends on the resolution
-	rotationDeg = encbit * (360.0 / 3840.0); // 바퀴 1회전당 3840 pulse
+	rotationDeg = signed_encbit * (360.0 / 3840.0); // 바퀴 1회전당 3840 pulse
 	return rotationDeg;
 }
 
