@@ -73,7 +73,7 @@ GetRefAngle(float sref, float vmax, float acc){
 	*/
 	float t1, t2, t3;
 	float s1, s2, s3; 
-	float s_t = 0, v_t = 0;
+	float s_t = 0; // will be the ref. pos.
 
 	// accel section
 	t1 = vmax / acc;
@@ -100,35 +100,20 @@ GetRefAngle(float sref, float vmax, float acc){
 		t2 = 2 * t1;
 		s2 = sref;
 
-		if(t <= t1) // accel
-		{
-			s_t = 1/2 * acc * t*t;
-			v_t = acc * t;
-		}
-		else if(t1 < t && t <= t2) // decel
-		{
-			s_t = s1 + vmax * (t-t1) - 1/2 * acc * (t-t1)*(t-t1);
-			v_t = vmax - acc * (t-t1);
-		}
+		// accel
+		if(t <= t1) s_t = 1/2 * acc * t*t;
+		// decel
+		else if(t1 < t && t <= t2) s_t = s1 + vmax * (t-t1) - 1/2 * acc * (t-t1)*(t-t1);
 	}
 
 	else // trapezoidal vel. profile
 	{
-		if(t <= t1) // accel
-		{
-			s_t = 1/2 * acc * (t*t);
-			v_t = acc * t;
-		}
-		else if(t1 < t && t <= t2) // constant
-		{
-			s_t = s1 + vmax*(t-t2);
-			v_t = vmax;
-		}
-		else if(t2 < t && t <= t3) // decel
-		{
-			s_t = s2 + vmax*(t-t2) - 0.5 * acc * (t-t2)*(t-t2);
-			v_t = vmax - acc*(t-t2);
-		}
+		// accel
+		if(t <= t1) s_t = 1/2 * acc * (t*t);
+		// constant
+		else if(t1 < t && t <= t2) s_t = s1 + vmax*(t-t2);
+		// decel
+		else if(t2 < t && t <= t3) s_t = s2 + vmax*(t-t2) - 0.5 * acc * (t-t2)*(t-t2);
 	}
 
 	R = s_t;
