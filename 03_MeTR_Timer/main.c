@@ -104,6 +104,7 @@ void WaitTFlagCnt(unsigned int cnt)
 }
 
 float PWMOut(float dutyratio){
+	float uSat;
 	/*
 		1. -50.0 <= dutyratio <= 50.0, 이에 해당하는 0~100% PWM 파형 발생시킨다. 
 		2. 출력 파형의 PWM duty는 0 또는 100% duty로 saturation 되어야 함.
@@ -116,21 +117,26 @@ float PWMOut(float dutyratio){
 	else{
 		*PWMRIGHT = (dutyratio + 50.0) / 100.0 * 0xFFF;
 	}
-
-	float uSat;
-	uSat = *PWMRIGHT;
+	
+	// make the output in signed decimal type
+	uSat = float(*PWMRIGHT - 0x800);
 	return uSat;
 }
 
 float GetAngle(){
-	signed int encbit;
+	int encbit;
+	signed int signed_encbit;
 	float rotationDeg;
 
 	// masking: left only the last 16bits
 	encbit = *ENCPOSR & 0xFFFF;
 
-	// calc rotattion degree depends on the resolution
-	rotationDeg = encbit * (360.0 / 3840.0); // 바퀴 1회전당 3840 pulse
+	// converse into signed decimal number
+	if (encbit <= 0x7FFF) signed_encbit = encbit;
+	else signed_encbit = encbit - 65536;
+
+	// calc rotation degree depends on the resolution
+	rotationDeg = signed_encbit * (360.0 / 3840.0); // 바퀴 1회전당 3840 pulse
 	return rotationDeg;
 }
 
@@ -153,26 +159,14 @@ void main()
 	GIE();
 
 	*FPGALED = 1;			// FPGA LED 1 : ON, 0 : OFF
-	*ENCPOSCLR = 1;			// 위치 초기화
 	*PWMDRVEN = 0;			// PWMENABLE 1 : ON, 0 : 0FF
 	*PWMRIGHT = 0x800;		// PWM : 0x000 ~ 0x800 ~ 0xFFF
 
 	TINTCnt = 0;
-	timerCheckCnt = 0;
 
 	while (1) {
 		*FPGALED ^= 1;
 		MACRO_PRINT((tmp_string, "Timer Check: %d \r\n", TINTCnt++));
 		WaitTFlagCnt(500);
-
-		if(TINTCnt >= 2000){ //2초마다 동작
-			TINTCnt = 0;
-			MACRO_PRINT((tmp_string, "Timer Check: %d %6.2f \r\n", timerCheckCnt++, GetAngle()));
-			MACRO_PRINT((tmp_string, "Timer Check: %d 0x%04x \r\n", timerCheckCnt++, *ENCPOSR & 0xFFFF)); 
-			//*ENCPOSR & 0xFFFF값 %d로 출력해보면 16bit max인 65535까지 찍고 1씩 감소하는 값 볼 수 있음. 
-			MACRO_PRINT((tmp_string, "Timer Check: %d \r\n", timerCheckCnt++));
-			R = R * -1.0f; //2초마다 reference pose 180도 반전
-		}
 	}
 }
-
