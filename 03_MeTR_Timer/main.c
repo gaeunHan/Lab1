@@ -130,7 +130,7 @@ float GetAngle(){
 
 	// masking: left only the last 16bits
 	encbit = *ENCPOSR & 0xFFFF;
-
+	
 	// converse into signed decimal number
 	if (encbit <= 0x7FFF) signed_encbit = encbit;
 	else signed_encbit = encbit - 65536;
