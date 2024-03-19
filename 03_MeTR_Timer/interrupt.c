@@ -164,15 +164,14 @@ void PID(float& u){
 int timerCheckCnt = 0;
 interrupt void ISRtimer0()
 {
-	//// Tracking ctrl
+	// Tracking ctrl
 	GetRefAngle(R, vmax, acc); // generate smooth Ref. pos.
 
-	//// PID ctrl
-		// PID controll: make a controlled input
+	// PID ctrl
 	float u, uSat;
-	PID(u); // u. err -> |PID ctrl| -> u
+	PID(u); // make a controlled input (err -> |PID ctrl| -> u)
 
-		// PWM out
+	// PWM out
 	uSat = PWMOut(u); // u -> |saturation blk| -> uSat
 
 	UMAddData(R, y, u, uSat);
