@@ -119,7 +119,7 @@ float PWMOut(float dutyratio){
 	}
 	
 	// make the output in signed decimal type
-	uSat = float(*PWMRIGHT - 0x800);
+	uSat = (float)*PWMRIGHT - 0x800;
 	return uSat;
 }
 
@@ -130,7 +130,7 @@ float GetAngle(){
 
 	// masking: left only the last 16bits
 	encbit = *ENCPOSR & 0xFFFF;
-	
+
 	// converse into signed decimal number
 	if (encbit <= 0x7FFF) signed_encbit = encbit;
 	else signed_encbit = encbit - 65536;
@@ -141,6 +141,61 @@ float GetAngle(){
 }
 
 unsigned int TINTCnt;
+float GetRefAngle(float sref, float vmax, float acc){
+	/*
+		tracking 제어의 경우,
+		1. 위의 R값을 0.0f로
+		2. 간단하게는 if(R < 720.0f) R = R + 1.0f; 이런 코드를 작성하면 reference가 사다리꼴로 올라갈 것. 
+		3. 하지만 메카트로닉스를 배운 사람이라면.. GetRefAngle(float sref, float vmax, float acc)
+		4. feedforward로 float vmax를 u에 더해 넣어주자. u/sref의 gain Kff를 곱해주면 될 것. 
+	*/
+	float t1, t2, t3;
+	float s1, s2; 
+	float s_t = 0; // will be the ref. pos.
+
+	// accel section
+	t1 = vmax / acc;
+	s1 = (vmax * vmax) / (2 * acc);
+
+	// constant vel section
+	t2 = sref / vmax;
+	s2 = sref - s1;
+
+	// decel section
+	t3 = t2 + t1;
+
+	// exception handling
+	if(sref <= 2*s1) // no constant section -> triangle vel. profile
+	{
+		// accel section
+		t1 = sqrt(sref / acc);
+		s1 = sref / 2;
+
+		vmax = acc * t1;
+
+		// decel section
+		t2 = 2 * t1;
+
+		// accel
+		if(TINTCnt <= t1) s_t = 1/2 * acc * TINTCnt*TINTCnt;
+		// decel
+		else if(t1 < TINTCnt && TINTCnt <= t2) s_t = s1 + vmax * (TINTCnt-t1) - 1/2 * acc * (TINTCnt-t1)*(TINTCnt-t1);
+		else s_t = sref;
+	}
+
+	else // trapezoidal vel. profile
+	{
+		// accel
+		if(TINTCnt <= t1) s_t = 1/2 * acc * (TINTCnt*TINTCnt);
+		// constant
+		else if(t1 < TINTCnt && TINTCnt <= t2) s_t = s1 + vmax*(TINTCnt-t1);
+		// decel
+		else if(t2 < TINTCnt && TINTCnt <= t3) s_t = s2 + vmax*(TINTCnt-t2) - 0.5 * acc * (TINTCnt-t2)*(TINTCnt-t2);
+		else s_t = sref;
+	}
+
+	return s_t;
+}
 
 void main()
 {
@@ -159,8 +214,8 @@ void main()
 	GIE();
 
 	*FPGALED = 1;			// FPGA LED 1 : ON, 0 : OFF
-	*PWMDRVEN = 0;			// PWMENABLE 1 : ON, 0 : 0FF
-	*PWMRIGHT = 0x800;		// PWM : 0x000 ~ 0x800 ~ 0xFFF
+	*PWMDRVEN = 1;			// PWMENABLE 1 : ON, 0 : 0FF
+	//*PWMRIGHT = 0x800;		// PWM : 0x000 ~ 0x800 ~ 0xFFF
 
 	TINTCnt = 0;
 

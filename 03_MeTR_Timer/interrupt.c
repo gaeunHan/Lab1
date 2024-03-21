@@ -58,103 +58,47 @@ interrupt void ISRextint6()
 	}
 }
 
-
-// generate ref pos for tracking ctrl 
-float R = 180.0f; // reference pos
-float vmax = 3.0f, acc = 5.0f;
-float t = 0;
-GetRefAngle(float sref, float vmax, float acc){
-	/*
-		tracking 제어의 경우,
-		1. 위의 R값을 0.0f로
-		2. 간단하게는 if(R < 720.0f) R = R + 1.0f; 이런 코드를 작성하면 reference가 사다리꼴로 올라갈 것. 
-		3. 하지만 메카트로닉스를 배운 사람이라면.. GetRefAngle(float sref, float vmax, float acc)
-		4. feedforward로 float vmax를 u에 더해 넣어주자. u/sref의 gain Kff를 곱해주면 될 것. 
-	*/
-	float t1, t2, t3;
-	float s1, s2, s3; 
-	float s_t = 0; // will be the ref. pos.
-
-	// accel section
-	t1 = vmax / acc;
-	s1 = (vmax * vmax) / (2 * acc);
-
-	// constant vel section
-	t2 = sref / vmax;
-	s2 = sref - s1;
-
-	// decel section
-	t3 = t2 + t1;
-	s3 = sref;
-
-	// exception handling
-	if(sref <= 2*s1) // no constant section -> triangle vel. profile
-	{
-		// accel section
-		t1 = sqrt(sref / acc);
-		s1 = sref / 2;
-
-		vmax = acc * t1;
-
-		// decel section
-		t2 = 2 * t1;
-		s2 = sref;
-
-		// accel
-		if(t <= t1) s_t = 1/2 * acc * t*t;
-		// decel
-		else if(t1 < t && t <= t2) s_t = s1 + vmax * (t-t1) - 1/2 * acc * (t-t1)*(t-t1);
-	}
-
-	else // trapezoidal vel. profile
-	{
-		// accel
-		if(t <= t1) s_t = 1/2 * acc * (t*t);
-		// constant
-		else if(t1 < t && t <= t2) s_t = s1 + vmax*(t-t2);
-		// decel
-		else if(t2 < t && t <= t3) s_t = s2 + vmax*(t-t2) - 0.5 * acc * (t-t2)*(t-t2);
-	}
-
-	R = s_t;
-	t++;
-}
-
 //PID controller
 #define Kp 0.3f
 #define Kd 0.3f
 #define Ki 0.0f
 float prevErr = 0.0f, sumErr = 0.0f;
-void PID(float& u){
+void PID(float ref, float* y, float* err, float* u){
 	/*
 		1. get angle
 		2. err compute
 		3. PID compute
 		4. PWM out
 	*/
-	float y, err;
 
 	// get angle
-	y = GetAngle();
+	*y = GetAngle();
 
 	// compute err
-	err = R - y;
+	*err = ref - *y;
 
 	// compute PID
-	sumErr += err;
-	u = (Kp * err) + (Ki * sumErr) + (Kd * (err-prevErr)); 
-	prevErr = err;
+	sumErr += *err;
+	*u = (Kp * (*err)) + (Ki * sumErr) + (Kd * (*err-prevErr)); 
+	prevErr = *err;
 }
 
 int timerCheckCnt = 0;
+// generate ref pos for tracking ctrl 
+
+unsigned int TFlag = 0; // flag variable for timer0
 interrupt void ISRtimer0()
 {
-	// Tracking ctrl
-	GetRefAngle(R, vmax, acc); // generate smooth Ref. pos.
+	float y, err, u, uSat;
+	float R = 180.0f; // reference pos
+	float vmax = 3.0f, acc = 5.0f;
+	float sref;
 
-	// PID ctrl
-	float u, uSat;
-	PID(u); // make a controlled input (err -> |PID ctrl| -> u)
+	// Tracking ctrl
+	sref = GetRefAngle(R, vmax, acc); // generate smooth Ref. pos.
+
+	// PID ctrl	
+	PID(sref, &y, &err, &u); // make a controlled input (err -> |PID ctrl| -> u)
 
 	// PWM out
 	uSat = PWMOut(u); // u -> |saturation blk| -> uSat
