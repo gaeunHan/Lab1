@@ -89,18 +89,23 @@ int timerCheckCnt = 0;
 unsigned int TFlag = 0; // flag variable for timer0
 interrupt void ISRtimer0()
 {
-	float y, err, u, uSat;
+	float y, err, u_fb, u_ff, u, uSat;
 	float R = 180.0f; // reference pos
 	float vmax = 3.0f, acc = 5.0f;
 	float sref;
 
-	// Tracking ctrl
-	sref = GetRefAngle(R, vmax, acc); // generate smooth Ref. pos.
+	// Tracking ctrl: get ref pos, ref vel
+	// sref = GetRefAngle(R, vmax, acc); // generate smooth Ref. pos.
+	sref = GetRefAngleFeedForward(R, vmax, acc); // tracking + feedforward
 
-	// PID ctrl	
-	PID(sref, &y, &err, &u); // make a controlled input (err -> |PID ctrl| -> u)
+	// PID ctrl: get u_fb
+	PID(sref, &y, &err, &u_fb); // make a controlled input (err -> |PID ctrl| -> u)
 
-	// PWM out
+	// get u
+	u_ff = vel_TINTCnt;
+	u = u_fb + u_ff; 
+
+	// PWM out: drive the motor
 	uSat = PWMOut(u); // u -> |saturation blk| -> uSat
 
 	UMAddData(R, y, u, uSat);

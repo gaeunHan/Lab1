@@ -10,4 +10,5 @@ extern unsigned int TFlag;
 
 // Main.c
 extern unsigned int TINTCnt;
+extern float vel_TINTCnt;
 

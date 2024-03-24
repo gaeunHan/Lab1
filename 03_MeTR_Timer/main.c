@@ -141,6 +141,7 @@ float GetAngle(){
 }
 
 unsigned int TINTCnt;
+/*
 float GetRefAngle(float sref, float vmax, float acc){
 	/*
 		tracking 제어의 경우,
@@ -148,10 +149,10 @@ float GetRefAngle(float sref, float vmax, float acc){
 		2. 간단하게는 if(R < 720.0f) R = R + 1.0f; 이런 코드를 작성하면 reference가 사다리꼴로 올라갈 것. 
 		3. 하지만 메카트로닉스를 배운 사람이라면.. GetRefAngle(float sref, float vmax, float acc)
 		4. feedforward로 float vmax를 u에 더해 넣어주자. u/sref의 gain Kff를 곱해주면 될 것. 
-	*/
+	
 	float t1, t2, t3;
 	float s1, s2; 
-	float s_t = 0; // will be the ref. pos.
+	float pos_TINTCnt = 0; // will be the ref. pos.
 
 	// accel section
 	t1 = vmax / acc;
@@ -177,24 +178,109 @@ float GetRefAngle(float sref, float vmax, float acc){
 		t2 = 2 * t1;
 
 		// accel
-		if(TINTCnt <= t1) s_t = 1/2 * acc * TINTCnt*TINTCnt;
+		if(TINTCnt <= t1) pos_TINTCnt = 1/2 * acc * TINTCnt*TINTCnt;
 		// decel
-		else if(t1 < TINTCnt && TINTCnt <= t2) s_t = s1 + vmax * (TINTCnt-t1) - 1/2 * acc * (TINTCnt-t1)*(TINTCnt-t1);
-		else s_t = sref;
+		else if(t1 < TINTCnt && TINTCnt <= t2) pos_TINTCnt = s1 + vmax * (TINTCnt-t1) - 1/2 * acc * (TINTCnt-t1)*(TINTCnt-t1);
+		else pos_TINTCnt = sref;
 	}
 
 	else // trapezoidal vel. profile
 	{
 		// accel
-		if(TINTCnt <= t1) s_t = 1/2 * acc * (TINTCnt*TINTCnt);
+		if(TINTCnt <= t1) pos_TINTCnt = 1/2 * acc * (TINTCnt*TINTCnt);
 		// constant
-		else if(t1 < TINTCnt && TINTCnt <= t2) s_t = s1 + vmax*(TINTCnt-t1);
+		else if(t1 < TINTCnt && TINTCnt <= t2) pos_TINTCnt = s1 + vmax*(TINTCnt-t1);
 		// decel
-		else if(t2 < TINTCnt && TINTCnt <= t3) s_t = s2 + vmax*(TINTCnt-t2) - 0.5 * acc * (TINTCnt-t2)*(TINTCnt-t2);
-		else s_t = sref;
+		else if(t2 < TINTCnt && TINTCnt <= t3) pos_TINTCnt = s2 + vmax*(TINTCnt-t2) - 0.5 * acc * (TINTCnt-t2)*(TINTCnt-t2);
+		else pos_TINTCnt = sref;
 	}
 
-	return s_t;
+	return pos_TINTCnt;
+}
+*/
+float pos_TINTCnt = 0; // ref. pos.
+float vel_TINTCnt = 0; // ref. vel.
+float GetRefAngleFeedForward(float sref, float vmax, float acc){
+/*
+	tracking 제어의 경우,
+	1. 위의 R값을 0.0f로
+	2. 간단하게는 if(R < 720.0f) R = R + 1.0f; 이런 코드를 작성하면 reference가 사다리꼴로 올라갈 것. 
+	3. 하지만 메카트로닉스를 배운 사람이라면.. GetRefAngle(float sref, float vmax, float acc)
+	4. feedforward로 float vmax를 u에 더해 넣어주자. u/sref의 gain Kff를 곱해주면 될 것. 
+*/
+/*
+	Feedforward 제어의 경우,
+	1. 현재 sys: DC motor position model -> 역수를 feedforward로 사용할 경우 미분기가 2개.
+	2. 편의성 1) '위치'의 미분꼴인 '속도'모델을 reference로
+	3. 편의성 2) 저주파 대역(s->0)에서, C_ff = u/ref
+
+*/
+	float t1, t2, t3;
+	float s1, s2; 
+
+	// accel section
+	t1 = vmax / acc;
+	s1 = (vmax * vmax) / (2 * acc);
+
+	// constant vel section
+	t2 = sref / vmax;
+	s2 = sref - s1;
+
+	// decel section
+	t3 = t2 + t1;
+
+	// exception handling
+	if(sref <= 2*s1) // no constant section -> triangle vel. profile
+	{
+		// accel section
+		t1 = sqrt(sref / acc);
+		s1 = sref / 2;
+
+		vmax = acc * t1;
+
+		// decel section
+		t2 = 2 * t1;
+
+		// accel
+		if(TINTCnt <= t1){
+			vel_TINTCnt = acc*TINTCnt;
+			pos_TINTCnt = 1/2 * acc * TINTCnt*TINTCnt;
+		}
+		// decel
+		else if(t1 < TINTCnt && TINTCnt <= t2){
+			vel_TINTCnt = vmax - acc*(TINTCnt-t1);
+			pos_TINTCnt = s1 + vmax * (TINTCnt-t1) - 1/2 * acc * (TINTCnt-t1)*(TINTCnt-t1);
+		} 
+		else{
+			vel_TINTCnt = 0;
+			pos_TINTCnt = sref;
+		} 
+	}
+
+	else // trapezoidal vel. profile
+	{
+		// accel
+		if(TINTCnt <= t1){
+			vel_TINTCnt = acc * TINTCnt;
+			pos_TINTCnt = 1/2 * acc * (TINTCnt*TINTCnt);
+		}
+		// constant
+		else if(t1 < TINTCnt && TINTCnt <= t2){
+			vel_TINTCnt = vmax;
+			pos_TINTCnt = s1 + vmax*(TINTCnt-t1);
+		}
+		// decel
+		else if(t2 < TINTCnt && TINTCnt <= t3){
+			vel_TINTCnt = vmax - acc*(TINTCnt - t2);
+			pos_TINTCnt = s2 + vmax*(TINTCnt-t2) - 0.5 * acc * (TINTCnt-t2)*(TINTCnt-t2);
+		} 
+		else{
+			vel_TINTCnt = 0;
+			pos_TINTCnt = sref;
+		} 
+	}
+
+	return pos_TINTCnt;
 }
 
 void main()
