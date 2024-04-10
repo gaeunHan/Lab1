@@ -130,7 +130,7 @@ float PWMOut(float dutyratio)
 }
 
 float GetAngle(){
-	short encbit;
+	int encbit;
 	signed int signed_encbit;
 	float rotationDeg;
 
@@ -140,6 +140,11 @@ float GetAngle(){
 	// converse into signed decimal number
 	if (encbit <= 0x7FFF) signed_encbit = encbit;
 	else signed_encbit = encbit - 65536;
+
+	/* signed_encbit을 short로 선언하면, 위의 과정을 한 줄로 줄일 수 있음.
+		short signed_encbit; // short는 16bit -> 최상위 bit는 부호 표현
+		signed_encbit = encbit; // 0x0000(0)~0x7FFF(32767)는 양수로, 0xFFFF(-1)~0x8000(-32768)은 음수로 표현
+	*/
 
 	// calc rotation degree depends on the resolution
 	rotationDeg = signed_encbit * (360.0 / (512.0 * 7.5)); // 바퀴 1회전당 3840 pulse

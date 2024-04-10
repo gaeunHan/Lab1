@@ -105,15 +105,14 @@ void WaitTFlagCnt(unsigned int cnt)
 
 float GetAngle(){
 	int encbit;
-	signed int signed_encbit;
+	short signed_encbit;
 	float rotationDeg;
 
 	// masking: left only the last 16bits
 	encbit = *ENCPOSR & 0xFFFF;
 
 	// converse into signed number
-	if (encbit <= 0x7FFF) signed_encbit = encbit;
-	else signed_encbit = encbit - 65536;
+	signed_encbit = encbit; // short는 16bit, 최상위 bit은 부호표현
 
 	// calc rotattion degree depends on the resolution
 	rotationDeg = signed_encbit * (360.0 / 3840.0); // 바퀴 1회전당 3840 pulse
@@ -146,7 +145,7 @@ void main()
 	while (1) {
 		// enc값 읽는 것 직접 접근이 아닌, 함수 통해서 하자. 
 		//enc = *ENCPOSR;
-		//MACRO_PRINT((tmp_string, "ENCPOSR value: 0x%04x(%5d) \r\n", enc, enc));
+		MACRO_PRINT((tmp_string, "ENCPOSR value: 0x%04x(%5d) \r\n", enc, enc));
 		angle = GetAngle();
 		MACRO_PRINT((tmp_string, "rotation degree is: %.2f", angle));
 		WaitTFlagCnt(500);

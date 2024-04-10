@@ -103,25 +103,31 @@ void WaitTFlagCnt(unsigned int cnt)
 	}
 }
 
-float PWMOut(float dutyratio){
+float PWMOut(float dutyratio)
+{
 	/*
 		1. -50.0 <= dutyratio <= 50.0, 이에 해당하는 0~100% PWM 파형 발생시킨다. 
 		2. 출력 파형의 PWM duty는 0 또는 100% duty로 saturation 되어야 함.
 	*/
-	//saturation
-	if(dutyratio < -50.0) *PWMRIGHT = 0x000;
-	else if(dutyratio > 50.0) *PWMRIGHT = 0xFFF;
 
-	// dutyration <-> PWM conversion
-	else{
-		*PWMRIGHT = (dutyratio + 50.0) / 100.0 * 0xFFF;
+	float duty; 		
+	
+	//saturation
+	if (dutyratio < -49.5) {
+		dutyratio = -49.5;
 	}
 
-	float uSat;
-	uSat = *PWMRIGHT;
-	return uSat;
-}
+	if (dutyratio> 49.5) {	
+		dutyratio = 49.5;
+	}
 
+	// dutyration <-> PWM conversion
+	duty = (dutyratio + 50) * 0xfff/100.0;
+
+	*PWMRIGHT = duty;
+
+	return dutyratio;  
+}
 void main()
 {
 	InitEXINTF();	// Asynchronous Bus Initialization
