@@ -103,13 +103,8 @@ void WaitTFlagCnt(unsigned int cnt)
 	}
 }
 
-<<<<<<< HEAD
 float PWMOut(float dutyratio)
 {
-=======
-float PWMOut(float dutyratio){
-	float uSat;
->>>>>>> e5fbf8655960a47bce1bd54fd4972fe95dca7a44
 	/*
 		1. -50.0 <= dutyratio <= 50.0, 이에 해당하는 0~100% PWM 파형 발생시킨다. 
 		2. 출력 파형의 PWM duty는 0 또는 100% duty로 saturation 되어야 함.
@@ -122,10 +117,9 @@ float PWMOut(float dutyratio){
 		dutyratio = -49.5;
 	}
 
-	if (dutyratio> 50.0) {	
-		dutyratio = 50.0;
+	if (dutyratio> 49.5) {	
+		dutyratio = 49.5;
 	}
-<<<<<<< HEAD
 
 	// dutyration <-> PWM conversion
 	duty = (dutyratio + 50) * 0xfff/100.0;
@@ -133,12 +127,6 @@ float PWMOut(float dutyratio){
 	*PWMRIGHT = duty;
 
 	return dutyratio;  
-=======
-	
-	// make the output in signed decimal type
-	uSat = (float)*PWMRIGHT - 0x800;
-	return uSat;
->>>>>>> e5fbf8655960a47bce1bd54fd4972fe95dca7a44
 }
 
 float GetAngle(){
@@ -154,24 +142,13 @@ float GetAngle(){
 	else signed_encbit = encbit - 65536;
 
 	// calc rotation degree depends on the resolution
-<<<<<<< HEAD
 	rotationDeg = signed_encbit * (360.0 / (512.0 * 7.5)); // 바퀴 1회전당 3840 pulse
-=======
-	rotationDeg = signed_encbit * (360.0 / 3840.0); // 바퀴 1회전당 3840 pulse
->>>>>>> e5fbf8655960a47bce1bd54fd4972fe95dca7a44
 	return rotationDeg;
 }
 
 // timer var
 unsigned int TINTCnt;
-<<<<<<< HEAD
-unsigned int INTRR_cnt;
 int timerCheckCnt = 0;
-
-// overshoot var
-float overshoot = 0.0f; // to track overshoot
-float overshootPercent = 0.0f;
-float currPos;
 
 // tracking var
 float R = 720.0f; // reference pos
@@ -180,68 +157,6 @@ float pos_t = 0; // ref. pos.
 float vel_t = 0; // ref. vel.
 
 void GetRefAngleVel(float sref, float vmax, float acc){
-=======
-/*
-float GetRefAngle(float sref, float vmax, float acc){
-	/*
-		tracking 제어의 경우,
-		1. 위의 R값을 0.0f로
-		2. 간단하게는 if(R < 720.0f) R = R + 1.0f; 이런 코드를 작성하면 reference가 사다리꼴로 올라갈 것. 
-		3. 하지만 메카트로닉스를 배운 사람이라면.. GetRefAngle(float sref, float vmax, float acc)
-		4. feedforward로 float vmax를 u에 더해 넣어주자. u/sref의 gain Kff를 곱해주면 될 것. 
-	
-	float t1, t2, t3;
-	float s1, s2; 
-	float pos_TINTCnt = 0; // will be the ref. pos.
-
-	// accel section
-	t1 = vmax / acc;
-	s1 = (vmax * vmax) / (2 * acc);
-
-	// constant vel section
-	t2 = sref / vmax;
-	s2 = sref - s1;
-
-	// decel section
-	t3 = t2 + t1;
-
-	// exception handling
-	if(sref <= 2*s1) // no constant section -> triangle vel. profile
-	{
-		// accel section
-		t1 = sqrt(sref / acc);
-		s1 = sref / 2;
-
-		vmax = acc * t1;
-
-		// decel section
-		t2 = 2 * t1;
-
-		// accel
-		if(TINTCnt <= t1) pos_TINTCnt = 1/2 * acc * TINTCnt*TINTCnt;
-		// decel
-		else if(t1 < TINTCnt && TINTCnt <= t2) pos_TINTCnt = s1 + vmax * (TINTCnt-t1) - 1/2 * acc * (TINTCnt-t1)*(TINTCnt-t1);
-		else pos_TINTCnt = sref;
-	}
-
-	else // trapezoidal vel. profile
-	{
-		// accel
-		if(TINTCnt <= t1) pos_TINTCnt = 1/2 * acc * (TINTCnt*TINTCnt);
-		// constant
-		else if(t1 < TINTCnt && TINTCnt <= t2) pos_TINTCnt = s1 + vmax*(TINTCnt-t1);
-		// decel
-		else if(t2 < TINTCnt && TINTCnt <= t3) pos_TINTCnt = s2 + vmax*(TINTCnt-t2) - 0.5 * acc * (TINTCnt-t2)*(TINTCnt-t2);
-		else pos_TINTCnt = sref;
-	}
-
-	return pos_TINTCnt;
-}
-*/
-float pos_TINTCnt = 0; // ref. pos.
-float vel_TINTCnt = 0; // ref. vel.
-float GetRefAngleFeedForward(float sref, float vmax, float acc){
->>>>>>> e5fbf8655960a47bce1bd54fd4972fe95dca7a44
 /*
 	tracking 제어의 경우,
 	1. 위의 R값을 0.0f로
@@ -256,20 +171,13 @@ float GetRefAngleFeedForward(float sref, float vmax, float acc){
 	3. 편의성 2) 저주파 대역(s->0)에서, C_ff = u/ref
 
 */
-<<<<<<< HEAD
-	float t = INTRR_cnt * 0.001;
-=======
->>>>>>> e5fbf8655960a47bce1bd54fd4972fe95dca7a44
+	float t = TINTCnt * 0.001;
 	float t1, t2, t3;
 	float s1, s2; 
 
 	// accel section
 	t1 = vmax / acc;
-<<<<<<< HEAD
 	s1 = (vmax * vmax) / (2.0 * acc);
-=======
-	s1 = (vmax * vmax) / (2 * acc);
->>>>>>> e5fbf8655960a47bce1bd54fd4972fe95dca7a44
 
 	// constant vel section
 	t2 = sref / vmax;
@@ -291,7 +199,6 @@ float GetRefAngleFeedForward(float sref, float vmax, float acc){
 		t2 = 2 * t1;
 
 		// accel
-<<<<<<< HEAD
 		if(t <= t1){
 			vel_t = acc*t;
 			pos_t =  1.0/2* acc * t*t;
@@ -304,27 +211,12 @@ float GetRefAngleFeedForward(float sref, float vmax, float acc){
 		else{
 			vel_t = 0;
 			pos_t = sref;
-=======
-		if(TINTCnt <= t1){
-			vel_TINTCnt = acc*TINTCnt;
-			pos_TINTCnt = 1/2 * acc * TINTCnt*TINTCnt;
-		}
-		// decel
-		else if(t1 < TINTCnt && TINTCnt <= t2){
-			vel_TINTCnt = vmax - acc*(TINTCnt-t1);
-			pos_TINTCnt = s1 + vmax * (TINTCnt-t1) - 1/2 * acc * (TINTCnt-t1)*(TINTCnt-t1);
-		} 
-		else{
-			vel_TINTCnt = 0;
-			pos_TINTCnt = sref;
->>>>>>> e5fbf8655960a47bce1bd54fd4972fe95dca7a44
 		} 
 	}
 
 	else // trapezoidal vel. profile
 	{
 		// accel
-<<<<<<< HEAD
 		if(t <= t1){
 			vel_t = acc * t;
 			pos_t = 1.0/2 * acc * (t*t);
@@ -344,29 +236,6 @@ float GetRefAngleFeedForward(float sref, float vmax, float acc){
 			pos_t = sref;
 		} 
 	}
-=======
-		if(TINTCnt <= t1){
-			vel_TINTCnt = acc * TINTCnt;
-			pos_TINTCnt = 1/2 * acc * (TINTCnt*TINTCnt);
-		}
-		// constant
-		else if(t1 < TINTCnt && TINTCnt <= t2){
-			vel_TINTCnt = vmax;
-			pos_TINTCnt = s1 + vmax*(TINTCnt-t1);
-		}
-		// decel
-		else if(t2 < TINTCnt && TINTCnt <= t3){
-			vel_TINTCnt = vmax - acc*(TINTCnt - t2);
-			pos_TINTCnt = s2 + vmax*(TINTCnt-t2) - 0.5 * acc * (TINTCnt-t2)*(TINTCnt-t2);
-		} 
-		else{
-			vel_TINTCnt = 0;
-			pos_TINTCnt = sref;
-		} 
-	}
-
-	return pos_TINTCnt;
->>>>>>> e5fbf8655960a47bce1bd54fd4972fe95dca7a44
 }
 
 void main()
@@ -387,22 +256,16 @@ void main()
 
 	*FPGALED = 1;			// FPGA LED 1 : ON, 0 : OFF
 	*PWMDRVEN = 1;			// PWMENABLE 1 : ON, 0 : 0FF
-<<<<<<< HEAD
 	*ENCPOSCLR = 1;			// 위치 초기화
 	//*PWMRIGHT = 0x800;		// PWM : 0x000 ~ 0x800 ~ 0xFFF
 
 	WaitTFlagCnt(1000);
 
 	TINTCnt = 0;
-	INTRR_cnt = 0;
 
 	while (1) {
 		*FPGALED ^= 1;
 		GetRefAngleVel(R, vel_max, accel);
-		currPos = GetAngle();
-
-		// calc overshoot percentage
-		overshootPercent = (overshoot - R) / R * 100;
 		
 		// timer check
 		if(TINTCnt > 2000){
@@ -413,23 +276,11 @@ void main()
 			MACRO_PRINT((tmp_string, "current pos: %6.2f \r\n", GetAngle() ));
 
 			MACRO_PRINT((tmp_string, "Encoder bit: 0x%04x \r\n", *ENCPOSR & 0xFFFF)); //*ENCPOSR & 0xFFFF값 %d로 출력해보면 16bit max인 65535까지 찍고 1씩 감소하는 값 볼 수 있음. 
-			MACRO_PRINT((tmp_string, "Overshoot: %6.2f ( %.2f%% ) \r\n", overshoot, overshootPercent));
 			
 			MACRO_PRINT((tmp_string, "\r\n"));
 			TINTCnt = 0;
-			//INTRR_cnt = 0;
 		}
 		
 		//WaitTFlagCnt(2000); // every 2 sec
-=======
-	//*PWMRIGHT = 0x800;		// PWM : 0x000 ~ 0x800 ~ 0xFFF
-
-	TINTCnt = 0;
-
-	while (1) {
-		*FPGALED ^= 1;
-		MACRO_PRINT((tmp_string, "Timer Check: %d \r\n", TINTCnt++));
-		WaitTFlagCnt(500);
->>>>>>> e5fbf8655960a47bce1bd54fd4972fe95dca7a44
 	}
 }
