@@ -122,18 +122,21 @@ void main()
 	*FPGALED = 1;			// FPGA LED 1 : ON, 0 : OFF
 	WaitTFlagCnt(10000);
 
+	int tempDelay;
+	tempDelay = 100000; // skeleton code delay: 100000
+
 	while (1) {
 		*STEPPER = 0x2;		// A
-		WaitTFlagCnt(100000);
+		WaitTFlagCnt(tempDelay);
 
 		*STEPPER = 0x8;		// B
-		WaitTFlagCnt(100000);
+		WaitTFlagCnt(tempDelay);
 
 		*STEPPER = 0x1;		// /A
-		WaitTFlagCnt(100000);
+		WaitTFlagCnt(tempDelay);
 
 		*STEPPER = 0x4;		// /B
-		WaitTFlagCnt(100000);
+		WaitTFlagCnt(tempDelay);
 	}
 }
 
