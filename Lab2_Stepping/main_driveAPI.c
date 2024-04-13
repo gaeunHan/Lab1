@@ -103,9 +103,61 @@ void WaitTFlagCnt(unsigned int cnt)
 	} // cnt 개수만큼 interrupt 발생 기다림. 
 }
 
+// rotate the motor by one step
+int currPhaseIdx;
+void OneStepMove(unsigend int dir, unsigned int tDelayCnt){
+    int phase[4] = {0x2, 0x8, 0x1, 0x4}; // Right Stepping Motor Phase: A, B, /A, /B
+    int idx;
+    int setPhase; 
+
+    idx = currPhaseIdx;
+
+    // CW: A, B, /A, /B
+    if(dir == 0){        
+        setPhase = phase[idx];
+
+        if(idx == 3) idx = -1;
+        idx++;        
+    }
+    
+    // CCW: A, /B, /A, B
+    else if(dir == 1){
+        setPhase = phase[idx];
+
+        if(idx == 0) idx = 4;
+        idx--;
+        
+    }
+    // phase update
+    currPhaseIdx = idx;
+    
+    // drive the motor
+    *STEPPER = setPhase;
+    WaitTFlagCnt(tDelayCnt);    
+}
+
+// rotate the motor by angle(angle: degree, spd: [deg/s])
+#define STEP_ANGLE = 1.8f;  // step angle = 1.8 deg
+void StepMoveCV(float angle, float spd){
+    int step;
+    int dir;
+    float stepDelayTime;
+    unsigned int delayCnt;
+
+    step = round((float)angle / STEP_ANGLE); // 반올림해서 정수 step 값 작성
+    dir = (angle > 0) ? 0 : 1; // 입력된 angle이 양수: CW, 음수: CCW
+    stepDelayTime = (float)STEP_ANGLE / (float)spd; // delay_btn_step = stepAngle/vel
+    delayCnt = 1e5 * stepDelayTime; // current intrpt freq = 100kHz -> 1e5 makes 1sec
+
+    // rotate the motor by the input angle
+    int i;
+    for(i = 0; i<step; i++){
+        OneStepMove(dir, delayCnt);
+    }
+}
+
 void main()
 {
-	int tempDelay;	
 	InitEXINTF();	// Asynchronous Bus Initialization
 	InitTimer();	// Timer Initialization
 	InitUART();		// UART Initialization
@@ -117,57 +169,24 @@ void main()
 	MACRO_PRINT((tmp_string, "FPGA Ver%2x.%02x\r\n", ((*FPGAVER>>8) & 0xFF), (*FPGAVER & 0xFF)));
 
 	TFlag = 0;
-
 	GIE();
 
 	*FPGALED = 1;			// FPGA LED 1 : ON, 0 : OFF
-	WaitTFlagCnt(10000);
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    currPhaseIdx = 0; // set the initial phase: A
 
-	tempDelay = 100000; // skeleton code delay: 100000(f_intr of 100kHz(10usec) * 1e5 = 1sec delay)
+	WaitTFlagCnt(10000); // start program after 1sec   
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	while (1) {
-		/* Right Stepping Motor Phase */
-		/* FULL STEP*/
-		*STEPPER = 0x2;		// A
-		WaitTFlagCnt(tempDelay); 
+    // verify OneStepMove by running the motor 3 steps in CW with 1 sec delay 
+    OneStepMove(0, 1); 
+    OneStepMove(0, 1);
+    OneStepMove(0, 1);
 
-		*STEPPER = 0x8;		// B
-		WaitTFlagCnt(tempDelay);
+    // verify StepMoveCV
+    StepMoveCV(360, 180); // rotate 360 degrees in 2 sec
 
-		*STEPPER = 0x1;		// /A
-		WaitTFlagCnt(tempDelay);
 
-		*STEPPER = 0x4;		// /B
-		WaitTFlagCnt(tempDelay);
-
-		/* HALF STEP*/
-/*
-		*STEPPER = 0x2;		// A
-		WaitTFlagCnt(tempDelay);
-
-		*STEPPER = 0x10;	// A & B
-		WaitTFlagCnt(tempDelay); 
-
-		*STEPPER = 0x8;		// B
-		WaitTFlagCnt(tempDelay);
-
-		*STEPPER = 0x9;		// B & /A
-		WaitTFlagCnt(tempDelay); 
-
-		*STEPPER = 0x1;		// /A
-		WaitTFlagCnt(tempDelay);
-
-		*STEPPER = 0x5;		// /A & /B
-		WaitTFlagCnt(tempDelay); 
-
-		*STEPPER = 0x4;		// /B
-		WaitTFlagCnt(tempDelay);
-
-		*STEPPER = 0x6;		// /B & A
-		WaitTFlagCnt(tempDelay); 
-*/
-	}
+	while (1) {} // block to terminate
 }
 
