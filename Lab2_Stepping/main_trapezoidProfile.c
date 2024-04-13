@@ -136,25 +136,79 @@ void OneStepMove(unsigend int dir, unsigned int tDelayCnt){
     WaitTFlagCnt(tDelayCnt);    
 }
 
-// rotate the motor by angle(angle: degree, spd: [deg/s])
+
+// make a lookup table
 #define STEP_ANGLE = 1.8f;  // step angle = 1.8 deg
-void StepMoveCV(float angle, float spd){
+unsigned int delayCntArr[200]; // lookup table
+
+unsigned int MakeVelProfile(float maxVel, float accel){
+    unsigned int step;          // k
+    float t1AccelTime;          // t1
+    float s1AccelAngle;         // s1
+    unsigned int accelTotStep;  // 가속구간 총 스텝 수
+    float stepDelayTime;        // delta t
+    unsigned int delayCnt;      // interrupt cnt from delta t
+
+
+    step = 1;
+
+    t1AccelTime = maxVel / accel; // calc t1
+    s1AccelAngle = (maxVel*maxVel) / (2.0*accel); // calc s1
+    accelTotStep = around(s1AccelAngle / STEP_ANGLE); // 가속구간 총 스텝 수 반올림하여 저장
+
+    stepDelayTime = sqrt((float)STEP_ANGLE / (2*accel*step));
+    delayCnt = 1e5 * stepDelayTime;    
+
+    // be aware that the delayCntArr starts from index '1', not '0' as usuall
+    for(step = 1; step <= accelTotStep; step++){
+        delayCntArr[step] = delayCnt;
+    }    
+
+    return accelTotStep;
+}
+
+// rotate the motor by following trapezoidal angle input
+void StepMoveVP(float angle, float maxVel, float accel){
     int totalStep;
-    int dir;
-    float stepDelayTime;
+    bool dir;
+    unsigned int accelStep;
     unsigned int delayCnt;
+    unsigned arrIdx;
 
     totalStep = round((float)angle / STEP_ANGLE); // 반올림해서 정수 step 값 작성
     dir = (angle > 0) ? 0 : 1; // 입력된 angle이 양수: CW, 음수: CCW
-    stepDelayTime = (float)STEP_ANGLE / (float)spd; // delay_btn_step = stepAngle/vel
-    delayCnt = 1e5 * stepDelayTime; // current intrpt freq = 100kHz -> 1e5 makes 1sec
+    
+    
+    // generate vel trajectory
+    accelStep = MakeVelProfile(maxVel, accel);
+
+    delayCnt = ; 
 
     // rotate the motor by the input angle
     int i;
-    for(i = 0; i<totalStep; i++){
+    arrIdx = 0;
+    for(i = 1; i <= totalStep; i++){
+        // accel zone
+        if(i <= accelStep){
+            delayCnt = delayCntArr[arrIdx];
+            arrIdx++;
+        }
+        // constant vel zone
+        else if(i > accelStep && i <= totalStep - accelStep){
+            delayCnt = delayCntArr[accelStep];
+        }
+
+        // decel zone
+        else if(i > totalStep - accelStep && i <= totalStep){
+            delayCnt = delayCntArr[arrIdx];
+            arrIdx--;
+        }
+
+        // drive the motor
         OneStepMove(dir, delayCnt);
     }
 }
+
 
 void main()
 {
@@ -179,13 +233,7 @@ void main()
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // verify OneStepMove by running the motor 3 steps in CW with 1 sec delay 
-    OneStepMove(0, 1); 
-    OneStepMove(0, 1);
-    OneStepMove(0, 1);
-
-    // verify StepMoveCV
-    StepMoveCV(360, 180); // rotate 360 degrees in 2 sec
-
+    StepMoveVP(360,180,1800);
 
 	while (1) {} // block to terminate
 }
