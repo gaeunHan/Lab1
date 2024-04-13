@@ -105,7 +105,7 @@ void WaitTFlagCnt(unsigned int cnt)
 
 // rotate the motor by one step
 int currPhaseIdx;
-void OneStepMove(unsigend int dir, unsigned int tDelayCnt){
+void OneStepMove(unsigned int dir, unsigned int tDelayCnt){
     int phase[4] = {0x2, 0x8, 0x1, 0x4}; // Right Stepping Motor Phase: A, B, /A, /B
     int idx;
     int setPhase; 
@@ -138,12 +138,11 @@ void OneStepMove(unsigend int dir, unsigned int tDelayCnt){
 
 
 // make a lookup table
-#define STEP_ANGLE = 1.8f;  // step angle = 1.8 deg
+#define STEP_ANGLE 1.8f // step angle = 1.8 deg
 unsigned int delayCntArr[200]; // lookup table
 
 unsigned int MakeVelProfile(float maxVel, float accel){
     unsigned int step;          // k
-    float t1AccelTime;          // t1
     float s1AccelAngle;         // s1
     unsigned int accelTotStep;  // 가속구간 총 스텝 수
     float stepDelayTime;        // delta t
@@ -152,9 +151,8 @@ unsigned int MakeVelProfile(float maxVel, float accel){
 
     step = 1;
 
-    t1AccelTime = maxVel / accel; // calc t1
     s1AccelAngle = (maxVel*maxVel) / (2.0*accel); // calc s1
-    accelTotStep = around(s1AccelAngle / STEP_ANGLE); // 가속구간 총 스텝 수 반올림하여 저장
+    accelTotStep = s1AccelAngle / STEP_ANGLE; // casting으로 내림 발생, 가속구간 총 스텝 수 반올림하여 저장
 
     stepDelayTime = sqrt((float)STEP_ANGLE / (2*accel*step));
     delayCnt = 1e5 * stepDelayTime;    
@@ -170,22 +168,20 @@ unsigned int MakeVelProfile(float maxVel, float accel){
 // rotate the motor by following trapezoidal angle input
 void StepMoveVP(float angle, float maxVel, float accel){
     int totalStep;
-    bool dir;
+    int dir;
     unsigned int accelStep;
     unsigned int delayCnt;
     unsigned arrIdx;
+    int i;
 
-    totalStep = round((float)angle / STEP_ANGLE); // 반올림해서 정수 step 값 작성
+    totalStep = (float)angle / STEP_ANGLE; // casting으로 내림 발생, 정수 step 값 작성
     dir = (angle > 0) ? 0 : 1; // 입력된 angle이 양수: CW, 음수: CCW
     
     
     // generate vel trajectory
     accelStep = MakeVelProfile(maxVel, accel);
 
-    delayCnt = ; 
-
     // rotate the motor by the input angle
-    int i;
     arrIdx = 0;
     for(i = 1; i <= totalStep; i++){
         // accel zone
