@@ -1,7 +1,7 @@
 ******************************************************************************
           TMS320C6x COFF Linker PC Version 4.10                
 ******************************************************************************
->> Linked Sat Apr 13 20:42:45 2024
+>> Linked Sat Apr 13 22:09:01 2024
 
 OUTPUT FILE NAME:   <ram_main.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 00007fc0
@@ -235,7 +235,7 @@ address    name
 00004f3c   _Report
 00004d48   _SendByte
 00004ea4   _SendData
-00004060   _StepMoveVP
+00004064   _StepMoveVP
 80000a04   _TFlag
 000070fc   _UMAddData
 00400000   _USBMonStuff
@@ -347,7 +347,7 @@ address    name
 00003d18   _WaitTFlagCnt
 00003da0   _OneStepMove
 00003ebc   _MakeVelProfile
-00004060   _StepMoveVP
+00004064   _StepMoveVP
 00004248   _main
 00004460   _ISRextint4
 00004468   _ISRextint5

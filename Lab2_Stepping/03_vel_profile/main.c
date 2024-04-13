@@ -146,20 +146,18 @@ unsigned int MakeVelProfile(float maxVel, float accel){
     float s1AccelAngle;         // s1
     unsigned int accelTotStep;  // 가속구간 총 스텝 수
     float stepDelayTime;        // delta t
-    unsigned int delayCnt;      // interrupt cnt from delta t
-
+    float delayCnt;      // interrupt cnt from delta t
 
     step = 1;
 
     s1AccelAngle = (maxVel*maxVel) / (2.0*accel); // calc s1
     accelTotStep = s1AccelAngle / STEP_ANGLE; // casting으로 내림 발생, 가속구간 총 스텝 수 반올림하여 저장
 
-    stepDelayTime = sqrt((float)STEP_ANGLE / (2*accel*step));
-    delayCnt = 1e5 * stepDelayTime;    
-
     // be aware that the delayCntArr starts from index '1', not '0' as usuall
     for(step = 1; step <= accelTotStep; step++){
-        delayCntArr[step] = delayCnt;
+        stepDelayTime = sqrt((float)STEP_ANGLE / (2*accel*step));
+        delayCnt = 1e5 * stepDelayTime;    
+        delayCntArr[step] = (unsigned int)delayCnt;
     }    
 
     return accelTotStep;
