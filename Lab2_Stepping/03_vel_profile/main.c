@@ -166,6 +166,7 @@ unsigned int MakeVelProfile(float maxVel, float accel){
 // rotate the motor by following trapezoidal angle input
 void StepMoveVP(float angle, float maxVel, float accel){
     int totalStep;
+    int constVelStep;
     int dir;
     unsigned int accelStep;
     unsigned int delayCnt;
@@ -173,14 +174,15 @@ void StepMoveVP(float angle, float maxVel, float accel){
     int i;
 
     totalStep = (float)angle / STEP_ANGLE; // casting으로 내림 발생, 정수 step 값 작성
-    dir = (angle > 0) ? 0 : 1; // 입력된 angle이 양수: CW, 음수: CCW
+    dir = (angle > 0) ? 0 : 1; // 입력된 angle이 양수: CW, 음수: CCW   
     
-    
-    // generate vel trajectory
+    // clac total step & generate step delay lookup table
     accelStep = MakeVelProfile(maxVel, accel);
-
+    constVelStep = (angle - (STEP_ANGLE * accelStep)) / STEP_ANGLE;
+    totalStep = 2*accelStep + constVelStep;
+    
     // rotate the motor by the input angle
-    arrIdx = 0;
+    arrIdx = 1;
     for(i = 1; i <= totalStep; i++){
         // accel zone
         if(i <= accelStep){
@@ -189,7 +191,8 @@ void StepMoveVP(float angle, float maxVel, float accel){
         }
         // constant vel zone
         else if(i > accelStep && i <= totalStep - accelStep){
-            delayCnt = delayCntArr[accelStep];
+            arrIdx = accelStep;
+            delayCnt = delayCntArr[arrIdx];
         }
 
         // decel zone
@@ -197,7 +200,7 @@ void StepMoveVP(float angle, float maxVel, float accel){
             delayCnt = delayCntArr[arrIdx];
             arrIdx--;
         }
-
+        
         // drive the motor
         OneStepMove(dir, delayCnt);
     }
