@@ -87,8 +87,8 @@ void delay_ms(unsigned int time_ms)
 // Wait until timer interrupt
 void WaitTFlag()
 {
-	while (!TFlag) ;
-	TFlag = 0;
+	while (!TFlag) ;	// interrupt 발생 시 TFlag가 1이 됨. 
+	TFlag = 0;			// 즉, interrupt 발생까지 기다리고 함수 terminate. 
 }
 
 // Waiting time = (Timer Period) * cnt
@@ -99,8 +99,8 @@ void WaitTFlagCnt(unsigned int cnt)
 	TFlag = 0;
 
 	for (i=0; i<cnt; i++) {
-		WaitTFlag();
-	}
+		WaitTFlag();	// interrupt 발생해야 함수 return. 
+	} // cnt 개수만큼 interrupt 발생 기다림. 
 }
 
 void main()
@@ -123,11 +123,13 @@ void main()
 	WaitTFlagCnt(10000);
 
 	int tempDelay;
-	tempDelay = 100000; // skeleton code delay: 100000
+	tempDelay = 100000; // skeleton code delay: 100000(f_intr of 100kHz(10usec) * 1e5 = 1sec delay)
 
 	while (1) {
+		/* Right Stepping Motor Phase */
+		/* FULL STEP*/
 		*STEPPER = 0x2;		// A
-		WaitTFlagCnt(tempDelay);
+		WaitTFlagCnt(tempDelay); 
 
 		*STEPPER = 0x8;		// B
 		WaitTFlagCnt(tempDelay);
@@ -137,6 +139,33 @@ void main()
 
 		*STEPPER = 0x4;		// /B
 		WaitTFlagCnt(tempDelay);
+
+		/* HALF STEP*/
+/*
+		*STEPPER = 0x2;		// A
+		WaitTFlagCnt(tempDelay);
+
+		*STEPPER = 0x10;	// A & B
+		WaitTFlagCnt(tempDelay); 
+
+		*STEPPER = 0x8;		// B
+		WaitTFlagCnt(tempDelay);
+
+		*STEPPER = 0x9;		// B & /A
+		WaitTFlagCnt(tempDelay); 
+
+		*STEPPER = 0x1;		// /A
+		WaitTFlagCnt(tempDelay);
+
+		*STEPPER = 0x5;		// /A & /B
+		WaitTFlagCnt(tempDelay); 
+
+		*STEPPER = 0x4;		// /B
+		WaitTFlagCnt(tempDelay);
+
+		*STEPPER = 0x6;		// /B & A
+		WaitTFlagCnt(tempDelay); 
+*/
 	}
 }
 

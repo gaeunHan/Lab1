@@ -68,7 +68,7 @@ interrupt void ISRtimer0()
 
 	float sig0, sig1, sig2, sig3;
 
-	TFlag = 1;
+	TFlag = 1; // interrupt 발생 시 TFlag가 1이 됨. 
 
 	*DOUT0 = ~(*DOUT0);
 
