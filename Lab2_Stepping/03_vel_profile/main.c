@@ -105,15 +105,22 @@ void WaitTFlagCnt(unsigned int cnt)
 
 // rotate the motor by one step
 int currPhaseIdx;
+unsigned int currDIR, prevDIR;
 void OneStepMove(unsigned int dir, unsigned int tDelayCnt){
     int phase[4] = {0x2, 0x8, 0x1, 0x4}; // Right Stepping Motor Phase: A, B, /A, /B
     int idx;
     int setPhase; 
 
+    currDIR = dir;
     idx = currPhaseIdx;
 
     // CW: A, B, /A, /B
-    if(dir == 0){        
+    if(dir == 0){ 
+        if(currDIR != prevDIR){
+            if(idx == 3) idx = -1;
+            idx++;
+        } // 회전 방향 반전 시 idx 보정
+       
         setPhase = phase[idx];
 
         if(idx == 3) idx = -1;
@@ -122,6 +129,11 @@ void OneStepMove(unsigned int dir, unsigned int tDelayCnt){
     
     // CCW: A, /B, /A, B
     else if(dir == 1){
+        if(currDIR != prevDIR){
+            if(idx == 0) idx = 4;
+            idx--;
+        } // 회전 방향 반전 시 idx 보정
+
         setPhase = phase[idx];
 
         if(idx == 0) idx = 4;
@@ -130,6 +142,7 @@ void OneStepMove(unsigned int dir, unsigned int tDelayCnt){
     }
     // phase update
     currPhaseIdx = idx;
+    prevDIR = dir;
     
     // drive the motor
     *STEPPER = setPhase;
@@ -155,7 +168,7 @@ unsigned int MakeVelProfile(float maxVel, float accel){
 
     // be aware that the delayCntArr starts from index '1', not '0' as usuall
     for(step = 1; step <= accelTotStep; step++){
-        stepDelayTime = sqrt((float)STEP_ANGLE / (2*accel*step));
+        stepDelayTime = sqrt((float)STEP_ANGLE / (2.0*accel*step));
         delayCnt = 1e5 * stepDelayTime;    
         delayCntArr[step] = (unsigned int)delayCnt;
     }    
@@ -179,7 +192,7 @@ void StepMoveVP(float angle, float maxVel, float accel){
     // clac total step & generate step delay lookup table
     accelStep = MakeVelProfile(maxVel, accel);
     constVelStep = (angle - (STEP_ANGLE * accelStep)) / STEP_ANGLE;
-    totalStep = 2*accelStep + constVelStep;
+    totalStep = 2.0*accelStep + constVelStep;
     
     // rotate the motor by the input angle
     arrIdx = 1;
@@ -225,6 +238,8 @@ void main()
 	*FPGALED = 1;			// FPGA LED 1 : ON, 0 : OFF
 
     currPhaseIdx = 0; // set the initial phase: A
+    currDIR = 0; 
+    prevDIR = 0; // init dir
 
 	WaitTFlagCnt(10000); // start program after 1sec   
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////

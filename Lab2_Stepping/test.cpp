@@ -5,6 +5,7 @@ using namespace std;
 #define STEP_ANGLE 1.8f // step angle = 1.8 deg
 int STEPPER;
 int currPhaseIdx;
+unsigned int currDIR, prevDIR;
 unsigned int delayCntArr[200]; // lookup table
 
 void OneStepMove(unsigned int dir, unsigned int tDelayCnt);
@@ -12,12 +13,14 @@ unsigned int MakeVelProfile(float maxVel, float accel);
 void StepMoveVP(float angle, float maxVel, float accel);
 
 int main(){
-/*
+
     cout << "====== OneStepMove() test ======" << endl;
+    currPhaseIdx = 0;
+    currDIR = 0; 
+    prevDIR = 0;
 
     cout << "CW test:" << endl;
-    for(int i=0; i<10; i++){
-        
+    for(int i=0; i<10; i++){        
         OneStepMove(0,10);
         cout << "value stored in STEPPER: 0x" << hex << STEPPER << endl;
     }
@@ -31,23 +34,23 @@ int main(){
     cout << endl;
 
     cout << "CW test:" << endl;
-    for(int i=0; i<10; i++){
-        
+    for(int i=0; i<10; i++){        
         OneStepMove(0,10);
         cout << "value stored in STEPPER: 0x" << hex << STEPPER << endl;
     }
     cout << endl;
-*/
+
 
 /*
     cout << "====== MakeVelProfile() test ======" << endl;
     unsigned int totAccelStep = MakeVelProfile(180, 1800);
     cout << endl;
 */
-
+/*
     cout << "====== StepMoveVP() test ======" << endl;
     StepMoveVP(360, 180, 1800);
     cout << endl;
+    */
 }
 
 // rotate the motor by one step
@@ -56,10 +59,16 @@ void OneStepMove(unsigned int dir, unsigned int tDelayCnt){
     int idx;
     int setPhase; 
 
+    currDIR = dir;
     idx = currPhaseIdx;
 
     // CW: A, B, /A, /B
-    if(dir == 0){        
+    if(dir == 0){
+        if(currDIR != prevDIR){
+            if(idx == 3) idx = -1;
+            idx++;
+        } // 회전 방향 반전 시 idx 보정
+
         setPhase = phase[idx];
 
         if(idx == 3) idx = -1;
@@ -68,6 +77,11 @@ void OneStepMove(unsigned int dir, unsigned int tDelayCnt){
     
     // CCW: A, /B, /A, B
     else if(dir == 1){
+        if(currDIR != prevDIR){
+            if(idx == 0) idx = 4;
+            idx--;
+        } // 회전 방향 반전 시 idx 보정
+
         setPhase = phase[idx];
 
         if(idx == 0) idx = 4;
@@ -76,6 +90,7 @@ void OneStepMove(unsigned int dir, unsigned int tDelayCnt){
     }
     // phase update
     currPhaseIdx = idx;
+    prevDIR = dir;
     
     // drive the motor
     STEPPER = setPhase;
@@ -98,7 +113,7 @@ unsigned int MakeVelProfile(float maxVel, float accel){
 
     // be aware that the delayCntArr starts from index '1', not '0' as usuall
     for(step = 1; step <= accelStep; step++){
-        stepDelayTime = sqrt((float)STEP_ANGLE / (2*accel*step));
+        stepDelayTime = sqrt((float)STEP_ANGLE / (2.0*accel*step));
         cout << "stepDelayTime: " << stepDelayTime << endl;
         delayCnt = 1e5 * stepDelayTime;    
         delayCntArr[step] = (unsigned int)delayCnt;
@@ -129,7 +144,7 @@ void StepMoveVP(float angle, float maxVel, float accel){
     // clac total step & generate step delay lookup table
     accelStep = MakeVelProfile(maxVel, accel);
     constVelStep = (angle - (STEP_ANGLE * accelStep)) / STEP_ANGLE;
-    totalStep = 2*accelStep + constVelStep;
+    totalStep = 2.0*accelStep + constVelStep;
 
     cout << "Total step: " << totalStep << endl;
     cout << "Steps for accel & decel:" << accelStep <<endl;
