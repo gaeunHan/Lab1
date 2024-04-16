@@ -169,7 +169,7 @@ unsigned int MakeVelProfile(float maxVel, float accel){
     // be aware that the delayCntArr starts from index '1', not '0' as usuall
     for(step = 1; step <= accelTotStep; step++){
         stepDelayTime = sqrt((float)STEP_ANGLE / (2.0*accel*step));
-        delayCnt = 1e5 * stepDelayTime;    
+        delayCnt = TIMER_FRQ * stepDelayTime; // TIMER_FRQ = 1e5    
         delayCntArr[step] = (unsigned int)delayCnt;
     }    
 

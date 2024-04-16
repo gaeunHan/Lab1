@@ -161,7 +161,7 @@ void StepMoveCV(float angle, float spd){
     totalStep = angle / STEP_ANGLE; // int casting으로, 내림해서 정수 step 값 작성
     dir = (angle > 0) ? 0 : 1; // 입력된 angle이 양수: CW, 음수: CCW
     stepDelayTime = STEP_ANGLE / spd; // delay_btn_step = stepAngle/vel
-    delayCnt = 1e5 * stepDelayTime; // current intrpt freq = 100kHz -> 1e5 makes 1sec
+    delayCnt = TIMER_FRQ * stepDelayTime; // current intrpt freq = 100kHz -> 1e5 makes 1sec
 
     // rotate the motor by the input angle    
     for(i = 0; i<totalStep; i++){
