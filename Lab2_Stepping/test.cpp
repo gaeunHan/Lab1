@@ -48,7 +48,7 @@ int main(){
 */
 
     cout << "====== StepMoveVP() test ======" << endl;
-    StepMoveVP(360, 3000, 20000);
+    StepMoveVP(360, 2000, 20000);
     cout << endl;
 
 }
@@ -133,7 +133,8 @@ unsigned int MakeVelProfile(float maxVel, float accel){
 void StepMoveVP(float angle, float maxVel, float accel){
     int dir;
     float s1AccelAngle;         // s1
-    unsigned int accelStep;     // 가속 구간 총 스텝
+    unsigned int accelStep;     // trapezoidal가속 구간 총 스텝
+    unsigned int accelStepTri;  // triangular 가속구간 스텝 수
     int constVelStep;           // 등속 구간 총 스텝
     int totalStep;              // 총 스텝
     unsigned int delayCnt;
@@ -152,27 +153,26 @@ void StepMoveVP(float angle, float maxVel, float accel){
     arrIdx = 1;
     if(angle <= 2*s1AccelAngle){ // triangular
         constVelStep = 0;
-        totalStep = (2.0 * accelStep) + constVelStep;
+        accelStepTri = (angle / 2.0) / STEP_ANGLE;
         for(i = 1; i <= totalStep; i++){
             // accel zone
-            if(i <= accelStep){
+            if(i <= accelStepTri){
                 delayCnt = delayCntArr[arrIdx];
                 arrIdx++;
             }
             // decel zone
             else{
-                delayCnt = delayCntArr[arrIdx];
                 arrIdx--;
+                delayCnt = delayCntArr[arrIdx];                
             }
             // drive the motor
             OneStepMove(dir, delayCnt);
-            cout << "Interrupt cnt for delay on " << i <<"_th step: " << delayCnt << endl;   
+            cout << "Interrupt cnt for delay on " << i <<"_th step: " << delayCnt << endl;  
         }
         cout << "=> triangular" << endl;
     }
-    else{ // trapzoidal       
-        constVelStep = (angle - (STEP_ANGLE * accelStep)) / STEP_ANGLE;
-        totalStep = (2.0 * accelStep) + constVelStep;
+    else{ // trapezoidal       
+        constVelStep = totalStep - 2.0*accelStep;
         for(i = 1; i <= totalStep; i++){
             // accel zone
             if(i <= accelStep){
@@ -197,7 +197,8 @@ void StepMoveVP(float angle, float maxVel, float accel){
         cout << endl << "=> trapzoidal" << endl;
     } 
     cout << "Total step: " << totalStep << endl;
-    cout << "Steps for accel & decel:" << accelStep <<endl;
+    cout << "Steps for accel & decel: " << endl
+         << "if Trapezoid: " << accelStep << ", if Triangular: " << accelStepTri <<endl;
     cout << "Steps for const zone: " << constVelStep << endl;
 }
 
