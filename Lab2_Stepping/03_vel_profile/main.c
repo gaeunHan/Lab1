@@ -178,45 +178,65 @@ unsigned int MakeVelProfile(float maxVel, float accel){
 
 // rotate the motor by following trapezoidal angle input
 void StepMoveVP(float angle, float maxVel, float accel){
-    int totalStep;
-    int constVelStep;
     int dir;
-    unsigned int accelStep;
+    float s1AccelAngle;         // s1
+    unsigned int accelStep;     // trapezoidal가속 구간 총 스텝
+    unsigned int accelStepTri;  // triangular 가속구간 스텝 수
+    int totalStep;              // 총 스텝
     unsigned int delayCnt;
     unsigned arrIdx;
     int i;
 
-    totalStep = (float)fabs(angle) / STEP_ANGLE; // casting으로 내림 발생, 정수 step 값 작성
+    totalStep = (float)angle / STEP_ANGLE; // casting으로 내림 발생, 정수 step 값 작성
     dir = (angle > 0) ? 0 : 1; // 입력된 angle이 양수: CW, 음수: CCW   
     
     // clac total step & generate step delay lookup table
+    s1AccelAngle = (maxVel*maxVel) / (2.0*accel); // calc s1
     accelStep = MakeVelProfile(maxVel, accel);
-    constVelStep = (fabs(angle) - (STEP_ANGLE * accelStep)) / STEP_ANGLE;
-    totalStep = 2.0*accelStep + constVelStep;
-    
+
     // rotate the motor by the input angle
     arrIdx = 1;
-    for(i = 1; i <= totalStep; i++){
-        // accel zone
-        if(i <= accelStep){
-            delayCnt = delayCntArr[arrIdx];
-            arrIdx++;
+    if(angle <= 2*s1AccelAngle){ // triangular
+        accelStepTri = (angle / 2.0) / STEP_ANGLE;
+        for(i = 1; i <= totalStep; i++){
+            // accel zone
+            if(i <= accelStepTri){
+                delayCnt = delayCntArr[arrIdx];
+                arrIdx++;
+            }
+            // decel zone
+            else{
+                arrIdx--;
+                delayCnt = delayCntArr[arrIdx];                
+            }
+            // drive the motor
+            OneStepMove(dir, delayCnt);
+            MACRO_PRINT((tmp_string, "intCnt on %d_th step: %d\r\n\r\n", i, delayCnt));
         }
-        // constant vel zone
-        else if(i > accelStep && i <= totalStep - accelStep){
-            arrIdx = accelStep;
-            delayCnt = delayCntArr[arrIdx];
-        }
-
-        // decel zone
-        else if(i > totalStep - accelStep && i <= totalStep){
-            delayCnt = delayCntArr[arrIdx];
-            arrIdx--;
-        }
-        
-        // drive the motor
-        OneStepMove(dir, delayCnt);
     }
+    else{ // trapezoidal       
+        for(i = 1; i <= totalStep; i++){
+            // accel zone
+            if(i <= accelStep){
+                delayCnt = delayCntArr[arrIdx];
+                arrIdx++;
+            }
+            // constant vel zone
+            else if(i > accelStep && i <= totalStep - accelStep){
+                arrIdx = accelStep;
+                delayCnt = delayCntArr[arrIdx];
+            }
+
+            // decel zone
+            else if(i > totalStep - accelStep && i <= totalStep){
+                delayCnt = delayCntArr[arrIdx];
+                arrIdx--;
+            }
+            // drive the motor
+            OneStepMove(dir, delayCnt);
+            MACRO_PRINT((tmp_string, "intCnt on %d_th step: %d\r\n\r\n", i, delayCnt));
+        }
+    } 
 }
 
 

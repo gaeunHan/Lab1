@@ -1,10 +1,10 @@
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    1
 
        1                    ;******************************************************************************
        2                    ;* TMS320C6x ANSI C Codegen                                      Version 4.10 *
-       3                    ;* Date/Time created: Tue Apr 16 21:05:21 2024                                *
+       3                    ;* Date/Time created: Sat Apr 20 13:05:44 2024                                *
        4                    ;******************************************************************************
        5                    
        6                    ;******************************************************************************
@@ -57,7 +57,7 @@ temp\main.asm                                                        PAGE    1
       53                    ;*   Regs Used         : A0,A3,A4,B3,B4,B5,B6                                 *
       54                    ;*   Local Frame Size  : 0 Args + 0 Auto + 0 Save = 0 byte                    *
       55                    ;******************************************************************************
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    2
 
@@ -116,7 +116,7 @@ temp\main.asm                                                        PAGE    2
      108 00000070 000C0362             B       .S2     B3                ; |55| 
      109 00000074 00004000             NOP             3
      110 00000078 0000C788             SET     .S1     A0,6,7,A0         ; |54| 
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    3
 
@@ -175,7 +175,7 @@ temp\main.asm                                                        PAGE    3
      163                    ;*   Regs Used         : A4,B0,B3,B4,B5,B6,SP                                 *
      164                    ;*   Local Frame Size  : 0 Args + 4 Auto + 0 Save = 4 byte                    *
      165                    ;******************************************************************************
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    4
 
@@ -234,7 +234,7 @@ temp\main.asm                                                        PAGE    4
      218 00000104 038008C2             ZERO    .D2     B7                ; |82| 
      219 00000108 0010FBFA             CMPLTU  .L2X    B7,A4,B0
      220 0000010c 30000B10     [!B0]   B       .S1     L4                ; |82| 
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    5
 
@@ -293,7 +293,7 @@ temp\main.asm                                                        PAGE    5
      273 0000017c 90000068!    [!A1]   MVKH    .S1     _TFlag,A0         ; |90| 
      274 00000180 90800264     [!A1]   LDW     .D1T1   *A0,A1            ; |90| 
      275 00000184 00002000             NOP             2
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    6
 
@@ -352,7 +352,7 @@ temp\main.asm                                                        PAGE    6
      328 000001ec 2000B228'    [ B0]   MVKL    .S1     _WaitTFlag,A0     ; |102| 
      329 000001f0 20000068'    [ B0]   MVKH    .S1     _WaitTFlag,A0     ; |102| 
      330 000001f4 00004000             NOP             3
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    7
 
@@ -411,7 +411,7 @@ temp\main.asm                                                        PAGE    7
      383                    
      384 0000025c 039002E6             LDW     .D2T2   *B4,B7            ; |110| 
      385 00000260 031042E6             LDW     .D2T2   *+B4(8),B6        ; |110| 
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    8
 
@@ -470,7 +470,7 @@ temp\main.asm                                                        PAGE    8
      438                    
      439 00000310 029462E7             LDW     .D2T2   *+B5(12),B5       ; |124| 
      440 00000314 027FFFAA  ||         MVK     .S2     -1,B4             ; |126| 
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    9
 
@@ -529,7 +529,7 @@ temp\main.asm                                                        PAGE    9
      493 0000039c 021062E6             LDW     .D2T2   *+B4(12),B4       ; |137| 
      494 000003a0 32BCE2F6     [!B0]   STW     .D2T2   B5,*+SP(28)       ; |139| 
      495 000003a4 02BCE2E6             LDW     .D2T2   *+SP(28),B5       ; |140| 
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   10
 
@@ -579,16 +579,16 @@ temp\main.asm                                                        PAGE   10
      539                    ;* FUNCTION NAME: _MakeVelProfile                                             *
      540                    ;*                                                                            *
      541                    ;*   Regs Modified     : A0,A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11,B0,B1,B2,B3,B4,*
-     542                    ;*                           B5,B6,B7,B8,B9,B10,B11,SP                        *
+     542                    ;*                           B5,B6,B7,B8,B9,SP                                *
      543                    ;*   Regs Used         : A0,A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11,B0,B1,B2,B3,B4,*
-     544                    ;*                           B5,B6,B7,B8,B9,B10,B11,SP                        *
-     545                    ;*   Local Frame Size  : 0 Args + 28 Auto + 20 Save = 48 byte                 *
+     544                    ;*                           B5,B6,B7,B8,B9,SP                                *
+     545                    ;*   Local Frame Size  : 0 Args + 28 Auto + 12 Save = 40 byte                 *
      546                    ;******************************************************************************
      547 00000414           _MakeVelProfile:
      548                    ;** --------------------------------------------------------------------------*
-     549 00000414 05BD94F6             STW     .D2T2   B11,*SP--(48)     ; |157| 
+     549 00000414 05BD54F4             STW     .D2T1   A11,*SP--(40)     ; |157| 
      550                    
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   11
 
@@ -608,681 +608,874 @@ temp\main.asm                                                        PAGE   11
      564 00000440 0400002A!            MVKL    .S2     __divd,B8         ; |166| 
      565 00000444 0400006A!            MVKH    .S2     __divd,B8         ; |166| 
      566 00000448 00200362             B       .S2     B8                ; |166| 
-     567 0000044c 01BD42F6             STW     .D2T2   B3,*+SP(40)       ; |157| 
-     568                    
-     569 00000450 05BD22F5             STW     .D2T1   A11,*+SP(36)      ; |157| 
-     570 00000454 031800A2  ||         SPDP    .S2     B6,B7:B6          ; |166| 
-     571                    
-     572 00000458 053D02F4             STW     .D2T1   A10,*+SP(32)      ; |157| 
-     573                    
-     574 00000460 000000A9             MVK     .S1     1,A0              ; |164| 
-     575 00000464 029C1059  ||         MV      .L1X    B7,A5             ; |166| 
-     576 00000468 01823E2B' ||         MVKL    .S2     RL8,B3            ; |166| 
-     577 0000046c 053D62F6  ||         STW     .D2T2   B10,*+SP(44)      ; |157| 
-     578                    
-     579 00000470 003C62F5             STW     .D2T1   A0,*+SP(12)       ; |164| 
-     580 00000474 021811A1  ||         MV      .S1X    B6,A4             ; |166| 
-     581 00000478 0180006A' ||         MVKH    .S2     RL8,B3            ; |166| 
-     582                    
-     583 0000047c           RL8:       ; CALL OCCURS                     ; |166| 
-     584 0000047c 00148138             DPSP    .L1     A5:A4,A0          ; |166| 
-     585 00000480 00004000             NOP             3
-     586                    
-     587 00000484 00000029!            MVKL    .S1     __divf,A0         ; |167| 
-     588 00000488 02000941  ||         MV      .D1     A0,A4
-     589 0000048c 003C82F4  ||         STW     .D2T1   A0,*+SP(16)       ; |166| 
-     590                    
-     591 00000490 00000068!            MVKH    .S1     __divf,A0         ; |167| 
-     592 00000494 00001362             B       .S2X    A0                ; |167| 
-     593 00000498 00000000             NOP             1
-     594 0000049c 0182562A'            MVKL    .S2     RL10,B3           ; |167| 
-     595 000004a0 0233332A             MVKL    .S2     0x3fe66666,B4     ; |167| 
-     596 000004a4 0180006A'            MVKH    .S2     RL10,B3           ; |167| 
-     597 000004a8 021FF36A             MVKH    .S2     0x3fe66666,B4     ; |167| 
-     598 000004ac           RL10:      ; CALL OCCURS                     ; |167| 
-     599 000004ac 01900178             SPTRUNC .L1     A4,A3             ; |167| 
-     600 000004b0 00000000             NOP             1
-     601 000004b4 000000A8             MVK     .S1     1,A0              ; |170| 
-     602 000004b8 028011A2             MV      .S2X    A0,B5             ; |167| 
-     603 000004bc 000CB9FA             CMPGTU  .L2X    B5,A3,B0
-     604 000004c0 20002010     [ B0]   B       .S1     L15               ; |170| 
-     605 000004c4 00004000             NOP             3
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+     567 0000044c 00000000             NOP             1
+     568 00000450 031800A2             SPDP    .S2     B6,B7:B6          ; |166| 
+     569 00000454 01BD22F6             STW     .D2T2   B3,*+SP(36)       ; |157| 
+     570                    
+     571 00000460 000000A9             MVK     .S1     1,A0              ; |164| 
+     572 00000464 029C1059  ||         MV      .L1X    B7,A5             ; |166| 
+     573 00000468 01823E2B' ||         MVKL    .S2     RL8,B3            ; |166| 
+     574 0000046c 053D02F4  ||         STW     .D2T1   A10,*+SP(32)      ; |157| 
+     575                    
+     576 00000470 003C62F5             STW     .D2T1   A0,*+SP(12)       ; |164| 
+     577 00000474 021811A1  ||         MV      .S1X    B6,A4             ; |166| 
+     578 00000478 0180006A' ||         MVKH    .S2     RL8,B3            ; |166| 
+     579                    
+     580 0000047c           RL8:       ; CALL OCCURS                     ; |166| 
+     581 0000047c 00148138             DPSP    .L1     A5:A4,A0          ; |166| 
+     582 00000480 00004000             NOP             3
+     583                    
+     584 00000484 00000029!            MVKL    .S1     __divf,A0         ; |167| 
+     585 00000488 02000941  ||         MV      .D1     A0,A4
+     586 0000048c 003C82F4  ||         STW     .D2T1   A0,*+SP(16)       ; |166| 
+     587                    
+     588 00000490 00000068!            MVKH    .S1     __divf,A0         ; |167| 
+     589 00000494 00001362             B       .S2X    A0                ; |167| 
+     590 00000498 00000000             NOP             1
+     591 0000049c 0182562A'            MVKL    .S2     RL10,B3           ; |167| 
+     592 000004a0 0233332A             MVKL    .S2     0x3fe66666,B4     ; |167| 
+     593 000004a4 0180006A'            MVKH    .S2     RL10,B3           ; |167| 
+     594 000004a8 021FF36A             MVKH    .S2     0x3fe66666,B4     ; |167| 
+     595 000004ac           RL10:      ; CALL OCCURS                     ; |167| 
+     596 000004ac 01900178             SPTRUNC .L1     A4,A3             ; |167| 
+     597 000004b0 00000000             NOP             1
+     598 000004b4 000000A8             MVK     .S1     1,A0              ; |170| 
+     599 000004b8 028011A2             MV      .S2X    A0,B5             ; |167| 
+     600 000004bc 000CB9FA             CMPGTU  .L2X    B5,A3,B0
+     601 000004c0 20001D10     [ B0]   B       .S1     L15               ; |170| 
+     602 000004c4 00004000             NOP             3
+     603 000004c8 01BCA2F4             STW     .D2T1   A3,*+SP(20)       ; |167| 
+     604                    
+     605 000004cc 050428C1             ZERO    .D1     A10               ; |171| 
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   12
 
-     606 000004c8 01BCA2F4             STW     .D2T1   A3,*+SP(20)       ; |167| 
+     606 000004d0 003C62F4  ||         STW     .D2T1   A0,*+SP(12)       ; |170| 
      607                    
-     608 000004cc 050425E3             ZERO    .S2     B10               ; |172| 
-     609 000004d0 050428C1  ||         ZERO    .D1     A10               ; |171| 
-     610 000004d4 003C62F4  ||         STW     .D2T1   A0,*+SP(12)       ; |170| 
-     611                    
-     612                               ; BRANCH OCCURS                   ; |170| 
-     613                    ;*----------------------------------------------------------------------------*
-     614                    ;*   SOFTWARE PIPELINE INFORMATION
-     615                    ;*      Disqualified loop: software pipelining disabled
-     616                    ;*----------------------------------------------------------------------------*
-     617 000004d8           L14:    
-     618 000004d8 023C42E6             LDW     .D2T2   *+SP(8),B4        ; |171| 
-     619 000004dc 00006000             NOP             4
-     620                    
-     621 000004e0 021000A3             SPDP    .S2     B4,B5:B4          ; |171| 
-     622 000004e4 058428C0  ||         ZERO    .D1     A11               ; |171| 
-     623                    
-     624 000004e8 05A00068             MVKH    .S1     0x40000000,A11    ; |171| 
-     625                    
-     626 000004ec 023C62E7             LDW     .D2T2   *+SP(12),B4       ; |171| 
-     627 000004f0 00115700  ||         MPYDP   .M1X    B5:B4,A11:A10,A1:A0 ; |171| 
-     628                    
-     629 000004f4 00006000             NOP             4
-     630 000004f8 0210077A             INTDPU  .L2     B4,B5:B4          ; |171| 
-     631 000004fc 00006000             NOP             4
-     632 00000500 02009702             MPYDP   .M2X    B5:B4,A1:A0,B5:B4 ; |171| 
-     633 00000504 00002000             NOP             2
-     634 00000508 00000028!            MVKL    .S1     __divd,A0         ; |171| 
-     635 0000050c 00000068!            MVKH    .S1     __divd,A0         ; |171| 
-     636 00000510 00001362             B       .S2X    A0                ; |171| 
-     637 00000514 00000000             NOP             1
-     638 00000518 026666A8             MVKL    .S1     0xcccccccd,A4     ; |171| 
-     639 0000051c 02E66628             MVKL    .S1     0x3ffccccc,A5     ; |171| 
-     640                    
-     641 00000520 02666669             MVKH    .S1     0xcccccccd,A4     ; |171| 
-     642 00000524 0182982A' ||         MVKL    .S2     RL14,B3           ; |171| 
-     643                    
-     644 00000528 0180006B'            MVKH    .S2     RL14,B3           ; |171| 
-     645 0000052c 029FFE68  ||         MVKH    .S1     0x3ffccccc,A5     ; |171| 
-     646                    
-     647 00000530           RL14:      ; CALL OCCURS                     ; |171| 
-     648 00000530 0200002A!            MVKL    .S2     _sqrt,B4          ; |171| 
-     649 00000534 0200006A!            MVKH    .S2     _sqrt,B4          ; |171| 
-     650 00000538 00100362             B       .S2     B4                ; |171| 
-     651 0000053c 00004000             NOP             3
-     652 00000540 0182A42A'            MVKL    .S2     RL16,B3           ; |171| 
-     653 00000544 0180006A'            MVKH    .S2     RL16,B3           ; |171| 
-     654 00000548           RL16:      ; CALL OCCURS                     ; |171| 
-     655 00000548 00148138             DPSP    .L1     A5:A4,A0          ; |171| 
-     656 0000054c 00004000             NOP             3
-     657 00000550 020011A2             MV      .S2X    A0,B4             ; |171| 
-     658 00000554 021000A2             SPDP    .S2     B4,B5:B4          ; |172| 
-     659 00000558 00000000             NOP             1
-     660 0000055c 05B5002A             MVKL    .S2     0x40f86a00,B11    ; |172| 
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+     608                               ; BRANCH OCCURS                   ; |170| 
+     609                    ;*----------------------------------------------------------------------------*
+     610                    ;*   SOFTWARE PIPELINE INFORMATION
+     611                    ;*      Disqualified loop: software pipelining disabled
+     612                    ;*----------------------------------------------------------------------------*
+     613 000004d4           L14:    
+     614 000004d4 023C42E6             LDW     .D2T2   *+SP(8),B4        ; |171| 
+     615 000004d8 00006000             NOP             4
+     616                    
+     617 000004e0 021000A3             SPDP    .S2     B4,B5:B4          ; |171| 
+     618 000004e4 058428C0  ||         ZERO    .D1     A11               ; |171| 
+     619                    
+     620 000004e8 05A00068             MVKH    .S1     0x40000000,A11    ; |171| 
+     621                    
+     622 000004ec 023C62E7             LDW     .D2T2   *+SP(12),B4       ; |171| 
+     623 000004f0 00115700  ||         MPYDP   .M1X    B5:B4,A11:A10,A1:A0 ; |171| 
+     624                    
+     625 000004f4 00006000             NOP             4
+     626 000004f8 0210077A             INTDPU  .L2     B4,B5:B4          ; |171| 
+     627 000004fc 00006000             NOP             4
+     628 00000500 02009702             MPYDP   .M2X    B5:B4,A1:A0,B5:B4 ; |171| 
+     629 00000504 00002000             NOP             2
+     630 00000508 00000028!            MVKL    .S1     __divd,A0         ; |171| 
+     631 0000050c 00000068!            MVKH    .S1     __divd,A0         ; |171| 
+     632 00000510 00001362             B       .S2X    A0                ; |171| 
+     633 00000514 00000000             NOP             1
+     634 00000518 026666A8             MVKL    .S1     0xcccccccd,A4     ; |171| 
+     635 0000051c 02E66628             MVKL    .S1     0x3ffccccc,A5     ; |171| 
+     636                    
+     637 00000520 02666669             MVKH    .S1     0xcccccccd,A4     ; |171| 
+     638 00000524 0182982A' ||         MVKL    .S2     RL14,B3           ; |171| 
+     639                    
+     640 00000528 0180006B'            MVKH    .S2     RL14,B3           ; |171| 
+     641 0000052c 029FFE68  ||         MVKH    .S1     0x3ffccccc,A5     ; |171| 
+     642                    
+     643 00000530           RL14:      ; CALL OCCURS                     ; |171| 
+     644 00000530 0200002A!            MVKL    .S2     _sqrt,B4          ; |171| 
+     645 00000534 0200006A!            MVKH    .S2     _sqrt,B4          ; |171| 
+     646 00000538 00100362             B       .S2     B4                ; |171| 
+     647 0000053c 00004000             NOP             3
+     648 00000540 0182A42A'            MVKL    .S2     RL16,B3           ; |171| 
+     649 00000544 0180006A'            MVKH    .S2     RL16,B3           ; |171| 
+     650 00000548           RL16:      ; CALL OCCURS                     ; |171| 
+     651 00000548 00148138             DPSP    .L1     A5:A4,A0          ; |171| 
+     652 0000054c 00000000             NOP             1
+     653 00000550 0228002A             MVKL    .S2     0x47c35000,B4     ; |172| 
+     654 00000554 0223E1EA             MVKH    .S2     0x47c35000,B4     ; |172| 
+     655 00000558 02009E02             MPYSP   .M2X    A0,B4,B4
+     656 0000055c 00002000             NOP             2
+     657 00000560 033C62E6             LDW     .D2T2   *+SP(12),B6       ; |173| 
+     658                    
+     659 00000564 0210017B             SPTRUNC .L2     B4,B4             ; |173| 
+     660 00000568 023CE2F6  ||         STW     .D2T2   B4,*+SP(28)       ; |172| 
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   13
 
-     661 00000560 05A07C6A             MVKH    .S2     0x40f86a00,B11    ; |172| 
-     662 00000564 02288702             MPYDP   .M2     B5:B4,B11:B10,B5:B4 ; |172| 
-     663 00000568 00010000             NOP             9
-     664 0000056c 0214813A             DPSP    .L2     B5:B4,B4          ; |172| 
-     665 00000570 00002000             NOP             2
-     666 00000574 02BC62E6             LDW     .D2T2   *+SP(12),B5       ; |173| 
+     661                    
+     662 0000056c 00000000             NOP             1
+     663 00000570 0280062A-            MVKL    .S2     _delayCntArr,B5   ; |173| 
+     664                    
+     665 00000574 003CC2F5             STW     .D2T1   A0,*+SP(24)       ; |171| 
+     666 00000578 0280006A- ||         MVKH    .S2     _delayCntArr,B5   ; |173| 
      667                    
-     668 00000578 0210017B             SPTRUNC .L2     B4,B4             ; |173| 
-     669 0000057c 023CE2F6  ||         STW     .D2T2   B4,*+SP(28)       ; |172| 
-     670                    
-     671 00000580 00000000             NOP             1
-     672 00000584 0300062A-            MVKL    .S2     _delayCntArr,B6   ; |173| 
-     673                    
-     674 00000588 003CC2F5             STW     .D2T1   A0,*+SP(24)       ; |171| 
-     675 0000058c 0300006A- ||         MVKH    .S2     _delayCntArr,B6   ; |173| 
-     676                    
-     677 00000590 0218AAF6             STW     .D2T2   B4,*+B6[B5]       ; |173| 
-     678 00000594 023C62E6             LDW     .D2T2   *+SP(12),B4       ; |174| 
-     679 00000598 00006000             NOP             4
-     680                    
-     681 000005a0 02102943             ADD     .D2     1,B4,B4
-     682 000005a4 001031A0  ||         ADD     .S1X    1,B4,A0
-     683                    
-     684 000005a8 023C62F6             STW     .D2T2   B4,*+SP(12)       ; |174| 
-     685 000005ac 023CA2E6             LDW     .D2T2   *+SP(20),B4       ; |174| 
-     686 000005b0 00006000             NOP             4
-     687 000005b4 009019F8             CMPGTU  .L1X    A0,B4,A1          ; |174| 
-     688 000005b8 9FFFE710     [!A1]   B       .S1     L14               ; |174| 
-     689 000005bc 00008000             NOP             5
-     690                               ; BRANCH OCCURS                   ; |174| 
-     691                    ;** --------------------------------------------------------------------------*
-     692 000005c0           L15:    
-     693 000005c0 01BD42E6             LDW     .D2T2   *+SP(40),B3       ; |177| 
-     694 000005c4 053D62E6             LDW     .D2T2   *+SP(44),B10      ; |177| 
-     695 000005c8 05BD22E4             LDW     .D2T1   *+SP(36),A11      ; |177| 
-     696 000005cc 053D02E4             LDW     .D2T1   *+SP(32),A10      ; |177| 
-     697 000005d0 023CA2E4             LDW     .D2T1   *+SP(20),A4       ; |176| 
-     698 000005d4 000C0362             B       .S2     B3                ; |177| 
-     699 000005d8 05BD92E6             LDW     .D2T2   *++SP(48),B11     ; |177| 
-     700 000005dc 00006000             NOP             4
-     701                               ; BRANCH OCCURS                   ; |177| 
-     702                    
-     703                    
-     704 000005e0                   .sect   ".text"
-     705                            .global _StepMoveVP
-     706                    
-     707                    ;******************************************************************************
-     708                    ;* FUNCTION NAME: _StepMoveVP                                                 *
-     709                    ;*                                                                            *
-     710                    ;*   Regs Modified     : A0,A1,A2,A3,A4,A5,A6,A7,A8,A9,B0,B1,B2,B3,B4,B5,B6,  *
-     711                    ;*                           B7,B8,B9,SP                                      *
-     712                    ;*   Regs Used         : A0,A1,A2,A3,A4,A5,A6,A7,A8,A9,B0,B1,B2,B3,B4,B5,B6,  *
-     713                    ;*                           B7,B8,B9,SP                                      *
-     714                    ;*   Local Frame Size  : 0 Args + 40 Auto + 4 Save = 44 byte                  *
-     715                    ;******************************************************************************
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+     668 0000057c 0214CAF6             STW     .D2T2   B4,*+B5[B6]       ; |173| 
+     669 00000580 023C62E6             LDW     .D2T2   *+SP(12),B4       ; |174| 
+     670 00000584 00006000             NOP             4
+     671 00000588 02102942             ADD     .D2     1,B4,B4           ; |174| 
+     672 0000058c 023C62F6             STW     .D2T2   B4,*+SP(12)       ; |174| 
+     673 00000590 023CA2E6             LDW     .D2T2   *+SP(20),B4       ; |174| 
+     674 00000594 02BC62E6             LDW     .D2T2   *+SP(12),B5       ; |174| 
+     675 00000598 00006000             NOP             4
+     676 0000059c 0010A9FA             CMPGTU  .L2     B5,B4,B0          ; |174| 
+     677 000005a0 3FFFE690     [!B0]   B       .S1     L14               ; |174| 
+     678 000005a4 00008000             NOP             5
+     679                               ; BRANCH OCCURS                   ; |174| 
+     680                    ;** --------------------------------------------------------------------------*
+     681 000005a8           L15:    
+     682 000005a8 01BD22E6             LDW     .D2T2   *+SP(36),B3       ; |177| 
+     683 000005ac 053D02E4             LDW     .D2T1   *+SP(32),A10      ; |177| 
+     684 000005b0 023CA2E4             LDW     .D2T1   *+SP(20),A4       ; |176| 
+     685 000005b4 05BD52E4             LDW     .D2T1   *++SP(40),A11     ; |177| 
+     686 000005b8 00000000             NOP             1
+     687 000005bc 000C0362             B       .S2     B3                ; |177| 
+     688 000005c0 00008000             NOP             5
+     689                               ; BRANCH OCCURS                   ; |177| 
+     690                    
+     691                    
+     692 000005c4                   .sect   ".text"
+     693                            .global _StepMoveVP
+     694                    
+     695                    ;******************************************************************************
+     696                    ;* FUNCTION NAME: _StepMoveVP                                                 *
+     697                    ;*                                                                            *
+     698                    ;*   Regs Modified     : A0,A1,A2,A3,A4,A5,A6,A7,A8,A9,B0,B1,B2,B3,B4,B5,B6,  *
+     699                    ;*                           B7,B8,B9,B10,B11,SP                              *
+     700                    ;*   Regs Used         : A0,A1,A2,A3,A4,A5,A6,A7,A8,A9,B0,B1,B2,B3,B4,B5,B6,  *
+     701                    ;*                           B7,B8,B9,B10,B11,SP                              *
+     702                    ;*   Local Frame Size  : 16 Args + 44 Auto + 12 Save = 72 byte                *
+     703                    ;******************************************************************************
+     704 000005c4           _StepMoveVP:
+     705                    ;** --------------------------------------------------------------------------*
+     706 000005c4 01800028!            MVKL    .S1     __divf,A3         ; |190| 
+     707                    
+     708 000005c8 01800069!            MVKH    .S1     __divf,A3         ; |190| 
+     709 000005cc 05BE54F6  ||         STW     .D2T2   B11,*SP--(72)     ; |180| 
+     710                    
+     711 000005d0 02333329             MVKL    .S1     0x3fe66666,A4     ; |190| 
+     712 000005d4 023CA2F4  ||         STW     .D2T1   A4,*+SP(20)       ; |180| 
+     713                    
+     714 000005d8 000C1363             B       .S2X    A3                ; |190| 
+     715 000005dc 021FF368  ||         MVKH    .S1     0x3fe66666,A4     ; |190| 
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   14
 
-     716 000005e0           _StepMoveVP:
-     717                    ;** --------------------------------------------------------------------------*
-     718 000005e0 0300002A!            MVKL    .S2     __divf,B6         ; |189| 
-     719 000005e4 0300006A!            MVKH    .S2     __divf,B6         ; |189| 
-     720 000005e8 00180362             B       .S2     B6                ; |189| 
-     721 000005ec 00000000             NOP             1
-     722 000005f0 01BD94F6             STW     .D2T2   B3,*SP--(48)      ; |180| 
+     716                    
+     717 000005e0 023CA2E5             LDW     .D2T1   *+SP(20),A4
+     718 000005e4 021011A3  ||         MV      .S2X    A4,B4             ; |190| 
+     719 000005e8 001011A0  ||         MV      .S1X    B4,A0             ; |180| 
+     720                    
+     721 000005ec 01BE02F6             STW     .D2T2   B3,*+SP(64)       ; |180| 
+     722 000005f0 053E22F6             STW     .D2T2   B10,*+SP(68)      ; |180| 
      723                    
-     724 000005f4 023C42F7             STW     .D2T2   B4,*+SP(8)        ; |180| 
-     725 000005f8 00333328  ||         MVKL    .S1     0x3fe66666,A0     ; |189| 
+     724 000005f4 033CE2F5             STW     .D2T1   A6,*+SP(28)       ; |180| 
+     725 000005f8 0183042A' ||         MVKL    .S2     RL18,B3           ; |190| 
      726                    
-     727 00000600 033C62F5             STW     .D2T1   A6,*+SP(12)       ; |180| 
-     728 00000604 001FF369  ||         MVKH    .S1     0x3fe66666,A0     ; |189| 
-     729 00000608 01830C2A' ||         MVKL    .S2     RL18,B3           ; |189| 
-     730                    
-     731 0000060c 0200105B             MV      .L2X    A0,B4             ; |189| 
-     732 00000610 023C22F5  ||         STW     .D2T1   A4,*+SP(4)        ; |180| 
-     733 00000614 0180006A' ||         MVKH    .S2     RL18,B3           ; |189| 
+     727 00000600 0180006B'            MVKH    .S2     RL18,B3           ; |190| 
+     728 00000604 003CC2F4  ||         STW     .D2T1   A0,*+SP(24)       ; |180| 
+     729                    
+     730 00000608           RL18:      ; CALL OCCURS                     ; |190| 
+     731 00000608 03BCC2E6             LDW     .D2T2   *+SP(24),B7       ; |194| 
+     732 0000060c 023CE2E6             LDW     .D2T2   *+SP(28),B4       ; |194| 
+     733 00000610 00006000             NOP             4
      734                    
-     735 00000618           RL18:      ; CALL OCCURS                     ; |189| 
-     736 00000618 00100178             SPTRUNC .L1     A4,A0             ; |189| 
-     737 0000061c 00004000             NOP             3
-     738 00000620 003C82F4             STW     .D2T1   A0,*+SP(16)       ; |189| 
+     735 00000614 031000A3             SPDP    .S2     B4,B7:B6          ; |194| 
+     736 00000618 041CEE02  ||         MPYSP   .M2     B7,B7,B8
+     737                    
+     738 0000061c 028008C2             ZERO    .D2     B5                ; |194| 
      739                    
-     740 00000624 033C22E7             LDW     .D2T2   *+SP(4),B6        ; |190| 
-     741 00000628 00020A28' ||         MVKL    .S1     _MakeVelProfile,A0 ; |193| 
+     740 00000620 020428C3             ZERO    .D2     B4                ; |194| 
+     741 00000624 02A0006A  ||         MVKH    .S2     0x40000000,B5     ; |194| 
      742                    
-     743 0000062c 00000068'            MVKH    .S1     _MakeVelProfile,A0 ; |193| 
-     744                    
-     745 00000630 00001363             B       .S2X    A0                ; |193| 
-     746 00000634 023C62E6  ||         LDW     .D2T2   *+SP(12),B4       ; |193| 
-     747                    
-     748 00000638 023C42E4             LDW     .D2T1   *+SP(8),A4        ; |193| 
-     749                    
-     750 00000640 01832C2B'            MVKL    .S2     RL20,B3           ; |193| 
-     751 00000644 028428C2  ||         ZERO    .D2     B5                ; |190| 
-     752                    
-     753 00000648 0014CE62             CMPGTSP .S2     B6,B5,B0          ; |190| 
-     754 0000064c 328000AA     [!B0]   MVK     .S2     0x1,B5            ; |190| 
-     755                    
-     756 00000650 02BCC2F7             STW     .D2T2   B5,*+SP(24)       ; |190| 
-     757 00000654 0180006A' ||         MVKH    .S2     RL20,B3           ; |193| 
-     758                    
-     759 00000658           RL20:      ; CALL OCCURS                     ; |193| 
-     760 00000658 021011A2             MV      .S2X    A4,B4             ; |193| 
-     761 0000065c 0310093A             INTSPU  .L2     B4,B6             ; |194| 
-     762 00000660 00000000             NOP             1
-     763 00000664 0233332A             MVKL    .S2     0x3fe66666,B4     ; |194| 
+     743 00000628 0210C702             MPYDP   .M2     B7:B6,B5:B4,B5:B4 ; |194| 
+     744 0000062c 00002000             NOP             2
+     745                    
+     746 00000630 03BCA2E7             LDW     .D2T2   *+SP(20),B7       ; |191| 
+     747 00000634 0300002A! ||         MVKL    .S2     __divd,B6         ; |194| 
+     748                    
+     749 00000638 0300006A!            MVKH    .S2     __divd,B6         ; |194| 
+     750                    
+     751 00000640 00180363             B       .S2     B6                ; |194| 
+     752 00000644 00100178  ||         SPTRUNC .L1     A4,A0             ; |190| 
+     753                    
+     754 00000648 042000A2             SPDP    .S2     B8,B9:B8          ; |194| 
+     755 0000064c 018008C0             ZERO    .D1     A3                ; |191| 
+     756                    
+     757 00000650 038428C3             ZERO    .D2     B7                ; |191| 
+     758 00000654 009C7EA1  ||         CMPGTSP .S1X    B7,A3,A1          ; |191| 
+     759 00000658 01833C2A' ||         MVKL    .S2     RL20,B3           ; |194| 
+     760                    
+     761 00000660 938000AB     [!A1]   MVK     .S2     0x1,B7            ; |191| 
+     762 00000664 02A411A1  ||         MV      .S1X    B9,A5             ; |194| 
+     763 00000668 003D82F4  ||         STW     .D2T1   A0,*+SP(48)       ; |190| 
      764                    
-     765 00000668 02BC22E7             LDW     .D2T2   *+SP(4),B5        ; |194| 
-     766 0000066c 021FF36A  ||         MVKH    .S2     0x3fe66666,B4     ; |194| 
-     767                    
-     768 00000670 0310CE02             MPYSP   .M2     B6,B4,B6          ; |194| 
-     769 00000674 00000028!            MVKL    .S1     __divf,A0         ; |194| 
-     770 00000678 00000068!            MVKH    .S1     __divf,A0         ; |194| 
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+     765 0000066c 03BD02F7             STW     .D2T2   B7,*+SP(32)       ; |191| 
+     766 00000670 022011A1  ||         MV      .S1X    B8,A4             ; |194| 
+     767 00000674 0180006A' ||         MVKH    .S2     RL20,B3           ; |194| 
+     768                    
+     769 00000678           RL20:      ; CALL OCCURS                     ; |194| 
+     770 00000678 00020A28'            MVKL    .S1     _MakeVelProfile,A0 ; |195| 
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   15
 
-     771 0000067c 00001362             B       .S2X    A0                ; |194| 
-     772 00000680 0298A23A             SUBSP   .L2     B5,B6,B5          ; |194| 
-     773 00000684 0233332A             MVKL    .S2     0x3fe66666,B4     ; |194| 
-     774 00000688 021FF36A             MVKH    .S2     0x3fe66666,B4     ; |194| 
+     771 0000067c 00000068'            MVKH    .S1     _MakeVelProfile,A0 ; |195| 
+     772                    
+     773 00000680 00001363             B       .S2X    A0                ; |195| 
+     774 00000684 023CE2E6  ||         LDW     .D2T2   *+SP(28),B4       ; |195| 
      775                    
-     776 0000068c 023CE2F5             STW     .D2T1   A4,*+SP(28)       ; |193| 
-     777 00000690 01834E2A' ||         MVKL    .S2     RL22,B3           ; |194| 
+     776 00000688 023CC2E5             LDW     .D2T1   *+SP(24),A4       ; |195| 
+     777 0000068c 01948138  ||         DPSP    .L1     A5:A4,A3          ; |194| 
      778                    
-     779 00000694 0180006B'            MVKH    .S2     RL22,B3           ; |194| 
-     780 00000698 021411A0  ||         MV      .S1X    B5,A4             ; |194| 
+     779 00000690 00002000             NOP             2
+     780 00000694 0183502A'            MVKL    .S2     RL22,B3           ; |195| 
      781                    
-     782 0000069c           RL22:      ; CALL OCCURS                     ; |194| 
-     783 0000069c 023CE2E6             LDW     .D2T2   *+SP(28),B4       ; |195| 
-     784 000006a0 00006000             NOP             4
-     785                    
-     786 000006a4 0210077B             INTDPU  .L2     B4,B5:B4          ; |195| 
-     787 000006a8 00100178  ||         SPTRUNC .L1     A4,A0             ; |194| 
-     788                    
-     789 000006ac 00002000             NOP             2
-     790 000006b0 008008C0             ZERO    .D1     A1                ; |195| 
-     791                    
-     792 000006b4 000848C1             ZERO    .D1     A0                ; |195| 
-     793 000006b8 00A00069  ||         MVKH    .S1     0x40000000,A1     ; |195| 
-     794 000006bc 003CA2F4  ||         STW     .D2T1   A0,*+SP(20)       ; |194| 
-     795                    
-     796 000006c0 023CA2E7             LDW     .D2T2   *+SP(20),B4       ; |195| 
-     797 000006c4 02101700  ||         MPYDP   .M1X    B5:B4,A1:A0,A5:A4 ; |195| 
+     782 00000698 0180006B'            MVKH    .S2     RL22,B3           ; |195| 
+     783 0000069c 01BD22F4  ||         STW     .D2T1   A3,*+SP(36)       ; |194| 
+     784                    
+     785 000006a0           RL22:      ; CALL OCCURS                     ; |195| 
+     786 000006a0 023CA2E6             LDW     .D2T2   *+SP(20),B4       ; |200| 
+     787 000006a4 02BD22E6             LDW     .D2T2   *+SP(36),B5       ; |199| 
+     788 000006a8 00002000             NOP             2
+     789 000006ac 018008C0             ZERO    .D1     A3                ; |199| 
+     790                    
+     791 000006b0 031000A3             SPDP    .S2     B4,B7:B6          ; |200| 
+     792 000006b4 01A00068  ||         MVKH    .S1     0x40000000,A3     ; |199| 
+     793                    
+     794 000006b8 01947E00             MPYSP   .M1X    B5,A3,A3          ; |199| 
+     795 000006bc 0500002A!            MVKL    .S2     __divd,B10        ; |200| 
+     796 000006c0 0480002A!            MVKL    .S2     __divd,B9         ; |200| 
+     797 000006c4 040000AA             MVK     .S2     1,B8              ; |198| 
      798                    
-     799 000006c8 00006000             NOP             4
-     800 000006cc 00101738             INTDP   .L1X    B4,A1:A0          ; |195| 
-     801 000006d0 00006000             NOP             4
-     802 000006d4 00100318             ADDDP   .L1     A1:A0,A5:A4,A1:A0 ; |195| 
-     803 000006d8 0000A000             NOP             6
-     804 000006dc 01840038             DPTRUNC .L1     A1:A0,A3          ; |195| 
-     805 000006e0 00004000             NOP             3
+     799 000006c8 000000AB             MVK     .S2     1,B0              ; |218| 
+     800 000006cc 00907EA1  ||         CMPGTSP .S1X    B4,A3,A1          ; |199| 
+     801 000006d0 00100940  ||         MV      .D1     A4,A0             ; |195| 
+     802                    
+     803 000006d4 80003111     [ A1]   B       .S1     L17               ; |199| 
+     804 000006d8 01838C2B' ||         MVKL    .S2     RL26,B3           ; |200| 
+     805 000006dc 02181058  ||         MV      .L1X    B6,A4             ; |200| 
      806                    
-     807 000006e4 000000A9             MVK     .S1     1,A0              ; |199| 
-     808 000006e8 020C11A2  ||         MV      .S2X    A3,B4             ; |195| 
+     807 000006e0 058000AB             MVK     .S2     1,B11             ; |201| 
+     808 000006e4 033D82E6  ||         LDW     .D2T2   *+SP(48),B6       ; |218| 
      809                    
-     810 000006ec 00009AFA             CMPGT   .L2X    A0,B4,B0
-     811 000006f0 20002F10     [ B0]   B       .S1     L18               ; |199| 
-     812 000006f4 00002000             NOP             2
-     813 000006f8 01BC82F4             STW     .D2T1   A3,*+SP(16)       ; |195| 
-     814                    
-     815 00000700 003D42F5             STW     .D2T1   A0,*+SP(40)       ; |199| 
-     816 00000704 028000AA  ||         MVK     .S2     1,B5              ; |198| 
-     817                    
-     818 00000708 02BD22F7             STW     .D2T2   B5,*+SP(36)       ; |198| 
-     819 0000070c 030011A2  ||         MV      .S2X    A0,B6
-     820                    
-     821                               ; BRANCH OCCURS                   ; |199| 
-     822                    ;** --------------------------------------------------------------------------*
-     823 00000710 023CE2E6             LDW     .D2T2   *+SP(28),B4       ; |201| 
-     824 00000714 02BD42E6             LDW     .D2T2   *+SP(40),B5       ; |201| 
-     825 00000718 00004000             NOP             3
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+     810 000006e8 0500006A!            MVKH    .S2     __divd,B10        ; |200| 
+     811 000006ec 0480006A!            MVKH    .S2     __divd,B9         ; |200| 
+     812                    
+     813 000006f0 0180006B'            MVKH    .S2     RL26,B3           ; |200| 
+     814 000006f4 028420FB  ||         ZERO    .L2     B5                ; |200| 
+     815 000006f8 003D42F4  ||         STW     .D2T1   A0,*+SP(40)       ; |195| 
+     816                    
+     817 00000700 02A0006B             MVKH    .S2     0x40000000,B5     ; |200| 
+     818 00000704 020420FB  ||         ZERO    .L2     B4                ; |200| 
+     819 00000708 029C11A1  ||         MV      .S1X    B7,A5             ; |200| 
+     820 0000070c 043DC2F6  ||         STW     .D2T2   B8,*+SP(56)       ; |198| 
+     821                    
+     822                               ; BRANCH OCCURS                   ; |199| 
+     823                    ;** --------------------------------------------------------------------------*
+     824 00000710 00240362             B       .S2     B9                ; |200| 
+     825 00000714 00008000             NOP             5
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   16
 
-     826                    ;*----------------------------------------------------------------------------*
-     827                    ;*   SOFTWARE PIPELINE INFORMATION
-     828                    ;*      Disqualified loop: software pipelining disabled
-     829                    ;*----------------------------------------------------------------------------*
-     830 0000071c           L16:    
-     831 0000071c 00000000             NOP             1
-     832 00000720 0010A9FA             CMPGTU  .L2     B5,B4,B0          ; |201| 
-     833 00000724 333D22E6     [!B0]   LDW     .D2T2   *+SP(36),B6       ; |202| 
-     834 00000728 3200062A-    [!B0]   MVKL    .S2     _delayCntArr,B4   ; |202| 
-     835 0000072c 32BD22E6     [!B0]   LDW     .D2T2   *+SP(36),B5       ; |203| 
-     836 00000730 3200006A-    [!B0]   MVKH    .S2     _delayCntArr,B4   ; |202| 
-     837 00000734 30012028'    [!B0]   MVKL    .S1     _OneStepMove,A0   ; |218| 
-     838                    
-     839 00000738 30001D91     [!B0]   B       .S1     L17               ; |204| 
-     840 0000073c 3210CAE6  || [!B0]   LDW     .D2T2   *+B4[B6],B4       ; |202| 
-     841                    
-     842 00000740 00002000             NOP             2
-     843 00000744 32942942     [!B0]   ADD     .D2     1,B5,B5           ; |203| 
-     844 00000748 32BD22F6     [!B0]   STW     .D2T2   B5,*+SP(36)       ; |203| 
-     845 0000074c 323D02F6     [!B0]   STW     .D2T2   B4,*+SP(32)       ; |202| 
-     846                               ; BRANCH OCCURS                   ; |204| 
-     847                    ;** --------------------------------------------------------------------------*
-     848 00000750 023CE2E6             LDW     .D2T2   *+SP(28),B4       ; |206| 
-     849 00000754 02BD42E6             LDW     .D2T2   *+SP(40),B5       ; |206| 
-     850 00000758 00006000             NOP             4
-     851 0000075c 0010A9FA             CMPGTU  .L2     B5,B4,B0          ; |206| 
-     852 00000760 223CE2E6     [ B0]   LDW     .D2T2   *+SP(28),B4       ; |206| 
-     853 00000764 22BC82E6     [ B0]   LDW     .D2T2   *+SP(16),B5       ; |206| 
-     854 00000768 233D42E6     [ B0]   LDW     .D2T2   *+SP(40),B6       ; |206| 
-     855 0000076c 00004000             NOP             3
-     856 00000770 221488C2     [ B0]   SUB     .D2     B5,B4,B4          ; |206| 
-     857 00000774 2210C9FA     [ B0]   CMPGTU  .L2     B6,B4,B4          ; |206| 
-     858 00000778 201022A2     [ B0]   XOR     .S2     1,B4,B0           ; |206| 
-     859 0000077c 223CE2E6     [ B0]   LDW     .D2T2   *+SP(28),B4       ; |207| 
-     860 00000780 20012028'    [ B0]   MVKL    .S1     _OneStepMove,A0   ; |218| 
-     861 00000784 00004000             NOP             3
-     862 00000788 223D22F6     [ B0]   STW     .D2T2   B4,*+SP(36)       ; |207| 
-     863 0000078c 22BD22E6     [ B0]   LDW     .D2T2   *+SP(36),B5       ; |208| 
-     864 00000790 2200062A-    [ B0]   MVKL    .S2     _delayCntArr,B4   ; |208| 
-     865 00000794 2200006A-    [ B0]   MVKH    .S2     _delayCntArr,B4   ; |208| 
-     866 00000798 00002000             NOP             2
+     826 00000718           RL26:      ; CALL OCCURS                     ; |200| 
+     827 00000718 01839A2A'            MVKL    .S2     RL28,B3           ; |200| 
+     828 0000071c 00280362             B       .S2     B10               ; |200| 
+     829 00000720 02E6662A             MVKL    .S2     0x3ffccccc,B5     ; |200| 
+     830 00000724 026666AA             MVKL    .S2     0xcccccccd,B4     ; |200| 
+     831 00000728 0180006A'            MVKH    .S2     RL28,B3           ; |200| 
+     832 0000072c 029FFE6A             MVKH    .S2     0x3ffccccc,B5     ; |200| 
+     833 00000730 0266666A             MVKH    .S2     0xcccccccd,B4     ; |200| 
+     834 00000734           RL28:      ; CALL OCCURS                     ; |200| 
+     835 00000734 023D82E6             LDW     .D2T2   *+SP(48),B4       ; |201| 
+     836 00000738 05BDE2F6             STW     .D2T2   B11,*+SP(60)      ; |201| 
+     837 0000073c 00004000             NOP             3
+     838 00000740 001168FA             CMPGT   .L2     B11,B4,B0
+     839 00000744 20005590     [ B0]   B       .S1     L20               ; |201| 
+     840 00000748 00148038             DPTRUNC .L1     A5:A4,A0          ; |200| 
+     841 0000074c 00004000             NOP             3
+     842 00000750 003D62F4             STW     .D2T1   A0,*+SP(44)       ; |200| 
+     843                               ; BRANCH OCCURS                   ; |201| 
+     844                    ;** --------------------------------------------------------------------------*
+     845 00000754 023D62E6             LDW     .D2T2   *+SP(44),B4       ; |203| 
+     846 00000758 02BDE2E6             LDW     .D2T2   *+SP(60),B5       ; |203| 
+     847 0000075c 00002000             NOP             2
+     848                    ;*----------------------------------------------------------------------------*
+     849                    ;*   SOFTWARE PIPELINE INFORMATION
+     850                    ;*      Disqualified loop: software pipelining disabled
+     851                    ;*----------------------------------------------------------------------------*
+     852 00000760           L16:    
+     853 00000760 023D02E4             LDW     .D2T1   *+SP(32),A4
+     854 00000764 00012028'            MVKL    .S1     _OneStepMove,A0   ; |213| 
+     855 00000768 0010A9FA             CMPGTU  .L2     B5,B4,B0          ; |203| 
+     856 0000076c 223DC2E6     [ B0]   LDW     .D2T2   *+SP(56),B4       ; |209| 
+     857 00000770 32BDC2E6     [!B0]   LDW     .D2T2   *+SP(56),B5       ; |204| 
+     858 00000774 333DC2E6     [!B0]   LDW     .D2T2   *+SP(56),B6       ; |205| 
+     859 00000778 00000068'            MVKH    .S1     _OneStepMove,A0   ; |213| 
+     860 0000077c 0183E22A'            MVKL    .S2     RL30,B3           ; |213| 
+     861 00000780 2213E1A2     [ B0]   SUB     .S2     B4,1,B4           ; |209| 
+     862 00000784 223DC2F6     [ B0]   STW     .D2T2   B4,*+SP(56)       ; |209| 
+     863 00000788 22BDC2E6     [ B0]   LDW     .D2T2   *+SP(56),B5       ; |210| 
+     864 0000078c 3200062A-    [!B0]   MVKL    .S2     _delayCntArr,B4   ; |204| 
+     865 00000790 3200006A-    [!B0]   MVKH    .S2     _delayCntArr,B4   ; |204| 
+     866 00000794 2200062A-    [ B0]   MVKL    .S2     _delayCntArr,B4   ; |210| 
      867                    
-     868 000007a0 20000D91     [ B0]   B       .S1     L17               ; |209| 
-     869 000007a4 2210AAE6  || [ B0]   LDW     .D2T2   *+B4[B5],B4       ; |208| 
+     868 00000798 3210AAE7     [!B0]   LDW     .D2T2   *+B4[B5],B4       ; |204| 
+     869 0000079c 2200006A- || [ B0]   MVKH    .S2     _delayCntArr,B4   ; |210| 
      870                    
-     871 000007a8 00006000             NOP             4
-     872 000007ac 223D02F6     [ B0]   STW     .D2T2   B4,*+SP(32)       ; |208| 
-     873                               ; BRANCH OCCURS                   ; |209| 
-     874                    ;** --------------------------------------------------------------------------*
-     875 000007b0 033CE2E6             LDW     .D2T2   *+SP(28),B6       ; |212| 
-     876 000007b4 023C82E6             LDW     .D2T2   *+SP(16),B4       ; |212| 
-     877 000007b8 02BD42E6             LDW     .D2T2   *+SP(40),B5       ; |212| 
-     878 000007bc 00012028'            MVKL    .S1     _OneStepMove,A0   ; |218| 
-     879 000007c0 00002000             NOP             2
-     880 000007c4 0210C8C2             SUB     .D2     B4,B6,B4          ; |212| 
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+     871 000007a0 2210AAE6     [ B0]   LDW     .D2T2   *+B4[B5],B4       ; |210| 
+     872 000007a4 33182942     [!B0]   ADD     .D2     1,B6,B6           ; |205| 
+     873 000007a8 333DC2F6     [!B0]   STW     .D2T2   B6,*+SP(56)       ; |205| 
+     874 000007ac 0180006A'            MVKH    .S2     RL30,B3           ; |213| 
+     875 000007b0 323DA2F6     [!B0]   STW     .D2T2   B4,*+SP(52)       ; |204| 
+     876                    
+     877 000007b4 00001363             B       .S2X    A0                ; |213| 
+     878 000007b8 223DA2F6  || [ B0]   STW     .D2T2   B4,*+SP(52)       ; |210| 
+     879                    
+     880 000007bc 023DA2E6             LDW     .D2T2   *+SP(52),B4       ; |213| 
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   17
 
-     881 000007c8 0010A9FA             CMPGTU  .L2     B5,B4,B0          ; |212| 
-     882 000007cc 22BC82E6     [ B0]   LDW     .D2T2   *+SP(16),B5       ; |212| 
-     883 000007d0 223D42E6     [ B0]   LDW     .D2T2   *+SP(40),B4       ; |212| 
-     884 000007d4 00006000             NOP             4
-     885 000007d8 221488FA     [ B0]   CMPGT   .L2     B4,B5,B4          ; |212| 
-     886 000007dc 201022A2     [ B0]   XOR     .S2     1,B4,B0           ; |212| 
-     887 000007e0 223D22E6     [ B0]   LDW     .D2T2   *+SP(36),B4       ; |213| 
-     888 000007e4 2280062A-    [ B0]   MVKL    .S2     _delayCntArr,B5   ; |213| 
-     889 000007e8 233D22E6     [ B0]   LDW     .D2T2   *+SP(36),B6       ; |214| 
-     890 000007ec 2280006A-    [ B0]   MVKH    .S2     _delayCntArr,B5   ; |213| 
-     891 000007f0 00000000             NOP             1
-     892 000007f4 22948AE6     [ B0]   LDW     .D2T2   *+B5[B4],B5       ; |213| 
-     893 000007f8 00006000             NOP             4
+     881 000007c0 00006000             NOP             4
+     882 000007c4           RL30:      ; CALL OCCURS                     ; |213| 
+     883 000007c4 0200002A!            MVKL    .S2     _sprintf,B4       ; |214| 
+     884                    
+     885 000007c8 0200006B!            MVKH    .S2     _sprintf,B4       ; |214| 
+     886 000007cc 033DE2E6  ||         LDW     .D2T2   *+SP(60),B6       ; |214| 
+     887                    
+     888 000007d0 02BDA2E7             LDW     .D2T2   *+SP(52),B5       ; |214| 
+     889 000007d4 00100362  ||         B       .S2     B4                ; |214| 
+     890                    
+     891 000007d8 00000828+            MVKL    .S1     SL1+0,A0          ; |214| 
+     892 000007dc 00000068+            MVKH    .S1     SL1+0,A0          ; |214| 
+     893 000007e0 003C22F4             STW     .D2T1   A0,*+SP(4)        ; |214| 
      894                    
-     895 00000800 22BD02F7     [ B0]   STW     .D2T2   B5,*+SP(32)       ; |213| 
-     896 00000804 221BE1A2  || [ B0]   SUB     .S2     B6,1,B4           ; |214| 
-     897                    
-     898 00000808 223D22F6     [ B0]   STW     .D2T2   B4,*+SP(36)       ; |214| 
-     899                    ;** --------------------------------------------------------------------------*
-     900 0000080c           L17:    
-     901 0000080c 00000068'            MVKH    .S1     _OneStepMove,A0   ; |218| 
+     895 000007e4 0183FE2B'            MVKL    .S2     RL32,B3           ; |214| 
+     896 000007e8 02000029! ||         MVKL    .S1     _tmp_string,A4    ; |214| 
+     897 000007ec 033C42F6  ||         STW     .D2T2   B6,*+SP(8)        ; |214| 
+     898                    
+     899 000007f0 02000069!            MVKH    .S1     _tmp_string,A4    ; |214| 
+     900 000007f4 0180006B' ||         MVKH    .S2     RL32,B3           ; |214| 
+     901 000007f8 02BC62F6  ||         STW     .D2T2   B5,*+SP(12)       ; |214| 
      902                    
-     903 00000810 00001363             B       .S2X    A0                ; |218| 
-     904 00000814 023CC2E4  ||         LDW     .D2T1   *+SP(24),A4
-     905                    
-     906 00000818 023D02E6             LDW     .D2T2   *+SP(32),B4       ; |218| 
-     907 0000081c 0184142A'            MVKL    .S2     RL24,B3           ; |218| 
-     908 00000820 0180006A'            MVKH    .S2     RL24,B3           ; |218| 
-     909 00000824 00002000             NOP             2
-     910 00000828           RL24:      ; CALL OCCURS                     ; |218| 
-     911 00000828 023D42E6             LDW     .D2T2   *+SP(40),B4       ; |219| 
-     912 0000082c 00006000             NOP             4
-     913 00000830 02102942             ADD     .D2     1,B4,B4           ; |219| 
-     914 00000834 023D42F6             STW     .D2T2   B4,*+SP(40)       ; |219| 
-     915 00000838 02BD42E6             LDW     .D2T2   *+SP(40),B5       ; |219| 
-     916 0000083c 023C82E6             LDW     .D2T2   *+SP(16),B4       ; |219| 
-     917 00000840 00006000             NOP             4
-     918 00000844 0010A8FA             CMPGT   .L2     B5,B4,B0          ; |219| 
-     919 00000848 3FFFDB90     [!B0]   B       .S1     L16               ; |219| 
-     920 0000084c 323CE2E6     [!B0]   LDW     .D2T2   *+SP(28),B4       ; |201| 
-     921 00000850 32BD42E6     [!B0]   LDW     .D2T2   *+SP(40),B5       ; |201| 
-     922 00000854 00004000             NOP             3
-     923                               ; BRANCH OCCURS                   ; |219| 
-     924                    ;** --------------------------------------------------------------------------*
-     925 00000858           L18:    
-     926 00000858 01BD92E6             LDW     .D2T2   *++SP(48),B3      ; |220| 
-     927 0000085c 00006000             NOP             4
-     928 00000860 000C0362             B       .S2     B3                ; |220| 
-     929 00000864 00008000             NOP             5
-     930                               ; BRANCH OCCURS                   ; |220| 
-     931                    
+     903 000007fc           RL32:      ; CALL OCCURS                     ; |214| 
+     904 000007fc 00000028!            MVKL    .S1     _Report,A0        ; |214| 
+     905 00000800 00000068!            MVKH    .S1     _Report,A0        ; |214| 
+     906 00000804 00001362             B       .S2X    A0                ; |214| 
+     907 00000808 01840A2A'            MVKL    .S2     RL34,B3           ; |214| 
+     908 0000080c 0180006A'            MVKH    .S2     RL34,B3           ; |214| 
+     909 00000810 00004000             NOP             3
+     910 00000814           RL34:      ; CALL OCCURS                     ; |214| 
+     911 00000814 023DE2E6             LDW     .D2T2   *+SP(60),B4       ; |215| 
+     912 00000818 02BD82E6             LDW     .D2T2   *+SP(48),B5       ; |215| 
+     913 0000081c 00004000             NOP             3
+     914 00000820 02102942             ADD     .D2     1,B4,B4           ; |215| 
+     915 00000824 001488FA             CMPGT   .L2     B4,B5,B0          ; |215| 
+     916 00000828 3FFFE810     [!B0]   B       .S1     L16               ; |215| 
+     917 0000082c 023DE2F6             STW     .D2T2   B4,*+SP(60)       ; |215| 
+     918 00000830 323D62E6     [!B0]   LDW     .D2T2   *+SP(44),B4       ; |203| 
+     919 00000834 32BDE2E6     [!B0]   LDW     .D2T2   *+SP(60),B5       ; |203| 
+     920 00000838 00002000             NOP             2
+     921                               ; BRANCH OCCURS                   ; |215| 
+     922                    ;** --------------------------------------------------------------------------*
+     923 0000083c 00003A90             B       .S1     L21               ; |216| 
+     924 00000840 01BE02E6             LDW     .D2T2   *+SP(64),B3       ; |240| 
+     925 00000844 00006000             NOP             4
+     926                               ; BRANCH OCCURS                   ; |216| 
+     927                    ;** --------------------------------------------------------------------------*
+     928 00000848           L17:    
+     929                    
+     930 00000848 001808FB             CMPGT   .L2     B0,B6,B0
+     931 0000084c 003DE2F6  ||         STW     .D2T2   B0,*+SP(60)       ; |218| 
      932                    
-     933 00000868                   .sect   ".text"
-     934                            .global _main
-     935                    
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+     933 00000850 20003690     [ B0]   B       .S1     L21               ; |218| 
+     934 00000854 21BE02E6     [ B0]   LDW     .D2T2   *+SP(64),B3       ; |240| 
+     935 00000858 00006000             NOP             4
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   18
 
-     936                    ;******************************************************************************
-     937                    ;* FUNCTION NAME: _main                                                       *
-     938                    ;*                                                                            *
-     939                    ;*   Regs Modified     : A0,A1,A2,A3,A4,A5,A6,A7,A8,A9,B0,B1,B2,B3,B4,B5,B6,  *
-     940                    ;*                           B7,B8,B9,SP                                      *
-     941                    ;*   Regs Used         : A0,A1,A2,A3,A4,A5,A6,A7,A8,A9,B0,B1,B2,B3,B4,B5,B6,  *
-     942                    ;*                           B7,B8,B9,SP                                      *
-     943                    ;*   Local Frame Size  : 16 Args + 0 Auto + 4 Save = 20 byte                  *
-     944                    ;******************************************************************************
-     945 00000868           _main:
-     946                    ;** --------------------------------------------------------------------------*
-     947 00000868 00000028'            MVKL    .S1     _InitEXINTF,A0    ; |225| 
-     948 0000086c 00000068'            MVKH    .S1     _InitEXINTF,A0    ; |225| 
-     949 00000870 00001362             B       .S2X    A0                ; |225| 
-     950 00000874 01BCD4F6             STW     .D2T2   B3,*SP--(24)      ; |224| 
-     951 00000878 0184422A'            MVKL    .S2     RL26,B3           ; |225| 
-     952 0000087c 0180006A'            MVKH    .S2     RL26,B3           ; |225| 
-     953 00000880 00002000             NOP             2
-     954 00000884           RL26:      ; CALL OCCURS                     ; |225| 
-     955 00000884 00002028'            MVKL    .S1     _InitTimer,A0     ; |226| 
-     956 00000888 00000068'            MVKH    .S1     _InitTimer,A0     ; |226| 
-     957 0000088c 00001362             B       .S2X    A0                ; |226| 
-     958 00000890 01844E2A'            MVKL    .S2     RL28,B3           ; |226| 
-     959 00000894 0180006A'            MVKH    .S2     RL28,B3           ; |226| 
-     960 00000898 00004000             NOP             3
-     961 0000089c           RL28:      ; CALL OCCURS                     ; |226| 
-     962 0000089c 0200002A!            MVKL    .S2     _InitUART,B4      ; |227| 
-     963 000008a0 0200006A!            MVKH    .S2     _InitUART,B4      ; |227| 
-     964 000008a4 00100362             B       .S2     B4                ; |227| 
-     965 000008a8 01845A2A'            MVKL    .S2     RL30,B3           ; |227| 
-     966 000008ac 0180006A'            MVKH    .S2     RL30,B3           ; |227| 
-     967 000008b0 00004000             NOP             3
-     968 000008b4           RL30:      ; CALL OCCURS                     ; |227| 
-     969 000008b4 00004028'            MVKL    .S1     _InitINT,A0       ; |228| 
-     970 000008b8 00000068'            MVKH    .S1     _InitINT,A0       ; |228| 
-     971 000008bc 00001362             B       .S2X    A0                ; |228| 
-     972 000008c0 0184662A'            MVKL    .S2     RL32,B3           ; |228| 
-     973 000008c4 0180006A'            MVKH    .S2     RL32,B3           ; |228| 
-     974 000008c8 00004000             NOP             3
-     975 000008cc           RL32:      ; CALL OCCURS                     ; |228| 
-     976 000008cc 00000028!            MVKL    .S1     _InitUSBMon,A0    ; |229| 
-     977 000008d0 00000068!            MVKH    .S1     _InitUSBMon,A0    ; |229| 
-     978 000008d4 00001362             B       .S2X    A0                ; |229| 
-     979 000008d8 0184722A'            MVKL    .S2     RL34,B3           ; |229| 
-     980 000008dc 0180006A'            MVKH    .S2     RL34,B3           ; |229| 
-     981 000008e0 00004000             NOP             3
-     982 000008e4           RL34:      ; CALL OCCURS                     ; |229| 
-     983 000008e4 00000028!            MVKL    .S1     _sprintf,A0       ; |231| 
-     984                    
-     985 000008e8 00000069!            MVKH    .S1     _sprintf,A0       ; |231| 
-     986 000008ec 0280082A+ ||         MVKL    .S2     SL1+0,B5          ; |231| 
-     987                    
-     988 000008f0 00001362             B       .S2X    A0                ; |231| 
-     989 000008f4 0184882A'            MVKL    .S2     RL36,B3           ; |231| 
-     990 000008f8 0280006A+            MVKH    .S2     SL1+0,B5          ; |231| 
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+     936                               ; BRANCH OCCURS                   ; |218| 
+     937                    ;** --------------------------------------------------------------------------*
+     938 0000085c 023D42E6             LDW     .D2T2   *+SP(40),B4       ; |220| 
+     939 00000860 02BDE2E6             LDW     .D2T2   *+SP(60),B5       ; |220| 
+     940 00000864 00002000             NOP             2
+     941                    ;*----------------------------------------------------------------------------*
+     942                    ;*   SOFTWARE PIPELINE INFORMATION
+     943                    ;*      Disqualified loop: software pipelining disabled
+     944                    ;*----------------------------------------------------------------------------*
+     945 00000868           L18:    
+     946 00000868 00002000             NOP             2
+     947 0000086c 0010A9FA             CMPGTU  .L2     B5,B4,B0          ; |220| 
+     948 00000870 32BDC2E6     [!B0]   LDW     .D2T2   *+SP(56),B5       ; |221| 
+     949 00000874 3200062A-    [!B0]   MVKL    .S2     _delayCntArr,B4   ; |221| 
+     950 00000878 3200006A-    [!B0]   MVKH    .S2     _delayCntArr,B4   ; |221| 
+     951 0000087c 333DC2E6     [!B0]   LDW     .D2T2   *+SP(56),B6       ; |222| 
+     952 00000880 30012028'    [!B0]   MVKL    .S1     _OneStepMove,A0   ; |236| 
+     953 00000884 3210AAE6     [!B0]   LDW     .D2T2   *+B4[B5],B4       ; |221| 
+     954 00000888 30001A10     [!B0]   B       .S1     L19               ; |223| 
+     955 0000088c 00004000             NOP             3
+     956                    
+     957 00000890 329821A3     [!B0]   ADD     .S2     1,B6,B5           ; |222| 
+     958 00000894 323DA2F6  || [!B0]   STW     .D2T2   B4,*+SP(52)       ; |221| 
+     959                    
+     960 00000898 32BDC2F6     [!B0]   STW     .D2T2   B5,*+SP(56)       ; |222| 
+     961                               ; BRANCH OCCURS                   ; |223| 
+     962                    ;** --------------------------------------------------------------------------*
+     963 0000089c 023D42E6             LDW     .D2T2   *+SP(40),B4       ; |225| 
+     964 000008a0 02BDE2E6             LDW     .D2T2   *+SP(60),B5       ; |225| 
+     965 000008a4 00006000             NOP             4
+     966 000008a8 0010A9FA             CMPGTU  .L2     B5,B4,B0          ; |225| 
+     967 000008ac 233D82E6     [ B0]   LDW     .D2T2   *+SP(48),B6       ; |225| 
+     968 000008b0 223D42E6     [ B0]   LDW     .D2T2   *+SP(40),B4       ; |225| 
+     969 000008b4 22BDE2E6     [ B0]   LDW     .D2T2   *+SP(60),B5       ; |225| 
+     970 000008b8 00004000             NOP             3
+     971 000008bc 221888C2     [ B0]   SUB     .D2     B6,B4,B4          ; |225| 
+     972 000008c0 2210A9FA     [ B0]   CMPGTU  .L2     B5,B4,B4          ; |225| 
+     973 000008c4 201022A2     [ B0]   XOR     .S2     1,B4,B0           ; |225| 
+     974 000008c8 223D42E6     [ B0]   LDW     .D2T2   *+SP(40),B4       ; |226| 
+     975 000008cc 20012028'    [ B0]   MVKL    .S1     _OneStepMove,A0   ; |236| 
+     976 000008d0 00004000             NOP             3
+     977 000008d4 223DC2F6     [ B0]   STW     .D2T2   B4,*+SP(56)       ; |226| 
+     978 000008d8 22BDC2E6     [ B0]   LDW     .D2T2   *+SP(56),B5       ; |227| 
+     979 000008dc 2200062A-    [ B0]   MVKL    .S2     _delayCntArr,B4   ; |227| 
+     980 000008e0 2200006A-    [ B0]   MVKH    .S2     _delayCntArr,B4   ; |227| 
+     981 000008e4 00002000             NOP             2
+     982                    
+     983 000008e8 20000E11     [ B0]   B       .S1     L19               ; |228| 
+     984 000008ec 2210AAE6  || [ B0]   LDW     .D2T2   *+B4[B5],B4       ; |227| 
+     985                    
+     986 000008f0 00006000             NOP             4
+     987 000008f4 223DA2F6     [ B0]   STW     .D2T2   B4,*+SP(52)       ; |227| 
+     988                               ; BRANCH OCCURS                   ; |228| 
+     989                    ;** --------------------------------------------------------------------------*
+     990 000008f8 033D42E6             LDW     .D2T2   *+SP(40),B6       ; |231| 
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   19
 
-     991 000008fc 0200002A!            MVKL    .S2     _tmp_string,B4    ; |231| 
-     992 00000900 0200006A!            MVKH    .S2     _tmp_string,B4    ; |231| 
-     993                    
-     994 00000904 0180006B'            MVKH    .S2     RL36,B3           ; |231| 
-     995 00000908 02BC22F7  ||         STW     .D2T2   B5,*+SP(4)        ; |231| 
-     996 0000090c 021011A0  ||         MV      .S1X    B4,A4             ; |231| 
-     997                    
-     998 00000910           RL36:      ; CALL OCCURS                     ; |231| 
-     999 00000910 00000028!            MVKL    .S1     _Report,A0        ; |231| 
-    1000 00000914 00000068!            MVKH    .S1     _Report,A0        ; |231| 
-    1001 00000918 00001362             B       .S2X    A0                ; |231| 
-    1002 0000091c 0184942A'            MVKL    .S2     RL38,B3           ; |231| 
-    1003 00000920 0180006A'            MVKH    .S2     RL38,B3           ; |231| 
-    1004 00000924 00004000             NOP             3
-    1005 00000928           RL38:      ; CALL OCCURS                     ; |231| 
-    1006 00000928 0003F428             MVK     .S1     2024,A0           ; |232| 
-    1007                    
-    1008 0000092c 00000029!            MVKL    .S1     _sprintf,A0       ; |232| 
-    1009 00000930 003C42F4  ||         STW     .D2T1   A0,*+SP(8)        ; |232| 
-    1010                    
-    1011 00000934 00000069!            MVKH    .S1     _sprintf,A0       ; |232| 
-    1012 00000938 0280002A! ||         MVKL    .S2     _tmp_string,B5    ; |232| 
-    1013                    
-    1014 0000093c 00001362             B       .S2X    A0                ; |232| 
-    1015 00000940 02000AAA+            MVKL    .S2     SL2+0,B4          ; |232| 
-    1016 00000944 0280006A!            MVKH    .S2     _tmp_string,B5    ; |232| 
-    1017 00000948 0200006A+            MVKH    .S2     SL2+0,B4          ; |232| 
-    1018 0000094c 0184AE2A'            MVKL    .S2     RL40,B3           ; |232| 
-    1019                    
-    1020 00000950 0180006B'            MVKH    .S2     RL40,B3           ; |232| 
-    1021 00000954 023C22F7  ||         STW     .D2T2   B4,*+SP(4)        ; |232| 
-    1022 00000958 021411A0  ||         MV      .S1X    B5,A4             ; |232| 
-    1023                    
-    1024 0000095c           RL40:      ; CALL OCCURS                     ; |232| 
-    1025 0000095c 00000028!            MVKL    .S1     _Report,A0        ; |232| 
-    1026 00000960 00000068!            MVKH    .S1     _Report,A0        ; |232| 
-    1027 00000964 00001362             B       .S2X    A0                ; |232| 
-    1028 00000968 0184BA2A'            MVKL    .S2     RL42,B3           ; |232| 
-    1029 0000096c 0180006A'            MVKH    .S2     RL42,B3           ; |232| 
-    1030 00000970 00004000             NOP             3
-    1031 00000974           RL42:      ; CALL OCCURS                     ; |232| 
-    1032 00000974 0280172A+            MVKL    .S2     SL3+0,B5          ; |233| 
-    1033 00000978 0280006A+            MVKH    .S2     SL3+0,B5          ; |233| 
-    1034 0000097c 0201FE2A             MVKL    .S2     0x20003fc,B4      ; |233| 
-    1035                    
-    1036 00000980 02BC22F7             STW     .D2T2   B5,*+SP(4)        ; |233| 
-    1037 00000984 0201006A  ||         MVKH    .S2     0x20003fc,B4      ; |233| 
-    1038                    
-    1039 00000988 021002E6             LDW     .D2T2   *B4,B4            ; |233| 
-    1040 0000098c 0001FE28             MVKL    .S1     0x20003fc,A0      ; |233| 
-    1041 00000990 00010068             MVKH    .S1     0x20003fc,A0      ; |233| 
-    1042 00000994 02000028!            MVKL    .S1     _tmp_string,A4    ; |233| 
-    1043 00000998 0184E42A'            MVKL    .S2     RL44,B3           ; |233| 
-    1044 0000099c 0212180A             EXTU    .S2     B4,16,24,B4       ; |233| 
-    1045 000009a0 023C42F6             STW     .D2T2   B4,*+SP(8)        ; |233| 
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+     991 000008fc 02BD82E6             LDW     .D2T2   *+SP(48),B5       ; |231| 
+     992 00000900 023DE2E6             LDW     .D2T2   *+SP(60),B4       ; |231| 
+     993 00000904 00012028'            MVKL    .S1     _OneStepMove,A0   ; |236| 
+     994 00000908 00002000             NOP             2
+     995 0000090c 0294C8C2             SUB     .D2     B5,B6,B5          ; |231| 
+     996 00000910 001489FA             CMPGTU  .L2     B4,B5,B0          ; |231| 
+     997 00000914 223D82E6     [ B0]   LDW     .D2T2   *+SP(48),B4       ; |231| 
+     998 00000918 22BDE2E6     [ B0]   LDW     .D2T2   *+SP(60),B5       ; |231| 
+     999 0000091c 00006000             NOP             4
+    1000 00000920 2210A8FA     [ B0]   CMPGT   .L2     B5,B4,B4          ; |231| 
+    1001 00000924 201022A2     [ B0]   XOR     .S2     1,B4,B0           ; |231| 
+    1002 00000928 233DC2E6     [ B0]   LDW     .D2T2   *+SP(56),B6       ; |232| 
+    1003 0000092c 223DC2E6     [ B0]   LDW     .D2T2   *+SP(56),B4       ; |233| 
+    1004 00000930 2280062A-    [ B0]   MVKL    .S2     _delayCntArr,B5   ; |232| 
+    1005 00000934 2280006A-    [ B0]   MVKH    .S2     _delayCntArr,B5   ; |232| 
+    1006 00000938 00000000             NOP             1
+    1007 0000093c 2294CAE6     [ B0]   LDW     .D2T2   *+B5[B6],B5       ; |232| 
+    1008 00000940 221029C2     [ B0]   SUB     .D2     B4,1,B4           ; |233| 
+    1009 00000944 223DC2F6     [ B0]   STW     .D2T2   B4,*+SP(56)       ; |233| 
+    1010 00000948 00002000             NOP             2
+    1011 0000094c 22BDA2F6     [ B0]   STW     .D2T2   B5,*+SP(52)       ; |232| 
+    1012                    ;** --------------------------------------------------------------------------*
+    1013 00000950           L19:    
+    1014 00000950 00000068'            MVKH    .S1     _OneStepMove,A0   ; |236| 
+    1015                    
+    1016 00000954 00001363             B       .S2X    A0                ; |236| 
+    1017 00000958 023D02E4  ||         LDW     .D2T1   *+SP(32),A4
+    1018                    
+    1019 0000095c 023DA2E6             LDW     .D2T2   *+SP(52),B4       ; |236| 
+    1020 00000960 0184B62A'            MVKL    .S2     RL36,B3           ; |236| 
+    1021 00000964 0180006A'            MVKH    .S2     RL36,B3           ; |236| 
+    1022 00000968 00002000             NOP             2
+    1023 0000096c           RL36:      ; CALL OCCURS                     ; |236| 
+    1024 0000096c 0200002A!            MVKL    .S2     _sprintf,B4       ; |237| 
+    1025                    
+    1026 00000970 0200006B!            MVKH    .S2     _sprintf,B4       ; |237| 
+    1027 00000974 02BDE2E6  ||         LDW     .D2T2   *+SP(60),B5       ; |237| 
+    1028                    
+    1029 00000978 03BDA2E7             LDW     .D2T2   *+SP(52),B7       ; |237| 
+    1030 0000097c 00100362  ||         B       .S2     B4                ; |237| 
+    1031                    
+    1032 00000980 00000828+            MVKL    .S1     SL1+0,A0          ; |237| 
+    1033                    
+    1034 00000984 0300002B!            MVKL    .S2     _tmp_string,B6    ; |237| 
+    1035 00000988 00000068+ ||         MVKH    .S1     SL1+0,A0          ; |237| 
+    1036                    
+    1037 0000098c 0300006B!            MVKH    .S2     _tmp_string,B6    ; |237| 
+    1038 00000990 003C22F4  ||         STW     .D2T1   A0,*+SP(4)        ; |237| 
+    1039                    
+    1040 00000994 0184D62B'            MVKL    .S2     RL38,B3           ; |237| 
+    1041 00000998 02BC42F6  ||         STW     .D2T2   B5,*+SP(8)        ; |237| 
+    1042                    
+    1043 000009a0 0180006B'            MVKH    .S2     RL38,B3           ; |237| 
+    1044 000009a4 021811A1  ||         MV      .S1X    B6,A4             ; |237| 
+    1045 000009a8 03BC62F6  ||         STW     .D2T2   B7,*+SP(12)       ; |237| 
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   20
 
     1046                    
-    1047 000009a4 00000029!            MVKL    .S1     _sprintf,A0       ; |233| 
-    1048 000009a8 01800264  ||         LDW     .D1T1   *A0,A3            ; |233| 
-    1049                    
-    1050 000009ac 00000068!            MVKH    .S1     _sprintf,A0       ; |233| 
-    1051 000009b0 00001362             B       .S2X    A0                ; |233| 
-    1052 000009b4 02000068!            MVKH    .S1     _tmp_string,A4    ; |233| 
-    1053 000009b8 0180006A'            MVKH    .S2     RL44,B3           ; |233| 
-    1054 000009bc 018F1808             EXTU    .S1     A3,24,24,A3       ; |233| 
-    1055 000009c0 01BC62F4             STW     .D2T1   A3,*+SP(12)       ; |233| 
-    1056 000009c4 00000000             NOP             1
-    1057 000009c8           RL44:      ; CALL OCCURS                     ; |233| 
-    1058 000009c8 00000028!            MVKL    .S1     _Report,A0        ; |233| 
-    1059 000009cc 00000068!            MVKH    .S1     _Report,A0        ; |233| 
-    1060 000009d0 00001362             B       .S2X    A0                ; |233| 
-    1061 000009d4 0184F02A'            MVKL    .S2     RL46,B3           ; |233| 
-    1062 000009d8 0180006A'            MVKH    .S2     RL46,B3           ; |233| 
-    1063 000009dc 00004000             NOP             3
-    1064 000009e0           RL46:      ; CALL OCCURS                     ; |233| 
-    1065                    ;** --------------------------------------------------------------------------*
-    1066 000009e0 02004C2A'            MVKL    .S2     _GIE,B4           ; |236| 
-    1067 000009e4 0200006A'            MVKH    .S2     _GIE,B4           ; |236| 
-    1068 000009e8 00100362             B       .S2     B4                ; |236| 
-    1069 000009ec 0185042A'            MVKL    .S2     RL48,B3           ; |236| 
-    1070 000009f0 018008C0             ZERO    .D1     A3                ; |235| 
-    1071 000009f4 00000028!            MVKL    .S1     _TFlag,A0         ; |235| 
-    1072 000009f8 00000068!            MVKH    .S1     _TFlag,A0         ; |235| 
-    1073                    
-    1074 00000a00 01800275             STW     .D1T1   A3,*A0            ; |235| 
-    1075 00000a04 0180006A' ||         MVKH    .S2     RL48,B3           ; |236| 
-    1076                    
-    1077 00000a08           RL48:      ; CALL OCCURS                     ; |236| 
-    1078 00000a08 0000DC28'            MVKL    .S1     _WaitTFlagCnt,A0  ; |244| 
+    1047 000009ac           RL38:      ; CALL OCCURS                     ; |237| 
+    1048 000009ac 00000028!            MVKL    .S1     _Report,A0        ; |237| 
+    1049 000009b0 00000068!            MVKH    .S1     _Report,A0        ; |237| 
+    1050 000009b4 00001362             B       .S2X    A0                ; |237| 
+    1051 000009b8 0184E22A'            MVKL    .S2     RL40,B3           ; |237| 
+    1052 000009bc 0180006A'            MVKH    .S2     RL40,B3           ; |237| 
+    1053 000009c0 00004000             NOP             3
+    1054 000009c4           RL40:      ; CALL OCCURS                     ; |237| 
+    1055 000009c4 023DE2E6             LDW     .D2T2   *+SP(60),B4       ; |238| 
+    1056 000009c8 02BD82E6             LDW     .D2T2   *+SP(48),B5       ; |238| 
+    1057 000009cc 00004000             NOP             3
+    1058 000009d0 02102942             ADD     .D2     1,B4,B4           ; |238| 
+    1059 000009d4 001488FA             CMPGT   .L2     B4,B5,B0          ; |238| 
+    1060 000009d8 3FFFD510     [!B0]   B       .S1     L18               ; |238| 
+    1061 000009dc 023DE2F6             STW     .D2T2   B4,*+SP(60)       ; |238| 
+    1062 000009e0 323D42E6     [!B0]   LDW     .D2T2   *+SP(40),B4       ; |220| 
+    1063 000009e4 32BDE2E6     [!B0]   LDW     .D2T2   *+SP(60),B5       ; |220| 
+    1064 000009e8 00002000             NOP             2
+    1065                               ; BRANCH OCCURS                   ; |238| 
+    1066                    ;** --------------------------------------------------------------------------*
+    1067 000009ec           L20:    
+    1068 000009ec 01BE02E6             LDW     .D2T2   *+SP(64),B3       ; |240| 
+    1069 000009f0 00006000             NOP             4
+    1070                    ;** --------------------------------------------------------------------------*
+    1071 000009f4           L21:    
+    1072                    
+    1073 000009f4 000C0363             B       .S2     B3                ; |240| 
+    1074 000009f8 053E22E6  ||         LDW     .D2T2   *+SP(68),B10      ; |240| 
+    1075                    
+    1076 000009fc 05BE52E6             LDW     .D2T2   *++SP(72),B11     ; |240| 
+    1077 00000a00 00006000             NOP             4
+    1078                               ; BRANCH OCCURS                   ; |240| 
     1079                    
-    1080 00000a0c 0200262B             MVKL    .S2     0x200004c,B4      ; |238| 
-    1081 00000a10 00000068' ||         MVKH    .S1     _WaitTFlagCnt,A0  ; |244| 
-    1082                    
-    1083 00000a14 00001363             B       .S2X    A0                ; |244| 
-    1084 00000a18 028000A8  ||         MVK     .S1     1,A5              ; |238| 
-    1085                    
-    1086 00000a20 0201006B             MVKH    .S2     0x200004c,B4      ; |238| 
-    1087 00000a24 02000028- ||         MVKL    .S1     _currPhaseIdx,A4  ; |240| 
-    1088                    
-    1089 00000a28 0200022B-            MVKL    .S2     _currDIR,B4       ; |241| 
-    1090 00000a2c 028428C1  ||         ZERO    .D1     A5                ; |240| 
-    1091 00000a30 029002F5  ||         STW     .D2T1   A5,*B4            ; |238| 
-    1092 00000a34 02000068- ||         MVKH    .S1     _currPhaseIdx,A4  ; |240| 
-    1093                    
-    1094 00000a40 02900275             STW     .D1T1   A5,*A4            ; |240| 
-    1095 00000a44 0200006B- ||         MVKH    .S2     _currDIR,B4       ; |241| 
-    1096 00000a48 01800429- ||         MVKL    .S1     _prevDIR,A3       ; |242| 
-    1097 00000a4c 028428C2  ||         ZERO    .D2     B5                ; |241| 
-    1098                    
-    1099 00000a50 020420FB             ZERO    .L2     B4                ; |242| 
-    1100 00000a54 029002F7  ||         STW     .D2T2   B5,*B4            ; |241| 
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+    1080                    
+    1081 00000a04                   .sect   ".text"
+    1082                            .global _main
+    1083                    
+    1084                    ;******************************************************************************
+    1085                    ;* FUNCTION NAME: _main                                                       *
+    1086                    ;*                                                                            *
+    1087                    ;*   Regs Modified     : A0,A1,A2,A3,A4,A5,A6,A7,A8,A9,B0,B1,B2,B3,B4,B5,B6,  *
+    1088                    ;*                           B7,B8,B9,SP                                      *
+    1089                    ;*   Regs Used         : A0,A1,A2,A3,A4,A5,A6,A7,A8,A9,B0,B1,B2,B3,B4,B5,B6,  *
+    1090                    ;*                           B7,B8,B9,SP                                      *
+    1091                    ;*   Local Frame Size  : 16 Args + 0 Auto + 4 Save = 20 byte                  *
+    1092                    ;******************************************************************************
+    1093 00000a04           _main:
+    1094                    ;** --------------------------------------------------------------------------*
+    1095 00000a04 00000028'            MVKL    .S1     _InitEXINTF,A0    ; |245| 
+    1096 00000a08 00000068'            MVKH    .S1     _InitEXINTF,A0    ; |245| 
+    1097 00000a0c 00001362             B       .S2X    A0                ; |245| 
+    1098 00000a10 01BCD4F6             STW     .D2T2   B3,*SP--(24)      ; |244| 
+    1099 00000a14 0185102A'            MVKL    .S2     RL42,B3           ; |245| 
+    1100 00000a18 0180006A'            MVKH    .S2     RL42,B3           ; |245| 
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   21
 
-    1101 00000a58 0185362B' ||         MVKL    .S2     RL50,B3           ; |244| 
-    1102 00000a5c 01800068- ||         MVKH    .S1     _prevDIR,A3       ; |242| 
-    1103                    
-    1104 00000a60 020C0277             STW     .D1T2   B4,*A3            ; |242| 
-    1105 00000a64 02138829  ||         MVK     .S1     0x2710,A4         ; |244| 
-    1106 00000a68 0180006A' ||         MVKH    .S2     RL50,B3           ; |244| 
-    1107                    
-    1108 00000a6c           RL50:      ; CALL OCCURS                     ; |244| 
-    1109 00000a6c 0282F02A'            MVKL    .S2     _StepMoveVP,B5    ; |248| 
-    1110 00000a70 0280006A'            MVKH    .S2     _StepMoveVP,B5    ; |248| 
-    1111 00000a74 00140362             B       .S2     B5                ; |248| 
-    1112 00000a78 01854C2A'            MVKL    .S2     RL52,B3           ; |248| 
-    1113 00000a7c 020008C2             ZERO    .D2     B4                ; |248| 
-    1114 00000a80 030008C0             ZERO    .D1     A6                ; |248| 
-    1115                    
-    1116 00000a84 02219A6B             MVKH    .S2     0x43340000,B4     ; |248| 
-    1117 00000a88 020428C1  ||         ZERO    .D1     A4                ; |248| 
-    1118 00000a8c 032270E8  ||         MVKH    .S1     0x44e10000,A6     ; |248| 
-    1119                    
-    1120 00000a90 0180006B'            MVKH    .S2     RL52,B3           ; |248| 
-    1121 00000a94 0221DA68  ||         MVKH    .S1     0x43b40000,A4     ; |248| 
-    1122                    
-    1123 00000a98           RL52:      ; CALL OCCURS                     ; |248| 
-    1124                    ;*----------------------------------------------------------------------------*
-    1125                    ;*   SOFTWARE PIPELINE INFORMATION
-    1126                    ;*      Disqualified loop: software pipelining disabled
-    1127                    ;*----------------------------------------------------------------------------*
-    1128 00000a98           L19:    
-    1129 00000a98 00000310             B       .S1     L19               ; |250| 
-    1130 00000a9c 00008000             NOP             5
-    1131                               ; BRANCH OCCURS                   ; |250| 
+    1101 00000a1c 00002000             NOP             2
+    1102 00000a20           RL42:      ; CALL OCCURS                     ; |245| 
+    1103 00000a20 00002028'            MVKL    .S1     _InitTimer,A0     ; |246| 
+    1104 00000a24 00000068'            MVKH    .S1     _InitTimer,A0     ; |246| 
+    1105 00000a28 00001362             B       .S2X    A0                ; |246| 
+    1106 00000a2c 01851C2A'            MVKL    .S2     RL44,B3           ; |246| 
+    1107 00000a30 0180006A'            MVKH    .S2     RL44,B3           ; |246| 
+    1108 00000a34 00004000             NOP             3
+    1109 00000a38           RL44:      ; CALL OCCURS                     ; |246| 
+    1110 00000a38 0200002A!            MVKL    .S2     _InitUART,B4      ; |247| 
+    1111 00000a3c 0200006A!            MVKH    .S2     _InitUART,B4      ; |247| 
+    1112 00000a40 00100362             B       .S2     B4                ; |247| 
+    1113 00000a44 0185282A'            MVKL    .S2     RL46,B3           ; |247| 
+    1114 00000a48 0180006A'            MVKH    .S2     RL46,B3           ; |247| 
+    1115 00000a4c 00004000             NOP             3
+    1116 00000a50           RL46:      ; CALL OCCURS                     ; |247| 
+    1117 00000a50 00004028'            MVKL    .S1     _InitINT,A0       ; |248| 
+    1118 00000a54 00000068'            MVKH    .S1     _InitINT,A0       ; |248| 
+    1119 00000a58 00001362             B       .S2X    A0                ; |248| 
+    1120 00000a5c 0185342A'            MVKL    .S2     RL48,B3           ; |248| 
+    1121 00000a60 0180006A'            MVKH    .S2     RL48,B3           ; |248| 
+    1122 00000a64 00004000             NOP             3
+    1123 00000a68           RL48:      ; CALL OCCURS                     ; |248| 
+    1124 00000a68 00000028!            MVKL    .S1     _InitUSBMon,A0    ; |249| 
+    1125 00000a6c 00000068!            MVKH    .S1     _InitUSBMon,A0    ; |249| 
+    1126 00000a70 00001362             B       .S2X    A0                ; |249| 
+    1127 00000a74 0185402A'            MVKL    .S2     RL50,B3           ; |249| 
+    1128 00000a78 0180006A'            MVKH    .S2     RL50,B3           ; |249| 
+    1129 00000a7c 00004000             NOP             3
+    1130 00000a80           RL50:      ; CALL OCCURS                     ; |249| 
+    1131 00000a80 00000028!            MVKL    .S1     _sprintf,A0       ; |251| 
     1132                    
-    1133                    
-    1134                    ;******************************************************************************
-    1135                    ;* STRINGS                                                                    *
-    1136                    ;******************************************************************************
-    1137 00000010                   .sect   ".const"
-    1138 00000010 0000000D  SL1:    .string 13,10,13,10,0
-         00000011 0000000A 
-         00000012 0000000D 
-         00000013 0000000A 
-         00000014 00000000 
-    1139 00000015 0000004D  SL2:    .string "Mechatronics Course %d",13,10,0
-         00000016 00000065 
-         00000017 00000063 
-         00000018 00000068 
-         00000019 00000061 
-         0000001a 00000074 
-         0000001b 00000072 
-         0000001c 0000006F 
-         0000001d 0000006E 
-         0000001e 00000069 
-         0000001f 00000063 
-         00000020 00000073 
-         00000021 00000020 
-TMS320C6x COFF Assembler         Version 4.10     Tue Apr 16 21:05:22 2024
+    1133 00000a84 00000069!            MVKH    .S1     _sprintf,A0       ; |251| 
+    1134 00000a88 028016AA+ ||         MVKL    .S2     SL2+0,B5          ; |251| 
+    1135                    
+    1136 00000a8c 00001362             B       .S2X    A0                ; |251| 
+    1137 00000a90 0185562A'            MVKL    .S2     RL52,B3           ; |251| 
+    1138 00000a94 0280006A+            MVKH    .S2     SL2+0,B5          ; |251| 
+    1139 00000a98 0200002A!            MVKL    .S2     _tmp_string,B4    ; |251| 
+    1140 00000a9c 0200006A!            MVKH    .S2     _tmp_string,B4    ; |251| 
+    1141                    
+    1142 00000aa0 0180006B'            MVKH    .S2     RL52,B3           ; |251| 
+    1143 00000aa4 02BC22F7  ||         STW     .D2T2   B5,*+SP(4)        ; |251| 
+    1144 00000aa8 021011A0  ||         MV      .S1X    B4,A4             ; |251| 
+    1145                    
+    1146 00000aac           RL52:      ; CALL OCCURS                     ; |251| 
+    1147 00000aac 00000028!            MVKL    .S1     _Report,A0        ; |251| 
+    1148 00000ab0 00000068!            MVKH    .S1     _Report,A0        ; |251| 
+    1149 00000ab4 00001362             B       .S2X    A0                ; |251| 
+    1150 00000ab8 0185622A'            MVKL    .S2     RL54,B3           ; |251| 
+    1151 00000abc 0180006A'            MVKH    .S2     RL54,B3           ; |251| 
+    1152 00000ac0 00004000             NOP             3
+    1153 00000ac4           RL54:      ; CALL OCCURS                     ; |251| 
+    1154 00000ac4 0003F428             MVK     .S1     2024,A0           ; |252| 
+    1155                    
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   22
 
-         00000022 00000043 
-         00000023 0000006F 
-         00000024 00000075 
-         00000025 00000072 
-         00000026 00000073 
-         00000027 00000065 
-         00000028 00000020 
-         00000029 00000025 
-         0000002a 00000064 
-         0000002b 0000000D 
-         0000002c 0000000A 
-         0000002d 00000000 
-    1140 0000002e 00000046  SL3:    .string "FPGA Ver%2x.%02x",13,10,0
-         0000002f 00000050 
-         00000030 00000047 
-         00000031 00000041 
-         00000032 00000020 
-         00000033 00000056 
-         00000034 00000065 
-         00000035 00000072 
-         00000036 00000025 
-         00000037 00000032 
-         00000038 00000078 
-         00000039 0000002E 
-         0000003a 00000025 
-         0000003b 00000030 
-         0000003c 00000032 
-         0000003d 00000078 
-         0000003e 0000000D 
-         0000003f 0000000A 
-         00000040 00000000 
-    1141                    ;******************************************************************************
-    1142                    ;* UNDEFINED EXTERNAL REFERENCES                                              *
-    1143                    ;******************************************************************************
-    1144                            .global _sqrt
-    1145                            .global _sprintf
-    1146                            .global _InitUART
-    1147                            .global _Report
-    1148                            .global _InitUSBMon
-    1149                            .global _tmp_string
-    1150                            .global _TFlag
-    1151                            .global __divd
-    1152                            .global __divf
+    1156 00000ac8 00000029!            MVKL    .S1     _sprintf,A0       ; |252| 
+    1157 00000acc 003C42F4  ||         STW     .D2T1   A0,*+SP(8)        ; |252| 
+    1158                    
+    1159 00000ad0 00000069!            MVKH    .S1     _sprintf,A0       ; |252| 
+    1160 00000ad4 0280002A! ||         MVKL    .S2     _tmp_string,B5    ; |252| 
+    1161                    
+    1162 00000ad8 00001362             B       .S2X    A0                ; |252| 
+    1163 00000adc 0200192A+            MVKL    .S2     SL3+0,B4          ; |252| 
+    1164 00000ae0 0280006A!            MVKH    .S2     _tmp_string,B5    ; |252| 
+    1165 00000ae4 0200006A+            MVKH    .S2     SL3+0,B4          ; |252| 
+    1166 00000ae8 01857C2A'            MVKL    .S2     RL56,B3           ; |252| 
+    1167                    
+    1168 00000aec 0180006B'            MVKH    .S2     RL56,B3           ; |252| 
+    1169 00000af0 023C22F7  ||         STW     .D2T2   B4,*+SP(4)        ; |252| 
+    1170 00000af4 021411A0  ||         MV      .S1X    B5,A4             ; |252| 
+    1171                    
+    1172 00000af8           RL56:      ; CALL OCCURS                     ; |252| 
+    1173 00000af8 00000028!            MVKL    .S1     _Report,A0        ; |252| 
+    1174 00000afc 00000068!            MVKH    .S1     _Report,A0        ; |252| 
+    1175 00000b00 00001362             B       .S2X    A0                ; |252| 
+    1176 00000b04 0185882A'            MVKL    .S2     RL58,B3           ; |252| 
+    1177 00000b08 0180006A'            MVKH    .S2     RL58,B3           ; |252| 
+    1178 00000b0c 00004000             NOP             3
+    1179 00000b10           RL58:      ; CALL OCCURS                     ; |252| 
+    1180 00000b10 028025AA+            MVKL    .S2     SL4+0,B5          ; |253| 
+    1181 00000b14 0280006A+            MVKH    .S2     SL4+0,B5          ; |253| 
+    1182 00000b18 0201FE2A             MVKL    .S2     0x20003fc,B4      ; |253| 
+    1183                    
+    1184 00000b20 02BC22F7             STW     .D2T2   B5,*+SP(4)        ; |253| 
+    1185 00000b24 0201006A  ||         MVKH    .S2     0x20003fc,B4      ; |253| 
+    1186                    
+    1187 00000b28 021002E6             LDW     .D2T2   *B4,B4            ; |253| 
+    1188 00000b2c 0001FE28             MVKL    .S1     0x20003fc,A0      ; |253| 
+    1189 00000b30 00010068             MVKH    .S1     0x20003fc,A0      ; |253| 
+    1190 00000b34 02000028!            MVKL    .S1     _tmp_string,A4    ; |253| 
+    1191 00000b38 0185B42A'            MVKL    .S2     RL60,B3           ; |253| 
+    1192 00000b3c 0212180A             EXTU    .S2     B4,16,24,B4       ; |253| 
+    1193 00000b40 023C42F6             STW     .D2T2   B4,*+SP(8)        ; |253| 
+    1194                    
+    1195 00000b44 00000029!            MVKL    .S1     _sprintf,A0       ; |253| 
+    1196 00000b48 01800264  ||         LDW     .D1T1   *A0,A3            ; |253| 
+    1197                    
+    1198 00000b4c 00000068!            MVKH    .S1     _sprintf,A0       ; |253| 
+    1199 00000b50 00001362             B       .S2X    A0                ; |253| 
+    1200 00000b54 02000068!            MVKH    .S1     _tmp_string,A4    ; |253| 
+    1201 00000b58 0180006A'            MVKH    .S2     RL60,B3           ; |253| 
+    1202 00000b5c 018F1808             EXTU    .S1     A3,24,24,A3       ; |253| 
+    1203 00000b60 01BC62F4             STW     .D2T1   A3,*+SP(12)       ; |253| 
+    1204 00000b64 00000000             NOP             1
+    1205 00000b68           RL60:      ; CALL OCCURS                     ; |253| 
+    1206 00000b68 00000028!            MVKL    .S1     _Report,A0        ; |253| 
+    1207 00000b6c 00000068!            MVKH    .S1     _Report,A0        ; |253| 
+    1208 00000b70 00001362             B       .S2X    A0                ; |253| 
+    1209 00000b74 0185C02A'            MVKL    .S2     RL62,B3           ; |253| 
+    1210 00000b78 0180006A'            MVKH    .S2     RL62,B3           ; |253| 
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
+Copyright (c) 1996-2001 Texas Instruments Incorporated
+temp\main.asm                                                        PAGE   23
+
+    1211 00000b7c 00004000             NOP             3
+    1212 00000b80           RL62:      ; CALL OCCURS                     ; |253| 
+    1213                    ;** --------------------------------------------------------------------------*
+    1214 00000b80 02004C2A'            MVKL    .S2     _GIE,B4           ; |256| 
+    1215 00000b84 0200006A'            MVKH    .S2     _GIE,B4           ; |256| 
+    1216 00000b88 00100362             B       .S2     B4                ; |256| 
+    1217 00000b8c 0185D42A'            MVKL    .S2     RL64,B3           ; |256| 
+    1218 00000b90 018008C0             ZERO    .D1     A3                ; |255| 
+    1219 00000b94 00000028!            MVKL    .S1     _TFlag,A0         ; |255| 
+    1220 00000b98 00000068!            MVKH    .S1     _TFlag,A0         ; |255| 
+    1221                    
+    1222 00000ba0 01800275             STW     .D1T1   A3,*A0            ; |255| 
+    1223 00000ba4 0180006A' ||         MVKH    .S2     RL64,B3           ; |256| 
+    1224                    
+    1225 00000ba8           RL64:      ; CALL OCCURS                     ; |256| 
+    1226 00000ba8 0000DC28'            MVKL    .S1     _WaitTFlagCnt,A0  ; |264| 
+    1227                    
+    1228 00000bac 0200262B             MVKL    .S2     0x200004c,B4      ; |258| 
+    1229 00000bb0 00000068' ||         MVKH    .S1     _WaitTFlagCnt,A0  ; |264| 
+    1230                    
+    1231 00000bb4 00001363             B       .S2X    A0                ; |264| 
+    1232 00000bb8 028000A8  ||         MVK     .S1     1,A5              ; |258| 
+    1233                    
+    1234 00000bc0 0201006B             MVKH    .S2     0x200004c,B4      ; |258| 
+    1235 00000bc4 02000028- ||         MVKL    .S1     _currPhaseIdx,A4  ; |260| 
+    1236                    
+    1237 00000bc8 0200022B-            MVKL    .S2     _currDIR,B4       ; |261| 
+    1238 00000bcc 028428C1  ||         ZERO    .D1     A5                ; |260| 
+    1239 00000bd0 029002F5  ||         STW     .D2T1   A5,*B4            ; |258| 
+    1240 00000bd4 02000068- ||         MVKH    .S1     _currPhaseIdx,A4  ; |260| 
+    1241                    
+    1242 00000be0 02900275             STW     .D1T1   A5,*A4            ; |260| 
+    1243 00000be4 0200006B- ||         MVKH    .S2     _currDIR,B4       ; |261| 
+    1244 00000be8 01800429- ||         MVKL    .S1     _prevDIR,A3       ; |262| 
+    1245 00000bec 028428C2  ||         ZERO    .D2     B5                ; |261| 
+    1246                    
+    1247 00000bf0 020420FB             ZERO    .L2     B4                ; |262| 
+    1248 00000bf4 029002F7  ||         STW     .D2T2   B5,*B4            ; |261| 
+    1249 00000bf8 0186062B' ||         MVKL    .S2     RL66,B3           ; |264| 
+    1250 00000bfc 01800068- ||         MVKH    .S1     _prevDIR,A3       ; |262| 
+    1251                    
+    1252 00000c00 020C0277             STW     .D1T2   B4,*A3            ; |262| 
+    1253 00000c04 02138829  ||         MVK     .S1     0x2710,A4         ; |264| 
+    1254 00000c08 0180006A' ||         MVKH    .S2     RL66,B3           ; |264| 
+    1255                    
+    1256 00000c0c           RL66:      ; CALL OCCURS                     ; |264| 
+    1257 00000c0c 0282E22A'            MVKL    .S2     _StepMoveVP,B5    ; |268| 
+    1258 00000c10 0280006A'            MVKH    .S2     _StepMoveVP,B5    ; |268| 
+    1259 00000c14 00140362             B       .S2     B5                ; |268| 
+    1260 00000c18 01861C2A'            MVKL    .S2     RL68,B3           ; |268| 
+    1261 00000c1c 020008C2             ZERO    .D2     B4                ; |268| 
+    1262 00000c20 030008C0             ZERO    .D1     A6                ; |268| 
+    1263                    
+    1264 00000c24 02219A6B             MVKH    .S2     0x43340000,B4     ; |268| 
+    1265 00000c28 020428C1  ||         ZERO    .D1     A4                ; |268| 
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
+Copyright (c) 1996-2001 Texas Instruments Incorporated
+temp\main.asm                                                        PAGE   24
+
+    1266 00000c2c 032270E8  ||         MVKH    .S1     0x44e10000,A6     ; |268| 
+    1267                    
+    1268 00000c30 0180006B'            MVKH    .S2     RL68,B3           ; |268| 
+    1269 00000c34 0221DA68  ||         MVKH    .S1     0x43b40000,A4     ; |268| 
+    1270                    
+    1271 00000c38           RL68:      ; CALL OCCURS                     ; |268| 
+    1272                    ;*----------------------------------------------------------------------------*
+    1273                    ;*   SOFTWARE PIPELINE INFORMATION
+    1274                    ;*      Disqualified loop: software pipelining disabled
+    1275                    ;*----------------------------------------------------------------------------*
+    1276 00000c38           L22:    
+    1277 00000c38 00000310             B       .S1     L22               ; |270| 
+    1278 00000c3c 00008000             NOP             5
+    1279                               ; BRANCH OCCURS                   ; |270| 
+    1280                    
+    1281                    
+    1282                    ;******************************************************************************
+    1283                    ;* STRINGS                                                                    *
+    1284                    ;******************************************************************************
+    1285 00000010                   .sect   ".const"
+    1286 00000010 00000069  SL1:    .string "intCnt on %d_th step: %d",13,10,13,10,0
+         00000011 0000006E 
+         00000012 00000074 
+         00000013 00000043 
+         00000014 0000006E 
+         00000015 00000074 
+         00000016 00000020 
+         00000017 0000006F 
+         00000018 0000006E 
+         00000019 00000020 
+         0000001a 00000025 
+         0000001b 00000064 
+         0000001c 0000005F 
+         0000001d 00000074 
+         0000001e 00000068 
+         0000001f 00000020 
+         00000020 00000073 
+         00000021 00000074 
+         00000022 00000065 
+         00000023 00000070 
+         00000024 0000003A 
+         00000025 00000020 
+         00000026 00000025 
+         00000027 00000064 
+         00000028 0000000D 
+         00000029 0000000A 
+         0000002a 0000000D 
+         0000002b 0000000A 
+         0000002c 00000000 
+    1287 0000002d 0000000D  SL2:    .string 13,10,13,10,0
+         0000002e 0000000A 
+         0000002f 0000000D 
+         00000030 0000000A 
+         00000031 00000000 
+    1288 00000032 0000004D  SL3:    .string "Mechatronics Course %d",13,10,0
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
+Copyright (c) 1996-2001 Texas Instruments Incorporated
+temp\main.asm                                                        PAGE   25
+
+         00000033 00000065 
+         00000034 00000063 
+         00000035 00000068 
+         00000036 00000061 
+         00000037 00000074 
+         00000038 00000072 
+         00000039 0000006F 
+         0000003a 0000006E 
+         0000003b 00000069 
+         0000003c 00000063 
+         0000003d 00000073 
+         0000003e 00000020 
+         0000003f 00000043 
+         00000040 0000006F 
+         00000041 00000075 
+         00000042 00000072 
+         00000043 00000073 
+         00000044 00000065 
+         00000045 00000020 
+         00000046 00000025 
+         00000047 00000064 
+         00000048 0000000D 
+         00000049 0000000A 
+         0000004a 00000000 
+    1289 0000004b 00000046  SL4:    .string "FPGA Ver%2x.%02x",13,10,0
+         0000004c 00000050 
+         0000004d 00000047 
+         0000004e 00000041 
+         0000004f 00000020 
+         00000050 00000056 
+         00000051 00000065 
+         00000052 00000072 
+         00000053 00000025 
+         00000054 00000032 
+         00000055 00000078 
+         00000056 0000002E 
+         00000057 00000025 
+         00000058 00000030 
+         00000059 00000032 
+         0000005a 00000078 
+         0000005b 0000000D 
+         0000005c 0000000A 
+         0000005d 00000000 
+    1290                    ;******************************************************************************
+    1291                    ;* UNDEFINED EXTERNAL REFERENCES                                              *
+    1292                    ;******************************************************************************
+    1293                            .global _sqrt
+    1294                            .global _sprintf
+    1295                            .global _InitUART
+    1296                            .global _Report
+    1297                            .global _InitUSBMon
+    1298                            .global _tmp_string
+    1299                            .global _TFlag
+    1300                            .global __divd
+    1301                            .global __divf
+TMS320C6x COFF Assembler         Version 4.10     Sat Apr 20 13:05:44 2024
+Copyright (c) 1996-2001 Texas Instruments Incorporated
+temp\main.asm                                                        PAGE   26
+
 
 No Assembly Errors, No Assembly Warnings
