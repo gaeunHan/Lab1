@@ -147,7 +147,7 @@ void main()
 		*STEPPER = 0x2;		// A
 		WaitTFlagCnt(tempDelay);
 
-		*STEPPER = 0x10;	// A & B
+		*STEPPER = 0xA;	// A & B
 		WaitTFlagCnt(tempDelay); 
 
 		*STEPPER = 0x8;		// B

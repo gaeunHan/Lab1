@@ -13,7 +13,7 @@ unsigned int MakeVelProfile(float maxVel, float accel);
 void StepMoveVP(float angle, float maxVel, float accel);
 
 int main(){
-
+/*
     cout << "====== OneStepMove() test ======" << endl;
     currPhaseIdx = 0;
     currDIR = 0; 
@@ -39,18 +39,18 @@ int main(){
         cout << "value stored in STEPPER: 0x" << hex << STEPPER << endl;
     }
     cout << endl;
-
+*/
 
 /*
     cout << "====== MakeVelProfile() test ======" << endl;
     unsigned int totAccelStep = MakeVelProfile(180, 1800);
     cout << endl;
 */
-/*
+
     cout << "====== StepMoveVP() test ======" << endl;
-    StepMoveVP(360, 180, 1800);
+    StepMoveVP(360, 3000, 20000);
     cout << endl;
-    */
+
 }
 
 // rotate the motor by one step
@@ -100,11 +100,12 @@ void OneStepMove(unsigned int dir, unsigned int tDelayCnt){
 
 // make a lookup table
 unsigned int MakeVelProfile(float maxVel, float accel){
+    cout << endl << "--------- MakeVelProfile ---------" << endl;
     unsigned int step;          // k
     float s1AccelAngle;         // s1
-    unsigned int accelStep;  // 가속구간 총 스텝 수
+    unsigned int accelStep;     // 가속구간 총 스텝 수
     float stepDelayTime;        // delta t
-    float delayCnt;      // interrupt cnt from delta t
+    float delayCnt;             // interrupt cnt from delta t
 
     step = 1;
 
@@ -114,13 +115,13 @@ unsigned int MakeVelProfile(float maxVel, float accel){
     // be aware that the delayCntArr starts from index '1', not '0' as usuall
     for(step = 1; step <= accelStep; step++){
         stepDelayTime = sqrt((float)STEP_ANGLE / (2.0*accel*step));
-        cout << "stepDelayTime: " << stepDelayTime << endl;
+        cout << "stepDelayTime[" << step << "]: " << stepDelayTime << endl;
         delayCnt = 1e5 * stepDelayTime;    
         delayCntArr[step] = (unsigned int)delayCnt;
     }    
 
-    cout << "Total step for accel zone: " << accelStep << endl;
-    cout << "Angle reached in s1: " << s1AccelAngle << endl;
+    cout << endl << "Total step for accel zone: " << accelStep << endl;
+    cout << "Angle reached in s1: " << s1AccelAngle << endl << endl;
     for(step = 1; step <= accelStep; step++){
         cout << "delayCntArr[" << step << "]: " << dec << delayCntArr[step] << endl;
     }
@@ -130,10 +131,11 @@ unsigned int MakeVelProfile(float maxVel, float accel){
 
 // rotate the motor by following trapezoidal angle input
 void StepMoveVP(float angle, float maxVel, float accel){
-    int totalStep;
-    int constVelStep;
     int dir;
-    unsigned int accelStep;
+    float s1AccelAngle;         // s1
+    unsigned int accelStep;     // 가속 구간 총 스텝
+    int constVelStep;           // 등속 구간 총 스텝
+    int totalStep;              // 총 스텝
     unsigned int delayCnt;
     unsigned arrIdx;
     int i;
@@ -142,37 +144,60 @@ void StepMoveVP(float angle, float maxVel, float accel){
     dir = (angle > 0) ? 0 : 1; // 입력된 angle이 양수: CW, 음수: CCW   
     
     // clac total step & generate step delay lookup table
+    s1AccelAngle = (maxVel*maxVel) / (2.0*accel); // calc s1
     accelStep = MakeVelProfile(maxVel, accel);
-    constVelStep = (angle - (STEP_ANGLE * accelStep)) / STEP_ANGLE;
-    totalStep = 2.0*accelStep + constVelStep;
-
-    cout << "Total step: " << totalStep << endl;
-    cout << "Steps for accel & decel:" << accelStep <<endl;
-    cout << "Steps for const zone: " << constVelStep << endl;
+    cout << endl << "------------ StepMoveVP ------------" << endl;
 
     // rotate the motor by the input angle
     arrIdx = 1;
-    for(i = 1; i <= totalStep; i++){
-        // accel zone
-        if(i <= accelStep){
-            delayCnt = delayCntArr[arrIdx];
-            arrIdx++;
+    if(angle <= 2*s1AccelAngle){ // triangular
+        constVelStep = 0;
+        totalStep = (2.0 * accelStep) + constVelStep;
+        for(i = 1; i <= totalStep; i++){
+            // accel zone
+            if(i <= accelStep){
+                delayCnt = delayCntArr[arrIdx];
+                arrIdx++;
+            }
+            // decel zone
+            else{
+                delayCnt = delayCntArr[arrIdx];
+                arrIdx--;
+            }
+            // drive the motor
+            OneStepMove(dir, delayCnt);
+            cout << "Interrupt cnt for delay on " << i <<"_th step: " << delayCnt << endl;   
         }
-        // constant vel zone
-        else if(i > accelStep && i <= totalStep - accelStep){
-            arrIdx = accelStep;
-            delayCnt = delayCntArr[arrIdx];
-        }
-
-        // decel zone
-        else if(i > totalStep - accelStep && i <= totalStep){
-            delayCnt = delayCntArr[arrIdx];
-            arrIdx--;
-        }
-        
-        // drive the motor
-        OneStepMove(dir, delayCnt);
-
-        cout << "Interrupt cnt for delay on " << i <<"_th step: " << delayCnt << endl;
+        cout << "=> triangular" << endl;
     }
+    else{ // trapzoidal       
+        constVelStep = (angle - (STEP_ANGLE * accelStep)) / STEP_ANGLE;
+        totalStep = (2.0 * accelStep) + constVelStep;
+        for(i = 1; i <= totalStep; i++){
+            // accel zone
+            if(i <= accelStep){
+                delayCnt = delayCntArr[arrIdx];
+                arrIdx++;
+            }
+            // constant vel zone
+            else if(i > accelStep && i <= totalStep - accelStep){
+                arrIdx = accelStep;
+                delayCnt = delayCntArr[arrIdx];
+            }
+
+            // decel zone
+            else if(i > totalStep - accelStep && i <= totalStep){
+                delayCnt = delayCntArr[arrIdx];
+                arrIdx--;
+            }
+            // drive the motor
+            OneStepMove(dir, delayCnt);
+            cout << "Interrupt cnt for delay on " << i <<"_th step: " << delayCnt << endl;   
+        }
+        cout << endl << "=> trapzoidal" << endl;
+    } 
+    cout << "Total step: " << totalStep << endl;
+    cout << "Steps for accel & decel:" << accelStep <<endl;
+    cout << "Steps for const zone: " << constVelStep << endl;
 }
+

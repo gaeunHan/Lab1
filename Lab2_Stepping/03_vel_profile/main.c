@@ -186,12 +186,12 @@ void StepMoveVP(float angle, float maxVel, float accel){
     unsigned arrIdx;
     int i;
 
-    totalStep = (float)angle / STEP_ANGLE; // casting으로 내림 발생, 정수 step 값 작성
+    totalStep = (float)fabs(angle) / STEP_ANGLE; // casting으로 내림 발생, 정수 step 값 작성
     dir = (angle > 0) ? 0 : 1; // 입력된 angle이 양수: CW, 음수: CCW   
     
     // clac total step & generate step delay lookup table
     accelStep = MakeVelProfile(maxVel, accel);
-    constVelStep = (angle - (STEP_ANGLE * accelStep)) / STEP_ANGLE;
+    constVelStep = (fabs(angle) - (STEP_ANGLE * accelStep)) / STEP_ANGLE;
     totalStep = 2.0*accelStep + constVelStep;
     
     // rotate the motor by the input angle
