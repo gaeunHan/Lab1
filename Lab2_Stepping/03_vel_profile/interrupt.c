@@ -63,10 +63,6 @@ unsigned int TFlag = 0;
 interrupt void ISRtimer0()
 {
 	static unsigned int cnt1K=0;
-	static unsigned int cnt=0;
-	static float mmag = 0.2f;
-
-	float sig0, sig1, sig2, sig3;
 
 	TFlag = 1; // interrupt 발생 시 TFlag가 1이 됨. 
 
@@ -78,20 +74,7 @@ interrupt void ISRtimer0()
 		// The codes hearafter are executed at every 100 timer interrupts.
 		cnt1K = 0;
 
-		sig0 = mmag*sinf(2.0f*3.141592f/5000.0f*cnt);
-		sig1 = mmag*cosf(2.0f*3.141592f/2000.0f*cnt);
-		sig2 = mmag*sinf(2.0f*3.141592f/2500.0f*cnt);
-		sig3 = mmag*cosf(2.0f*3.141592f/25000.0f*cnt);
-
-		cnt++;
-		if ((cnt%5000) == 0) {
-			mmag += 0.01f;
-			if (mmag > 2.0f) {
-				mmag = 0.2f;
-			}
-		}
-
-		UMAddData(sig0, sig1, sig2, sig3);	// Add 4 data set to USBMon
+		UMAddData(USBposition, USBvelocity, USBacc, USBdelayCnt);	// Add 4 data set to USBMon
 	}
 }
 
