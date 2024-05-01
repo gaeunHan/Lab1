@@ -106,8 +106,8 @@ void WaitTFlagCnt(unsigned int cnt)
 float PWMOut(float dutyratio)
 {
 	/*
-		1. -50.0 <= dutyratio <= 50.0, 이에 해당하는 0~100% PWM 파형 발생시킨다. 
-		2. 출력 파형의 PWM duty는 0 또는 100% duty로 saturation 되어야 함.
+		1. -50.0 <= dutyratio <= 50.0, 이에 해당하는 0~100% PWM 파형 발생 
+		2. 출력 파형의 PWM duty는 0 또는 100% duty로 saturation with 0.5 safety zone
 	*/
 
 	float duty; 		
@@ -139,12 +139,7 @@ float GetAngle(){
 
 	// converse into signed decimal number
 	if (encbit <= 0x7FFF) signed_encbit = encbit;
-	else signed_encbit = encbit - 65536;
-
-	/* signed_encbit을 short로 선언하면, 위의 과정을 한 줄로 줄일 수 있음.
-		short signed_encbit; // short는 16bit -> 최상위 bit는 부호 표현
-		signed_encbit = encbit; // 0x0000(0)~0x7FFF(32767)는 양수로, 0xFFFF(-1)~0x8000(-32768)은 음수로 표현
-	*/
+	else signed_encbit = encbit - 65536; // could be written 'short signed_encbit = encbit'
 
 	// calc rotation degree depends on the resolution
 	rotationDeg = signed_encbit * (360.0 / (512.0 * 7.5)); // 바퀴 1회전당 3840 pulse
@@ -161,21 +156,8 @@ float vel_max = 1500.0f, accel = 10000.0f;
 float pos_t = 0; // ref. pos.
 float vel_t = 0; // ref. vel.
 
+// make velocity profile control
 void GetRefAngleVel(float sref, float vmax, float acc){
-/*
-	tracking 제어의 경우,
-	1. 위의 R값을 0.0f로
-	2. 간단하게는 if(R < 720.0f) R = R + 1.0f; 이런 코드를 작성하면 reference가 사다리꼴로 올라갈 것. 
-	3. 하지만 메카트로닉스를 배운 사람이라면.. GetRefAngle(float sref, float vmax, float acc)
-	4. feedforward로 float vmax를 u에 더해 넣어주자. u/sref의 gain Kff를 곱해주면 될 것. 
-*/
-/*
-	Feedforward 제어의 경우,
-	1. 현재 sys: DC motor position model -> 역수를 feedforward로 사용할 경우 미분기가 2개.
-	2. 편의성 1) '위치'의 미분꼴인 '속도'모델을 reference로
-	3. 편의성 2) 저주파 대역(s->0)에서, C_ff = u/ref
-
-*/
 	float t = TINTCnt * 0.001;
 	float t1, t2, t3;
 	float s1, s2; 
@@ -191,8 +173,8 @@ void GetRefAngleVel(float sref, float vmax, float acc){
 	// decel section
 	t3 = t2 + t1;
 
-	// exception handling
-	if(sref <= 2*s1) // no constant section -> triangle vel. profile
+	// exception handling: triangle velocity profile
+	if(sref <= 2*s1) 
 	{
 		// accel section
 		t1 = sqrt(sref / acc);
@@ -219,7 +201,8 @@ void GetRefAngleVel(float sref, float vmax, float acc){
 		} 
 	}
 
-	else // trapezoidal vel. profile
+	// trapezoidal vel. profile
+	else 
 	{
 		// accel
 		if(t <= t1){
@@ -285,7 +268,5 @@ void main()
 			MACRO_PRINT((tmp_string, "\r\n"));
 			TINTCnt = 0;
 		}
-		
-		//WaitTFlagCnt(2000); // every 2 sec
 	}
 }

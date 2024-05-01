@@ -62,6 +62,8 @@ interrupt void ISRextint6()
 #define Kp 0.35f
 #define Kd 4.5f
 #define Ki 0.0f
+
+//feedforward controller
 #define Kff 0.0f
 
 float prevErr = 0.0f, sumErr = 0.0f;

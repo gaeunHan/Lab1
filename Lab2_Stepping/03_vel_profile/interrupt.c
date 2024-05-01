@@ -68,7 +68,7 @@ interrupt void ISRtimer0()
 
 	*DOUT0 = ~(*DOUT0);
 
-	// Example code to use USBMonitor
+	//use USBMonitor
 	cnt1K++;
 	if (cnt1K >= 100) {
 		// The codes hearafter are executed at every 100 timer interrupts.
