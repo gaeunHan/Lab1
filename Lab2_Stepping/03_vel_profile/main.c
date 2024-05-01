@@ -100,14 +100,14 @@ void WaitTFlagCnt(unsigned int cnt)
 
     for (i=0; i<cnt; i++) {
         WaitTFlag();    // interrupt 발생해야 함수 return. 
-    } // cnt 개수만큼 interrupt 발생 기다림. 
+    }                   // cnt 개수만큼 interrupt 발생 기다림. 
 }
 
-// rotate the motor by one step
+// rotate a motor by one step
 int currPhaseIdx;
 unsigned int currDIR, prevDIR;
 void OneStepMove(unsigned int dir, unsigned int tDelayCnt){
-    int phase[4] = {0x2, 0x8, 0x1, 0x4}; // Right Stepping Motor Phase: A, B, /A, /B
+    int phase[4] = {0x2, 0x8, 0x1, 0x4}; // in order of A, B, /A, /B
     int idx;
     int setPhase; 
 
@@ -119,7 +119,7 @@ void OneStepMove(unsigned int dir, unsigned int tDelayCnt){
         if(currDIR != prevDIR){
             if(idx == 3) idx = -1;
             idx++;
-        } // 회전 방향 반전 시 idx 보정
+        } // 회전 방향 반전 시 남아있는 idx update 정보 지우고 재시작
        
         setPhase = phase[idx];
 
@@ -132,7 +132,7 @@ void OneStepMove(unsigned int dir, unsigned int tDelayCnt){
         if(currDIR != prevDIR){
             if(idx == 0) idx = 4;
             idx--;
-        } // 회전 방향 반전 시 idx 보정
+        } // 회전 방향 반전 시 남아있는 idx update 정보 지우고 재시작
 
         setPhase = phase[idx];
 
@@ -153,18 +153,17 @@ void OneStepMove(unsigned int dir, unsigned int tDelayCnt){
 // make a lookup table
 #define STEP_ANGLE 1.8f // step angle = 1.8 deg
 unsigned int delayCntArr[200]; // lookup table
-
 unsigned int MakeVelProfile(float maxVel, float accel){
-    unsigned int step;          // k
-    float s1AccelAngle;         // s1
+    unsigned int step;          // k: the number of step
+    float s1AccelAngle;         // s1: distance of accel
     unsigned int accelTotStep;  // 가속구간 총 스텝 수
     float stepDelayTime;        // delta t
-    float delayCnt;      // interrupt cnt from delta t
+    float delayCnt;             // interrupt cnt from delta t
 
     step = 1;
 
-    s1AccelAngle = (maxVel*maxVel) / (2.0*accel); // calc s1
-    accelTotStep = s1AccelAngle / STEP_ANGLE; // casting으로 내림 발생, 가속구간 총 스텝 수 반올림하여 저장
+    s1AccelAngle = (maxVel*maxVel) / (2.0*accel);   // calc s1
+    accelTotStep = s1AccelAngle / STEP_ANGLE;       // casting으로 내림 발생, 가속구간 총 스텝 수 반올림하여 저장
 
     // be aware that the delayCntArr starts from index '1', not '0' as usuall
     for(step = 1; step <= accelTotStep; step++){
@@ -180,25 +179,25 @@ unsigned int MakeVelProfile(float maxVel, float accel){
 float USBposition;
 float USBvelocity;
 float USBvelPrev;
-float USBcelCurr;
 float USBacc;
 unsigned int USBdelayCnt;
 
-int totalStep;              // 총 스텝
+
 void StepMoveVP(float angle, float maxVel, float accel){
-    int dir;
+    int dir;                    // 회전 방향
+    int totalStep;              // 총 스텝
     float s1AccelAngle;         // s1
     unsigned int accelStep;     // trapezoidal가속 구간 총 스텝
     unsigned int accelStepTri;  // triangular 가속구간 스텝 수
-    unsigned int delayCnt;
+    unsigned int delayCnt;      // 상 지연 시간 발생을 위한 인터럽트 개수
     unsigned arrIdx;
     int i;
 
     dir = (angle > 0) ? 0 : 1; // 입력된 angle이 양수: CW(0), 음수: CCW(1)  
     angle = fabs(angle); 
-    totalStep = (float)angle / STEP_ANGLE; // casting으로 내림 발생, 정수 step 값 작성
+    totalStep = (float)angle / STEP_ANGLE; // 총 스텝 수 = 이동 거리/스텝각
     
-    // clac total step & generate step delay lookup table
+    // calc total step & generate step delay lookup table
     s1AccelAngle = (maxVel*maxVel) / (2.0*accel); // calc s1
     accelStep = MakeVelProfile(maxVel, accel);
 
@@ -227,9 +226,6 @@ void StepMoveVP(float angle, float maxVel, float accel){
             USBacc = (USBvelocity - USBvelPrev) / (delayCnt / TIMER_FRQ);
             USBvelPrev = USBvelocity;
             USBdelayCnt = delayCnt;
-
-            // abnormal behavior if using MACRO_PRINT
-            //MACRO_PRINT((tmp_string, "intCnt on %d_th step: %d \r\n", i, delayCnt));
         }
     }
     else{ // trapezoidal       
@@ -260,16 +256,14 @@ void StepMoveVP(float angle, float maxVel, float accel){
             USBacc = (USBvelocity - USBvelPrev) / (delayCnt / TIMER_FRQ);
             USBvelPrev = USBvelocity;
             USBdelayCnt = delayCnt;
-
-            // abnormal behavior if using MACRO_PRINT
-            //MACRO_PRINT((tmp_string, "intCnt on %d_th step: %d \r\n", i, delayCnt));
         }
     } 
+
+    // clear debugging variables
     USBposition = 0;
     USBacc = 0;
     USBvelPrev = 0;
     USBdelayCnt = 0;
-
 }
 
 
@@ -292,20 +286,19 @@ void main()
     TFlag = 0;
     GIE();
 
-    *FPGALED = 1;           // FPGA LED 1 : ON, 0 : OFF
+    *FPGALED = 1; // FPGA LED 1 : ON, 0 : OFF
 
-    currPhaseIdx = 1; // set the initial phase: A
     currDIR = 0; 
     prevDIR = 0; // init dir
 
     WaitTFlagCnt(10000); // start program after 1sec   
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // verify OneStepMove by running the motor 3 steps in CW with 1 sec delay 
+    // set rotation command
     pos = 360, vel = 2450, acc = 210000;
     if(pos > 0) currPhaseIdx = 0;
     else currPhaseIdx = 1;
 
+    // move motor
     StepMoveVP(pos, vel, acc);
 
     while (1) {} // block to terminate
