@@ -103,11 +103,77 @@ void WaitTFlagCnt(unsigned int cnt)
 	}
 }
 
+int PWMD;
+int PWMH;
+int PWML;
+#define PWMZ 0x800
+void PWMOut(float dutyratio) // 0 <= dutyratio <= 100.0, 대칭되는 PWMH, PWML값 생성
+{
+	float duty; 	
+
+	// dutyratio <-> PWM conversion
+	duty = dutyratio * 0x800 / 100.0;
+
+	// calc PWMH and PWML
+	PWMD = duty;
+	PWMH = PWMZ + PWMD;
+	PWML = PWMZ - PWMD;
+}
+
+enum HALL{LLH=1, LHL, LHH, HLL, HLH, HHL};
+void BLDCDrive(float duty){
+	unsigned int prevHall;
+	unsigned int currHall;
+	int hallCount;
+
+	// set PWM value
+	PWMOut(duty);
+
+	// read current Hall sensor value
+	currHall = *BLDCHALL & 0x7;
+
+	// Hall counter
+	prevHall = 0;
+	hallCount = -1;
+	if(currHall != prevHall){
+		hallCount++;
+		prevHall = currHall;
+	} 
+
+	// set phase considering current Hall sensor value
+	switch(currHall){
+		case LLH:
+			*BLDC2 = PWML;
+			*BLDC1 = PWMZ;
+			*BLDC0 = PWMH;
+			break;
+		case LHL:
+			break;
+		case LHH:
+			break;
+		case HLL:
+			break;
+		case HLH:
+			break;
+		case HHL:
+			break;
+	}
+
+}
+
 #define DEF_LOW		0x000
 #define DEF_HIZ		0x800
 #define DEF_HIGH	0xFFF
+#define DELAY		200
+//#define PWMD	0x7FF
+//#define PWMZ	0x800
+//#define PWML	(PWMZ - PWMD)
+//#define PWMH	(PWMZ + PWMD)
 void main()
 {
+	unsigned int hall;
+	int duty;
+
 	InitEXINTF();	// Asynchronous Bus Initialization
 	InitTimer();	// Timer Initialization
 	InitUART();		// UART Initialization
@@ -126,36 +192,88 @@ void main()
 
 	WaitTFlagCnt(100);
 
+	// 실습 1: 걍 skeleton 구동
 	while (1) {
 		*BLDC2 = DEF_LOW;
 		*BLDC1 = DEF_HIZ;
 		*BLDC0 = DEF_HIGH;
-		WaitTFlagCnt(200);
+		WaitTFlagCnt(DELAY);
 
 		*BLDC2 = DEF_HIZ;
 		*BLDC1 = DEF_LOW;
 		*BLDC0 = DEF_HIGH;
-		WaitTFlagCnt(200);
+		WaitTFlagCnt(DELAY);
 
 		*BLDC2 = DEF_HIGH;
 		*BLDC1 = DEF_LOW;
 		*BLDC0 = DEF_HIZ;
-		WaitTFlagCnt(200);
+		WaitTFlagCnt(DELAY);
 
 		*BLDC2 = DEF_HIGH;
 		*BLDC1 = DEF_HIZ;
 		*BLDC0 = DEF_LOW;
-		WaitTFlagCnt(200);
+		WaitTFlagCnt(DELAY);
 
 		*BLDC2 = DEF_HIZ;
 		*BLDC1 = DEF_HIGH;
 		*BLDC0 = DEF_LOW;
-		WaitTFlagCnt(200);
+		WaitTFlagCnt(DELAY);
 
 		*BLDC2 = DEF_LOW;
 		*BLDC1 = DEF_HIGH;
 		*BLDC0 = DEF_HIZ;
-		WaitTFlagCnt(200);
+		WaitTFlagCnt(DELAY);
+	}
+	
+	// 실습 2: Hall 센서 알아내는 표 채우기
+	while (0) {
+		*BLDC2 = DEF_LOW;
+		*BLDC1 = DEF_HIGH;
+		*BLDC0 = DEF_HIGH;
+		WaitTFlagCnt(DELAY);
+		hall = *BLDCHALL & 0x7;
+		MACRO_PRINT((tmp_string, "LHH: %d\n", hall));
+
+		*BLDC2 = DEF_LOW;
+		*BLDC1 = DEF_LOW;
+		*BLDC0 = DEF_HIGH;
+		WaitTFlagCnt(DELAY);
+		hall = *BLDCHALL & 0x7;
+		MACRO_PRINT((tmp_string, "LLH: %d\n", hall));
+
+		*BLDC2 = DEF_HIGH;
+		*BLDC1 = DEF_LOW;
+		*BLDC0 = DEF_HIGH;
+		WaitTFlagCnt(DELAY);
+		hall = *BLDCHALL & 0x7;
+		MACRO_PRINT((tmp_string, "HLH: %d\n", hall));
+
+		*BLDC2 = DEF_HIGH;
+		*BLDC1 = DEF_LOW;
+		*BLDC0 = DEF_LOW;
+		WaitTFlagCnt(DELAY);
+		hall = *BLDCHALL & 0x7;
+		MACRO_PRINT((tmp_string, "HLL: %d\n", hall));
+
+		*BLDC2 = DEF_HIGH;
+		*BLDC1 = DEF_HIGH;
+		*BLDC0 = DEF_LOW;
+		WaitTFlagCnt(DELAY);
+		hall = *BLDCHALL & 0x7;
+		MACRO_PRINT((tmp_string, "HHL: %d\n", hall));
+
+		*BLDC2 = DEF_LOW;
+		*BLDC1 = DEF_HIGH;
+		*BLDC0 = DEF_LOW;
+		WaitTFlagCnt(DELAY);
+		hall = *BLDCHALL & 0x7;
+		MACRO_PRINT((tmp_string, "LHL: %d\n", hall));
+	}
+
+	// 실습 3: BLDCDrive()로 open-loop 구동
+	while (0) {
+		duty = 100;
+		BLDCDrive(duty);
 	}
 }
 
