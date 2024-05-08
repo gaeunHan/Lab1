@@ -1,6 +1,6 @@
 ;******************************************************************************
 ;* TMS320C6x ANSI C Codegen                                      Version 4.10 *
-;* Date/Time created: Wed May 08 01:13:19 2024                                *
+;* Date/Time created: Wed May 08 11:24:55 2024                                *
 ;******************************************************************************
 
 ;******************************************************************************
@@ -31,7 +31,7 @@ _PWMD:	.usect	.far,4,4
 _PWMH:	.usect	.far,4,4
 	.global	_PWML
 _PWML:	.usect	.far,4,4
-;	acp6x -q -D_FAR_RTS=1 --large_model=3 --version=6701 -m --i_output_file C:\Users\hge42\AppData\Local\Temp\TI26100_2 --template_info_file C:\Users\hge42\AppData\Local\Temp\TI26100_3 --object_file main.obj --opt_shell 9 main.c -as -k -mr1 -ml3 -q -fstemp -fftemp -mv6701 main.c 
+;	acp6x -q -D_FAR_RTS=1 --large_model=3 --version=6701 -m --i_output_file C:\Users\hge42\AppData\Local\Temp\TI20372_2 --template_info_file C:\Users\hge42\AppData\Local\Temp\TI20372_3 --object_file main.obj --opt_shell 9 main.c -as -k -mr1 -ml3 -q -fstemp -fftemp -mv6701 main.c 
 	.sect	".text"
 	.global	_InitEXINTF
 
@@ -361,9 +361,9 @@ L8:
 ;******************************************************************************
 _PWMOut:
 ;** --------------------------------------------------------------------------*
-           ZERO    .D1     A0                ; |115| 
+           MVKL    .S1     0x44ffe000,A0     ; |115| 
 
-           MVKH    .S1     0x45000000,A0     ; |115| 
+           MVKH    .S1     0x44ffe000,A0     ; |115| 
 ||         MV      .S2X    A4,B4             ; |111| 
 
            MPYSP   .M2X    A0,B4,B4          ; |115| 
@@ -386,9 +386,7 @@ _PWMOut:
 
 RL4:       ; CALL OCCURS                     ; |115| 
            DPSP    .L1     A5:A4,A0          ; |115| 
-           MVKL    .S1     _PWML,A3          ; |120| 
-           MVKH    .S1     _PWML,A3          ; |120| 
-           NOP             1
+           NOP             3
            MV      .S2X    A0,B4             ; |115| 
            SPTRUNC .L2     B4,B5             ; |118| 
            STW     .D2T1   A0,*+SP(8)        ; |115| 
@@ -400,18 +398,20 @@ RL4:       ; CALL OCCURS                     ; |115|
            MVKH    .S2     _PWMD,B4          ; |119| 
 ||         STW     .D1T2   B5,*A0            ; |118| 
 
-           LDW     .D2T2   *B4,B5            ; |119| 
+           LDW     .D2T2   *B4,B4            ; |119| 
            MVKL    .S1     _PWMH,A0          ; |119| 
+           MVKL    .S2     _PWMD,B5          ; |120| 
            MVKH    .S1     _PWMH,A0          ; |119| 
-           MVKL    .S2     _PWMD,B4          ; |120| 
-           MVKH    .S2     _PWMD,B4          ; |120| 
-           ADDK    .S2     2048,B5           ; |119| 
-           STW     .D1T2   B5,*A0            ; |119| 
-           LDW     .D2T2   *B4,B4            ; |120| 
-           MVK     .S1     2048,A0           ; |120| 
-           NOP             3
-           SUB     .L1X    A0,B4,A0          ; |120| 
-           STW     .D1T1   A0,*A3            ; |120| 
+           MVKH    .S2     _PWMD,B5          ; |120| 
+           ADDK    .S2     2048,B4           ; |119| 
+           STW     .D1T2   B4,*A0            ; |119| 
+           LDW     .D2T2   *B5,B4            ; |120| 
+           MVK     .S2     2048,B5           ; |120| 
+           MVKL    .S1     _PWML,A0          ; |120| 
+           MVKH    .S1     _PWML,A0          ; |120| 
+           NOP             1
+           SUB     .D2     B5,B4,B4          ; |120| 
+           STW     .D1T2   B4,*A0            ; |120| 
            LDW     .D2T2   *++SP(16),B3      ; |121| 
            NOP             4
            B       .S2     B3                ; |121| 

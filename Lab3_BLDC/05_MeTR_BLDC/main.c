@@ -112,7 +112,7 @@ void PWMOut(float dutyratio) // 0 <= dutyratio <= 100.0, 대칭되는 PWMH, PWML
 	float duty; 	
 
 	// dutyratio <-> PWM conversion
-	duty = dutyratio * 0x800 / 100.0;
+	duty = dutyratio * 0x7FF / 100.0;
 
 	// calc PWMH and PWML
 	PWMD = duty;

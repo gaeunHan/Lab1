@@ -1,10 +1,10 @@
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    1
 
        1                    ;******************************************************************************
        2                    ;* TMS320C6x ANSI C Codegen                                      Version 4.10 *
-       3                    ;* Date/Time created: Wed May 08 01:13:19 2024                                *
+       3                    ;* Date/Time created: Wed May 08 11:24:55 2024                                *
        4                    ;******************************************************************************
        5                    
        6                    ;******************************************************************************
@@ -57,7 +57,7 @@ temp\main.asm                                                        PAGE    1
       53                    
       54 00000018 0200082B             MVKL    .S2     0x1800010,B4      ; |33| 
       55 0000001c 018190A8  ||         MVKL    .S1     0xd00321,A3       ; |21| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    2
 
@@ -116,7 +116,7 @@ temp\main.asm                                                        PAGE    2
      108                    ;* FUNCTION NAME: _InitINT                                                    *
      109                    ;*                                                                            *
      110                    ;*   Regs Modified     : A0,B4                                                *
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    3
 
@@ -175,7 +175,7 @@ temp\main.asm                                                        PAGE    3
      163 000000bc 00148BFA             CMPLTU  .L2     B4,B5,B0          ; |74| 
      164 000000c0 30000710     [!B0]   B       .S1     L2                ; |74| 
      165 000000c4 07BD09C2             SUB     .D2     SP,8,SP           ; |71| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    4
 
@@ -234,7 +234,7 @@ temp\main.asm                                                        PAGE    4
      218                    ;*      Disqualified loop: software pipelining disabled
      219                    ;*----------------------------------------------------------------------------*
      220 00000124           L3:    
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    5
 
@@ -293,7 +293,7 @@ temp\main.asm                                                        PAGE    5
      273 00000190 90000028!    [!A1]   MVKL    .S1     _TFlag,A0         ; |90| 
      274 00000194 90000068!    [!A1]   MVKH    .S1     _TFlag,A0         ; |90| 
      275 00000198 90800264     [!A1]   LDW     .D1T1   *A0,A1            ; |90| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    6
 
@@ -352,7 +352,7 @@ temp\main.asm                                                        PAGE    6
      328 00000200 0180006A'            MVKH    .S2     RL2,B3            ; |102| 
      329 00000204 00004000             NOP             3
      330 00000208           RL2:       ; CALL OCCURS                     ; |102| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    7
 
@@ -389,9 +389,9 @@ temp\main.asm                                                        PAGE    7
      361                    ;******************************************************************************
      362 0000023c           _PWMOut:
      363                    ;** --------------------------------------------------------------------------*
-     364 0000023c 000008C0             ZERO    .D1     A0                ; |115| 
+     364 0000023c 00700028             MVKL    .S1     0x44ffe000,A0     ; |115| 
      365                    
-     366 00000240 00228069             MVKH    .S1     0x45000000,A0     ; |115| 
+     366 00000240 00227FE9             MVKH    .S1     0x44ffe000,A0     ; |115| 
      367 00000244 021011A2  ||         MV      .S2X    A4,B4             ; |111| 
      368                    
      369 00000248 02009E02             MPYSP   .M2X    A0,B4,B4          ; |115| 
@@ -411,39 +411,39 @@ temp\main.asm                                                        PAGE    7
      383 00000274 021811A1  ||         MV      .S1X    B6,A4             ; |115| 
      384 00000278 023C22F5  ||         STW     .D2T1   A4,*+SP(4)        ; |111| 
      385 0000027c 0180006A' ||         MVKH    .S2     RL4,B3            ; |115| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    8
 
      386                    
      387 00000280           RL4:       ; CALL OCCURS                     ; |115| 
      388 00000280 00148138             DPSP    .L1     A5:A4,A0          ; |115| 
-     389 00000284 01800428-            MVKL    .S1     _PWML,A3          ; |120| 
-     390 00000288 01800068-            MVKH    .S1     _PWML,A3          ; |120| 
-     391 0000028c 00000000             NOP             1
-     392 00000290 020011A2             MV      .S2X    A0,B4             ; |115| 
-     393 00000294 0290017A             SPTRUNC .L2     B4,B5             ; |118| 
-     394 00000298 003C42F4             STW     .D2T1   A0,*+SP(8)        ; |115| 
-     395 0000029c 00000028-            MVKL    .S1     _PWMD,A0          ; |118| 
-     396                    
-     397 000002a0 0200002B-            MVKL    .S2     _PWMD,B4          ; |119| 
-     398 000002a4 00000068- ||         MVKH    .S1     _PWMD,A0          ; |118| 
-     399                    
-     400 000002a8 0200006B-            MVKH    .S2     _PWMD,B4          ; |119| 
-     401 000002ac 02800276  ||         STW     .D1T2   B5,*A0            ; |118| 
-     402                    
-     403 000002b0 029002E6             LDW     .D2T2   *B4,B5            ; |119| 
-     404 000002b4 00000228-            MVKL    .S1     _PWMH,A0          ; |119| 
-     405 000002b8 00000068-            MVKH    .S1     _PWMH,A0          ; |119| 
-     406 000002bc 0200002A-            MVKL    .S2     _PWMD,B4          ; |120| 
-     407 000002c0 0200006A-            MVKH    .S2     _PWMD,B4          ; |120| 
-     408 000002c4 02840052             ADDK    .S2     2048,B5           ; |119| 
-     409 000002c8 02800276             STW     .D1T2   B5,*A0            ; |119| 
-     410 000002cc 021002E6             LDW     .D2T2   *B4,B4            ; |120| 
-     411 000002d0 00040028             MVK     .S1     2048,A0           ; |120| 
-     412 000002d4 00004000             NOP             3
-     413 000002d8 001010F8             SUB     .L1X    A0,B4,A0          ; |120| 
-     414 000002dc 000C0274             STW     .D1T1   A0,*A3            ; |120| 
+     389 00000284 00004000             NOP             3
+     390 00000288 020011A2             MV      .S2X    A0,B4             ; |115| 
+     391 0000028c 0290017A             SPTRUNC .L2     B4,B5             ; |118| 
+     392 00000290 003C42F4             STW     .D2T1   A0,*+SP(8)        ; |115| 
+     393 00000294 00000028-            MVKL    .S1     _PWMD,A0          ; |118| 
+     394                    
+     395 00000298 0200002B-            MVKL    .S2     _PWMD,B4          ; |119| 
+     396 0000029c 00000068- ||         MVKH    .S1     _PWMD,A0          ; |118| 
+     397                    
+     398 000002a0 0200006B-            MVKH    .S2     _PWMD,B4          ; |119| 
+     399 000002a4 02800276  ||         STW     .D1T2   B5,*A0            ; |118| 
+     400                    
+     401 000002a8 021002E6             LDW     .D2T2   *B4,B4            ; |119| 
+     402 000002ac 00000228-            MVKL    .S1     _PWMH,A0          ; |119| 
+     403 000002b0 0280002A-            MVKL    .S2     _PWMD,B5          ; |120| 
+     404 000002b4 00000068-            MVKH    .S1     _PWMH,A0          ; |119| 
+     405 000002b8 0280006A-            MVKH    .S2     _PWMD,B5          ; |120| 
+     406 000002bc 02040052             ADDK    .S2     2048,B4           ; |119| 
+     407 000002c0 02000276             STW     .D1T2   B4,*A0            ; |119| 
+     408 000002c4 021402E6             LDW     .D2T2   *B5,B4            ; |120| 
+     409 000002c8 0284002A             MVK     .S2     2048,B5           ; |120| 
+     410 000002cc 00000428-            MVKL    .S1     _PWML,A0          ; |120| 
+     411 000002d0 00000068-            MVKH    .S1     _PWML,A0          ; |120| 
+     412 000002d4 00000000             NOP             1
+     413 000002d8 021488C2             SUB     .D2     B5,B4,B4          ; |120| 
+     414 000002dc 02000276             STW     .D1T2   B4,*A0            ; |120| 
      415 000002e0 01BC92E6             LDW     .D2T2   *++SP(16),B3      ; |121| 
      416 000002e4 00006000             NOP             4
      417 000002e8 000C0362             B       .S2     B3                ; |121| 
@@ -470,7 +470,7 @@ temp\main.asm                                                        PAGE    8
      438 000002f8 00100362             B       .S2     B4                ; |130| 
      439 000002fc 01BCD4F6             STW     .D2T2   B3,*SP--(24)      ; |124| 
      440 00000300 023C22F4             STW     .D2T1   A4,*+SP(4)        ; |124| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE    9
 
@@ -529,7 +529,7 @@ temp\main.asm                                                        PAGE    9
      493                    
      494 00000390 80000C11     [ A1]   B       .S1     L12               ; |148| 
      495 00000394 03004E2A  ||         MVKL    .S2     0x200009c,B6      ; |147| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   10
 
@@ -588,7 +588,7 @@ temp\main.asm                                                        PAGE   10
      548 000003f4 00001362             B       .S2X    A0                ; |177| 
      549 000003f8 01BD14F6             STW     .D2T2   B3,*SP--(32)      ; |173| 
      550 000003fc 0182042A'            MVKL    .S2     RL8,B3            ; |177| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   11
 
@@ -647,7 +647,7 @@ temp\main.asm                                                        PAGE   11
      603 000004a8 00004000             NOP             3
      604 000004ac           RL20:      ; CALL OCCURS                     ; |183| 
      605 000004ac 0003F428             MVK     .S1     2024,A0           ; |184| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   12
 
@@ -706,7 +706,7 @@ temp\main.asm                                                        PAGE   12
      658 00000550 00000068!            MVKH    .S1     _Report,A0        ; |185| 
      659 00000554 00001362             B       .S2X    A0                ; |185| 
      660 00000558 0182B22A'            MVKL    .S2     RL28,B3           ; |185| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   13
 
@@ -765,7 +765,7 @@ temp\main.asm                                                        PAGE   13
      713 000005e4 031002F7  ||         STW     .D2T2   B6,*B4            ; |198| 
      714 000005e8 0182FC2A' ||         MVKL    .S2     RL34,B3           ; |200| 
      715                    
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   14
 
@@ -824,7 +824,7 @@ temp\main.asm                                                        PAGE   14
      768 00000680 00100363             B       .S2     B4                ; |215| 
      769 00000684 00005028  ||         MVKL    .S1     0x20000a0,A0      ; |212| 
      770                    
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   15
 
@@ -883,7 +883,7 @@ temp\main.asm                                                        PAGE   15
      823 00000720 0201006B             MVKH    .S2     0x2000098,B4      ; |224| 
      824 00000724 02900274  ||         STW     .D1T1   A5,*A4            ; |223| 
      825                    
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   16
 
@@ -942,7 +942,7 @@ temp\main.asm                                                        PAGE   16
          00000026 00000025 
          00000027 00000032 
          00000028 00000078 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 01:13:19 2024
+TMS320C6x COFF Assembler         Version 4.10     Wed May 08 11:24:55 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\main.asm                                                        PAGE   17
 
