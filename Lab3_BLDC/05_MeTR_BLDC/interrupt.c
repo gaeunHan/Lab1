@@ -60,30 +60,33 @@ interrupt void ISRextint6()
 
 unsigned int TFlag = 0;
 
+//PID controller
+#define Kp 0.35f
+#define Kd 4.5f
+#define Ki 0.0f
+
+float prevErr = 0.0f, sumErr = 0.0f;
+float uControlInput;
+
 interrupt void ISRtimer0()
 {
-	static unsigned int cnt=0;
-	static float mmag = 0.2f;
+	float y, err;
 
-	float sig0, sig1, sig2, sig3;
+	// get current angle from hall counter
+	y = currAngle;
 
+	// compute err
+	err = refAngle - y;
+
+	// compute PID
+	sumErr += err;
+	uControlInput = (Kp * err) + (Ki * sumErr) + (Kd * (err-prevErr)); 
+	prevErr = err;
+
+	// print usb monotor
+	UMAddData(refAngle, y, err, uControlInput);
+
+	// timer var handling
 	TFlag = 1;
-
-
-	// Example code to use USBMonitor
-	sig0 = mmag*sinf(2.0f*3.141592f/5000.0f*cnt);
-	sig1 = mmag*cosf(2.0f*3.141592f/2000.0f*cnt);
-	sig2 = mmag*sinf(2.0f*3.141592f/2500.0f*cnt);
-	sig3 = mmag*cosf(2.0f*3.141592f/25000.0f*cnt);
-
-	cnt++;
-	if ((cnt%5000) == 0) {
-		mmag += 0.01f;
-		if (mmag > 2.0f) {
-			mmag = 0.2f;
-		}
-	}
-
-	UMAddData(sig0, sig1, sig2, sig3);	// Add 4 data set to USBMon
 }
 
