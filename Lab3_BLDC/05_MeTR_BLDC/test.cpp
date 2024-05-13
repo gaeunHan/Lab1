@@ -17,6 +17,7 @@ void PWMOut(float dutyratio) // 0 <= dutyratio <= 100.0, 대칭되는 PWMH, PWML
 
 	// dutyratio <-> PWM conversion
 	duty = dutyratio * 0x7FF / 100.0;
+    cout << "duty: 0x" << std::hex << duty << endl;
 
 	// calc PWMH and PWML
 	PWMD = duty;
@@ -33,5 +34,9 @@ int main(){
     PWMOut(100);
     cout << "PWMH, PWML: 0x" << std::hex << PWMH << ", 0x" << std::hex << PWML <<endl;
     PWMOut(50);
+    cout << "PWMH, PWML: 0x" << std::hex << PWMH << ", 0x" << std::hex << PWML <<endl;
+    PWMOut(-100);
+    cout << "PWMH, PWML: 0x" << std::hex << PWMH << ", 0x" << std::hex << PWML <<endl;
+    PWMOut(-50);
     cout << "PWMH, PWML: 0x" << std::hex << PWMH << ", 0x" << std::hex << PWML <<endl;
 }

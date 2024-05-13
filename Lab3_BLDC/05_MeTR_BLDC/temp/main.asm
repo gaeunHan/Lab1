@@ -1,6 +1,6 @@
 ;******************************************************************************
 ;* TMS320C6x ANSI C Codegen                                      Version 4.10 *
-;* Date/Time created: Wed May 08 17:21:51 2024                                *
+;* Date/Time created: Mon May 13 23:01:11 2024                                *
 ;******************************************************************************
 
 ;******************************************************************************
@@ -36,7 +36,7 @@ _PWML:	.usect	.far,4,4
 	.align	8
 	.field  	4,32
 	.field  	_hallCount+0,32
-	.field  	-1,32			; _hallCount @ 0
+	.field  	0,32			; _hallCount @ 0
 	.sect	".text"
 	.global	_hallCount
 _hallCount:	.usect	.far,4,4
@@ -55,7 +55,7 @@ _currHall:	.usect	.far,4,4
 _currAngle:	.usect	.far,4,4
 	.global	_refAngle
 _refAngle:	.usect	.far,4,4
-;	acp6x -q -D_FAR_RTS=1 --large_model=3 --version=6701 -m --i_output_file C:\Users\hge42\AppData\Local\Temp\TI18716_2 --template_info_file C:\Users\hge42\AppData\Local\Temp\TI18716_3 --object_file main.obj --opt_shell 9 main.c -as -k -mr1 -ml3 -q -fstemp -fftemp -mv6701 main.c 
+;	acp6x -q -D_FAR_RTS=1 --large_model=3 --version=6701 -m --i_output_file C:\Users\hge42\AppData\Local\Temp\TI21208_2 --template_info_file C:\Users\hge42\AppData\Local\Temp\TI21208_3 --object_file main.obj --opt_shell 9 main.c -as -k -mr1 -ml3 -q -fstemp -fftemp -mv6701 main.c 
 	.sect	".text"
 	.global	_InitEXINTF
 
@@ -398,30 +398,30 @@ _PWMOut:
 ||         STW     .D2T1   A4,*+SP(4)        ; |111| 
 
    [ A1]   STW     .D2T1   A0,*+SP(4)        ; |115| 
-           LDW     .D2T2   *+SP(4),B4        ; |116| 
-           ZERO    .D1     A0                ; |116| 
-           MVKL    .S2     RL4,B3            ; |119| 
-           ZERO    .D2     B5                ; |119| 
-           MVKH    .S2     0x40590000,B5     ; |119| 
-
+           LDW     .D2T2   *+SP(4),B6        ; |116| 
+           ZERO    .D2     B5                ; |116| 
            ZERO    .D2     B4                ; |116| 
-||         CMPLTSP .S2X    B4,A0,B0          ; |116| 
-
+           MVKH    .S2     0xc2c80000,B5     ; |116| 
+           MVKH    .S2     0xc2c80000,B4     ; |116| 
+           CMPLTSP .S2     B6,B5,B0          ; |116| 
    [ B0]   STW     .D2T2   B4,*+SP(4)        ; |116| 
            LDW     .D2T2   *+SP(4),B4        ; |119| 
            MVKL    .S1     0x44ffe000,A0     ; |119| 
            MVKH    .S1     0x44ffe000,A0     ; |119| 
-           MVKH    .S2     RL4,B3            ; |119| 
-           NOP             1
+           MVKL    .S2     RL4,B3            ; |119| 
+           ZERO    .D2     B5                ; |119| 
            MPYSP   .M2X    A0,B4,B4          ; |119| 
-           MVKL    .S2     __divd,B6         ; |119| 
-           MVKH    .S2     __divd,B6         ; |119| 
-           B       .S2     B6                ; |119| 
-           SPDP    .S2     B4,B9:B8          ; |119| 
+           MVKL    .S1     __divd,A0         ; |119| 
+           MVKH    .S1     __divd,A0         ; |119| 
+           B       .S2X    A0                ; |119| 
+           SPDP    .S2     B4,B7:B6          ; |119| 
            ZERO    .D2     B4                ; |119| 
-           NOP             1
-           MV      .S1X    B9,A5             ; |119| 
-           MV      .S1X    B8,A4             ; |119| 
+           MV      .S1X    B6,A4             ; |119| 
+
+           MVKH    .S2     RL4,B3            ; |119| 
+||         MV      .S1X    B7,A5             ; |119| 
+
+           MVKH    .S2     0x40590000,B5     ; |119| 
 RL4:       ; CALL OCCURS                     ; |119| 
            DPSP    .L1     A5:A4,A0          ; |119| 
            NOP             3
@@ -430,11 +430,11 @@ RL4:       ; CALL OCCURS                     ; |119|
            STW     .D2T1   A0,*+SP(8)        ; |119| 
            MVKL    .S1     _PWMD,A0          ; |122| 
 
-           MVKH    .S1     _PWMD,A0          ; |122| 
-||         MVKL    .S2     _PWMD,B4          ; |123| 
+           MVKL    .S2     _PWMD,B4          ; |123| 
+||         MVKH    .S1     _PWMD,A0          ; |122| 
 
-           STW     .D1T2   B5,*A0            ; |122| 
-||         MVKH    .S2     _PWMD,B4          ; |123| 
+           MVKH    .S2     _PWMD,B4          ; |123| 
+||         STW     .D1T2   B5,*A0            ; |122| 
 
            LDW     .D2T2   *B4,B4            ; |123| 
            MVKL    .S1     _PWMH,A0          ; |123| 
@@ -444,8 +444,8 @@ RL4:       ; CALL OCCURS                     ; |119|
            ADDK    .S2     2048,B4           ; |123| 
            STW     .D1T2   B4,*A0            ; |123| 
            LDW     .D2T2   *B5,B4            ; |124| 
-           MVKL    .S1     _PWML,A0          ; |124| 
            MVK     .S2     2048,B5           ; |124| 
+           MVKL    .S1     _PWML,A0          ; |124| 
            MVKH    .S1     _PWML,A0          ; |124| 
            NOP             1
            SUB     .D2     B5,B4,B4          ; |124| 
@@ -550,28 +550,29 @@ RL8:       ; CALL OCCURS                     ; |139|
            CMPEQ   .L2     B4,B7,B1          ; |145| 
    [ B1]   B       .S1     L16               ; |145| 
            CMPGTSP .S2     B5,B6,B0          ; |146| 
-           NOP             4
+   [!B1]   MVKL    .S1     _hallCount,A0     ; |146| 
+           NOP             3
            ; BRANCH OCCURS                   ; |145| 
 ;** --------------------------------------------------------------------------*
+           MVKH    .S1     _hallCount,A0     ; |146| 
+   [ B0]   LDW     .D1T1   *A0,A3            ; |146| 
+   [ B0]   B       .S1     L16               ; |146| 
+           MV      .S2     B5,B4             ; |146| 
+           ZERO    .D2     B5                ; |147| 
+           CMPLTSP .S2     B4,B5,B1          ; |147| 
+   [ B0]   ADD     .D1     1,A3,A3           ; |146| 
 
-           MVKL    .S2     _hallCount,B4     ; |146| 
-||         MVKL    .S1     _hallCount,A0     ; |147| 
+   [ B0]   STW     .D1T1   A3,*A0            ; |146| 
+|| [!B0]   MVKL    .S1     _hallCount,A0     ; |147| 
 
-           MVKH    .S2     _hallCount,B4     ; |146| 
-||         MVKH    .S1     _hallCount,A0     ; |147| 
-
-   [ B0]   LDW     .D2T2   *B4,B5            ; |146| 
-|| [!B0]   LDW     .D1T1   *A0,A3            ; |147| 
-
+           ; BRANCH OCCURS                   ; |146| 
+;** --------------------------------------------------------------------------*
+           MVKH    .S1     _hallCount,A0     ; |147| 
+   [ B1]   LDW     .D1T1   *A0,A3            ; |147| 
            B       .S1     L16               ; |151| 
            NOP             3
-
-   [!B0]   SUB     .D1     A3,1,A3           ; |147| 
-|| [ B0]   ADD     .D2     1,B5,B5           ; |146| 
-
-   [!B0]   STW     .D1T1   A3,*A0            ; |147| 
-|| [ B0]   STW     .D2T2   B5,*B4            ; |146| 
-
+   [ B1]   SUB     .D1     A3,1,A3           ; |147| 
+   [ B1]   STW     .D1T1   A3,*A0            ; |147| 
            ; BRANCH OCCURS                   ; |151| 
 ;** --------------------------------------------------------------------------*
 L9:    
@@ -842,190 +843,255 @@ RL10:      ; CALL OCCURS                     ; |188|
 ;* FUNCTION NAME: _main                                                       *
 ;*                                                                            *
 ;*   Regs Modified     : A0,A1,A2,A3,A4,A5,A6,A7,A8,A9,B0,B1,B2,B3,B4,B5,B6,  *
-;*                           B7,B8,B9,SP                                      *
+;*                           B7,B8,B9,B10,SP                                  *
 ;*   Regs Used         : A0,A1,A2,A3,A4,A5,A6,A7,A8,A9,B0,B1,B2,B3,B4,B5,B6,  *
-;*                           B7,B8,B9,SP                                      *
-;*   Local Frame Size  : 16 Args + 0 Auto + 4 Save = 20 byte                  *
+;*                           B7,B8,B9,B10,SP                                  *
+;*   Local Frame Size  : 16 Args + 4 Auto + 8 Save = 28 byte                  *
 ;******************************************************************************
 _main:
 ;** --------------------------------------------------------------------------*
-           MVKL    .S1     _InitEXINTF,A0    ; |194| 
-           MVKH    .S1     _InitEXINTF,A0    ; |194| 
-           B       .S2X    A0                ; |194| 
-           STW     .D2T2   B3,*SP--(24)      ; |193| 
-           MVKL    .S2     RL12,B3           ; |194| 
-           MVKH    .S2     RL12,B3           ; |194| 
-           NOP             2
-RL12:      ; CALL OCCURS                     ; |194| 
-           MVKL    .S1     _InitTimer,A0     ; |195| 
-           MVKH    .S1     _InitTimer,A0     ; |195| 
+           MVKL    .S1     _InitEXINTF,A0    ; |195| 
+           MVKH    .S1     _InitEXINTF,A0    ; |195| 
            B       .S2X    A0                ; |195| 
-           MVKL    .S2     RL14,B3           ; |195| 
-           MVKH    .S2     RL14,B3           ; |195| 
+           NOP             2
+           STW     .D2T2   B10,*SP--(32)     ; |193| 
+
+           MVKL    .S2     RL12,B3           ; |195| 
+||         STW     .D2T2   B3,*+SP(28)       ; |193| 
+
+           MVKH    .S2     RL12,B3           ; |195| 
+RL12:      ; CALL OCCURS                     ; |195| 
+           MVKL    .S1     _InitTimer,A0     ; |196| 
+           MVKH    .S1     _InitTimer,A0     ; |196| 
+           B       .S2X    A0                ; |196| 
+           MVKL    .S2     RL14,B3           ; |196| 
+           MVKH    .S2     RL14,B3           ; |196| 
            NOP             3
-RL14:      ; CALL OCCURS                     ; |195| 
-           MVKL    .S2     _InitUART,B4      ; |196| 
-           MVKH    .S2     _InitUART,B4      ; |196| 
-           B       .S2     B4                ; |196| 
-           MVKL    .S2     RL16,B3           ; |196| 
-           MVKH    .S2     RL16,B3           ; |196| 
+RL14:      ; CALL OCCURS                     ; |196| 
+           MVKL    .S2     _InitUART,B4      ; |197| 
+           MVKH    .S2     _InitUART,B4      ; |197| 
+           B       .S2     B4                ; |197| 
+           MVKL    .S2     RL16,B3           ; |197| 
+           MVKH    .S2     RL16,B3           ; |197| 
            NOP             3
-RL16:      ; CALL OCCURS                     ; |196| 
-           MVKL    .S1     _InitINT,A0       ; |197| 
-           MVKH    .S1     _InitINT,A0       ; |197| 
-           B       .S2X    A0                ; |197| 
-           MVKL    .S2     RL18,B3           ; |197| 
-           MVKH    .S2     RL18,B3           ; |197| 
-           NOP             3
-RL18:      ; CALL OCCURS                     ; |197| 
-           MVKL    .S1     _InitUSBMon,A0    ; |198| 
-           MVKH    .S1     _InitUSBMon,A0    ; |198| 
+RL16:      ; CALL OCCURS                     ; |197| 
+           MVKL    .S1     _InitINT,A0       ; |198| 
+           MVKH    .S1     _InitINT,A0       ; |198| 
            B       .S2X    A0                ; |198| 
-           MVKL    .S2     RL20,B3           ; |198| 
-           MVKH    .S2     RL20,B3           ; |198| 
+           MVKL    .S2     RL18,B3           ; |198| 
+           MVKH    .S2     RL18,B3           ; |198| 
            NOP             3
-RL20:      ; CALL OCCURS                     ; |198| 
-           MVKL    .S1     _sprintf,A0       ; |200| 
-
-           MVKH    .S1     _sprintf,A0       ; |200| 
-||         MVKL    .S2     _tmp_string,B5    ; |200| 
-
-           B       .S2X    A0                ; |200| 
-           MVKL    .S2     RL22,B3           ; |200| 
-           MVKH    .S2     _tmp_string,B5    ; |200| 
-           MVKL    .S2     SL1+0,B4          ; |200| 
-           MVKH    .S2     SL1+0,B4          ; |200| 
-
-           MVKH    .S2     RL22,B3           ; |200| 
-||         MV      .S1X    B5,A4             ; |200| 
-||         STW     .D2T2   B4,*+SP(4)        ; |200| 
-
-RL22:      ; CALL OCCURS                     ; |200| 
-           MVKL    .S1     _Report,A0        ; |200| 
-           MVKH    .S1     _Report,A0        ; |200| 
-           B       .S2X    A0                ; |200| 
-           MVKL    .S2     RL24,B3           ; |200| 
-           MVKH    .S2     RL24,B3           ; |200| 
+RL18:      ; CALL OCCURS                     ; |198| 
+           MVKL    .S1     _InitUSBMon,A0    ; |199| 
+           MVKH    .S1     _InitUSBMon,A0    ; |199| 
+           B       .S2X    A0                ; |199| 
+           MVKL    .S2     RL20,B3           ; |199| 
+           MVKH    .S2     RL20,B3           ; |199| 
            NOP             3
-RL24:      ; CALL OCCURS                     ; |200| 
-           MVK     .S1     2024,A0           ; |201| 
-
+RL20:      ; CALL OCCURS                     ; |199| 
            MVKL    .S1     _sprintf,A0       ; |201| 
-||         STW     .D2T1   A0,*+SP(8)        ; |201| 
 
            MVKH    .S1     _sprintf,A0       ; |201| 
-||         MVKL    .S2     SL2+0,B4          ; |201| 
+||         MVKL    .S2     SL1+0,B4          ; |201| 
 
            B       .S2X    A0                ; |201| 
-           MVKH    .S2     SL2+0,B4          ; |201| 
+           MVKH    .S2     SL1+0,B4          ; |201| 
            MVKL    .S2     _tmp_string,B5    ; |201| 
+           MVKL    .S2     RL22,B3           ; |201| 
            MVKH    .S2     _tmp_string,B5    ; |201| 
-           MVKL    .S2     RL26,B3           ; |201| 
 
            STW     .D2T2   B4,*+SP(4)        ; |201| 
-||         MVKH    .S2     RL26,B3           ; |201| 
+||         MVKH    .S2     RL22,B3           ; |201| 
 ||         MV      .S1X    B5,A4             ; |201| 
 
-RL26:      ; CALL OCCURS                     ; |201| 
+RL22:      ; CALL OCCURS                     ; |201| 
            MVKL    .S1     _Report,A0        ; |201| 
            MVKH    .S1     _Report,A0        ; |201| 
            B       .S2X    A0                ; |201| 
-           MVKL    .S2     RL28,B3           ; |201| 
-           MVKH    .S2     RL28,B3           ; |201| 
+           MVKL    .S2     RL24,B3           ; |201| 
+           MVKH    .S2     RL24,B3           ; |201| 
            NOP             3
-RL28:      ; CALL OCCURS                     ; |201| 
-           MVKL    .S2     SL3+0,B4          ; |202| 
-           MVKL    .S2     0x20003fc,B5      ; |202| 
-           MVKH    .S2     SL3+0,B4          ; |202| 
-
-           MVKH    .S2     0x20003fc,B5      ; |202| 
-||         STW     .D2T2   B4,*+SP(4)        ; |202| 
-
-           LDW     .D2T2   *B5,B4            ; |202| 
-           MVKL    .S1     0x20003fc,A0      ; |202| 
-           MVKH    .S1     0x20003fc,A0      ; |202| 
-           MVKL    .S1     _tmp_string,A4    ; |202| 
-           MVKL    .S2     RL30,B3           ; |202| 
-           EXTU    .S2     B4,16,24,B4       ; |202| 
-           STW     .D2T2   B4,*+SP(8)        ; |202| 
+RL24:      ; CALL OCCURS                     ; |201| 
+           MVK     .S1     2024,A0           ; |202| 
 
            MVKL    .S1     _sprintf,A0       ; |202| 
-||         LDW     .D1T1   *A0,A3            ; |202| 
+||         STW     .D2T1   A0,*+SP(8)        ; |202| 
 
            MVKH    .S1     _sprintf,A0       ; |202| 
+||         MVKL    .S2     _tmp_string,B5    ; |202| 
+
            B       .S2X    A0                ; |202| 
-           MVKH    .S2     RL30,B3           ; |202| 
-           MVKH    .S1     _tmp_string,A4    ; |202| 
-           NOP             1
-           EXTU    .S1     A3,24,24,A3       ; |202| 
-           STW     .D2T1   A3,*+SP(12)       ; |202| 
-RL30:      ; CALL OCCURS                     ; |202| 
+           MVKH    .S2     _tmp_string,B5    ; |202| 
+           MVKL    .S2     SL2+0,B4          ; |202| 
+           MVKL    .S2     RL26,B3           ; |202| 
+           MVKH    .S2     SL2+0,B4          ; |202| 
+
+           MVKH    .S2     RL26,B3           ; |202| 
+||         STW     .D2T2   B4,*+SP(4)        ; |202| 
+||         MV      .S1X    B5,A4             ; |202| 
+
+RL26:      ; CALL OCCURS                     ; |202| 
            MVKL    .S1     _Report,A0        ; |202| 
            MVKH    .S1     _Report,A0        ; |202| 
            B       .S2X    A0                ; |202| 
-           MVKL    .S2     RL32,B3           ; |202| 
-           MVKH    .S2     RL32,B3           ; |202| 
+           MVKL    .S2     RL28,B3           ; |202| 
+           MVKH    .S2     RL28,B3           ; |202| 
            NOP             3
-RL32:      ; CALL OCCURS                     ; |202| 
+RL28:      ; CALL OCCURS                     ; |202| 
+           MVKL    .S2     SL3+0,B4          ; |203| 
+           MVKL    .S2     0x20003fc,B5      ; |203| 
+           MVKH    .S2     SL3+0,B4          ; |203| 
+
+           MVKH    .S2     0x20003fc,B5      ; |203| 
+||         STW     .D2T2   B4,*+SP(4)        ; |203| 
+
+           LDW     .D2T2   *B5,B4            ; |203| 
+           MVKL    .S1     0x20003fc,A0      ; |203| 
+           MVKH    .S1     0x20003fc,A0      ; |203| 
+           MVKL    .S1     _tmp_string,A4    ; |203| 
+           MVKL    .S2     RL30,B3           ; |203| 
+           EXTU    .S2     B4,16,24,B4       ; |203| 
+           STW     .D2T2   B4,*+SP(8)        ; |203| 
+
+           MVKL    .S1     _sprintf,A0       ; |203| 
+||         LDW     .D1T1   *A0,A3            ; |203| 
+
+           MVKH    .S1     _sprintf,A0       ; |203| 
+           B       .S2X    A0                ; |203| 
+           MVKH    .S1     _tmp_string,A4    ; |203| 
+           MVKH    .S2     RL30,B3           ; |203| 
+           NOP             1
+           EXTU    .S1     A3,24,24,A3       ; |203| 
+           STW     .D2T1   A3,*+SP(12)       ; |203| 
+RL30:      ; CALL OCCURS                     ; |203| 
+           MVKL    .S1     _Report,A0        ; |203| 
+           MVKH    .S1     _Report,A0        ; |203| 
+           B       .S2X    A0                ; |203| 
+           MVKL    .S2     RL32,B3           ; |203| 
+           MVKH    .S2     RL32,B3           ; |203| 
+           NOP             3
+RL32:      ; CALL OCCURS                     ; |203| 
 ;** --------------------------------------------------------------------------*
-           MVKL    .S1     _GIE,A0           ; |206| 
-           MVKH    .S1     _GIE,A0           ; |206| 
-           B       .S2X    A0                ; |206| 
-           MVKL    .S2     _TFlag,B4         ; |204| 
-           MVKL    .S2     RL34,B3           ; |206| 
-           MVKH    .S2     _TFlag,B4         ; |204| 
-           ZERO    .D2     B5                ; |204| 
+           MVKL    .S1     _GIE,A0           ; |207| 
+           MVKH    .S1     _GIE,A0           ; |207| 
+           B       .S2X    A0                ; |207| 
+           MVKL    .S2     _TFlag,B4         ; |205| 
+           MVKL    .S2     RL34,B3           ; |207| 
+           MVKH    .S2     _TFlag,B4         ; |205| 
+           ZERO    .D2     B5                ; |205| 
 
-           STW     .D2T2   B5,*B4            ; |204| 
-||         MVKH    .S2     RL34,B3           ; |206| 
+           STW     .D2T2   B5,*B4            ; |205| 
+||         MVKH    .S2     RL34,B3           ; |207| 
 
-RL34:      ; CALL OCCURS                     ; |206| 
-           MVKL    .S2     _WaitTFlagCnt,B5  ; |210| 
-           MVKH    .S2     _WaitTFlagCnt,B5  ; |210| 
-           B       .S2     B5                ; |210| 
-           MVKL    .S2     0x2000094,B4      ; |208| 
-           MVKL    .S2     RL36,B3           ; |210| 
-           MVKH    .S2     0x2000094,B4      ; |208| 
-           MVK     .S1     1,A0              ; |208| 
+RL34:      ; CALL OCCURS                     ; |207| 
+           MVKL    .S2     _WaitTFlagCnt,B5  ; |211| 
+           MVKH    .S2     _WaitTFlagCnt,B5  ; |211| 
+           B       .S2     B5                ; |211| 
+           MVKL    .S2     0x2000094,B4      ; |209| 
+           MVKL    .S2     RL36,B3           ; |211| 
+           MVKH    .S2     0x2000094,B4      ; |209| 
+           MVK     .S1     1,A0              ; |209| 
 
-           STW     .D2T1   A0,*B4            ; |208| 
-||         MVKH    .S2     RL36,B3           ; |210| 
-||         MVK     .S1     0x64,A4           ; |210| 
+           STW     .D2T1   A0,*B4            ; |209| 
+||         MVKH    .S2     RL36,B3           ; |211| 
+||         MVK     .S1     0x64,A4           ; |211| 
 
-RL36:      ; CALL OCCURS                     ; |210| 
+RL36:      ; CALL OCCURS                     ; |211| 
 
-           ZERO    .D2     B4                ; |212| 
-||         MVKL    .S1     _refAngle,A0      ; |212| 
+           ZERO    .D2     B4                ; |213| 
+||         MVKL    .S1     _refAngle,A0      ; |213| 
 
-           MVKH    .S2     0x43b40000,B4     ; |212| 
-||         MVKH    .S1     _refAngle,A0      ; |212| 
+           MVKH    .S2     0x43b40000,B4     ; |213| 
+||         MVKH    .S1     _refAngle,A0      ; |213| 
 
-           STW     .D1T2   B4,*A0            ; |212| 
-           MVKL    .S2     _BLDCDrive,B4     ; |215| 
+           STW     .D1T2   B4,*A0            ; |213| 
+;** --------------------------------------------------------------------------*
+;**   BEGIN LOOP L22
+;** --------------------------------------------------------------------------*
+L22:    
 
-           MVKH    .S2     _BLDCDrive,B4     ; |215| 
-||         MVKL    .S1     _uControlInput,A0 ; |215| 
+           ZERO    .D2     B4                ; |216| 
+||         MVK     .S2     10000,B5          ; |216| 
 
+           CMPLT   .L2     B4,B5,B0          ; |216| 
+   [!B0]   B       .S1     L24               ; |216| 
+
+           STW     .D2T2   B4,*+SP(20)       ; |216| 
+||         MVK     .S2     10000,B10         ; |218| 
+
+   [!B0]   MVKL    .S2     SL4+0,B4          ; |219| 
+
+   [!B0]   MVKH    .S2     SL4+0,B4          ; |219| 
+|| [!B0]   MVKL    .S1     _currAngle,A0     ; |219| 
+
+   [!B0]   STW     .D2T2   B4,*+SP(4)        ; |219| 
+|| [!B0]   MVKH    .S1     _currAngle,A0     ; |219| 
+
+   [!B0]   LDW     .D1T1   *A0,A0            ; |219| 
+           ; BRANCH OCCURS                   ; |216| 
 ;*----------------------------------------------------------------------------*
 ;*   SOFTWARE PIPELINE INFORMATION
 ;*      Disqualified loop: software pipelining disabled
 ;*----------------------------------------------------------------------------*
-L22:    
+L23:    
+           MVKL    .S2     _BLDCDrive,B4     ; |217| 
 
-           B       .S2     B4                ; |215| 
-||         MVKH    .S1     _uControlInput,A0 ; |215| 
+           MVKH    .S2     _BLDCDrive,B4     ; |217| 
+||         MVKL    .S1     _uControlInput,A0 ; |217| 
 
-           LDW     .D1T1   *A0,A4            ; |215| 
-           MVKL    .S2     RL38,B3           ; |215| 
-           MVKH    .S2     RL38,B3           ; |215| 
+           B       .S2     B4                ; |217| 
+||         MVKH    .S1     _uControlInput,A0 ; |217| 
+
+           LDW     .D1T1   *A0,A4            ; |217| 
+           MVKL    .S2     RL38,B3           ; |217| 
+           MVKH    .S2     RL38,B3           ; |217| 
            NOP             2
-RL38:      ; CALL OCCURS                     ; |215| 
-           B       .S1     L22               ; |216| 
-           MVKL    .S2     _BLDCDrive,B4     ; |215| 
-           MVKL    .S1     _uControlInput,A0 ; |215| 
-           MVKH    .S2     _BLDCDrive,B4     ; |215| 
-           NOP             2
-           ; BRANCH OCCURS                   ; |216| 
+RL38:      ; CALL OCCURS                     ; |217| 
+           LDW     .D2T2   *+SP(20),B4       ; |218| 
+           NOP             4
+           ADD     .D2     1,B4,B4           ; |218| 
+           CMPLT   .L2     B4,B10,B0         ; |218| 
+   [ B0]   B       .S1     L23               ; |218| 
+           NOP             4
+           STW     .D2T2   B4,*+SP(20)       ; |218| 
+           ; BRANCH OCCURS                   ; |218| 
+;** --------------------------------------------------------------------------*
+           MVKL    .S2     SL4+0,B4          ; |219| 
+
+           MVKH    .S2     SL4+0,B4          ; |219| 
+||         MVKL    .S1     _currAngle,A0     ; |219| 
+
+           STW     .D2T2   B4,*+SP(4)        ; |219| 
+||         MVKH    .S1     _currAngle,A0     ; |219| 
+
+           LDW     .D1T1   *A0,A0            ; |219| 
+;** --------------------------------------------------------------------------*
+L24:    
+           MVKL    .S2     RL40,B3           ; |219| 
+           MVKL    .S2     _tmp_string,B4    ; |219| 
+           MVKH    .S2     _tmp_string,B4    ; |219| 
+           MV      .S1X    B4,A4             ; |219| 
+           SPDP    .S1     A0,A1:A0          ; |219| 
+           MVKH    .S2     RL40,B3           ; |219| 
+
+           MVKL    .S1     _sprintf,A0       ; |219| 
+||         STW     .D2T1   A0,*+SP(8)        ; |219| 
+
+           MVKH    .S1     _sprintf,A0       ; |219| 
+           B       .S2X    A0                ; |219| 
+           STW     .D2T1   A1,*+SP(12)       ; |219| 
+           NOP             4
+RL40:      ; CALL OCCURS                     ; |219| 
+           MVKL    .S2     _Report,B4        ; |219| 
+           MVKH    .S2     _Report,B4        ; |219| 
+           B       .S2     B4                ; |219| 
+           MVKL    .S2     RL42,B3           ; |219| 
+           MVKH    .S2     RL42,B3           ; |219| 
+           NOP             3
+RL42:      ; CALL OCCURS                     ; |219| 
+           B       .S1     L22               ; |220| 
+           NOP             5
+           ; BRANCH OCCURS                   ; |220| 
 
 
 ;******************************************************************************
@@ -1035,6 +1101,7 @@ RL38:      ; CALL OCCURS                     ; |215|
 SL1:	.string	13,10,13,10,0
 SL2:	.string	"Mechatronics Course %d",13,10,0
 SL3:	.string	"FPGA Ver%2x.%02x",13,10,0
+SL4:	.string	"currAngle: %.2f",13,10,13,10,0
 ;******************************************************************************
 ;* UNDEFINED EXTERNAL REFERENCES                                              *
 ;******************************************************************************

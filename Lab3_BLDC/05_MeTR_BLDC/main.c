@@ -107,13 +107,13 @@ int PWMD;
 int PWMH;
 int PWML;
 #define PWMZ 0x800
-void PWMOut(float dutyratio) // 0 <= dutyratio <= 100.0, 대칭되는 PWMH, PWML값 생성
+void PWMOut(float dutyratio) // -100.0 <= dutyratio <= 100.0, 대칭되는 PWMH, PWML값 생성
 {
 	float PWMduty; 	
 
 	// saturation with 0.5 safety zone
 	if(dutyratio > 100) dutyratio = 100;
-	if(dutyratio < 0) dutyratio = 0;
+	if(dutyratio < -100) dutyratio = -100;
 
 	// dutyratio <-> PWM conversion
 	PWMduty = dutyratio * 0x7FF / 100.0;	
@@ -129,7 +129,7 @@ float angleFromHallCount(int hallCnt){
 	return hallCnt * 360.0 / 324.0;
 }
 
-int hallCount = -1;
+int hallCount = 0;
 unsigned int prevHall = 0;
 unsigned int currHall;
 float currAngle;
@@ -144,7 +144,7 @@ void BLDCDrive(float duty){
 	// Hall counter
 	if(currHall != prevHall){
 		if(duty > 0) hallCount++;
-		else hallCount--;
+		else if(duty < 0) hallCount--;
 	}	
 
 	// set phase considering current Hall sensor value
@@ -191,6 +191,7 @@ void BLDCDrive(float duty){
 float refAngle;
 void main()
 {
+	int i;
 	InitEXINTF();	// Asynchronous Bus Initialization
 	InitTimer();	// Timer Initialization
 	InitUART();		// UART Initialization
@@ -212,7 +213,10 @@ void main()
 	refAngle = 360.0;
 	// drive motor by reference angle
 	while (1) {
-		BLDCDrive(uControlInput);
+		for(i=0; i<10000; i++){
+			BLDCDrive(uControlInput);
+		}
+		MACRO_PRINT((tmp_string, "currAngle: %.2f\r\n\r\n", currAngle));
 	}
 	
 }
