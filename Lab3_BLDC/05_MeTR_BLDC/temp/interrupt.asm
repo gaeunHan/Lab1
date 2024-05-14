@@ -1,6 +1,6 @@
 ;******************************************************************************
 ;* TMS320C6x ANSI C Codegen                                      Version 4.10 *
-;* Date/Time created: Wed May 08 17:22:44 2024                                *
+;* Date/Time created: Tue May 14 12:18:59 2024                                *
 ;******************************************************************************
 
 ;******************************************************************************
@@ -54,7 +54,7 @@ _prevErr:	.usect	.far,4,4
 _sumErr:	.usect	.far,4,4
 	.global	_uControlInput
 _uControlInput:	.usect	.far,4,4
-;	acp6x -q -D_FAR_RTS=1 --large_model=3 --version=6701 -m --i_output_file C:\Users\hge42\AppData\Local\Temp\TI22376_2 --template_info_file C:\Users\hge42\AppData\Local\Temp\TI22376_3 --object_file interrupt.obj --opt_shell 9 interrupt.c -as -k -mr1 -ml3 -q -fstemp -fftemp -mv6701 interrupt.c 
+;	acp6x -q -D_FAR_RTS=1 --large_model=3 --version=6701 -m --i_output_file C:\Users\hge42\AppData\Local\Temp\TI2884_2 --template_info_file C:\Users\hge42\AppData\Local\Temp\TI2884_3 --object_file interrupt.obj --opt_shell 9 interrupt.c -as -k -mr1 -ml3 -q -fstemp -fftemp -mv6701 interrupt.c 
 	.sect	".text"
 	.global	_ISRextint4
 
@@ -459,8 +459,7 @@ L8:
 _ISRtimer0:
 ;** --------------------------------------------------------------------------*
            STW     .D2T2   B9,*SP--(96)      ; |72| 
-           STW     .D2T1   A0,*+SP(20)       ; |72| 
-           STW     .D2T2   B8,*+SP(92)       ; |72| 
+           STW     .D2T2   B4,*+SP(76)       ; |72| 
            STW     .D2T2   B7,*+SP(88)       ; |72| 
            STW     .D2T2   B6,*+SP(84)       ; |72| 
            STW     .D2T2   B5,*+SP(80)       ; |72| 
@@ -476,14 +475,15 @@ _ISRtimer0:
            STW     .D2T1   A4,*+SP(36)       ; |72| 
            STW     .D2T1   A3,*+SP(32)       ; |72| 
            STW     .D2T1   A2,*+SP(28)       ; |72| 
-
            STW     .D2T1   A1,*+SP(24)       ; |72| 
-||         MVKL    .S1     _currAngle,A0     ; |76| 
 
-           MVKH    .S1     _currAngle,A0     ; |76| 
-||         STW     .D2T2   B4,*+SP(76)       ; |72| 
+           STW     .D2T1   A0,*+SP(20)       ; |72| 
+||         MVKL    .S2     _currAngle,B4     ; |76| 
 
-           LDW     .D1T2   *A0,B4            ; |76| 
+           MVKH    .S2     _currAngle,B4     ; |76| 
+||         STW     .D2T2   B8,*+SP(92)       ; |72| 
+
+           LDW     .D2T2   *B4,B4            ; |76| 
            MVKL    .S1     _refAngle,A0      ; |79| 
            MVKH    .S1     _refAngle,A0      ; |79| 
            MVKL    .S2     RL2,B3            ; |87| 
@@ -491,59 +491,63 @@ _ISRtimer0:
            STW     .D2T2   B4,*+SP(4)        ; |76| 
            LDW     .D1T1   *A0,A0            ; |79| 
            NOP             4
-           SUBSP   .L1X    A0,B4,A0          ; |79| 
-           MVKL    .S2     _sumErr,B4        ; |82| 
-           MVKH    .S2     _sumErr,B4        ; |82| 
+           SUBSP   .L2X    A0,B4,B4          ; |79| 
+           MVKL    .S1     _sumErr,A0        ; |82| 
+           MVKH    .S1     _sumErr,A0        ; |82| 
            NOP             1
-           STW     .D2T1   A0,*+SP(8)        ; |79| 
-           LDW     .D2T2   *B4,B5            ; |82| 
+           STW     .D2T2   B4,*+SP(8)        ; |79| 
+           LDW     .D1T1   *A0,A3            ; |82| 
            NOP             4
-           ADDSP   .L2X    A0,B5,B5
-           MVKL    .S1     _sumErr,A0        ; |83| 
-           MVKH    .S1     _sumErr,A0        ; |83| 
+           ADDSP   .L1X    B4,A3,A3          ; |82| 
+           MVKL    .S2     _prevErr,B4       ; |83| 
+           MVKH    .S2     _prevErr,B4       ; |83| 
            NOP             1
 
-           MVKL    .S2     _prevErr,B4       ; |83| 
-||         STW     .D2T2   B5,*B4            ; |82| 
+           MVKL    .S1     _sumErr,A0        ; |83| 
+||         STW     .D1T1   A3,*A0            ; |82| 
 
-           MVKH    .S2     _prevErr,B4       ; |83| 
-||         LDW     .D2T2   *+SP(8),B5        ; |83| 
+           MVKH    .S1     _sumErr,A0        ; |83| 
+||         LDW     .D2T2   *+SP(8),B7        ; |83| 
 
            LDW     .D2T2   *B4,B6            ; |83| 
-           LDW     .D1T1   *A0,A3            ; |83| 
-           MVKL    .S2     0x3eb33333,B4     ; |83| 
+||         LDW     .D1T1   *A0,A3            ; |83| 
+
            ZERO    .D1     A0                ; |83| 
-           MV      .D2     B5,B7             ; |83| 
+           ZERO    .D2     B4                ; |83| 
+           MVKH    .S1     0x42c80000,A0     ; |83| 
 
-           SUBSP   .L2     B5,B6,B5          ; |83| 
-||         MVKH    .S2     0x3eb33333,B4     ; |83| 
+           MPYSP   .M2X    B7,A0,B7          ; |83| 
+||         MV      .D2     B7,B5             ; |83| 
+||         MVKH    .S2     0x41200000,B4     ; |83| 
 
-           MPYSP   .M1     A3,A0,A3          ; |83| 
-||         MPYSP   .M2     B7,B4,B6          ; |83| 
+           SUBSP   .L2     B5,B6,B4          ; |83| 
+||         MPYSP   .M2X    A3,B4,B5          ; |83| 
 
-           MVKH    .S1     0x40900000,A0     ; |83| 
-           NOP             1
-           MPYSP   .M2X    B5,A0,B4          ; |83| 
-           ADDSP   .L2X    A3,B6,B5          ; |83| 
-           MVKL    .S1     _uControlInput,A0 ; |83| 
-           MVKH    .S1     _uControlInput,A0 ; |83| 
-           MVKL    .S2     _uControlInput,B6 ; |87| 
-           ADDSP   .L2     B4,B5,B4          ; |83| 
-           MVKH    .S2     _uControlInput,B6 ; |87| 
-           NOP             2
-           STW     .D1T2   B4,*A0            ; |83| 
-           LDW     .D2T2   *+SP(8),B7        ; |84| 
-           MVKL    .S2     _UMAddData,B5     ; |87| 
+           ZERO    .D1     A0                ; |83| 
+           MVKH    .S1     0x41200000,A0     ; |83| 
+           MVKL    .S2     _uSat,B6          ; |87| 
+
+           ADDSP   .L2     B5,B7,B5          ; |83| 
+||         MPYSP   .M2X    B4,A0,B4          ; |83| 
+
+           MVKL    .S1     _uControlInput,A3 ; |87| 
+           MVKH    .S1     _uControlInput,A3 ; |87| 
+           MVKL    .S1     _refAngle,A0      ; |87| 
+           ADDSP   .L2     B4,B5,B5          ; |83| 
+           MVKL    .S2     _uControlInput,B4 ; |83| 
+           MVKH    .S2     _uControlInput,B4 ; |83| 
+           MVKH    .S2     _uSat,B6          ; |87| 
+           STW     .D2T2   B5,*B4            ; |83| 
+           LDW     .D2T1   *+SP(8),A4        ; |84| 
            MVKL    .S2     _prevErr,B4       ; |84| 
            MVKH    .S2     _prevErr,B4       ; |84| 
+           MVKL    .S2     _UMAddData,B5     ; |87| 
            MVKH    .S2     _UMAddData,B5     ; |87| 
-           STW     .D2T2   B7,*B4            ; |84| 
+           STW     .D2T1   A4,*B4            ; |84| 
 
-           MVKL    .S1     _refAngle,A0      ; |87| 
-||         LDW     .D2T2   *B6,B6            ; |87| 
-
-           MVKH    .S1     _refAngle,A0      ; |87| 
-||         LDW     .D2T1   *+SP(8),A6        ; |87| 
+           LDW     .D2T2   *B6,B6            ; |87| 
+||         MVKH    .S1     _refAngle,A0      ; |87| 
+||         LDW     .D1T1   *A3,A6            ; |87| 
 ||         B       .S2     B5                ; |87| 
 
            LDW     .D1T1   *A0,A4            ; |87| 
@@ -551,14 +555,10 @@ _ISRtimer0:
 
            NOP             4
 RL2:       ; CALL OCCURS                     ; |87| 
-           MVKL    .S1     _TFlag,A0         ; |90| 
-
-           MVK     .S2     1,B4              ; |90| 
-||         MVKH    .S1     _TFlag,A0         ; |90| 
-
-           STW     .D1T2   B4,*A0            ; |90| 
-           LDW     .D2T2   *+SP(76),B4       ; |91| 
-           LDW     .D2T1   *+SP(20),A0       ; |91| 
+           MVKL    .S1     _TFlag,A3         ; |90| 
+           MVKH    .S1     _TFlag,A3         ; |90| 
+           MVK     .S1     1,A0              ; |90| 
+           STW     .D1T1   A0,*A3            ; |90| 
            LDW     .D2T2   *+SP(92),B8       ; |91| 
            LDW     .D2T2   *+SP(68),B2       ; |91| 
            LDW     .D2T2   *+SP(64),B1       ; |91| 
@@ -569,14 +569,16 @@ RL2:       ; CALL OCCURS                     ; |87|
            LDW     .D2T1   *+SP(40),A5       ; |91| 
            LDW     .D2T1   *+SP(28),A2       ; |91| 
            LDW     .D2T1   *+SP(24),A1       ; |91| 
+           LDW     .D2T1   *+SP(32),A3       ; |91| 
+           LDW     .D2T1   *+SP(20),A0       ; |91| 
+           LDW     .D2T2   *+SP(80),B5       ; |91| 
+           LDW     .D2T2   *+SP(88),B7       ; |91| 
            LDW     .D2T2   *+SP(72),B3       ; |91| 
-           LDW     .D2T2   *+SP(84),B6       ; |91| 
+           LDW     .D2T2   *+SP(76),B4       ; |91| 
            LDW     .D2T1   *+SP(44),A6       ; |91| 
            LDW     .D2T1   *+SP(36),A4       ; |91| 
-           LDW     .D2T2   *+SP(88),B7       ; |91| 
-           LDW     .D2T2   *+SP(80),B5       ; |91| 
 
-           LDW     .D2T1   *+SP(32),A3       ; |91| 
+           LDW     .D2T2   *+SP(84),B6       ; |91| 
 ||         B       .S2     IRP               ; |91| 
 
            LDW     .D2T2   *++SP(96),B9      ; |91| 
@@ -593,3 +595,4 @@ RL2:       ; CALL OCCURS                     ; |87|
 	.global	_respacket
 	.global	_currAngle
 	.global	_refAngle
+	.global	_uSat

@@ -1,10 +1,10 @@
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 17:22:44 2024
+TMS320C6x COFF Assembler         Version 4.10     Tue May 14 12:18:59 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    1
 
        1                    ;******************************************************************************
        2                    ;* TMS320C6x ANSI C Codegen                                      Version 4.10 *
-       3                    ;* Date/Time created: Wed May 08 17:22:44 2024                                *
+       3                    ;* Date/Time created: Tue May 14 12:18:59 2024                                *
        4                    ;******************************************************************************
        5                    
        6                    ;******************************************************************************
@@ -57,7 +57,7 @@ temp\interrupt.asm                                                   PAGE    1
       53                            .global _sumErr
       54 00000008           _sumErr:        .usect  .far,4,4
       55                            .global _uControlInput
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 17:22:44 2024
+TMS320C6x COFF Assembler         Version 4.10     Tue May 14 12:18:59 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    2
 
@@ -116,7 +116,7 @@ temp\interrupt.asm                                                   PAGE    2
      108                    
      109 00000018                   .sect   ".text"
      110                            .global _c_int09
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 17:22:44 2024
+TMS320C6x COFF Assembler         Version 4.10     Tue May 14 12:18:59 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    3
 
@@ -175,7 +175,7 @@ temp\interrupt.asm                                                   PAGE    3
      163 00000040 01BE02F6             STW     .D2T2   B3,*+SP(64)       ; |22| 
      164 00000044 013DE2F6             STW     .D2T2   B2,*+SP(60)       ; |22| 
      165 00000048 00BDC2F6             STW     .D2T2   B1,*+SP(56)       ; |22| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 17:22:44 2024
+TMS320C6x COFF Assembler         Version 4.10     Tue May 14 12:18:59 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    4
 
@@ -234,7 +234,7 @@ temp\interrupt.asm                                                   PAGE    4
      218 000000e8 820428C3     [ A1]   ZERO    .D2     B4                ; |28| 
      219 000000ec 82803E2B! || [ A1]   MVKL    .S2     _compacket+124,B5 ; |28| 
      220 000000f0 90000264  || [!A1]   LDW     .D1T1   *A0,A0            ; |58| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 17:22:44 2024
+TMS320C6x COFF Assembler         Version 4.10     Tue May 14 12:18:59 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    5
 
@@ -293,7 +293,7 @@ temp\interrupt.asm                                                   PAGE    5
      273 0000018c 00006000             NOP             4
      274 00000190 001027A2             AND     .S2     1,B4,B0           ; |36| 
      275 00000194 2FFFF110     [ B0]   B       .S1     L2                ; |36| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 17:22:44 2024
+TMS320C6x COFF Assembler         Version 4.10     Tue May 14 12:18:59 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    6
 
@@ -352,7 +352,7 @@ temp\interrupt.asm                                                   PAGE    6
      328                    
      329 00000228 328428C3     [!B0]   ZERO    .D2     B5                ; |44| 
      330 0000022c 220840FB  || [ B0]   ZERO    .L2     B4                ; |40| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 17:22:44 2024
+TMS320C6x COFF Assembler         Version 4.10     Tue May 14 12:18:59 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    7
 
@@ -411,7 +411,7 @@ temp\interrupt.asm                                                   PAGE    7
      383 000002c4 20003E28!    [ B0]   MVKL    .S1     _compacket+124,A0 ; |51| 
      384 000002c8 2200002A!    [ B0]   MVKL    .S2     _compacket,B4     ; |51| 
      385 000002cc 20000068!    [ B0]   MVKH    .S1     _compacket+124,A0 ; |51| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 17:22:44 2024
+TMS320C6x COFF Assembler         Version 4.10     Tue May 14 12:18:59 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    8
 
@@ -470,7 +470,7 @@ temp\interrupt.asm                                                   PAGE    8
      438                    
      439 00000370 001800E3             B       .S2     IRP               ; |59| 
      440 00000374 043EA2E6  ||         LDW     .D2T2   *+SP(84),B8       ; |59| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 17:22:44 2024
+TMS320C6x COFF Assembler         Version 4.10     Tue May 14 12:18:59 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    9
 
@@ -495,147 +495,150 @@ temp\interrupt.asm                                                   PAGE    9
      459 00000380           _ISRtimer0:
      460                    ;** --------------------------------------------------------------------------*
      461 00000380 04BF14F6             STW     .D2T2   B9,*SP--(96)      ; |72| 
-     462 00000384 003CA2F4             STW     .D2T1   A0,*+SP(20)       ; |72| 
-     463 00000388 043EE2F6             STW     .D2T2   B8,*+SP(92)       ; |72| 
-     464 0000038c 03BEC2F6             STW     .D2T2   B7,*+SP(88)       ; |72| 
-     465 00000390 033EA2F6             STW     .D2T2   B6,*+SP(84)       ; |72| 
-     466 00000394 02BE82F6             STW     .D2T2   B5,*+SP(80)       ; |72| 
-     467 00000398 01BE42F6             STW     .D2T2   B3,*+SP(72)       ; |72| 
-     468 0000039c 013E22F6             STW     .D2T2   B2,*+SP(68)       ; |72| 
-     469 000003a0 00BE02F6             STW     .D2T2   B1,*+SP(64)       ; |72| 
-     470 000003a4 003DE2F6             STW     .D2T2   B0,*+SP(60)       ; |72| 
-     471 000003a8 04BDC2F4             STW     .D2T1   A9,*+SP(56)       ; |72| 
-     472 000003ac 043DA2F4             STW     .D2T1   A8,*+SP(52)       ; |72| 
-     473 000003b0 03BD82F4             STW     .D2T1   A7,*+SP(48)       ; |72| 
-     474 000003b4 033D62F4             STW     .D2T1   A6,*+SP(44)       ; |72| 
-     475 000003b8 02BD42F4             STW     .D2T1   A5,*+SP(40)       ; |72| 
-     476 000003bc 023D22F4             STW     .D2T1   A4,*+SP(36)       ; |72| 
-     477 000003c0 01BD02F4             STW     .D2T1   A3,*+SP(32)       ; |72| 
-     478 000003c4 013CE2F4             STW     .D2T1   A2,*+SP(28)       ; |72| 
+     462 00000384 023E62F6             STW     .D2T2   B4,*+SP(76)       ; |72| 
+     463 00000388 03BEC2F6             STW     .D2T2   B7,*+SP(88)       ; |72| 
+     464 0000038c 033EA2F6             STW     .D2T2   B6,*+SP(84)       ; |72| 
+     465 00000390 02BE82F6             STW     .D2T2   B5,*+SP(80)       ; |72| 
+     466 00000394 01BE42F6             STW     .D2T2   B3,*+SP(72)       ; |72| 
+     467 00000398 013E22F6             STW     .D2T2   B2,*+SP(68)       ; |72| 
+     468 0000039c 00BE02F6             STW     .D2T2   B1,*+SP(64)       ; |72| 
+     469 000003a0 003DE2F6             STW     .D2T2   B0,*+SP(60)       ; |72| 
+     470 000003a4 04BDC2F4             STW     .D2T1   A9,*+SP(56)       ; |72| 
+     471 000003a8 043DA2F4             STW     .D2T1   A8,*+SP(52)       ; |72| 
+     472 000003ac 03BD82F4             STW     .D2T1   A7,*+SP(48)       ; |72| 
+     473 000003b0 033D62F4             STW     .D2T1   A6,*+SP(44)       ; |72| 
+     474 000003b4 02BD42F4             STW     .D2T1   A5,*+SP(40)       ; |72| 
+     475 000003b8 023D22F4             STW     .D2T1   A4,*+SP(36)       ; |72| 
+     476 000003bc 01BD02F4             STW     .D2T1   A3,*+SP(32)       ; |72| 
+     477 000003c0 013CE2F4             STW     .D2T1   A2,*+SP(28)       ; |72| 
+     478 000003c4 00BCC2F4             STW     .D2T1   A1,*+SP(24)       ; |72| 
      479                    
-     480 000003c8 00BCC2F5             STW     .D2T1   A1,*+SP(24)       ; |72| 
-     481 000003cc 00000028! ||         MVKL    .S1     _currAngle,A0     ; |76| 
+     480 000003c8 003CA2F5             STW     .D2T1   A0,*+SP(20)       ; |72| 
+     481 000003cc 0200002A! ||         MVKL    .S2     _currAngle,B4     ; |76| 
      482                    
-     483 000003d0 00000069!            MVKH    .S1     _currAngle,A0     ; |76| 
-     484 000003d4 023E62F6  ||         STW     .D2T2   B4,*+SP(76)       ; |72| 
+     483 000003d0 0200006B!            MVKH    .S2     _currAngle,B4     ; |76| 
+     484 000003d4 043EE2F6  ||         STW     .D2T2   B8,*+SP(92)       ; |72| 
      485                    
-     486 000003d8 02000266             LDW     .D1T2   *A0,B4            ; |76| 
+     486 000003d8 021002E6             LDW     .D2T2   *B4,B4            ; |76| 
      487 000003dc 00000028!            MVKL    .S1     _refAngle,A0      ; |79| 
      488 000003e0 00000068!            MVKH    .S1     _refAngle,A0      ; |79| 
-     489 000003e4 0182602A'            MVKL    .S2     RL2,B3            ; |87| 
+     489 000003e4 0182622A'            MVKL    .S2     RL2,B3            ; |87| 
      490 000003e8 0180006A'            MVKH    .S2     RL2,B3            ; |87| 
      491 000003ec 023C22F6             STW     .D2T2   B4,*+SP(4)        ; |76| 
      492 000003f0 00000264             LDW     .D1T1   *A0,A0            ; |79| 
      493 000003f4 00006000             NOP             4
-     494 000003f8 00101238             SUBSP   .L1X    A0,B4,A0          ; |79| 
-     495 000003fc 0200042A-            MVKL    .S2     _sumErr,B4        ; |82| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 17:22:44 2024
+     494 000003f8 021012BA             SUBSP   .L2X    A0,B4,B4          ; |79| 
+     495 000003fc 00000428-            MVKL    .S1     _sumErr,A0        ; |82| 
+TMS320C6x COFF Assembler         Version 4.10     Tue May 14 12:18:59 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE   10
 
-     496 00000400 0200006A-            MVKH    .S2     _sumErr,B4        ; |82| 
+     496 00000400 00000068-            MVKH    .S1     _sumErr,A0        ; |82| 
      497 00000404 00000000             NOP             1
-     498 00000408 003C42F4             STW     .D2T1   A0,*+SP(8)        ; |79| 
-     499 0000040c 029002E6             LDW     .D2T2   *B4,B5            ; |82| 
+     498 00000408 023C42F6             STW     .D2T2   B4,*+SP(8)        ; |79| 
+     499 0000040c 01800264             LDW     .D1T1   *A0,A3            ; |82| 
      500 00000410 00006000             NOP             4
-     501 00000414 0280B21A             ADDSP   .L2X    A0,B5,B5
-     502 00000418 00000428-            MVKL    .S1     _sumErr,A0        ; |83| 
-     503 0000041c 00000068-            MVKH    .S1     _sumErr,A0        ; |83| 
+     501 00000414 01907218             ADDSP   .L1X    B4,A3,A3          ; |82| 
+     502 00000418 0200022A-            MVKL    .S2     _prevErr,B4       ; |83| 
+     503 0000041c 0200006A-            MVKH    .S2     _prevErr,B4       ; |83| 
      504 00000420 00000000             NOP             1
      505                    
-     506 00000424 0200022B-            MVKL    .S2     _prevErr,B4       ; |83| 
-     507 00000428 029002F6  ||         STW     .D2T2   B5,*B4            ; |82| 
+     506 00000424 00000429-            MVKL    .S1     _sumErr,A0        ; |83| 
+     507 00000428 01800274  ||         STW     .D1T1   A3,*A0            ; |82| 
      508                    
-     509 0000042c 0200006B-            MVKH    .S2     _prevErr,B4       ; |83| 
-     510 00000430 02BC42E6  ||         LDW     .D2T2   *+SP(8),B5        ; |83| 
+     509 0000042c 00000069-            MVKH    .S1     _sumErr,A0        ; |83| 
+     510 00000430 03BC42E6  ||         LDW     .D2T2   *+SP(8),B7        ; |83| 
      511                    
-     512 00000434 031002E6             LDW     .D2T2   *B4,B6            ; |83| 
-     513 00000438 01800264             LDW     .D1T1   *A0,A3            ; |83| 
-     514 0000043c 021999AA             MVKL    .S2     0x3eb33333,B4     ; |83| 
-     515 00000440 000008C0             ZERO    .D1     A0                ; |83| 
-     516 00000444 03940942             MV      .D2     B5,B7             ; |83| 
-     517                    
-     518 00000448 0298A23B             SUBSP   .L2     B5,B6,B5          ; |83| 
-     519 0000044c 021F59EA  ||         MVKH    .S2     0x3eb33333,B4     ; |83| 
-     520                    
-     521 00000450 01806E01             MPYSP   .M1     A3,A0,A3          ; |83| 
-     522 00000454 0310EE02  ||         MPYSP   .M2     B7,B4,B6          ; |83| 
-     523                    
-     524 00000458 00204868             MVKH    .S1     0x40900000,A0     ; |83| 
-     525 0000045c 00000000             NOP             1
-     526 00000460 0200BE02             MPYSP   .M2X    B5,A0,B4          ; |83| 
-     527 00000464 028CD21A             ADDSP   .L2X    A3,B6,B5          ; |83| 
-     528 00000468 00000628-            MVKL    .S1     _uControlInput,A0 ; |83| 
-     529 0000046c 00000068-            MVKH    .S1     _uControlInput,A0 ; |83| 
-     530 00000470 0300062A-            MVKL    .S2     _uControlInput,B6 ; |87| 
-     531 00000474 0214821A             ADDSP   .L2     B4,B5,B4          ; |83| 
-     532 00000478 0300006A-            MVKH    .S2     _uControlInput,B6 ; |87| 
-     533 0000047c 00002000             NOP             2
-     534 00000480 02000276             STW     .D1T2   B4,*A0            ; |83| 
-     535 00000484 03BC42E6             LDW     .D2T2   *+SP(8),B7        ; |84| 
-     536 00000488 0280002A!            MVKL    .S2     _UMAddData,B5     ; |87| 
-     537 0000048c 0200022A-            MVKL    .S2     _prevErr,B4       ; |84| 
-     538 00000490 0200006A-            MVKH    .S2     _prevErr,B4       ; |84| 
-     539 00000494 0280006A!            MVKH    .S2     _UMAddData,B5     ; |87| 
-     540 00000498 039002F6             STW     .D2T2   B7,*B4            ; |84| 
-     541                    
-     542 000004a0 00000029!            MVKL    .S1     _refAngle,A0      ; |87| 
-     543 000004a4 031802E6  ||         LDW     .D2T2   *B6,B6            ; |87| 
-     544                    
-     545 000004a8 00000069!            MVKH    .S1     _refAngle,A0      ; |87| 
-     546 000004ac 033C42E5  ||         LDW     .D2T1   *+SP(8),A6        ; |87| 
-     547 000004b0 00140362  ||         B       .S2     B5                ; |87| 
-     548                    
-     549 000004b4 02000265             LDW     .D1T1   *A0,A4            ; |87| 
-     550 000004b8 023C22E6  ||         LDW     .D2T2   *+SP(4),B4        ; |87| 
-TMS320C6x COFF Assembler         Version 4.10     Wed May 08 17:22:44 2024
+     512 00000434 031002E7             LDW     .D2T2   *B4,B6            ; |83| 
+     513 00000438 01800264  ||         LDW     .D1T1   *A0,A3            ; |83| 
+     514                    
+     515 0000043c 000008C0             ZERO    .D1     A0                ; |83| 
+     516 00000440 020008C2             ZERO    .D2     B4                ; |83| 
+     517 00000444 00216468             MVKH    .S1     0x42c80000,A0     ; |83| 
+     518                    
+     519 00000448 0380FE03             MPYSP   .M2X    B7,A0,B7          ; |83| 
+     520 0000044c 029C0943  ||         MV      .D2     B7,B5             ; |83| 
+     521 00000450 0220906A  ||         MVKH    .S2     0x41200000,B4     ; |83| 
+     522                    
+     523 00000454 0218A23B             SUBSP   .L2     B5,B6,B4          ; |83| 
+     524 00000458 028C9E02  ||         MPYSP   .M2X    A3,B4,B5          ; |83| 
+     525                    
+     526 0000045c 000008C0             ZERO    .D1     A0                ; |83| 
+     527 00000460 00209068             MVKH    .S1     0x41200000,A0     ; |83| 
+     528 00000464 0300002A!            MVKL    .S2     _uSat,B6          ; |87| 
+     529                    
+     530 00000468 029CA21B             ADDSP   .L2     B5,B7,B5          ; |83| 
+     531 0000046c 02009E02  ||         MPYSP   .M2X    B4,A0,B4          ; |83| 
+     532                    
+     533 00000470 01800628-            MVKL    .S1     _uControlInput,A3 ; |87| 
+     534 00000474 01800068-            MVKH    .S1     _uControlInput,A3 ; |87| 
+     535 00000478 00000028!            MVKL    .S1     _refAngle,A0      ; |87| 
+     536 0000047c 0294821A             ADDSP   .L2     B4,B5,B5          ; |83| 
+     537 00000480 0200062A-            MVKL    .S2     _uControlInput,B4 ; |83| 
+     538 00000484 0200006A-            MVKH    .S2     _uControlInput,B4 ; |83| 
+     539 00000488 0300006A!            MVKH    .S2     _uSat,B6          ; |87| 
+     540 0000048c 029002F6             STW     .D2T2   B5,*B4            ; |83| 
+     541 00000490 023C42E4             LDW     .D2T1   *+SP(8),A4        ; |84| 
+     542 00000494 0200022A-            MVKL    .S2     _prevErr,B4       ; |84| 
+     543 00000498 0200006A-            MVKH    .S2     _prevErr,B4       ; |84| 
+     544 0000049c 0280002A!            MVKL    .S2     _UMAddData,B5     ; |87| 
+     545 000004a0 0280006A!            MVKH    .S2     _UMAddData,B5     ; |87| 
+     546 000004a4 021002F4             STW     .D2T1   A4,*B4            ; |84| 
+     547                    
+     548 000004a8 031802E7             LDW     .D2T2   *B6,B6            ; |87| 
+     549 000004ac 00000069! ||         MVKH    .S1     _refAngle,A0      ; |87| 
+     550 000004b0 030C0265  ||         LDW     .D1T1   *A3,A6            ; |87| 
+TMS320C6x COFF Assembler         Version 4.10     Tue May 14 12:18:59 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE   11
 
-     551                    
-     552 000004bc 00006000             NOP             4
-     553 000004c0           RL2:       ; CALL OCCURS                     ; |87| 
-     554 000004c0 00000028-            MVKL    .S1     _TFlag,A0         ; |90| 
+     551 000004b4 00140362  ||         B       .S2     B5                ; |87| 
+     552                    
+     553 000004b8 02000265             LDW     .D1T1   *A0,A4            ; |87| 
+     554 000004bc 023C22E6  ||         LDW     .D2T2   *+SP(4),B4        ; |87| 
      555                    
-     556 000004c4 020000AB             MVK     .S2     1,B4              ; |90| 
-     557 000004c8 00000068- ||         MVKH    .S1     _TFlag,A0         ; |90| 
-     558                    
-     559 000004cc 02000276             STW     .D1T2   B4,*A0            ; |90| 
-     560 000004d0 023E62E6             LDW     .D2T2   *+SP(76),B4       ; |91| 
-     561 000004d4 003CA2E4             LDW     .D2T1   *+SP(20),A0       ; |91| 
-     562 000004d8 043EE2E6             LDW     .D2T2   *+SP(92),B8       ; |91| 
-     563 000004dc 013E22E6             LDW     .D2T2   *+SP(68),B2       ; |91| 
-     564 000004e0 00BE02E6             LDW     .D2T2   *+SP(64),B1       ; |91| 
-     565 000004e4 003DE2E6             LDW     .D2T2   *+SP(60),B0       ; |91| 
-     566 000004e8 04BDC2E4             LDW     .D2T1   *+SP(56),A9       ; |91| 
-     567 000004ec 043DA2E4             LDW     .D2T1   *+SP(52),A8       ; |91| 
-     568 000004f0 03BD82E4             LDW     .D2T1   *+SP(48),A7       ; |91| 
-     569 000004f4 02BD42E4             LDW     .D2T1   *+SP(40),A5       ; |91| 
-     570 000004f8 013CE2E4             LDW     .D2T1   *+SP(28),A2       ; |91| 
-     571 000004fc 00BCC2E4             LDW     .D2T1   *+SP(24),A1       ; |91| 
-     572 00000500 01BE42E6             LDW     .D2T2   *+SP(72),B3       ; |91| 
-     573 00000504 033EA2E6             LDW     .D2T2   *+SP(84),B6       ; |91| 
-     574 00000508 033D62E4             LDW     .D2T1   *+SP(44),A6       ; |91| 
-     575 0000050c 023D22E4             LDW     .D2T1   *+SP(36),A4       ; |91| 
-     576 00000510 03BEC2E6             LDW     .D2T2   *+SP(88),B7       ; |91| 
-     577 00000514 02BE82E6             LDW     .D2T2   *+SP(80),B5       ; |91| 
-     578                    
-     579 00000518 01BD02E5             LDW     .D2T1   *+SP(32),A3       ; |91| 
-     580 0000051c 001800E2  ||         B       .S2     IRP               ; |91| 
-     581                    
-     582 00000520 04BF12E6             LDW     .D2T2   *++SP(96),B9      ; |91| 
-     583 00000524 00006000             NOP             4
-     584                               ; BRANCH OCCURS                   ; |91| 
-     585                    
-     586                    
-     587                    ;******************************************************************************
-     588                    ;* UNDEFINED EXTERNAL REFERENCES                                              *
+     556 000004c0 00006000             NOP             4
+     557 000004c4           RL2:       ; CALL OCCURS                     ; |87| 
+     558 000004c4 01800028-            MVKL    .S1     _TFlag,A3         ; |90| 
+     559 000004c8 01800068-            MVKH    .S1     _TFlag,A3         ; |90| 
+     560 000004cc 000000A8             MVK     .S1     1,A0              ; |90| 
+     561 000004d0 000C0274             STW     .D1T1   A0,*A3            ; |90| 
+     562 000004d4 043EE2E6             LDW     .D2T2   *+SP(92),B8       ; |91| 
+     563 000004d8 013E22E6             LDW     .D2T2   *+SP(68),B2       ; |91| 
+     564 000004dc 00BE02E6             LDW     .D2T2   *+SP(64),B1       ; |91| 
+     565 000004e0 003DE2E6             LDW     .D2T2   *+SP(60),B0       ; |91| 
+     566 000004e4 04BDC2E4             LDW     .D2T1   *+SP(56),A9       ; |91| 
+     567 000004e8 043DA2E4             LDW     .D2T1   *+SP(52),A8       ; |91| 
+     568 000004ec 03BD82E4             LDW     .D2T1   *+SP(48),A7       ; |91| 
+     569 000004f0 02BD42E4             LDW     .D2T1   *+SP(40),A5       ; |91| 
+     570 000004f4 013CE2E4             LDW     .D2T1   *+SP(28),A2       ; |91| 
+     571 000004f8 00BCC2E4             LDW     .D2T1   *+SP(24),A1       ; |91| 
+     572 000004fc 01BD02E4             LDW     .D2T1   *+SP(32),A3       ; |91| 
+     573 00000500 003CA2E4             LDW     .D2T1   *+SP(20),A0       ; |91| 
+     574 00000504 02BE82E6             LDW     .D2T2   *+SP(80),B5       ; |91| 
+     575 00000508 03BEC2E6             LDW     .D2T2   *+SP(88),B7       ; |91| 
+     576 0000050c 01BE42E6             LDW     .D2T2   *+SP(72),B3       ; |91| 
+     577 00000510 023E62E6             LDW     .D2T2   *+SP(76),B4       ; |91| 
+     578 00000514 033D62E4             LDW     .D2T1   *+SP(44),A6       ; |91| 
+     579 00000518 023D22E4             LDW     .D2T1   *+SP(36),A4       ; |91| 
+     580                    
+     581 00000520 033EA2E7             LDW     .D2T2   *+SP(84),B6       ; |91| 
+     582 00000524 001800E2  ||         B       .S2     IRP               ; |91| 
+     583                    
+     584 00000528 04BF12E6             LDW     .D2T2   *++SP(96),B9      ; |91| 
+     585 0000052c 00006000             NOP             4
+     586                               ; BRANCH OCCURS                   ; |91| 
+     587                    
+     588                    
      589                    ;******************************************************************************
-     590                            .global _SendByte
-     591                            .global _UMAddData
-     592                            .global _compacket
-     593                            .global _respacket
-     594                            .global _currAngle
-     595                            .global _refAngle
+     590                    ;* UNDEFINED EXTERNAL REFERENCES                                              *
+     591                    ;******************************************************************************
+     592                            .global _SendByte
+     593                            .global _UMAddData
+     594                            .global _compacket
+     595                            .global _respacket
+     596                            .global _currAngle
+     597                            .global _refAngle
+     598                            .global _uSat
 
 No Assembly Errors, No Assembly Warnings

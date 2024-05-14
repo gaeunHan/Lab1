@@ -1,7 +1,7 @@
 ******************************************************************************
           TMS320C6x COFF Linker PC Version 4.10                
 ******************************************************************************
->> Linked Mon May 13 23:01:11 2024
+>> Linked Tue May 14 12:19:00 2024
 
 OUTPUT FILE NAME:   <ram_main.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 00006e40
@@ -17,7 +17,7 @@ MEMORY CONFIGURATION
          CE1VECS                 01400000   00000200  00000000  RWIX
          CE1MEM                  01400200   0000fe00  00000000  RWIX
          IOCE2                   02000000   00010000  00000000  RWIX
-         IDRAM                   80000000   00010000  000026e4  RWIX
+         IDRAM                   80000000   00010000  000026e8  RWIX
 
 
 SECTION ALLOCATION MAP
@@ -141,17 +141,17 @@ section   page    origin      length       input sections
                   80000000    00000000     interrupt.obj (.data)
                   80000000    00000000     main.obj (.data)
 
-.far       0    80000244    000004a0     UNINITIALIZED
+.far       0    80000244    000004a4     UNINITIALIZED
                   80000244    00000288     serial.obj (.far)
                   800004cc    0000008c     rts6701.lib : exit.obj (.far)
                   80000558    00000080                 : _printfi.obj (.far)
                   800005d8    00000064                 : ecvt.obj (.far)
                   8000063c    00000064                 : fcvt.obj (.far)
-                  800006a0    00000020     main.obj (.far)
-                  800006c0    00000010     interrupt.obj (.far)
-                  800006d0    00000008     rts6701.lib : memory.obj (.far)
-                  800006d8    00000008                 : _lock.obj (.far)
-                  800006e0    00000004                 : sprintf.obj (.far)
+                  800006a0    00000024     main.obj (.far)
+                  800006c4    00000010     interrupt.obj (.far)
+                  800006d4    00000008     rts6701.lib : memory.obj (.far)
+                  800006dc    00000008                 : _lock.obj (.far)
+                  800006e4    00000004                 : sprintf.obj (.far)
 
 .stack     0    800006e8    00001000     UNINITIALIZED
                   800006e8    00000000     rts6701.lib : boot.obj (.stack)
@@ -172,7 +172,7 @@ address    name
 80000000   .data
 00000200   .text
 000062e8   C$$EXIT
-00003ef4   _BLDCDrive
+00003f00   _BLDCDrive
 00004bf0   _CheckSum
 00003bf8   _GIE
 00004540   _ISRNMI
@@ -193,7 +193,7 @@ address    name
 00004d7c   _Report
 00004b88   _SendByte
 00004ce4   _SendData
-800006c0   _TFlag
+800006c4   _TFlag
 0000671c   _UMAddData
 00400000   _USBMonStuff
 00003cc4   _WaitTFlag
@@ -218,8 +218,8 @@ ffffffff   ___pinit__
 80000554   __dtors_ptr
 00006ce0   __fixdli
 00005b40   __frcdivd
-800006d8   __lock
-800006d0   __memory_size
+800006dc   __lock
+800006d4   __memory_size
 00007020   __nop
 00000200   __printfi
 00007028   __register_lock
@@ -229,9 +229,9 @@ ffffffff   ___pinit__
 00004ee0   __remul
 800006e8   __stack
 800016e8   __sys_memory
-800006dc   __unlock
+800006e0   __unlock
 000062e8   _abort
-00003e88   _angleFromHallCount
+00003e98   _angleFromHallCount
 00006210   _atexit
 000068a0   _atoi
 00006e40   _c_int00
@@ -239,15 +239,15 @@ ffffffff   ___pinit__
 00004538   _c_int09
 00002f44   _calloc
 80000244   _compacket
-800006b8   _currAngle
-800006b4   _currHall
+800006bc   _currAngle
+800006b8   _currHall
 00003c64   _delay_ms
 00003c0c   _delay_us
 00005340   _ecvt
 000060c0   _exit
 00005760   _fcvt
 000033c8   _free
-800006ac   _hallCount
+800006b0   _hallCount
 000069e0   _ltoa
 00004258   _main
 00002d7c   _malloc
@@ -255,17 +255,18 @@ ffffffff   ___pinit__
 00006f60   _memccpy
 00005e20   _memcpy
 00002d14   _minit
-800006c4   _prevErr
-800006b0   _prevHall
+800006c8   _prevErr
+800006b4   _prevHall
 00002fec   _realloc
-800006bc   _refAngle
+800006c0   _refAngle
 80000330   _respacket
 00006520   _sprintf
 00006ee0   _strcpy
 00006fc0   _strlen
-800006c8   _sumErr
+800006cc   _sumErr
 80000404   _tmp_string
-800006cc   _uControlInput
+800006d0   _uControlInput
+800006ac   _uSat
 80000000   cinit
 80000000   edata
 80000000   end
@@ -297,8 +298,8 @@ address    name
 00003cc4   _WaitTFlag
 00003d18   _WaitTFlagCnt
 00003d9c   _PWMOut
-00003e88   _angleFromHallCount
-00003ef4   _BLDCDrive
+00003e98   _angleFromHallCount
+00003f00   _BLDCDrive
 00004258   _main
 00004520   _ISRextint4
 00004528   _ISRextint5
@@ -345,12 +346,12 @@ address    name
 00007060   ___etext__
 00007060   etext
 00400000   _USBMonStuff
-80000000   edata
+80000000   end
 80000000   ___cinit__
 80000000   ___bss__
 80000000   .bss
 80000000   $bss
-80000000   end
+80000000   edata
 80000000   .data
 80000000   ___edata__
 80000000   ___end__
@@ -365,21 +366,22 @@ address    name
 800006a0   _PWMD
 800006a4   _PWMH
 800006a8   _PWML
-800006ac   _hallCount
-800006b0   _prevHall
-800006b4   _currHall
-800006b8   _currAngle
-800006bc   _refAngle
-800006c0   _TFlag
-800006c4   _prevErr
-800006c8   _sumErr
-800006cc   _uControlInput
-800006d0   __memory_size
-800006d8   __lock
-800006dc   __unlock
+800006ac   _uSat
+800006b0   _hallCount
+800006b4   _prevHall
+800006b8   _currHall
+800006bc   _currAngle
+800006c0   _refAngle
+800006c4   _TFlag
+800006c8   _prevErr
+800006cc   _sumErr
+800006d0   _uControlInput
+800006d4   __memory_size
+800006dc   __lock
+800006e0   __unlock
 800006e8   __stack
 800016e8   __sys_memory
 ffffffff   pinit
 ffffffff   ___pinit__
 
-[104 symbols]
+[105 symbols]

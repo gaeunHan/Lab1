@@ -61,9 +61,9 @@ interrupt void ISRextint6()
 unsigned int TFlag = 0;
 
 //PID controller
-#define Kp 0.35f
-#define Kd 4.5f
-#define Ki 0.0f
+#define Kp 100.0f
+#define Kd 10.0f
+#define Ki 10.0f
 
 float prevErr = 0.0f, sumErr = 0.0f;
 float uControlInput;
@@ -84,9 +84,8 @@ interrupt void ISRtimer0()
 	prevErr = err;
 
 	// print usb monotor
-	UMAddData(refAngle, y, err, uControlInput);
+	UMAddData(refAngle, y, uControlInput, uSat);
 
 	// timer var handling
 	TFlag = 1;
 }
-

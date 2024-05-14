@@ -106,11 +106,12 @@ void WaitTFlagCnt(unsigned int cnt)
 int PWMD;
 int PWMH;
 int PWML;
+float uSat;
 #define PWMZ 0x800
 void PWMOut(float dutyratio) // -100.0 <= dutyratio <= 100.0, 대칭되는 PWMH, PWML값 생성
 {
 	float PWMduty; 	
-
+	
 	// saturation with 0.5 safety zone
 	if(dutyratio > 100) dutyratio = 100;
 	if(dutyratio < -100) dutyratio = -100;
@@ -122,6 +123,8 @@ void PWMOut(float dutyratio) // -100.0 <= dutyratio <= 100.0, 대칭되는 PWMH,
 	PWMD = PWMduty;
 	PWMH = PWMZ + PWMD;
 	PWML = PWMZ - PWMD;
+
+	uSat = dutyratio;
 }
 
 
@@ -210,7 +213,7 @@ void main()
 
 	WaitTFlagCnt(100);
 
-	refAngle = 360.0;
+	refAngle = 180.0;
 	// drive motor by reference angle
 	while (1) {
 		for(i=0; i<10000; i++){
