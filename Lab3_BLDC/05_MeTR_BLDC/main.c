@@ -113,8 +113,8 @@ void PWMOut(float dutyratio) // -100.0 <= dutyratio <= 100.0, 대칭되는 PWMH,
 	float PWMduty; 	
 	
 	// saturation with 0.5 safety zone
-	if(dutyratio > 100) dutyratio = 100;
-	if(dutyratio < -100) dutyratio = -100;
+	if(dutyratio > 99.5) dutyratio = 99.5;
+	if(dutyratio < -99.5) dutyratio = -99.5;
 
 	// dutyratio <-> PWM conversion
 	PWMduty = dutyratio * 0x7FF / 100.0;	
