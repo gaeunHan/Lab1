@@ -113,8 +113,8 @@ void PWMOut(float dutyratio) // -100.0 <= dutyratio <= 100.0, 대칭되는 PWMH,
 	float PWMduty; 	
 	
 	// saturation with 0.5 safety zone
-	if(dutyratio > 99.5) dutyratio = 99.5;
-	if(dutyratio < -99.5) dutyratio = -99.5;
+	if(dutyratio > 100) dutyratio = 100;
+	if(dutyratio < -100) dutyratio = -100;
 
 	// dutyratio <-> PWM conversion
 	PWMduty = dutyratio * 0x7FF / 100.0;	
@@ -133,7 +133,7 @@ float angleFromHallCount(int hallCnt){
 }
 
 int hallCount = 0;
-unsigned int prevHall = 0;
+unsigned int prevHall;
 unsigned int currHall;
 float currAngle;
 void BLDCDrive(float duty){
@@ -144,43 +144,49 @@ void BLDCDrive(float duty){
 	// read current Hall sensor value
 	currHall = *BLDCHALL & 0x7;
 
-	// Hall counter
-	if(currHall != prevHall){
-		if(duty > 0) hallCount++;
-		else if(duty < 0) hallCount--;
-	}	
-
 	// set phase considering current Hall sensor value
 	switch(currHall){
 		case 2:		// phase 2(ZLH)
 			*BLDC2 = PWMZ;
 			*BLDC1 = PWML;
 			*BLDC0 = PWMH;
+			if(prevHall == 6) hallCount++;
+			if(prevHall == 3) hallCount--;
 			break;
 		case 3:		// phase 3(HLZ)
 			*BLDC2 = PWMH;
 			*BLDC1 = PWML;
 			*BLDC0 = PWMZ;
+			if(prevHall == 2) hallCount++;
+			if(prevHall == 1) hallCount--;
 			break;
 		case 1:		// phase 4(HZL)
 			*BLDC2 = PWMH;
 			*BLDC1 = PWMZ;
 			*BLDC0 = PWML;
+			if(prevHall == 3) hallCount++;
+			if(prevHall == 5) hallCount--;
 			break;
 		case 5:		// phase 5(ZHL)
 			*BLDC2 = PWMZ;
 			*BLDC1 = PWMH;
 			*BLDC0 = PWML;
+			if(prevHall == 1) hallCount++;
+			if(prevHall == 4) hallCount--;
 			break;
 		case 4:		// phase 6(LHZ)
 			*BLDC2 = PWML;
 			*BLDC1 = PWMH;
 			*BLDC0 = PWMZ;
+			if(prevHall == 5) hallCount++;
+			if(prevHall == 6) hallCount--;
 			break;
 		case 6:		// phase 1(LZH)
 			*BLDC2 = PWML;
 			*BLDC1 = PWMZ;
 			*BLDC0 = PWMH;
+			if(prevHall == 4) hallCount++;
+			if(prevHall == 2) hallCount--;
 			break;
 	}
 
@@ -213,9 +219,16 @@ void main()
 
 	WaitTFlagCnt(100);
 
-	refAngle = 180.0;
+	refAngle = -360.0;
+	prevHall = *BLDCHALL & 0x7;
+
 	// drive motor by reference angle
 	while (1) {
+		BLDCDrive(uControlInput);
+	}
+
+	// for debugging - currently while() is deactivated
+	while (0) {
 		for(i=0; i<10000; i++){
 			BLDCDrive(uControlInput);
 		}
