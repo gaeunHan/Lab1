@@ -70,6 +70,12 @@ float prevErr_pend = 0.0f, sumErr_pend = 0.0f;
 #define Ki_cart -0.0002f
 float prevErr_cart = 0.0f, sumErr_cart = 0.0f;
 
+// variable for swing-up mode
+float mostPlusPos = 0.0;
+float mostMinusPos = 0.0;
+float prevPendPos = 0.0;
+float remainedAngleToTheGoal = 0.0;
+
 // flag variable for timer0
 unsigned int TFlag = 0; 
 
@@ -81,7 +87,7 @@ interrupt void ISRtimer0()
 	// variable for cart
 	float y_cart, err_cart, u_cart;
 
-	// shared variable btwn pendulum and cart
+	// control input variable
 	float u, uSat;
 
 	// PID ctrl: get u_fb
@@ -92,7 +98,7 @@ interrupt void ISRtimer0()
 	err_pend = R_pend - y_pend;
 	err_cart = R_cart - y_cart;	
 
-	// balancing within +-10 pos range
+	// BALANCING MODE: within +-10 pos range
 	if(err_pend <= 10 && err_pend >= -10){
 
 		// compute PID
@@ -109,8 +115,40 @@ interrupt void ISRtimer0()
 		u = u_pend + u_cart;
 		uSat = PWMOut(u); 
 	} 
+	// else uSat = PWMOut(0); 
 
-	else uSat = PWMOut(0);
+	// SWING-UP MODE
+	else{
+
+		// 1. decide extent of cart movement from the highest position
+		// check highest angle in (+)
+		if(y_pend > 0){	
+			if(mostPlusPos < y_pend) mostPlusPos = y_pend;
+		}
+		// check highest angle in (-)
+		else if(y_pend < 0){ 
+			if(mostMinusPos > y_pend) mostMinusPos = y_pend;
+		}
+		// extent of cart movement
+		remainedAngleToTheGoal = R_pend - mostPlusPos;
+
+
+		// 2. move the cart (give PWMOut(+) to the right, PWMOut(-) to the left)
+		// start position
+		if(y_pend == 0 && prevPendPos == 0){ 
+			uSat = PWMOut(remainedAngleToTheGoal); 
+		}
+		// Passing through 0 from the right side: move to the left
+		else if(y_pend == 0 && prevPendPos > 0){ 
+			uSat = PWMOut(-remainedAngleToTheGoal); 
+		}
+		// Passing through 0 from the left side: move to the right
+		else if(y_pend == 0 && prevPendPos < 0){ 
+			uSat = PWMOut(remainedAngleToTheGoal); 
+		}
+		// update previous pendulum position
+		prevPendPos = y_pend;
+	}
 
 	// print usb monotor
 	UMAddData(R_pend, err_cart, err_pend, uSat);

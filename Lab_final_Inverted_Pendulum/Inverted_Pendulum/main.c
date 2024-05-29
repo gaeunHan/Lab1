@@ -190,7 +190,7 @@ void main()
 	GIE();
 	*FPGALED = 1;			// FPGA LED 1 : ON, 0 : OFF
 	*PWMDRVEN = 1;			// PWMENABLE 1 : ON, 0 : 0FF
-	*ENCPOSCLR = 1;			// 위치 초기화
+	*ENCPOSCLR = 1;			// Encoder position initialization
 
 	WaitTFlagCnt(1000);
 
@@ -200,7 +200,7 @@ void main()
 		*FPGALED ^= 1;
 
 		// timer check
-		if(TINTCnt > 1000){
+		if(TINTCnt > 500){
 
 			timerCheckCnt++;
 			MACRO_PRINT((tmp_string, "==== Timer Check: %d ====\r\n", timerCheckCnt));
@@ -210,6 +210,13 @@ void main()
 
 			// check current cart position
 			MACRO_PRINT((tmp_string, "cart encoder: %6.2f \r\n", GetCartPos())); 
+			
+			// swing-up debugging
+			MACRO_PRINT((tmp_string, "<< Swing-up debugging >> \r\n")); 
+			MACRO_PRINT((tmp_string, "   mostPlusPos: %6.2f \r\n", mostPlusPos)); 
+			MACRO_PRINT((tmp_string, "   prevPendPos: %6.2f \r\n", prevPendPos)); 
+			MACRO_PRINT((tmp_string, "   remainedAngleToTheGoal: %6.2f \r\n", remainedAngleToTheGoal)); 
+
 			MACRO_PRINT((tmp_string, "\r\n"));
 			TINTCnt = 0;
 		}
