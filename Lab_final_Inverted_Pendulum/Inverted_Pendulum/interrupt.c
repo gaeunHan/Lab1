@@ -70,6 +70,12 @@ float prevErr_pend = 0.0f, sumErr_pend = 0.0f;
 #define Ki_cart -0.0002f
 float prevErr_cart = 0.0f, sumErr_cart = 0.0f;
 
+// swing-up cart PID controller
+#define Kp_swup_cart 5.0f
+#define Kd_swup_cart 0.1f
+#define Ki_swup_cart 0.01f
+float prevErr_swup_cart = 0.0f, sumErr_swup_cart = 0.0f;
+
 // variable for swing-up mode
 float mostPlusPos = 0.0;
 float mostMinusPos = 0.0;
@@ -79,14 +85,17 @@ float remainedAngleToTheGoal = 0.0;
 // flag variable for timer0
 unsigned int TFlag = 0; 
 
+// variable for pendulum
+float y_pend, err_pend, u_pend;
+
+// variable for cart
+float y_cart, err_cart, u_cart;
+
+// variable for swing-up cart
+float y_swup_cart, err_swup_cart, u_swup_cart;
+
 interrupt void ISRtimer0()
 {
-	// variable for pendulum
-	float y_pend, err_pend, u_pend;
-
-	// variable for cart
-	float y_cart, err_cart, u_cart;
-
 	// control input variable
 	float u, uSat;
 
@@ -99,25 +108,37 @@ interrupt void ISRtimer0()
 	err_cart = R_cart - y_cart;	
 
 	// BALANCING MODE: within +-10 pos range
-	if(err_pend <= 10 && err_pend >= -10){
+	if(mode == BALANCING){
+		if(err_pend <= 10 && err_pend >= -10){
+			// compute PID
+			sumErr_pend += err_pend;
+			u_pend = (Kp * err_pend) + (Ki * sumErr_pend) + (Kd * (err_pend - prevErr_pend)); 
+			prevErr_pend = err_pend;
 
-		// compute PID
-		sumErr_pend += err_pend;
-		u_pend = (Kp * err_pend) + (Ki * sumErr_pend) + (Kd * (err_pend - prevErr_pend)); 
-		prevErr_pend = err_pend;
+			// compute cart PID
+			sumErr_cart += err_cart;
+			u_cart = (Kp_cart * err_cart) + (Ki_cart * sumErr_cart) + (Kd_cart * (err_cart - prevErr_cart)); 
+			prevErr_cart = err_cart;
 
-		// compute cart PID
-		sumErr_cart += err_cart;
-		u_cart = (Kp_cart * err_cart) + (Ki_cart * sumErr_cart) + (Kd_cart * (err_cart - prevErr_cart)); 
-		prevErr_cart = err_cart;
+			// PWM out: drive the motor
+			u = u_pend + u_cart;
+			uSat = PWMOut(u); 
+		} 
+	}
+	
+	if(mode == SWINGUP){
+		err_swup_cart = R_swup_cart - y_cart;	
+		
+		// compute swing-up cart PID
+		sumErr_swup_cart += err_swup_cart;
+		u_swup_cart = (Kp_swup_cart * err_swup_cart) + (Ki_swup_cart * sumErr_swup_cart) + (Kd_swup_cart * (err_swup_cart - prevErr_swup_cart)); 
+		prevErr_swup_cart = err_swup_cart;
 
-		// PWM out: drive the motor
-		u = u_pend + u_cart;
-		uSat = PWMOut(u); 
-	} 
-	// else uSat = PWMOut(0); 
+		// PWM out
+		uSat = PWMOut(u_swup_cart);
+	}
 
-	// SWING-UP MODE
+	
 	else{
 
 		// 1. decide extent of cart movement from the highest position

@@ -12,6 +12,20 @@
 #include "function.h"
 #include "USBMon.h"
 
+#define ENCPULSE 1024.0
+
+// timer varriable
+unsigned int TINTCnt;
+unsigned int timerCheckCnt;
+
+// reference pos of pendulum and cart
+float R_pend = 180.0;
+float R_cart = 0.0;
+float R_swup_cart = 0.0;
+
+// mode control variable
+enum MODE mode;
+
 void InitEXINTF()
 {
 	// Disable SSCEN(bit#5), CLK1EN(bit#4), CLK2EN(bit#3)
@@ -129,7 +143,6 @@ float PWMOut(float dutyratio)
 	return dutyratio;  
 }
 
-#define ENCPULSE 1024.0
 float GetCartPos(){
 	short encbit;
 	signed int signed_encbit;
@@ -165,13 +178,9 @@ float GetPendulumPos(){
 	return rotationDeg;
 }
 
-// timer varriable
-unsigned int TINTCnt;
-unsigned int timerCheckCnt;
+void swingUp(){
 
-// reference pos of pendulum and cart
-float R_pend = 180.0;
-float R_cart = 0.0;
+}
 
 void main()
 {
@@ -192,14 +201,24 @@ void main()
 	*PWMDRVEN = 1;			// PWMENABLE 1 : ON, 0 : 0FF
 	*ENCPOSCLR = 1;			// Encoder position initialization
 
-	WaitTFlagCnt(1000);
+	WaitTFlagCnt(1000);	// execute program after waiting 1 sec
 
-	TINTCnt = 0;
+	TINTCnt = 0;	// timer varable init
+	mode = SWINGUP; // start with swing-up
 	
 	while (1) {
 		*FPGALED ^= 1;
 
-		// timer check
+		if(mode == SWINGUP){
+			swingUp();
+		}
+
+		// if the pendulum is located within balancing range, change the mode
+		if(y_pend >= 170 || y_pend <= 190){
+			mode = BALANCING;
+		}
+
+		// debugging
 		if(TINTCnt > 500){
 
 			timerCheckCnt++;
