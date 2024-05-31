@@ -13,6 +13,7 @@
 #include "USBMon.h"
 
 #define ENCPULSE 1024.0
+#define initSWUPcartPos 500.0
 
 // timer varriable
 unsigned int TINTCnt;
@@ -25,6 +26,10 @@ float R_swup_cart = 0.0;
 
 // mode control variable
 enum MODE mode;
+
+// cart pos variables for swing-up
+float rightSWUPcartPos = initSWUPcartPos;
+float leftSWUPcartPos = -initSWUPcartPos;
 
 void InitEXINTF()
 {
@@ -178,8 +183,35 @@ float GetPendulumPos(){
 	return rotationDeg;
 }
 
-void swingUp(){
+void swingUp(){		
+	// reduce energy as the pendulum going higher;
+	rightSWUPcartPos = rightSWUPcartPos - mostPlusPos;
+	leftSWUPcartPos = leftSWUPcartPos + mostMinusPos;
 
+	// start by moving cart to the right: move pendulum to the left
+	if(y_pend == 0 && prevPendPos == 0){
+		R_swup_cart = initSWUPcartPos;
+	}
+
+	// from the right side: move cart to the right
+	else if(prevPendPos > 0){
+		if(mostPlusPos <= 90){
+			if(prevPendPos == mostPlusPos) R_swup_cart = rightSWUPcartPos;
+		}
+		else if(mostPlusPos > 90 && mostPlusPos < 180){
+			if(prevPendPos > y_pend && y_pend == 90) R_swup_cart = rightSWUPcartPos;
+		}
+	}
+
+	// from the left side: move cart to the left
+	else if(prevPendPos < 0){
+		if(mostMinusPos >= -90){
+			if(prevPendPos == mostMinusPos) R_swup_cart = leftSWUPcartPos;
+		}
+		else if(mostMinusPos < -90 && mostMinusPos < -180){
+			if(prevPendPos < y_pend && y_pend == -90) R_swup_cart = leftSWUPcartPos;
+		}
+	}
 }
 
 void main()

@@ -1,10 +1,10 @@
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    1
 
        1                    ;******************************************************************************
        2                    ;* TMS320C6x ANSI C Codegen                                      Version 4.10 *
-       3                    ;* Date/Time created: Thu May 30 11:25:40 2024                                *
+       3                    ;* Date/Time created: Fri May 31 10:01:43 2024                                *
        4                    ;******************************************************************************
        5                    
        6                    ;******************************************************************************
@@ -57,7 +57,7 @@ temp\interrupt.asm                                                   PAGE    1
       53                            .global _prevErr_cart
       54 00000008           _prevErr_cart:  .usect  .far,4,4
       55                    
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    2
 
@@ -116,7 +116,7 @@ temp\interrupt.asm                                                   PAGE    2
      108 00000020           _prevPendPos:   .usect  .far,4,4
      109                    
      110 0000008c                   .sect   ".cinit"
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    3
 
@@ -175,7 +175,7 @@ temp\interrupt.asm                                                   PAGE    3
      163 00000008                   .sect   ".text"
      164                            .global _ISRextint5
      165                    
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    4
 
@@ -234,7 +234,7 @@ temp\interrupt.asm                                                   PAGE    4
      218                    ;* FUNCTION NAME: _ISRNMI                                                     *
      219                    ;*                                                                            *
      220                    ;*   Regs Modified     :                                                      *
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    5
 
@@ -293,7 +293,7 @@ temp\interrupt.asm                                                   PAGE    5
      273 0000008c 00802A58             CMPEQ   .L1     A0,1,A1           ; |25| 
      274 00000090 80005710     [ A1]   B       .S1     L8                ; |25| 
      275 00000094 003C22F4             STW     .D2T1   A0,*+SP(4)        ; |25| 
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    6
 
@@ -352,7 +352,7 @@ temp\interrupt.asm                                                   PAGE    6
      328 00000118 01800264             LDW     .D1T1   *A0,A3            ; |29| 
      329 0000011c 00000028!            MVKL    .S1     _SendByte,A0      ; |29| 
      330 00000120 00000068!            MVKH    .S1     _SendByte,A0      ; |29| 
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    7
 
@@ -411,7 +411,7 @@ temp\interrupt.asm                                                   PAGE    7
      383                    ;** --------------------------------------------------------------------------*
      384 000001c8           L3:    
      385 000001c8 00104A5A             CMPEQ   .L2     B4,2,B0           ; |38| 
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    8
 
@@ -470,7 +470,7 @@ temp\interrupt.asm                                                   PAGE    8
      438 00000260 00006000             NOP             4
      439 00000264 008027A0             AND     .S1     1,A0,A1           ; |48| 
      440 00000268 90001410     [!A1]   B       .S1     L6                ; |48| 
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE    9
 
@@ -529,7 +529,7 @@ temp\interrupt.asm                                                   PAGE    9
      493 00000304 00010068             MVKH    .S1     0x2000008,A0      ; |58| 
      494 00000308 00000264             LDW     .D1T1   *A0,A0            ; |58| 
      495 0000030c 00002000             NOP             2
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE   10
 
@@ -588,7 +588,7 @@ temp\interrupt.asm                                                   PAGE   10
      548                    ;******************************************************************************
      549 00000380           _ISRtimer0:
      550                    ;** --------------------------------------------------------------------------*
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE   11
 
@@ -645,683 +645,551 @@ temp\interrupt.asm                                                   PAGE   11
      601 0000042c 021002F4             STW     .D2T1   A4,*B4            ; |103| 
      602 00000430 0180006A'            MVKH    .S2     RL4,B3            ; |104| 
      603 00000434           RL4:       ; CALL OCCURS                     ; |104| 
-     604 00000434 02801C2A-            MVKL    .S2     _y_cart,B5        ; |104| 
-     605 00000438 0280006A-            MVKH    .S2     _y_cart,B5        ; |104| 
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+     604 00000434 02001C2A-            MVKL    .S2     _y_cart,B4        ; |104| 
+     605 00000438 0280002A!            MVKL    .S2     _R_pend,B5        ; |107| 
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE   12
 
      606                    
      607 00000440 0310105B             MV      .L2X    A4,B6             ; |104| 
-     608 00000444 0200002B! ||         MVKL    .S2     _R_pend,B4        ; |107| 
+     608 00000444 0200006B- ||         MVKH    .S2     _y_cart,B4        ; |104| 
      609 00000448 00001628- ||         MVKL    .S1     _y_pend,A0        ; |107| 
      610                    
-     611 0000044c 031402F7             STW     .D2T2   B6,*B5            ; |104| 
-     612 00000450 0200006B! ||         MVKH    .S2     _R_pend,B4        ; |107| 
-     613 00000454 00000068- ||         MVKH    .S1     _y_pend,A0        ; |107| 
+     611 0000044c 031002F7             STW     .D2T2   B6,*B4            ; |104| 
+     612 00000450 00000069- ||         MVKH    .S1     _y_pend,A0        ; |107| 
+     613 00000454 0280006A! ||         MVKH    .S2     _R_pend,B5        ; |107| 
      614                    
-     615 00000458 021002E7             LDW     .D2T2   *B4,B4            ; |107| 
-     616 0000045c 00000264  ||         LDW     .D1T1   *A0,A0            ; |107| 
+     615 00000458 00000265             LDW     .D1T1   *A0,A0            ; |107| 
+     616 0000045c 021402E6  ||         LDW     .D2T2   *B5,B4            ; |107| 
      617                    
-     618 00000460 01801C28-            MVKL    .S1     _y_cart,A3        ; |108| 
-     619 00000464 01800068-            MVKH    .S1     _y_cart,A3        ; |108| 
-     620 00000468 028008C0             ZERO    .D1     A5                ; |112| 
-     621 0000046c 02A09068             MVKH    .S1     0x41200000,A5     ; |112| 
-     622 00000470 0280923A             SUBSP   .L2X    B4,A0,B5          ; |107| 
+     618 00000460 02801628-            MVKL    .S1     _y_pend,A5        ; |116| 
+     619 00000464 02800068-            MVKH    .S1     _y_pend,A5        ; |116| 
+     620 00000468 00002000             NOP             2
+     621 0000046c 0280923A             SUBSP   .L2X    B4,A0,B5          ; |107| 
+     622 00000470 01801C28-            MVKL    .S1     _y_cart,A3        ; |108| 
      623 00000474 00001828-            MVKL    .S1     _err_pend,A0      ; |107| 
-     624 00000478 00000068-            MVKH    .S1     _err_pend,A0      ; |107| 
-     625 0000047c 0200002A!            MVKL    .S2     _R_cart,B4        ; |108| 
-     626                    
-     627 00000480 0200006B!            MVKH    .S2     _R_cart,B4        ; |108| 
-     628 00000484 02800276  ||         STW     .D1T2   B5,*A0            ; |107| 
-     629                    
-     630 00000488 000C0265             LDW     .D1T1   *A3,A0            ; |108| 
-     631 0000048c 021002E6  ||         LDW     .D2T2   *B4,B4            ; |108| 
-     632                    
-     633 00000490 00006000             NOP             4
-     634 00000494 018092B8             SUBSP   .L1X    B4,A0,A3          ; |108| 
-     635 00000498 02001E2A-            MVKL    .S2     _err_cart,B4      ; |108| 
-     636 0000049c 0200006A-            MVKH    .S2     _err_cart,B4      ; |108| 
-     637 000004a0 00000028!            MVKL    .S1     _mode,A0          ; |111| 
-     638                    
-     639 000004a4 019002F5             STW     .D2T1   A3,*B4            ; |108| 
-     640 000004a8 00000068! ||         MVKH    .S1     _mode,A0          ; |111| 
-     641                    
-     642 000004ac 00000264             LDW     .D1T1   *A0,A0            ; |111| 
-     643 000004b0 00006000             NOP             4
-     644 000004b4 00802A58             CMPEQ   .L1     A0,1,A1           ; |111| 
-     645 000004b8 90004E10     [!A1]   B       .S1     L9                ; |111| 
-     646 000004bc 03001828-            MVKL    .S1     _err_pend,A6      ; |112| 
-     647 000004c0 03000068-            MVKH    .S1     _err_pend,A6      ; |112| 
-     648 000004c4 826666AA     [ A1]   MVKL    .S2     0xbd4ccccd,B4     ; |120| 
+     624                    
+     625 00000478 0200002B!            MVKL    .S2     _R_cart,B4        ; |108| 
+     626 0000047c 00000068- ||         MVKH    .S1     _err_pend,A0      ; |107| 
+     627                    
+     628 00000480 01800069-            MVKH    .S1     _y_cart,A3        ; |108| 
+     629 00000484 0200006B! ||         MVKH    .S2     _R_cart,B4        ; |108| 
+     630 00000488 02800276  ||         STW     .D1T2   B5,*A0            ; |107| 
+     631                    
+     632 0000048c 000C0265             LDW     .D1T1   *A3,A0            ; |108| 
+     633 00000490 021002E6  ||         LDW     .D2T2   *B4,B4            ; |108| 
+     634                    
+     635 00000494 00006000             NOP             4
+     636 00000498 018092B8             SUBSP   .L1X    B4,A0,A3          ; |108| 
+     637 0000049c 02001E2A-            MVKL    .S2     _err_cart,B4      ; |108| 
+     638 000004a0 0200006A-            MVKH    .S2     _err_cart,B4      ; |108| 
+     639 000004a4 00001628-            MVKL    .S1     _y_pend,A0        ; |111| 
+     640                    
+     641 000004a8 00000069-            MVKH    .S1     _y_pend,A0        ; |111| 
+     642 000004ac 019002F4  ||         STW     .D2T1   A3,*B4            ; |108| 
+     643                    
+     644 000004b0 02000264             LDW     .D1T1   *A0,A4            ; |111| 
+     645 000004b4 00000C28-            MVKL    .S1     _mostPlusPos,A0   ; |112| 
+     646 000004b8 00000068-            MVKH    .S1     _mostPlusPos,A0   ; |112| 
+     647 000004bc 0200162A-            MVKL    .S2     _y_pend,B4        ; |112| 
+     648 000004c0 018008C0             ZERO    .D1     A3                ; |111| 
      649                    
-     650 000004c8 8200042B-    [ A1]   MVKL    .S2     _prevErr_cart,B4  ; |120| 
-     651 000004cc 823C62F6  || [ A1]   STW     .D2T2   B4,*+SP(12)       ; |120| 
+     650 000004c4 0200006B-            MVKH    .S2     _y_pend,B4        ; |112| 
+     651 000004c8 008C8E60  ||         CMPGTSP .S1     A4,A3,A1          ; |111| 
      652                    
-     653 000004d0 8200062B-    [ A1]   MVKL    .S2     _sumErr_cart,B4   ; |120| 
-     654 000004d4 823C82F6  || [ A1]   STW     .D2T2   B4,*+SP(16)       ; |120| 
+     653 000004cc 821002E7     [ A1]   LDW     .D2T2   *B4,B4            ; |112| 
+     654 000004d0 81800264  || [ A1]   LDW     .D1T1   *A0,A3            ; |112| 
      655                    
-     656                               ; BRANCH OCCURS                   ; |111| 
-     657                    ;** --------------------------------------------------------------------------*
-     658                    
-     659 000004d8 025B8BAB             MVKL    .S2     0xb951b717,B4     ; |120| 
-     660 000004dc 001011A0  ||         MV      .S1X    B4,A0             ; |120| 
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+     656 000004d4 00000000             NOP             1
+     657 000004d8 80000E10     [ A1]   B       .S1     L9                ; |113| 
+     658 000004dc 00002000             NOP             2
+     659 000004e0 800C9E62     [ A1]   CMPLTSP .S2X    A3,B4,B0          ; |112| 
+     660 000004e4 82000C2A-    [ A1]   MVKL    .S2     _mostPlusPos,B4   ; |112| 
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE   13
 
-     661                    
-     662 000004e0 023C62E7             LDW     .D2T2   *+SP(12),B4       ; |120| 
-     663 000004e4 031001A2  ||         MV      .S2     B4,B6
-     664                    
-     665 000004e8 07001828-            MVKL    .S1     _err_pend,A14     ; |112| 
-     666 000004ec 0400182A-            MVKL    .S2     _err_pend,B8      ; |115| 
-     667 000004f0 03800028-            MVKL    .S1     _prevErr_pend,A7  ; |116| 
-     668 000004f4 0280002A-            MVKL    .S2     _prevErr_pend,B5  ; |115| 
-     669 000004f8 025EA66A             MVKH    .S2     0xbd4ccccd,B4     ; |120| 
-     670 000004fc 023C62F6             STW     .D2T2   B4,*+SP(12)       ; |120| 
-     671 00000500 023C82E6             LDW     .D2T2   *+SP(16),B4       ; |115| 
-     672 00000504 05E666A8             MVKL    .S1     0xbe4ccccd,A11    ; |120| 
-     673                    
-     674 00000508 05801A2B-            MVKL    .S2     _u_pend,B11       ; |115| 
-     675 0000050c 02000228- ||         MVKL    .S1     _sumErr_pend,A4   ; |114| 
+     661 000004e8 8200006A-    [ A1]   MVKH    .S2     _mostPlusPos,B4   ; |112| 
+     662                               ; BRANCH OCCURS                   ; |113| 
+     663                    ;** --------------------------------------------------------------------------*
+     664 000004ec 02140264             LDW     .D1T1   *A5,A4            ; |116| 
+     665 000004f0 0200162A-            MVKL    .S2     _y_pend,B4        ; |117| 
+     666 000004f4 0200006A-            MVKH    .S2     _y_pend,B4        ; |117| 
+     667 000004f8 00002000             NOP             2
+     668 000004fc 008C8EA0             CMPLTSP .S1     A4,A3,A1          ; |116| 
+     669 00000500 90000A10     [!A1]   B       .S1     L10               ; |116| 
+     670 00000504 00000E28-            MVKL    .S1     _mostMinusPos,A0  ; |117| 
+     671 00000508 00000068-            MVKH    .S1     _mostMinusPos,A0  ; |117| 
+     672                    
+     673 0000050c 90000029!    [!A1]   MVKL    .S1     _mode,A0          ; |121| 
+     674 00000510 821002E7  || [ A1]   LDW     .D2T2   *B4,B4            ; |117| 
+     675 00000514 81800264  || [ A1]   LDW     .D1T1   *A0,A3            ; |117| 
      676                    
-     677 00000510 0183862B'            MVKL    .S2     RL6,B3            ; |125| 
-     678 00000514 01001E28- ||         MVKL    .S1     _err_cart,A2      ; |120| 
-     679                    
-     680 00000518 04001829-            MVKL    .S1     _err_pend,A8      ; |116| 
-     681 0000051c 00801E2A- ||         MVKL    .S2     _err_cart,B1      ; |119| 
-     682                    
-     683 00000520 0200006B-            MVKH    .S2     _prevErr_cart,B4  ; |120| 
-     684 00000524 00801E28- ||         MVKL    .S1     _err_cart,A1      ; |120| 
-     685                    
-     686 00000528 023C82F7             STW     .D2T2   B4,*+SP(16)       ; |114| 
-     687 0000052c 05001829- ||         MVKL    .S1     _err_pend,A10     ; |115| 
-     688 00000530 0380002A! ||         MVKL    .S2     _PWMOut,B7        ; |125| 
-     689                    
-     690 00000534 07980265             LDW     .D1T1   *A6,A15           ; |112| 
-     691 00000538 04802029- ||         MVKL    .S1     _u_cart,A9        ; |120| 
-     692 0000053c 0100042A- ||         MVKL    .S2     _prevErr_cart,B2  ; |121| 
-     693                    
-     694 00000540 0500202B-            MVKL    .S2     _u_cart,B10       ; |124| 
-     695 00000544 06001E28- ||         MVKL    .S1     _err_cart,A12     ; |121| 
-     696                    
-     697 00000548 0680182B-            MVKL    .S2     _err_pend,B13     ; |114| 
-     698 0000054c 06801A29- ||         MVKL    .S1     _u_pend,A13       ; |124| 
-     699 00000550 060428C2  ||         ZERO    .D2     B12               ; |112| 
-     700                    
-     701 00000554 0660906B             MVKH    .S2     0xc1200000,B12    ; |112| 
-     702 00000558 07000069- ||         MVKH    .S1     _err_pend,A14     ; |112| 
-     703 0000055c 048428C2  ||         ZERO    .D2     B9                ; |115| 
-     704                    
-     705 00000560 03800069-            MVKH    .S1     _prevErr_pend,A7  ; |116| 
-     706 00000564 04A0D06A  ||         MVKH    .S2     0x41a00000,B9     ; |115| 
-     707                    
-     708 00000568 0295EE61             CMPGTSP .S1     A15,A5,A5         ; |112| 
-     709 0000056c 0400006A- ||         MVKH    .S2     _err_pend,B8      ; |115| 
-     710                    
-     711 00000570 00143DDB             XOR     .L2X    1,A5,B0           ; |112| 
-     712 00000574 0280006B- ||         MVKH    .S2     _prevErr_pend,B5  ; |115| 
-     713 00000578 05DF2668  ||         MVKH    .S1     0xbe4ccccd,A11    ; |120| 
+     677 00000518 90000068!    [!A1]   MVKH    .S1     _mode,A0          ; |121| 
+     678 0000051c 90000264     [!A1]   LDW     .D1T1   *A0,A0            ; |121| 
+     679                               ; BRANCH OCCURS                   ; |116| 
+     680                    ;** --------------------------------------------------------------------------*
+     681 00000520 00002000             NOP             2
+     682 00000524 000C9EA2             CMPGTSP .S2X    A3,B4,B0          ; |117| 
+     683 00000528 02000E2A-            MVKL    .S2     _mostMinusPos,B4  ; |117| 
+     684 0000052c 0200006A-            MVKH    .S2     _mostMinusPos,B4  ; |117| 
+     685                    ;** --------------------------------------------------------------------------*
+     686 00000530           L9:    
+     687 00000530 00001628-            MVKL    .S1     _y_pend,A0        ; |117| 
+     688 00000534 00000068-            MVKH    .S1     _y_pend,A0        ; |117| 
+     689 00000538 20000264     [ B0]   LDW     .D1T1   *A0,A0            ; |117| 
+     690 0000053c 00006000             NOP             4
+     691 00000540 201002F4     [ B0]   STW     .D2T1   A0,*B4            ; |117| 
+     692 00000544 00000028!            MVKL    .S1     _mode,A0          ; |121| 
+     693 00000548 00000068!            MVKH    .S1     _mode,A0          ; |121| 
+     694 0000054c 00000264             LDW     .D1T1   *A0,A0            ; |121| 
+     695                    ;** --------------------------------------------------------------------------*
+     696 00000550           L10:    
+     697 00000550 03001828-            MVKL    .S1     _err_pend,A6      ; |122| 
+     698 00000554 03000068-            MVKH    .S1     _err_pend,A6      ; |122| 
+     699 00000558 00002000             NOP             2
+     700 0000055c 00802A58             CMPEQ   .L1     A0,1,A1           ; |121| 
+     701 00000560 90004990     [!A1]   B       .S1     L11               ; |121| 
+     702 00000564 028008C0             ZERO    .D1     A5                ; |122| 
+     703 00000568 02A09068             MVKH    .S1     0x41200000,A5     ; |122| 
+     704 0000056c 826666AA     [ A1]   MVKL    .S2     0xbd4ccccd,B4     ; |130| 
+     705                    
+     706 00000570 8200042B-    [ A1]   MVKL    .S2     _prevErr_cart,B4  ; |130| 
+     707 00000574 823C62F6  || [ A1]   STW     .D2T2   B4,*+SP(12)       ; |130| 
+     708                    
+     709 00000578 8200062B-    [ A1]   MVKL    .S2     _sumErr_cart,B4   ; |130| 
+     710 0000057c 823C82F6  || [ A1]   STW     .D2T2   B4,*+SP(16)       ; |130| 
+     711                    
+     712                               ; BRANCH OCCURS                   ; |121| 
+     713                    ;** --------------------------------------------------------------------------*
      714                    
-     715 00000580 22B80265     [ B0]   LDW     .D1T1   *A14,A5           ; |112| 
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+     715 00000580 025B8BAB             MVKL    .S2     0xb951b717,B4     ; |130| 
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE   14
 
-     716 00000584 0580006B- ||         MVKH    .S2     _u_pend,B11       ; |115| 
-     717 00000588 02000068- ||         MVKH    .S1     _sumErr_pend,A4   ; |114| 
-     718                    
-     719 0000058c 0180006B'            MVKH    .S2     RL6,B3            ; |125| 
-     720 00000590 01000068- ||         MVKH    .S1     _err_cart,A2      ; |120| 
-     721                    
-     722 00000594 04000069-            MVKH    .S1     _err_pend,A8      ; |116| 
-     723 00000598 0080006A- ||         MVKH    .S2     _err_cart,B1      ; |119| 
-     724                    
-     725 000005a0 0380006B!            MVKH    .S2     _PWMOut,B7        ; |125| 
-     726 000005a4 00800068- ||         MVKH    .S1     _err_cart,A1      ; |120| 
-     727                    
-     728 000005a8 05000069-            MVKH    .S1     _err_pend,A10     ; |115| 
-     729 000005ac 0100006A- ||         MVKH    .S2     _prevErr_cart,B2  ; |121| 
-     730                    
-     731 000005b0 26159E63     [ B0]   CMPLTSP .S2X    A5,B12,B12        ; |112| 
-     732 000005b4 04800068- ||         MVKH    .S1     _u_cart,A9        ; |120| 
-     733                    
-     734 000005c0 20302DDB     [ B0]   XOR     .L2     1,B12,B0          ; |112| 
-     735 000005c4 0500006B- ||         MVKH    .S2     _u_cart,B10       ; |124| 
-     736 000005c8 06000068- ||         MVKH    .S1     _err_cart,A12     ; |121| 
-     737                    
-     738 000005cc 30002A11     [!B0]   B       .S1     L9                ; |112| 
-     739 000005d0 0200105B  ||         MV      .L2X    A0,B4             ; |115| 
-     740 000005d4 035CA8EA  ||         MVKH    .S2     0xb951b717,B6     ; |120| 
+     716 00000584 001011A0  ||         MV      .S1X    B4,A0             ; |130| 
+     717                    
+     718 00000588 023C62E7             LDW     .D2T2   *+SP(12),B4       ; |130| 
+     719 0000058c 031001A2  ||         MV      .S2     B4,B6
+     720                    
+     721 00000590 07001828-            MVKL    .S1     _err_pend,A14     ; |122| 
+     722 00000594 0400182A-            MVKL    .S2     _err_pend,B8      ; |125| 
+     723 00000598 03800028-            MVKL    .S1     _prevErr_pend,A7  ; |126| 
+     724 0000059c 0280002A-            MVKL    .S2     _prevErr_pend,B5  ; |125| 
+     725 000005a0 025EA66A             MVKH    .S2     0xbd4ccccd,B4     ; |130| 
+     726 000005a4 023C62F6             STW     .D2T2   B4,*+SP(12)       ; |130| 
+     727 000005a8 023C82E6             LDW     .D2T2   *+SP(16),B4       ; |125| 
+     728 000005ac 05E666A8             MVKL    .S1     0xbe4ccccd,A11    ; |130| 
+     729                    
+     730 000005b0 05801A2B-            MVKL    .S2     _u_pend,B11       ; |125| 
+     731 000005b4 02000228- ||         MVKL    .S1     _sumErr_pend,A4   ; |124| 
+     732                    
+     733 000005b8 0183D42B'            MVKL    .S2     RL6,B3            ; |135| 
+     734 000005bc 01001E28- ||         MVKL    .S1     _err_cart,A2      ; |130| 
+     735                    
+     736 000005c0 04001829-            MVKL    .S1     _err_pend,A8      ; |126| 
+     737 000005c4 00801E2A- ||         MVKL    .S2     _err_cart,B1      ; |129| 
+     738                    
+     739 000005c8 0200006B-            MVKH    .S2     _prevErr_cart,B4  ; |130| 
+     740 000005cc 00801E28- ||         MVKL    .S1     _err_cart,A1      ; |130| 
      741                    
-     742 000005d8 0200006B-            MVKH    .S2     _sumErr_cart,B4   ; |120| 
-     743 000005dc 06800068- ||         MVKH    .S1     _u_pend,A13       ; |124| 
-     744                    
-     745 000005e0 0200062B-            MVKL    .S2     _sumErr_cart,B4   ; |119| 
-     746 000005e4 00101059  ||         MV      .L1X    B4,A0             ; |120| 
-     747 000005e8 03000228- ||         MVKL    .S1     _sumErr_pend,A6   ; |115| 
-     748                    
-     749 000005ec 03000069-            MVKH    .S1     _sumErr_pend,A6   ; |115| 
-     750 000005f0 0200006B- ||         MVKH    .S2     _sumErr_cart,B4   ; |119| 
-     751 000005f4 030428C3  ||         ZERO    .D2     B6                ; |115| 
-     752 000005f8 01981058  ||         MV      .L1X    B6,A3             ; |116| 
-     753                    
-     754 00000600 02340943             MV      .D2     B13,B4            ; |119| 
-     755 00000604 02901059  ||         MV      .L1X    B4,A5             ; |119| 
-     756 00000608 07AE14A9  ||         MVKL    .S1     0x3e0f5c29,A15    ; |115| 
-     757 0000060c 0320906A  ||         MVKH    .S2     0x41200000,B6     ; |115| 
-     758                    
-     759 00000610 0200006B-            MVKH    .S2     _err_pend,B4      ; |114| 
-     760 00000614 079F07E8  ||         MVKH    .S1     0x3e0f5c29,A15    ; |115| 
-     761                    
-     762                               ; BRANCH OCCURS                   ; |112| 
-     763                    ;** --------------------------------------------------------------------------*
-     764                    
-     765 00000618 021002E7             LDW     .D2T2   *B4,B4            ; |114| 
-     766 0000061c 07100264  ||         LDW     .D1T1   *A4,A14           ; |114| 
-     767                    
-     768 00000620 00006000             NOP             4
-     769 00000624 0711D218             ADDSP   .L1X    B4,A14,A14        ; |114| 
-     770 00000628 00004000             NOP             3
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+     742 000005d0 023C82F7             STW     .D2T2   B4,*+SP(16)       ; |124| 
+     743 000005d4 05001829- ||         MVKL    .S1     _err_pend,A10     ; |125| 
+     744 000005d8 0380002A! ||         MVKL    .S2     _PWMOut,B7        ; |135| 
+     745                    
+     746 000005e0 07980265             LDW     .D1T1   *A6,A15           ; |122| 
+     747 000005e4 04802029- ||         MVKL    .S1     _u_cart,A9        ; |130| 
+     748 000005e8 0100042A- ||         MVKL    .S2     _prevErr_cart,B2  ; |131| 
+     749                    
+     750 000005ec 0500202B-            MVKL    .S2     _u_cart,B10       ; |134| 
+     751 000005f0 06001E28- ||         MVKL    .S1     _err_cart,A12     ; |131| 
+     752                    
+     753 000005f4 0680182B-            MVKL    .S2     _err_pend,B13     ; |124| 
+     754 000005f8 06801A29- ||         MVKL    .S1     _u_pend,A13       ; |134| 
+     755 000005fc 060428C2  ||         ZERO    .D2     B12               ; |122| 
+     756                    
+     757 00000600 0660906B             MVKH    .S2     0xc1200000,B12    ; |122| 
+     758 00000604 07000069- ||         MVKH    .S1     _err_pend,A14     ; |122| 
+     759 00000608 048428C2  ||         ZERO    .D2     B9                ; |125| 
+     760                    
+     761 0000060c 03800069-            MVKH    .S1     _prevErr_pend,A7  ; |126| 
+     762 00000610 04A0D06A  ||         MVKH    .S2     0x41a00000,B9     ; |125| 
+     763                    
+     764 00000614 0295EE61             CMPGTSP .S1     A15,A5,A5         ; |122| 
+     765 00000618 0400006A- ||         MVKH    .S2     _err_pend,B8      ; |125| 
+     766                    
+     767 00000620 00143DDB             XOR     .L2X    1,A5,B0           ; |122| 
+     768 00000624 0280006B- ||         MVKH    .S2     _prevErr_pend,B5  ; |125| 
+     769 00000628 05DF2668  ||         MVKH    .S1     0xbe4ccccd,A11    ; |130| 
+     770                    
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE   15
 
-     771 0000062c 07100274             STW     .D1T1   A14,*A4           ; |114| 
-     772                    
-     773 00000630 03180265             LDW     .D1T1   *A6,A6            ; |115| 
-     774 00000634 029402E6  ||         LDW     .D2T2   *B5,B5            ; |115| 
-     775                    
-     776 00000638 02280265             LDW     .D1T1   *A10,A4           ; |115| 
-     777 0000063c 022002E6  ||         LDW     .D2T2   *B8,B4            ; |115| 
-     778                    
-     779 00000640 00006000             NOP             4
+     771 0000062c 22B80265     [ B0]   LDW     .D1T1   *A14,A5           ; |122| 
+     772 00000630 0580006B- ||         MVKH    .S2     _u_pend,B11       ; |125| 
+     773 00000634 02000068- ||         MVKH    .S1     _sumErr_pend,A4   ; |124| 
+     774                    
+     775 00000638 0180006B'            MVKH    .S2     RL6,B3            ; |135| 
+     776 0000063c 01000068- ||         MVKH    .S1     _err_cart,A2      ; |130| 
+     777                    
+     778 00000640 04000069-            MVKH    .S1     _err_pend,A8      ; |126| 
+     779 00000644 0080006A- ||         MVKH    .S2     _err_cart,B1      ; |129| 
      780                    
-     781 00000644 023CCE01             MPYSP   .M1     A6,A15,A4         ; |115| 
-     782 00000648 02248E03  ||         MPYSP   .M2     B4,B9,B4          ; |115| 
-     783 0000064c 029492BA  ||         SUBSP   .L2X    A4,B5,B5          ; |115| 
-     784                    
-     785 00000650 00004000             NOP             3
+     781 00000648 0380006B!            MVKH    .S2     _PWMOut,B7        ; |135| 
+     782 0000064c 00800068- ||         MVKH    .S1     _err_cart,A1      ; |130| 
+     783                    
+     784 00000650 05000069-            MVKH    .S1     _err_pend,A10     ; |125| 
+     785 00000654 0100006A- ||         MVKH    .S2     _prevErr_cart,B2  ; |131| 
      786                    
-     787 00000654 0210921B             ADDSP   .L2X    A4,B4,B4          ; |115| 
-     788 00000658 0298AE02  ||         MPYSP   .M2     B5,B6,B5          ; |115| 
+     787 00000658 26159E63     [ B0]   CMPLTSP .S2X    A5,B12,B12        ; |122| 
+     788 0000065c 04800068- ||         MVKH    .S1     _u_cart,A9        ; |130| 
      789                    
-     790 0000065c 00004000             NOP             3
-     791 00000660 0210A21A             ADDSP   .L2     B5,B4,B4          ; |115| 
-     792 00000664 00004000             NOP             3
-     793 00000668 022C02F6             STW     .D2T2   B4,*B11           ; |115| 
-     794 0000066c 02200264             LDW     .D1T1   *A8,A4            ; |116| 
-     795 00000670 00006000             NOP             4
-     796 00000674 021C0274             STW     .D1T1   A4,*A7            ; |116| 
+     790 00000660 20302DDB     [ B0]   XOR     .L2     1,B12,B0          ; |122| 
+     791 00000664 0500006B- ||         MVKH    .S2     _u_cart,B10       ; |134| 
+     792 00000668 06000068- ||         MVKH    .S1     _err_cart,A12     ; |131| 
+     793                    
+     794 0000066c 30002991     [!B0]   B       .S1     L11               ; |122| 
+     795 00000670 0200105B  ||         MV      .L2X    A0,B4             ; |125| 
+     796 00000674 035CA8EA  ||         MVKH    .S2     0xb951b717,B6     ; |130| 
      797                    
-     798 00000678 020402E7             LDW     .D2T2   *B1,B4            ; |119| 
-     799 0000067c 02140264  ||         LDW     .D1T1   *A5,A4            ; |119| 
+     798 00000678 0200006B-            MVKH    .S2     _sumErr_cart,B4   ; |130| 
+     799 0000067c 06800068- ||         MVKH    .S1     _u_pend,A13       ; |134| 
      800                    
-     801 00000680 00006000             NOP             4
-     802 00000684 02109218             ADDSP   .L1X    B4,A4,A4          ; |119| 
-     803 00000688 020011A2             MV      .S2X    A0,B4             ; |119| 
-     804 0000068c 00002000             NOP             2
-     805 00000690 02140274             STW     .D1T1   A4,*A5            ; |119| 
-     806 00000694 031002E6             LDW     .D2T2   *B4,B6            ; |120| 
-     807 00000698 023C82E6             LDW     .D2T2   *+SP(16),B4       ; |120| 
-     808 0000069c 00040264             LDW     .D1T1   *A1,A0            ; |120| 
-     809 000006a0 02080264             LDW     .D1T1   *A2,A4            ; |120| 
-     810 000006a4 00002000             NOP             2
-     811 000006a8 029002E6             LDW     .D2T2   *B4,B5            ; |120| 
-     812 000006ac 020C11A2             MV      .S2X    A3,B4
-     813 000006b0 00004000             NOP             3
+     801 00000680 0200062B-            MVKL    .S2     _sumErr_cart,B4   ; |129| 
+     802 00000684 00101059  ||         MV      .L1X    B4,A0             ; |130| 
+     803 00000688 03000228- ||         MVKL    .S1     _sumErr_pend,A6   ; |125| 
+     804                    
+     805 0000068c 03000069-            MVKH    .S1     _sumErr_pend,A6   ; |125| 
+     806 00000690 0200006B- ||         MVKH    .S2     _sumErr_cart,B4   ; |129| 
+     807 00000694 030428C3  ||         ZERO    .D2     B6                ; |125| 
+     808 00000698 01981058  ||         MV      .L1X    B6,A3             ; |126| 
+     809                    
+     810 000006a0 02340943             MV      .D2     B13,B4            ; |129| 
+     811 000006a4 02901059  ||         MV      .L1X    B4,A5             ; |129| 
+     812 000006a8 07AE14A9  ||         MVKL    .S1     0x3e0f5c29,A15    ; |125| 
+     813 000006ac 0320906A  ||         MVKH    .S2     0x41200000,B6     ; |125| 
      814                    
-     815 000006b4 033C62E7             LDW     .D2T2   *+SP(12),B6
-     816 000006b8 021412BB  ||         SUBSP   .L2X    A0,B5,B4          ; |120| 
-     817 000006bc 0290CE02  ||         MPYSP   .M2     B6,B4,B5          ; |120| 
-     818                    
-     819 000006c0 002C8E00             MPYSP   .M1     A4,A11,A0         ; |120| 
-     820 000006c4 00004000             NOP             3
-     821                    
-     822 000006c8 02188E03             MPYSP   .M2     B4,B6,B4          ; |120| 
-     823 000006cc 00141218  ||         ADDSP   .L1X    B5,A0,A0          ; |120| 
-     824                    
-     825 000006d0 00004000             NOP             3
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+     815 000006b0 0200006B-            MVKH    .S2     _err_pend,B4      ; |124| 
+     816 000006b4 079F07E8  ||         MVKH    .S1     0x3e0f5c29,A15    ; |125| 
+     817                    
+     818                               ; BRANCH OCCURS                   ; |122| 
+     819                    ;** --------------------------------------------------------------------------*
+     820                    
+     821 000006b8 021002E7             LDW     .D2T2   *B4,B4            ; |124| 
+     822 000006bc 07100264  ||         LDW     .D1T1   *A4,A14           ; |124| 
+     823                    
+     824 000006c0 00006000             NOP             4
+     825 000006c4 0711D218             ADDSP   .L1X    B4,A14,A14        ; |124| 
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE   16
 
-     826 000006d4 00101218             ADDSP   .L1X    B4,A0,A0          ; |120| 
-     827 000006d8 00004000             NOP             3
-     828 000006dc 00240274             STW     .D1T1   A0,*A9            ; |120| 
-     829 000006e0 02300266             LDW     .D1T2   *A12,B4           ; |121| 
-     830 000006e4 00006000             NOP             4
-     831 000006e8 020802F6             STW     .D2T2   B4,*B2            ; |121| 
-     832                    
-     833 000006ec 022802E7             LDW     .D2T2   *B10,B4           ; |124| 
-     834 000006f0 00340264  ||         LDW     .D1T1   *A13,A0           ; |124| 
-     835                    
-     836 000006f4 00004000             NOP             3
-     837 000006f8 001C0362             B       .S2     B7                ; |125| 
-     838 000006fc 0200921A             ADDSP   .L2X    B4,A0,B4          ; |124| 
-     839 00000700 00004000             NOP             3
+     826 000006c8 00004000             NOP             3
+     827 000006cc 07100274             STW     .D1T1   A14,*A4           ; |124| 
+     828                    
+     829 000006d0 03180265             LDW     .D1T1   *A6,A6            ; |125| 
+     830 000006d4 029402E6  ||         LDW     .D2T2   *B5,B5            ; |125| 
+     831                    
+     832 000006d8 02280265             LDW     .D1T1   *A10,A4           ; |125| 
+     833 000006dc 022002E6  ||         LDW     .D2T2   *B8,B4            ; |125| 
+     834                    
+     835 000006e0 00006000             NOP             4
+     836                    
+     837 000006e4 023CCE01             MPYSP   .M1     A6,A15,A4         ; |125| 
+     838 000006e8 02248E03  ||         MPYSP   .M2     B4,B9,B4          ; |125| 
+     839 000006ec 029492BA  ||         SUBSP   .L2X    A4,B5,B5          ; |125| 
      840                    
-     841 00000704 023C22F7             STW     .D2T2   B4,*+SP(4)        ; |124| 
-     842 00000708 021011A0  ||         MV      .S1X    B4,A4             ; |124| 
-     843                    
-     844 0000070c           RL6:       ; CALL OCCURS                     ; |125| 
-     845 0000070c 023C42F4             STW     .D2T1   A4,*+SP(8)        ; |125| 
-     846                    ;** --------------------------------------------------------------------------*
-     847 00000710           L9:    
-     848                    
-     849 00000710 03000A29-            MVKL    .S1     _sumErr_swup_cart,A6 ; |133| 
-     850 00000714 0380002A! ||         MVKL    .S2     _mode,B7          ; |129| 
-     851                    
-     852 00000718 036B852B             MVKL    .S2     0x3c23d70a,B6     ; |134| 
-     853 0000071c 04802628- ||         MVKL    .S1     _u_swup_cart,A9   ; |138| 
-     854                    
-     855 00000720 01842A2B'            MVKL    .S2     RL8,B3            ; |138| 
-     856 00000724 00802428- ||         MVKL    .S1     _err_swup_cart,A1 ; |133| 
-     857                    
-     858 00000728 04002429-            MVKL    .S1     _err_swup_cart,A8 ; |130| 
-     859 0000072c 0400082A- ||         MVKL    .S2     _prevErr_swup_cart,B8 ; |135| 
-     860                    
-     861 00000730 00002429-            MVKL    .S1     _err_swup_cart,A0 ; |134| 
-     862 00000734 0480242A- ||         MVKL    .S2     _err_swup_cart,B9 ; |135| 
-     863                    
-     864 00000738 03801C29-            MVKL    .S1     _y_cart,A7        ; |130| 
-     865 0000073c 0200002A! ||         MVKL    .S2     _PWMOut,B4        ; |138| 
-     866                    
-     867 00000740 02001629-            MVKL    .S1     _y_pend,A4        ; |146| 
-     868 00000744 05000A2A- ||         MVKL    .S2     _sumErr_swup_cart,B10 ; |134| 
-     869                    
-     870 00000748 01802429-            MVKL    .S1     _err_swup_cart,A3 ; |134| 
-     871 0000074c 0100082A- ||         MVKL    .S2     _prevErr_swup_cart,B2 ; |134| 
-     872                    
-     873 00000750 05002629-            MVKL    .S1     _u_swup_cart,A10  ; |134| 
-     874 00000754 0380006A! ||         MVKH    .S2     _mode,B7          ; |129| 
-     875                    
-     876 00000760 03000069-            MVKH    .S1     _sumErr_swup_cart,A6 ; |133| 
-     877 00000764 001C02E7  ||         LDW     .D2T2   *B7,B0            ; |129| 
-     878 00000768 0280002A! ||         MVKL    .S2     _R_swup_cart,B5   ; |130| 
+     841 000006f0 00004000             NOP             3
+     842                    
+     843 000006f4 0210921B             ADDSP   .L2X    A4,B4,B4          ; |125| 
+     844 000006f8 0298AE02  ||         MPYSP   .M2     B5,B6,B5          ; |125| 
+     845                    
+     846 000006fc 00004000             NOP             3
+     847 00000700 0210A21A             ADDSP   .L2     B5,B4,B4          ; |125| 
+     848 00000704 00004000             NOP             3
+     849 00000708 022C02F6             STW     .D2T2   B4,*B11           ; |125| 
+     850 0000070c 02200264             LDW     .D1T1   *A8,A4            ; |126| 
+     851 00000710 00006000             NOP             4
+     852 00000714 021C0274             STW     .D1T1   A4,*A7            ; |126| 
+     853                    
+     854 00000718 020402E7             LDW     .D2T2   *B1,B4            ; |129| 
+     855 0000071c 02140264  ||         LDW     .D1T1   *A5,A4            ; |129| 
+     856                    
+     857 00000720 00006000             NOP             4
+     858 00000724 02109218             ADDSP   .L1X    B4,A4,A4          ; |129| 
+     859 00000728 020011A2             MV      .S2X    A0,B4             ; |129| 
+     860 0000072c 00002000             NOP             2
+     861 00000730 02140274             STW     .D1T1   A4,*A5            ; |129| 
+     862 00000734 029002E6             LDW     .D2T2   *B4,B5            ; |130| 
+     863 00000738 023C82E6             LDW     .D2T2   *+SP(16),B4       ; |130| 
+     864 0000073c 00040264             LDW     .D1T1   *A1,A0            ; |130| 
+     865 00000740 02080264             LDW     .D1T1   *A2,A4            ; |130| 
+     866 00000744 00002000             NOP             2
+     867 00000748 031002E6             LDW     .D2T2   *B4,B6            ; |130| 
+     868 0000074c 023C62E6             LDW     .D2T2   *+SP(12),B4
+     869 00000750 00004000             NOP             3
+     870 00000754 031812BA             SUBSP   .L2X    A0,B6,B6          ; |130| 
+     871                    
+     872 00000758 002C8E01             MPYSP   .M1     A4,A11,A0         ; |130| 
+     873 0000075c 028CBE02  ||         MPYSP   .M2X    B5,A3,B5
+     874                    
+     875 00000760 00004000             NOP             3
+     876                    
+     877 00000764 0210CE03             MPYSP   .M2     B6,B4,B4          ; |130| 
+     878 00000768 00141218  ||         ADDSP   .L1X    B5,A0,A0          ; |130| 
      879                    
-     880 0000076c 04800069-            MVKH    .S1     _u_swup_cart,A9   ; |138| 
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+     880 0000076c 00004000             NOP             3
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE   17
 
-     881 00000770 00E666AA  ||         MVKL    .S2     0x3dcccccd,B1     ; |134| 
-     882                    
-     883 00000774 031E11EB             MVKH    .S2     0x3c23d70a,B6     ; |134| 
-     884 00000778 00800069- ||         MVKH    .S1     _err_swup_cart,A1 ; |133| 
-     885 0000077c 028848C0  ||         ZERO    .D1     A5                ; |134| 
-     886                    
-     887 00000780 0180006B'            MVKH    .S2     RL8,B3            ; |138| 
-     888 00000784 02A05068  ||         MVKH    .S1     0x40a00000,A5     ; |134| 
-     889                    
-     890 00000788 04000069-            MVKH    .S1     _err_swup_cart,A8 ; |130| 
-     891 0000078c 0400006A- ||         MVKH    .S2     _prevErr_swup_cart,B8 ; |135| 
-     892                    
-     893 00000790 20001E11     [ B0]   B       .S1     L10               ; |129| 
-     894 00000794 0480006A- ||         MVKH    .S2     _err_swup_cart,B9 ; |135| 
+     881 00000770 00101218             ADDSP   .L1X    B4,A0,A0          ; |130| 
+     882 00000774 00004000             NOP             3
+     883 00000778 00240274             STW     .D1T1   A0,*A9            ; |130| 
+     884 0000077c 02300266             LDW     .D1T2   *A12,B4           ; |131| 
+     885 00000780 00006000             NOP             4
+     886 00000784 020802F6             STW     .D2T2   B4,*B2            ; |131| 
+     887                    
+     888 00000788 022802E7             LDW     .D2T2   *B10,B4           ; |134| 
+     889 0000078c 00340264  ||         LDW     .D1T1   *A13,A0           ; |134| 
+     890                    
+     891 00000790 00004000             NOP             3
+     892 00000794 001C0362             B       .S2     B7                ; |135| 
+     893 00000798 0200921A             ADDSP   .L2X    B4,A0,B4          ; |134| 
+     894 0000079c 00004000             NOP             3
      895                    
-     896 00000798 0200006B!            MVKH    .S2     _PWMOut,B4        ; |138| 
-     897 0000079c 00000068- ||         MVKH    .S1     _err_swup_cart,A0 ; |134| 
+     896 000007a0 021011A1             MV      .S1X    B4,A4             ; |134| 
+     897 000007a4 023C22F6  ||         STW     .D2T2   B4,*+SP(4)        ; |134| 
      898                    
-     899 000007a0 03800069-            MVKH    .S1     _y_cart,A7        ; |130| 
-     900 000007a4 0500006A- ||         MVKH    .S2     _sumErr_swup_cart,B10 ; |134| 
-     901                    
-     902 000007a8 02000069-            MVKH    .S1     _y_pend,A4        ; |146| 
-     903 000007ac 0100006A- ||         MVKH    .S2     _prevErr_swup_cart,B2 ; |134| 
-     904                    
-     905 000007b0 0280006B!            MVKH    .S2     _R_swup_cart,B5   ; |130| 
-     906 000007b4 01800068- ||         MVKH    .S1     _err_swup_cart,A3 ; |134| 
-     907                    
-     908 000007c0 0398105B             MV      .L2X    A6,B7             ; |133| 
-     909 000007c4 05000069- ||         MVKH    .S1     _u_swup_cart,A10  ; |134| 
-     910 000007c8 009EE66B  ||         MVKH    .S2     0x3dcccccd,B1     ; |134| 
-     911 000007cc 010420F9  ||         ZERO    .L1     A2                ; |146| 
-     912 000007d0 329402E7  || [!B0]   LDW     .D2T2   *B5,B5            ; |130| 
-     913 000007d4 321C0264  || [!B0]   LDW     .D1T1   *A7,A4            ; |130| 
+     899 000007a8           RL6:       ; CALL OCCURS                     ; |135| 
+     900 000007a8 023C42F4             STW     .D2T1   A4,*+SP(8)        ; |135| 
+     901                    ;** --------------------------------------------------------------------------*
+     902 000007ac           L11:    
+     903 000007ac 0200002A!            MVKL    .S2     _mode,B4          ; |140| 
+     904 000007b0 0080082A-            MVKL    .S2     _prevErr_swup_cart,B1 ; |146| 
+     905                    
+     906 000007b4 0100242B-            MVKL    .S2     _err_swup_cart,B2 ; |146| 
+     907 000007b8 00000A28- ||         MVKL    .S1     _sumErr_swup_cart,A0 ; |144| 
+     908                    
+     909 000007c0 0280002B!            MVKL    .S2     _R_swup_cart,B5   ; |141| 
+     910 000007c4 03802428- ||         MVKL    .S1     _err_swup_cart,A7 ; |144| 
+     911                    
+     912 000007c8 03EB852B             MVKL    .S2     0x3c23d70a,B7     ; |145| 
+     913 000007cc 04002628- ||         MVKL    .S1     _u_swup_cart,A8   ; |149| 
      914                    
-     915                               ; BRANCH OCCURS                   ; |129| 
-     916                    ;** --------------------------------------------------------------------------*
-     917 000007d8 00006000             NOP             4
-     918 000007dc 0210B2B8             SUBSP   .L1X    B5,A4,A4          ; |130| 
-     919 000007e0 00004000             NOP             3
-     920 000007e4 02200274             STW     .D1T1   A4,*A8            ; |130| 
-     921                    
-     922 000007e8 02040265             LDW     .D1T1   *A1,A4            ; |133| 
-     923 000007ec 029C02E6  ||         LDW     .D2T2   *B7,B5            ; |133| 
-     924                    
-     925 000007f0 00006000             NOP             4
-     926 000007f4 0290B21A             ADDSP   .L2X    A4,B5,B5          ; |133| 
-     927 000007f8 00004000             NOP             3
-     928 000007fc 029C02F6             STW     .D2T2   B5,*B7            ; |133| 
-     929                    
-     930 00000800 038802E7             LDW     .D2T2   *B2,B7            ; |134| 
-     931 00000804 018C0264  ||         LDW     .D1T1   *A3,A3            ; |134| 
-     932                    
-     933 00000808 02A802E7             LDW     .D2T2   *B10,B5           ; |134| 
-     934 0000080c 00000264  ||         LDW     .D1T1   *A0,A0            ; |134| 
-     935                    
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+     915 000007d0 01847A2B'            MVKL    .S2     RL8,B3            ; |149| 
+     916 000007d4 00802628- ||         MVKL    .S1     _u_swup_cart,A1   ; |145| 
+     917                    
+     918 000007d8 02802429-            MVKL    .S1     _err_swup_cart,A5 ; |141| 
+     919 000007dc 05800A2A- ||         MVKL    .S2     _sumErr_swup_cart,B11 ; |145| 
+     920                    
+     921 000007e0 0480002B!            MVKL    .S2     _PWMOut,B9        ; |149| 
+     922 000007e4 02002428- ||         MVKL    .S1     _err_swup_cart,A4 ; |145| 
+     923                    
+     924 000007e8 01801C29-            MVKL    .S1     _y_cart,A3        ; |141| 
+     925 000007ec 0200006A! ||         MVKH    .S2     _mode,B4          ; |140| 
+     926                    
+     927 000007f0 001002E7             LDW     .D2T2   *B4,B0            ; |140| 
+     928 000007f4 04802429- ||         MVKL    .S1     _err_swup_cart,A9 ; |145| 
+     929 000007f8 0500082A- ||         MVKL    .S2     _prevErr_swup_cart,B10 ; |145| 
+     930                    
+     931 00000800 00000069-            MVKH    .S1     _sumErr_swup_cart,A0 ; |144| 
+     932 00000804 046666AA  ||         MVKL    .S2     0x3dcccccd,B8     ; |145| 
+     933                    
+     934 00000808 03800069-            MVKH    .S1     _err_swup_cart,A7 ; |144| 
+     935 0000080c 0080006A- ||         MVKH    .S2     _prevErr_swup_cart,B1 ; |146| 
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE   18
 
-     936 00000810 00006000             NOP             4
-     937                    
-     938 00000814 031C72BB             SUBSP   .L2X    A3,B7,B6          ; |134| 
-     939 00000818 00140E01  ||         MPYSP   .M1     A0,A5,A0          ; |134| 
-     940 0000081c 0298AE02  ||         MPYSP   .M2     B5,B6,B5          ; |134| 
-     941                    
-     942 00000820 00004000             NOP             3
+     936                    
+     937 00000810 04000069-            MVKH    .S1     _u_swup_cart,A8   ; |149| 
+     938 00000814 0100006B- ||         MVKH    .S2     _err_swup_cart,B2 ; |146| 
+     939 00000818 030428C0  ||         ZERO    .D1     A6                ; |145| 
+     940                    
+     941 00000820 0280006B!            MVKH    .S2     _R_swup_cart,B5   ; |141| 
+     942 00000824 03205068  ||         MVKH    .S1     0x40a00000,A6     ; |145| 
      943                    
-     944 00000824 0284CE03             MPYSP   .M2     B6,B1,B5          ; |134| 
-     945 00000828 00141218  ||         ADDSP   .L1X    B5,A0,A0          ; |134| 
+     944 00000828 20001B11     [ B0]   B       .S1     L12               ; |140| 
+     945 0000082c 039E11EA  ||         MVKH    .S2     0x3c23d70a,B7     ; |145| 
      946                    
-     947 0000082c 00004000             NOP             3
-     948 00000830 00141218             ADDSP   .L1X    B5,A0,A0          ; |134| 
-     949 00000834 00004000             NOP             3
-     950 00000838 00280274             STW     .D1T1   A0,*A10           ; |134| 
-     951 0000083c 02A402E6             LDW     .D2T2   *B9,B5            ; |135| 
-     952 00000840 00006000             NOP             4
-     953                    
-     954 00000844 02A002F7             STW     .D2T2   B5,*B8            ; |135| 
-     955 00000848 00100362  ||         B       .S2     B4                ; |138| 
-     956                    
-     957 0000084c 02240264             LDW     .D1T1   *A9,A4            ; |138| 
-     958 00000850 00006000             NOP             4
-     959 00000854           RL8:       ; CALL OCCURS                     ; |138| 
-     960 00000854 00004A90             B       .S1     L17               ; |139| 
-     961                    
-     962 00000858 023C42F5             STW     .D2T1   A4,*+SP(8)        ; |138| 
-     963 0000085c 0200182A- ||         MVKL    .S2     _err_pend,B4      ; |175| 
+     947 00000830 0180006B'            MVKH    .S2     RL8,B3            ; |149| 
+     948 00000834 00800068- ||         MVKH    .S1     _u_swup_cart,A1   ; |145| 
+     949                    
+     950 00000838 02800069-            MVKH    .S1     _err_swup_cart,A5 ; |141| 
+     951 0000083c 0580006A- ||         MVKH    .S2     _sumErr_swup_cart,B11 ; |145| 
+     952                    
+     953 00000840 0480006B!            MVKH    .S2     _PWMOut,B9        ; |149| 
+     954 00000844 02000068- ||         MVKH    .S1     _err_swup_cart,A4 ; |145| 
+     955                    
+     956 00000848 01800069-            MVKH    .S1     _y_cart,A3        ; |141| 
+     957 0000084c 0500006A- ||         MVKH    .S2     _prevErr_swup_cart,B10 ; |145| 
+     958                    
+     959 00000860 0300105B             MV      .L2X    A0,B6             ; |144| 
+     960 00000864 041EE66B  ||         MVKH    .S2     0x3dcccccd,B8     ; |145| 
+     961 00000868 04800069- ||         MVKH    .S1     _err_swup_cart,A9 ; |145| 
+     962 0000086c 321402E7  || [!B0]   LDW     .D2T2   *B5,B4            ; |141| 
+     963 00000870 300C0264  || [!B0]   LDW     .D1T1   *A3,A0            ; |141| 
      964                    
-     965 00000860 0280002A!            MVKL    .S2     _UMAddData,B5     ; |175| 
-     966 00000864 0380002A!            MVKL    .S2     _R_pend,B7        ; |175| 
-     967 00000868 0200006A-            MVKH    .S2     _err_pend,B4      ; |175| 
-     968 0000086c 0280006A!            MVKH    .S2     _UMAddData,B5     ; |175| 
-     969                               ; BRANCH OCCURS                   ; |139| 
-     970                    ;** --------------------------------------------------------------------------*
-     971 00000870           L10:    
-     972 00000870 02100264             LDW     .D1T1   *A4,A4            ; |146| 
-     973 00000874 01800C28-            MVKL    .S1     _mostPlusPos,A3   ; |147| 
-     974 00000878 01800068-            MVKH    .S1     _mostPlusPos,A3   ; |147| 
-     975 0000087c 0200162A-            MVKL    .S2     _y_pend,B4        ; |147| 
-     976 00000880 0200006A-            MVKH    .S2     _y_pend,B4        ; |147| 
-     977 00000884 00888E60             CMPGTSP .S1     A4,A2,A1          ; |146| 
-     978                    
-     979 00000888 818C0265     [ A1]   LDW     .D1T1   *A3,A3            ; |147| 
-     980 0000088c 821002E6  || [ A1]   LDW     .D2T2   *B4,B4            ; |147| 
-     981                    
-     982 00000890 00001628-            MVKL    .S1     _y_pend,A0        ; |150| 
-     983 00000894 80000C90     [ A1]   B       .S1     L11               ; |148| 
-     984 00000898 020008C0             ZERO    .D1     A4                ; |150| 
-     985 0000089c 00000068-            MVKH    .S1     _y_pend,A0        ; |150| 
-     986 000008a0 800C9E62     [ A1]   CMPLTSP .S2X    A3,B4,B0          ; |147| 
-     987 000008a4 82000C2A-    [ A1]   MVKL    .S2     _mostPlusPos,B4   ; |147| 
-     988 000008a8 8200006A-    [ A1]   MVKH    .S2     _mostPlusPos,B4   ; |147| 
-     989                               ; BRANCH OCCURS                   ; |148| 
-     990                    ;** --------------------------------------------------------------------------*
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+     965                               ; BRANCH OCCURS                   ; |140| 
+     966                    ;** --------------------------------------------------------------------------*
+     967 00000874 00006000             NOP             4
+     968 00000878 000092B8             SUBSP   .L1X    B4,A0,A0          ; |141| 
+     969 0000087c 00004000             NOP             3
+     970 00000880 00140274             STW     .D1T1   A0,*A5            ; |141| 
+     971                    
+     972 00000884 001C0265             LDW     .D1T1   *A7,A0            ; |144| 
+     973 00000888 021802E6  ||         LDW     .D2T2   *B6,B4            ; |144| 
+     974                    
+     975 0000088c 00006000             NOP             4
+     976 00000890 0200921A             ADDSP   .L2X    A0,B4,B4          ; |144| 
+     977 00000894 00004000             NOP             3
+     978 00000898 021802F6             STW     .D2T2   B4,*B6            ; |144| 
+     979                    
+     980 000008a0 01900265             LDW     .D1T1   *A4,A3            ; |145| 
+     981 000008a4 02A802E6  ||         LDW     .D2T2   *B10,B5           ; |145| 
+     982                    
+     983 000008a8 022C02E7             LDW     .D2T2   *B11,B4           ; |145| 
+     984 000008ac 00240264  ||         LDW     .D1T1   *A9,A0            ; |145| 
+     985                    
+     986 000008b0 00006000             NOP             4
+     987                    
+     988 000008b4 00186E01             MPYSP   .M1     A3,A6,A0          ; |145| 
+     989 000008b8 021412BB  ||         SUBSP   .L2X    A0,B5,B4          ; |145| 
+     990 000008bc 029C8E02  ||         MPYSP   .M2     B4,B7,B5          ; |145| 
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE   19
 
-     991 000008ac 01800264             LDW     .D1T1   *A0,A3            ; |150| 
-     992 000008b0 00000E28-            MVKL    .S1     _mostMinusPos,A0  ; |151| 
-     993 000008b4 0200162A-            MVKL    .S2     _y_pend,B4        ; |151| 
-     994 000008b8 00000068-            MVKH    .S1     _mostMinusPos,A0  ; |151| 
-     995 000008bc 0200006A-            MVKH    .S2     _y_pend,B4        ; |151| 
-     996 000008c0 00906EA0             CMPLTSP .S1     A3,A4,A1          ; |150| 
-     997 000008c4 90000710     [!A1]   B       .S1     L12               ; |150| 
-     998 000008c8 81800264     [ A1]   LDW     .D1T1   *A0,A3            ; |151| 
-     999 000008cc 00004000             NOP             3
-    1000 000008d0 821002E6     [ A1]   LDW     .D2T2   *B4,B4            ; |151| 
-    1001                               ; BRANCH OCCURS                   ; |150| 
-    1002                    ;** --------------------------------------------------------------------------*
-    1003 000008d4 00006000             NOP             4
-    1004 000008d8 000C9EA2             CMPGTSP .S2X    A3,B4,B0          ; |151| 
-    1005 000008dc 02000E2A-            MVKL    .S2     _mostMinusPos,B4  ; |151| 
-    1006 000008e0 0200006A-            MVKH    .S2     _mostMinusPos,B4  ; |151| 
-    1007                    ;** --------------------------------------------------------------------------*
-    1008 000008e4           L11:    
-    1009 000008e4 00001628-            MVKL    .S1     _y_pend,A0        ; |151| 
-    1010 000008e8 00000068-            MVKH    .S1     _y_pend,A0        ; |151| 
-    1011 000008ec 20000264     [ B0]   LDW     .D1T1   *A0,A0            ; |151| 
-    1012 000008f0 00006000             NOP             4
-    1013 000008f4 201002F4     [ B0]   STW     .D2T1   A0,*B4            ; |151| 
-    1014                    ;** --------------------------------------------------------------------------*
-    1015 000008f8           L12:    
-    1016                    
-    1017 000008f8 0200002B!            MVKL    .S2     _R_pend,B4        ; |154| 
-    1018 000008fc 00000C28- ||         MVKL    .S1     _mostPlusPos,A0   ; |154| 
-    1019                    
-    1020 00000900 0200006B!            MVKH    .S2     _R_pend,B4        ; |154| 
-    1021 00000904 00000068- ||         MVKH    .S1     _mostPlusPos,A0   ; |154| 
-    1022                    
-    1023 00000908 021002E7             LDW     .D2T2   *B4,B4            ; |154| 
-    1024 0000090c 00000264  ||         LDW     .D1T1   *A0,A0            ; |154| 
+     991                    
+     992 000008c0 00004000             NOP             3
+     993                    
+     994 000008c4 00141219             ADDSP   .L1X    B5,A0,A0          ; |145| 
+     995 000008c8 02208E02  ||         MPYSP   .M2     B4,B8,B4          ; |145| 
+     996                    
+     997 000008cc 00004000             NOP             3
+     998 000008d0 00101218             ADDSP   .L1X    B4,A0,A0          ; |145| 
+     999 000008d4 00004000             NOP             3
+    1000 000008d8 00040274             STW     .D1T1   A0,*A1            ; |145| 
+    1001 000008dc 020802E6             LDW     .D2T2   *B2,B4            ; |146| 
+    1002 000008e0 00006000             NOP             4
+    1003                    
+    1004 000008e4 020402F7             STW     .D2T2   B4,*B1            ; |146| 
+    1005 000008e8 00240362  ||         B       .S2     B9                ; |149| 
+    1006                    
+    1007 000008ec 02200264             LDW     .D1T1   *A8,A4            ; |149| 
+    1008 000008f0 00006000             NOP             4
+    1009 000008f4           RL8:       ; CALL OCCURS                     ; |149| 
+    1010 000008f4 023C42F4             STW     .D2T1   A4,*+SP(8)        ; |149| 
+    1011                    ;** --------------------------------------------------------------------------*
+    1012 000008f8           L12:    
+    1013 000008f8 00001628-            MVKL    .S1     _y_pend,A0        ; |153| 
+    1014                    
+    1015 00000900 0200102B-            MVKL    .S2     _prevPendPos,B4   ; |153| 
+    1016 00000904 00000068- ||         MVKH    .S1     _y_pend,A0        ; |153| 
+    1017                    
+    1018 00000908 00000265             LDW     .D1T1   *A0,A0            ; |153| 
+    1019 0000090c 0280002A! ||         MVKL    .S2     _UMAddData,B5     ; |156| 
+    1020                    
+    1021 00000910 0400002A!            MVKL    .S2     _R_pend,B8        ; |156| 
+    1022 00000914 0380182A-            MVKL    .S2     _err_pend,B7      ; |156| 
+    1023 00000918 0200006A-            MVKH    .S2     _prevPendPos,B4   ; |153| 
+    1024 0000091c 0280006A!            MVKH    .S2     _UMAddData,B5     ; |156| 
     1025                    
-    1026 00000910 0280102A-            MVKL    .S2     _prevPendPos,B5   ; |159| 
-    1027 00000914 0280006A-            MVKH    .S2     _prevPendPos,B5   ; |159| 
-    1028 00000918 0184C02A'            MVKL    .S2     RL10,B3           ; |160| 
-    1029 0000091c 0180006A'            MVKH    .S2     RL10,B3           ; |160| 
-    1030 00000920 018092B8             SUBSP   .L1X    B4,A0,A3          ; |154| 
-    1031 00000924 0200122A-            MVKL    .S2     _remainedAngleToTheGoal,B4 ; |154| 
-    1032 00000928 00001628-            MVKL    .S1     _y_pend,A0        ; |159| 
-    1033 0000092c 0200006A-            MVKH    .S2     _remainedAngleToTheGoal,B4 ; |154| 
-    1034                    
-    1035 00000930 00000069-            MVKH    .S1     _y_pend,A0        ; |159| 
-    1036 00000934 019002F4  ||         STW     .D2T1   A3,*B4            ; |154| 
-    1037                    
-    1038 00000938 01800264             LDW     .D1T1   *A0,A3            ; |159| 
-    1039 0000093c 000008C0             ZERO    .D1     A0                ; |159| 
-    1040 00000940 0200002A!            MVKL    .S2     _PWMOut,B4        ; |160| 
-    1041 00000944 0200006A!            MVKH    .S2     _PWMOut,B4        ; |160| 
-    1042 00000948 030008C2             ZERO    .D2     B6                ; |163| 
-    1043 0000094c 00806E20             CMPEQSP .S1     A3,A0,A1          ; |159| 
-    1044 00000950 821402E4     [ A1]   LDW     .D2T1   *B5,A4            ; |159| 
-    1045 00000954 018008C0             ZERO    .D1     A3                ; |159| 
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+    1026 00000920 001002F5             STW     .D2T1   A0,*B4            ; |153| 
+    1027 00000924 0400006A! ||         MVKH    .S2     _R_pend,B8        ; |156| 
+    1028                    
+    1029 00000928 033C42E7             LDW     .D2T2   *+SP(8),B6        ; |156| 
+    1030 0000092c 00001E29- ||         MVKL    .S1     _err_cart,A0      ; |156| 
+    1031 00000930 0380006A- ||         MVKH    .S2     _err_pend,B7      ; |156| 
+    1032                    
+    1033 00000934 00140363             B       .S2     B5                ; |156| 
+    1034 00000938 00000069- ||         MVKH    .S1     _err_cart,A0      ; |156| 
+    1035 0000093c 022002E4  ||         LDW     .D2T1   *B8,A4            ; |156| 
+    1036                    
+    1037 00000940 02000267             LDW     .D1T2   *A0,B4            ; |156| 
+    1038 00000944 031C02E4  ||         LDW     .D2T1   *B7,A6            ; |156| 
+    1039                    
+    1040 00000948 0184AA2A'            MVKL    .S2     RL10,B3           ; |156| 
+    1041 0000094c 0180006A'            MVKH    .S2     RL10,B3           ; |156| 
+    1042 00000950 00002000             NOP             2
+    1043 00000954           RL10:      ; CALL OCCURS                     ; |156| 
+    1044 00000954 00000028!            MVKL    .S1     _TINTCnt,A0       ; |159| 
+    1045 00000958 00000068!            MVKH    .S1     _TINTCnt,A0       ; |159| 
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE   20
 
-    1046 00000958 0280162A-            MVKL    .S2     _y_pend,B5        ; |163| 
-    1047 0000095c 00001228-            MVKL    .S1     _remainedAngleToTheGoal,A0 ; |160| 
-    1048 00000960 0280006A-            MVKH    .S2     _y_pend,B5        ; |163| 
-    1049 00000964 808C8E20     [ A1]   CMPEQSP .S1     A4,A3,A1          ; |159| 
-    1050 00000968 90000710     [!A1]   B       .S1     L13               ; |159| 
-    1051 0000096c 00000068-            MVKH    .S1     _remainedAngleToTheGoal,A0 ; |160| 
-    1052 00000970 00006000             NOP             4
-    1053                               ; BRANCH OCCURS                   ; |159| 
-    1054                    ;** --------------------------------------------------------------------------*
-    1055 00000974 00100362             B       .S2     B4                ; |160| 
-    1056 00000978 02000264             LDW     .D1T1   *A0,A4            ; |160| 
-    1057 0000097c 00006000             NOP             4
-    1058 00000980           RL10:      ; CALL OCCURS                     ; |160| 
-    1059 00000980 00001E90             B       .S1     L16               ; |161| 
-    1060                    
-    1061 00000984 00001629-            MVKL    .S1     _y_pend,A0        ; |171| 
-    1062 00000988 023C42F4  ||         STW     .D2T1   A4,*+SP(8)        ; |168| 
-    1063                    
-    1064 0000098c 00000068-            MVKH    .S1     _y_pend,A0        ; |171| 
-    1065 00000990 00000264             LDW     .D1T1   *A0,A0            ; |171| 
-    1066 00000994 00002000             NOP             2
-    1067                               ; BRANCH OCCURS                   ; |161| 
-    1068                    ;** --------------------------------------------------------------------------*
-    1069 00000998           L13:    
-    1070 00000998 021402E6             LDW     .D2T2   *B5,B4            ; |163| 
-    1071 0000099c 00001028-            MVKL    .S1     _prevPendPos,A0   ; |163| 
-    1072 000009a0 00000068-            MVKH    .S1     _prevPendPos,A0   ; |163| 
-    1073 000009a4 028008C0             ZERO    .D1     A5                ; |163| 
-    1074 000009a8 0184FA2A'            MVKL    .S2     RL12,B3           ; |164| 
-    1075 000009ac 00188E22             CMPEQSP .S2     B4,B6,B0          ; |163| 
-    1076 000009b0 23000264     [ B0]   LDW     .D1T1   *A0,A6            ; |163| 
-    1077 000009b4 000011A0             MV      .S1X    B0,A0             ; |163| 
-    1078 000009b8 02001228-            MVKL    .S1     _remainedAngleToTheGoal,A4 ; |164| 
-    1079 000009bc 0200162A-            MVKL    .S2     _y_pend,B4        ; |167| 
-    1080 000009c0 018FFF88             SET     .S1     A3,31,31,A3       ; |164| 
-    1081 000009c4 2014CE60     [ B0]   CMPGTSP .S1     A6,A5,A0          ; |163| 
-    1082 000009c8 000011A2             MV      .S2X    A0,B0             ; |163| 
-    1083 000009cc 30000990     [!B0]   B       .S1     L14               ; |163| 
-    1084 000009d0 0280002A!            MVKL    .S2     _PWMOut,B5        ; |164| 
-    1085 000009d4 0180006A'            MVKH    .S2     RL12,B3           ; |164| 
-    1086 000009d8 0280006A!            MVKH    .S2     _PWMOut,B5        ; |164| 
-    1087 000009dc 0200006A-            MVKH    .S2     _y_pend,B4        ; |167| 
-    1088 000009e0 02000068-            MVKH    .S1     _remainedAngleToTheGoal,A4 ; |164| 
-    1089                               ; BRANCH OCCURS                   ; |163| 
-    1090                    ;** --------------------------------------------------------------------------*
-    1091                    
-    1092 000009e4 00140363             B       .S2     B5                ; |164| 
-    1093 000009e8 00100264  ||         LDW     .D1T1   *A4,A0            ; |164| 
+    1046 0000095c 01800264             LDW     .D1T1   *A0,A3            ; |159| 
+    1047 00000960 020000AA             MVK     .S2     1,B4              ; |160| 
+    1048 00000964 00004000             NOP             3
+    1049                    
+    1050 00000968 01801429-            MVKL    .S1     _TFlag,A3         ; |160| 
+    1051 0000096c 020C2940  ||         ADD     .D1     1,A3,A4           ; |159| 
+    1052                    
+    1053 00000970 02000275             STW     .D1T1   A4,*A0            ; |159| 
+    1054 00000974 01800068- ||         MVKH    .S1     _TFlag,A3         ; |160| 
+    1055                    
+    1056 00000978 020C0276             STW     .D1T2   B4,*A3            ; |160| 
+    1057 0000097c 068024EE             LDW     .D2T2   *+SP(144),B13     ; |161| 
+    1058 00000980 060023EE             LDW     .D2T2   *+SP(140),B12     ; |161| 
+    1059 00000984 058022EE             LDW     .D2T2   *+SP(136),B11     ; |161| 
+    1060 00000988 050021EE             LDW     .D2T2   *+SP(132),B10     ; |161| 
+    1061 0000098c 048020EE             LDW     .D2T2   *+SP(128),B9      ; |161| 
+    1062 00000990 013F22E6             LDW     .D2T2   *+SP(100),B2      ; |161| 
+    1063 00000994 00BF02E6             LDW     .D2T2   *+SP(96),B1       ; |161| 
+    1064 00000998 003EE2E6             LDW     .D2T2   *+SP(92),B0       ; |161| 
+    1065 0000099c 07BEC2E4             LDW     .D2T1   *+SP(88),A15      ; |161| 
+    1066 000009a0 073EA2E4             LDW     .D2T1   *+SP(84),A14      ; |161| 
+    1067 000009a4 06BE82E4             LDW     .D2T1   *+SP(80),A13      ; |161| 
+    1068 000009a8 063E62E4             LDW     .D2T1   *+SP(76),A12      ; |161| 
+    1069 000009ac 05BE42E4             LDW     .D2T1   *+SP(72),A11      ; |161| 
+    1070 000009b0 053E22E4             LDW     .D2T1   *+SP(68),A10      ; |161| 
+    1071 000009b4 04BE02E4             LDW     .D2T1   *+SP(64),A9       ; |161| 
+    1072 000009b8 043DE2E4             LDW     .D2T1   *+SP(60),A8       ; |161| 
+    1073 000009bc 03BDC2E4             LDW     .D2T1   *+SP(56),A7       ; |161| 
+    1074 000009c0 02BD82E4             LDW     .D2T1   *+SP(48),A5       ; |161| 
+    1075 000009c4 013D22E4             LDW     .D2T1   *+SP(36),A2       ; |161| 
+    1076 000009c8 00BD02E4             LDW     .D2T1   *+SP(32),A1       ; |161| 
+    1077 000009cc 02BF82E6             LDW     .D2T2   *+SP(112),B5      ; |161| 
+    1078 000009d0 043FE2E6             LDW     .D2T2   *+SP(124),B8      ; |161| 
+    1079 000009d4 03BFC2E6             LDW     .D2T2   *+SP(120),B7      ; |161| 
+    1080 000009d8 01BF42E6             LDW     .D2T2   *+SP(104),B3      ; |161| 
+    1081 000009dc 033FA2E6             LDW     .D2T2   *+SP(116),B6      ; |161| 
+    1082 000009e0 033DA2E4             LDW     .D2T1   *+SP(52),A6       ; |161| 
+    1083 000009e4 003CE2E4             LDW     .D2T1   *+SP(28),A0       ; |161| 
+    1084 000009e8 023D62E4             LDW     .D2T1   *+SP(44),A4       ; |161| 
+    1085                    
+    1086 000009ec 001800E3             B       .S2     IRP               ; |161| 
+    1087 000009f0 023F62E6  ||         LDW     .D2T2   *+SP(108),B4      ; |161| 
+    1088                    
+    1089 000009f4 01BD42E4             LDW     .D2T1   *+SP(40),A3       ; |161| 
+    1090 000009f8 07804852             ADDK    .S2     144,SP            ; |161| 
+    1091 000009fc 00004000             NOP             3
+    1092                               ; BRANCH OCCURS                   ; |161| 
+    1093                    
     1094                    
-    1095 000009ec 00006000             NOP             4
-    1096 000009f0 020C02E0             XOR     .S1     A0,A3,A4          ; |164| 
-    1097 000009f4           RL12:      ; CALL OCCURS                     ; |164| 
-    1098 000009f4 00001290             B       .S1     L16               ; |165| 
-    1099                    
-    1100 000009f8 00001629-            MVKL    .S1     _y_pend,A0        ; |171| 
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
+    1095                    ;******************************************************************************
+    1096                    ;* UNDEFINED EXTERNAL REFERENCES                                              *
+    1097                    ;******************************************************************************
+    1098                            .global _SendByte
+    1099                            .global _PWMOut
+    1100                            .global _GetCartPos
+TMS320C6x COFF Assembler         Version 4.10     Fri May 31 10:01:43 2024
 Copyright (c) 1996-2001 Texas Instruments Incorporated
 temp\interrupt.asm                                                   PAGE   21
 
-    1101 000009fc 023C42F4  ||         STW     .D2T1   A4,*+SP(8)        ; |168| 
-    1102                    
-    1103 00000a00 00000068-            MVKH    .S1     _y_pend,A0        ; |171| 
-    1104 00000a04 00000264             LDW     .D1T1   *A0,A0            ; |171| 
-    1105 00000a08 00002000             NOP             2
-    1106                               ; BRANCH OCCURS                   ; |165| 
-    1107                    ;** --------------------------------------------------------------------------*
-    1108 00000a0c           L14:    
-    1109 00000a0c 021002E6             LDW     .D2T2   *B4,B4            ; |167| 
-    1110 00000a10 00001028-            MVKL    .S1     _prevPendPos,A0   ; |167| 
-    1111 00000a14 00000068-            MVKH    .S1     _prevPendPos,A0   ; |167| 
-    1112 00000a18 020008C0             ZERO    .D1     A4                ; |167| 
-    1113 00000a1c 0185302A'            MVKL    .S2     RL14,B3           ; |168| 
-    1114 00000a20 00188E22             CMPEQSP .S2     B4,B6,B0          ; |167| 
-    1115 00000a24 22800264     [ B0]   LDW     .D1T1   *A0,A5            ; |167| 
-    1116 00000a28 000011A0             MV      .S1X    B0,A0             ; |167| 
-    1117 00000a2c 0180006A'            MVKH    .S2     RL14,B3           ; |168| 
-    1118 00000a30 0200002A!            MVKL    .S2     _PWMOut,B4        ; |168| 
-    1119 00000a34 01801228-            MVKL    .S1     _remainedAngleToTheGoal,A3 ; |168| 
-    1120 00000a38 2010AEA0     [ B0]   CMPLTSP .S1     A5,A4,A0          ; |167| 
-    1121 00000a3c 000011A2             MV      .S2X    A0,B0             ; |167| 
-    1122 00000a40 30000510     [!B0]   B       .S1     L15               ; |167| 
-    1123 00000a44 0200006A!            MVKH    .S2     _PWMOut,B4        ; |168| 
-    1124 00000a48 01800068-            MVKH    .S1     _remainedAngleToTheGoal,A3 ; |168| 
-    1125 00000a4c 30001628-    [!B0]   MVKL    .S1     _y_pend,A0        ; |171| 
-    1126 00000a50 00002000             NOP             2
-    1127                               ; BRANCH OCCURS                   ; |167| 
-    1128                    ;** --------------------------------------------------------------------------*
-    1129 00000a54 00100362             B       .S2     B4                ; |168| 
-    1130 00000a58 020C0264             LDW     .D1T1   *A3,A4            ; |168| 
-    1131 00000a5c 00006000             NOP             4
-    1132 00000a60           RL14:      ; CALL OCCURS                     ; |168| 
-    1133 00000a60 023C42F4             STW     .D2T1   A4,*+SP(8)        ; |168| 
-    1134 00000a64 00001628-            MVKL    .S1     _y_pend,A0        ; |171| 
-    1135                    ;** --------------------------------------------------------------------------*
-    1136 00000a68           L15:    
-    1137 00000a68 00000068-            MVKH    .S1     _y_pend,A0        ; |171| 
-    1138 00000a6c 00000264             LDW     .D1T1   *A0,A0            ; |171| 
-    1139 00000a70 00002000             NOP             2
-    1140                    ;** --------------------------------------------------------------------------*
-    1141 00000a74           L16:    
-    1142 00000a74 0200102A-            MVKL    .S2     _prevPendPos,B4   ; |171| 
-    1143 00000a78 0200006A-            MVKH    .S2     _prevPendPos,B4   ; |171| 
-    1144 00000a7c 001002F4             STW     .D2T1   A0,*B4            ; |171| 
-    1145 00000a80 0200182A-            MVKL    .S2     _err_pend,B4      ; |175| 
-    1146 00000a84 0280002A!            MVKL    .S2     _UMAddData,B5     ; |175| 
-    1147 00000a88 0380002A!            MVKL    .S2     _R_pend,B7        ; |175| 
-    1148 00000a8c 0200006A-            MVKH    .S2     _err_pend,B4      ; |175| 
-    1149 00000a90 0280006A!            MVKH    .S2     _UMAddData,B5     ; |175| 
-    1150                    ;** --------------------------------------------------------------------------*
-    1151 00000a94           L17:    
-    1152                    
-    1153 00000a94 033C42E7             LDW     .D2T2   *+SP(8),B6        ; |175| 
-    1154 00000a98 0380006B! ||         MVKH    .S2     _R_pend,B7        ; |175| 
-    1155 00000a9c 00001E28- ||         MVKL    .S1     _err_cart,A0      ; |175| 
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
-Copyright (c) 1996-2001 Texas Instruments Incorporated
-temp\interrupt.asm                                                   PAGE   22
-
-    1156                    
-    1157 00000aa0 00140363             B       .S2     B5                ; |175| 
-    1158 00000aa4 031002E5  ||         LDW     .D2T1   *B4,A6            ; |175| 
-    1159 00000aa8 00000068- ||         MVKH    .S1     _err_cart,A0      ; |175| 
-    1160                    
-    1161 00000aac 02000267             LDW     .D1T2   *A0,B4            ; |175| 
-    1162 00000ab0 021C02E4  ||         LDW     .D2T1   *B7,A4            ; |175| 
-    1163                    
-    1164 00000ab4 0185602A'            MVKL    .S2     RL16,B3           ; |175| 
-    1165 00000ab8 0180006A'            MVKH    .S2     RL16,B3           ; |175| 
-    1166 00000abc 00002000             NOP             2
-    1167 00000ac0           RL16:      ; CALL OCCURS                     ; |175| 
-    1168 00000ac0 00000028!            MVKL    .S1     _TINTCnt,A0       ; |178| 
-    1169 00000ac4 00000068!            MVKH    .S1     _TINTCnt,A0       ; |178| 
-    1170 00000ac8 01800264             LDW     .D1T1   *A0,A3            ; |178| 
-    1171 00000acc 020000AA             MVK     .S2     1,B4              ; |179| 
-    1172 00000ad0 00004000             NOP             3
-    1173                    
-    1174 00000ad4 01801429-            MVKL    .S1     _TFlag,A3         ; |179| 
-    1175 00000ad8 020C2940  ||         ADD     .D1     1,A3,A4           ; |178| 
-    1176                    
-    1177 00000ae0 02000275             STW     .D1T1   A4,*A0            ; |178| 
-    1178 00000ae4 01800068- ||         MVKH    .S1     _TFlag,A3         ; |179| 
-    1179                    
-    1180 00000ae8 020C0276             STW     .D1T2   B4,*A3            ; |179| 
-    1181 00000aec 068024EE             LDW     .D2T2   *+SP(144),B13     ; |180| 
-    1182 00000af0 060023EE             LDW     .D2T2   *+SP(140),B12     ; |180| 
-    1183 00000af4 058022EE             LDW     .D2T2   *+SP(136),B11     ; |180| 
-    1184 00000af8 050021EE             LDW     .D2T2   *+SP(132),B10     ; |180| 
-    1185 00000afc 048020EE             LDW     .D2T2   *+SP(128),B9      ; |180| 
-    1186 00000b00 043FE2E6             LDW     .D2T2   *+SP(124),B8      ; |180| 
-    1187 00000b04 013F22E6             LDW     .D2T2   *+SP(100),B2      ; |180| 
-    1188 00000b08 00BF02E6             LDW     .D2T2   *+SP(96),B1       ; |180| 
-    1189 00000b0c 003EE2E6             LDW     .D2T2   *+SP(92),B0       ; |180| 
-    1190 00000b10 07BEC2E4             LDW     .D2T1   *+SP(88),A15      ; |180| 
-    1191 00000b14 073EA2E4             LDW     .D2T1   *+SP(84),A14      ; |180| 
-    1192 00000b18 06BE82E4             LDW     .D2T1   *+SP(80),A13      ; |180| 
-    1193 00000b1c 063E62E4             LDW     .D2T1   *+SP(76),A12      ; |180| 
-    1194 00000b20 05BE42E4             LDW     .D2T1   *+SP(72),A11      ; |180| 
-    1195 00000b24 053E22E4             LDW     .D2T1   *+SP(68),A10      ; |180| 
-    1196 00000b28 04BE02E4             LDW     .D2T1   *+SP(64),A9       ; |180| 
-    1197 00000b2c 043DE2E4             LDW     .D2T1   *+SP(60),A8       ; |180| 
-    1198 00000b30 03BDC2E4             LDW     .D2T1   *+SP(56),A7       ; |180| 
-    1199 00000b34 02BD82E4             LDW     .D2T1   *+SP(48),A5       ; |180| 
-    1200 00000b38 013D22E4             LDW     .D2T1   *+SP(36),A2       ; |180| 
-    1201 00000b3c 00BD02E4             LDW     .D2T1   *+SP(32),A1       ; |180| 
-    1202 00000b40 03BFC2E6             LDW     .D2T2   *+SP(120),B7      ; |180| 
-    1203 00000b44 02BF82E6             LDW     .D2T2   *+SP(112),B5      ; |180| 
-    1204 00000b48 01BF42E6             LDW     .D2T2   *+SP(104),B3      ; |180| 
-    1205 00000b4c 033FA2E6             LDW     .D2T2   *+SP(116),B6      ; |180| 
-    1206 00000b50 033DA2E4             LDW     .D2T1   *+SP(52),A6       ; |180| 
-    1207 00000b54 003CE2E4             LDW     .D2T1   *+SP(28),A0       ; |180| 
-    1208 00000b58 023D62E4             LDW     .D2T1   *+SP(44),A4       ; |180| 
-    1209                    
-    1210 00000b60 001800E3             B       .S2     IRP               ; |180| 
-TMS320C6x COFF Assembler         Version 4.10     Thu May 30 11:25:40 2024
-Copyright (c) 1996-2001 Texas Instruments Incorporated
-temp\interrupt.asm                                                   PAGE   23
-
-    1211 00000b64 023F62E6  ||         LDW     .D2T2   *+SP(108),B4      ; |180| 
-    1212                    
-    1213 00000b68 01BD42E4             LDW     .D2T1   *+SP(40),A3       ; |180| 
-    1214 00000b6c 07804852             ADDK    .S2     144,SP            ; |180| 
-    1215 00000b70 00004000             NOP             3
-    1216                               ; BRANCH OCCURS                   ; |180| 
-    1217                    
-    1218                    
-    1219                    ;******************************************************************************
-    1220                    ;* UNDEFINED EXTERNAL REFERENCES                                              *
-    1221                    ;******************************************************************************
-    1222                            .global _SendByte
-    1223                            .global _PWMOut
-    1224                            .global _GetCartPos
-    1225                            .global _GetPendulumPos
-    1226                            .global _UMAddData
-    1227                            .global _compacket
-    1228                            .global _respacket
-    1229                            .global _TINTCnt
-    1230                            .global _R_pend
-    1231                            .global _R_cart
-    1232                            .global _R_swup_cart
-    1233                            .global _mode
+    1101                            .global _GetPendulumPos
+    1102                            .global _UMAddData
+    1103                            .global _compacket
+    1104                            .global _respacket
+    1105                            .global _TINTCnt
+    1106                            .global _R_pend
+    1107                            .global _R_cart
+    1108                            .global _R_swup_cart
+    1109                            .global _mode
 
 No Assembly Errors, No Assembly Warnings

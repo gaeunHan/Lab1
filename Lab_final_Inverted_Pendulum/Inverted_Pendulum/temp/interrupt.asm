@@ -1,6 +1,6 @@
 ;******************************************************************************
 ;* TMS320C6x ANSI C Codegen                                      Version 4.10 *
-;* Date/Time created: Thu May 30 11:25:40 2024                                *
+;* Date/Time created: Fri May 31 10:01:43 2024                                *
 ;******************************************************************************
 
 ;******************************************************************************
@@ -142,7 +142,7 @@ _y_swup_cart:	.usect	.far,4,4
 _err_swup_cart:	.usect	.far,4,4
 	.global	_u_swup_cart
 _u_swup_cart:	.usect	.far,4,4
-;	acp6x -q -D_FAR_RTS=1 --large_model=3 --version=6701 -m --i_output_file C:\Users\hge42\AppData\Local\Temp\TI6116_2 --template_info_file C:\Users\hge42\AppData\Local\Temp\TI6116_3 --object_file interrupt.obj --opt_shell 9 interrupt.c -as -k -mr1 -ml3 -q -fstemp -fftemp -mv6701 interrupt.c 
+;	acp6x -q -D_FAR_RTS=1 --large_model=3 --version=6701 -m --i_output_file C:\Users\hge42\AppData\Local\Temp\TI17620_2 --template_info_file C:\Users\hge42\AppData\Local\Temp\TI17620_3 --object_file interrupt.obj --opt_shell 9 interrupt.c -as -k -mr1 -ml3 -q -fstemp -fftemp -mv6701 interrupt.c 
 	.sect	".text"
 	.global	_ISRextint4
 
@@ -601,30 +601,32 @@ RL2:       ; CALL OCCURS                     ; |103|
            STW     .D2T1   A4,*B4            ; |103| 
            MVKH    .S2     RL4,B3            ; |104| 
 RL4:       ; CALL OCCURS                     ; |104| 
-           MVKL    .S2     _y_cart,B5        ; |104| 
-           MVKH    .S2     _y_cart,B5        ; |104| 
+           MVKL    .S2     _y_cart,B4        ; |104| 
+           MVKL    .S2     _R_pend,B5        ; |107| 
 
            MV      .L2X    A4,B6             ; |104| 
-||         MVKL    .S2     _R_pend,B4        ; |107| 
+||         MVKH    .S2     _y_cart,B4        ; |104| 
 ||         MVKL    .S1     _y_pend,A0        ; |107| 
 
-           STW     .D2T2   B6,*B5            ; |104| 
-||         MVKH    .S2     _R_pend,B4        ; |107| 
+           STW     .D2T2   B6,*B4            ; |104| 
 ||         MVKH    .S1     _y_pend,A0        ; |107| 
+||         MVKH    .S2     _R_pend,B5        ; |107| 
 
-           LDW     .D2T2   *B4,B4            ; |107| 
-||         LDW     .D1T1   *A0,A0            ; |107| 
+           LDW     .D1T1   *A0,A0            ; |107| 
+||         LDW     .D2T2   *B5,B4            ; |107| 
 
-           MVKL    .S1     _y_cart,A3        ; |108| 
-           MVKH    .S1     _y_cart,A3        ; |108| 
-           ZERO    .D1     A5                ; |112| 
-           MVKH    .S1     0x41200000,A5     ; |112| 
+           MVKL    .S1     _y_pend,A5        ; |116| 
+           MVKH    .S1     _y_pend,A5        ; |116| 
+           NOP             2
            SUBSP   .L2X    B4,A0,B5          ; |107| 
+           MVKL    .S1     _y_cart,A3        ; |108| 
            MVKL    .S1     _err_pend,A0      ; |107| 
-           MVKH    .S1     _err_pend,A0      ; |107| 
-           MVKL    .S2     _R_cart,B4        ; |108| 
 
-           MVKH    .S2     _R_cart,B4        ; |108| 
+           MVKL    .S2     _R_cart,B4        ; |108| 
+||         MVKH    .S1     _err_pend,A0      ; |107| 
+
+           MVKH    .S1     _y_cart,A3        ; |108| 
+||         MVKH    .S2     _R_cart,B4        ; |108| 
 ||         STW     .D1T2   B5,*A0            ; |107| 
 
            LDW     .D1T1   *A3,A0            ; |108| 
@@ -634,586 +636,460 @@ RL4:       ; CALL OCCURS                     ; |104|
            SUBSP   .L1X    B4,A0,A3          ; |108| 
            MVKL    .S2     _err_cart,B4      ; |108| 
            MVKH    .S2     _err_cart,B4      ; |108| 
-           MVKL    .S1     _mode,A0          ; |111| 
+           MVKL    .S1     _y_pend,A0        ; |111| 
 
-           STW     .D2T1   A3,*B4            ; |108| 
-||         MVKH    .S1     _mode,A0          ; |111| 
+           MVKH    .S1     _y_pend,A0        ; |111| 
+||         STW     .D2T1   A3,*B4            ; |108| 
 
-           LDW     .D1T1   *A0,A0            ; |111| 
-           NOP             4
-           CMPEQ   .L1     A0,1,A1           ; |111| 
-   [!A1]   B       .S1     L9                ; |111| 
-           MVKL    .S1     _err_pend,A6      ; |112| 
-           MVKH    .S1     _err_pend,A6      ; |112| 
-   [ A1]   MVKL    .S2     0xbd4ccccd,B4     ; |120| 
+           LDW     .D1T1   *A0,A4            ; |111| 
+           MVKL    .S1     _mostPlusPos,A0   ; |112| 
+           MVKH    .S1     _mostPlusPos,A0   ; |112| 
+           MVKL    .S2     _y_pend,B4        ; |112| 
+           ZERO    .D1     A3                ; |111| 
 
-   [ A1]   MVKL    .S2     _prevErr_cart,B4  ; |120| 
-|| [ A1]   STW     .D2T2   B4,*+SP(12)       ; |120| 
+           MVKH    .S2     _y_pend,B4        ; |112| 
+||         CMPGTSP .S1     A4,A3,A1          ; |111| 
 
-   [ A1]   MVKL    .S2     _sumErr_cart,B4   ; |120| 
-|| [ A1]   STW     .D2T2   B4,*+SP(16)       ; |120| 
+   [ A1]   LDW     .D2T2   *B4,B4            ; |112| 
+|| [ A1]   LDW     .D1T1   *A0,A3            ; |112| 
 
-           ; BRANCH OCCURS                   ; |111| 
-;** --------------------------------------------------------------------------*
-
-           MVKL    .S2     0xb951b717,B4     ; |120| 
-||         MV      .S1X    B4,A0             ; |120| 
-
-           LDW     .D2T2   *+SP(12),B4       ; |120| 
-||         MV      .S2     B4,B6
-
-           MVKL    .S1     _err_pend,A14     ; |112| 
-           MVKL    .S2     _err_pend,B8      ; |115| 
-           MVKL    .S1     _prevErr_pend,A7  ; |116| 
-           MVKL    .S2     _prevErr_pend,B5  ; |115| 
-           MVKH    .S2     0xbd4ccccd,B4     ; |120| 
-           STW     .D2T2   B4,*+SP(12)       ; |120| 
-           LDW     .D2T2   *+SP(16),B4       ; |115| 
-           MVKL    .S1     0xbe4ccccd,A11    ; |120| 
-
-           MVKL    .S2     _u_pend,B11       ; |115| 
-||         MVKL    .S1     _sumErr_pend,A4   ; |114| 
-
-           MVKL    .S2     RL6,B3            ; |125| 
-||         MVKL    .S1     _err_cart,A2      ; |120| 
-
-           MVKL    .S1     _err_pend,A8      ; |116| 
-||         MVKL    .S2     _err_cart,B1      ; |119| 
-
-           MVKH    .S2     _prevErr_cart,B4  ; |120| 
-||         MVKL    .S1     _err_cart,A1      ; |120| 
-
-           STW     .D2T2   B4,*+SP(16)       ; |114| 
-||         MVKL    .S1     _err_pend,A10     ; |115| 
-||         MVKL    .S2     _PWMOut,B7        ; |125| 
-
-           LDW     .D1T1   *A6,A15           ; |112| 
-||         MVKL    .S1     _u_cart,A9        ; |120| 
-||         MVKL    .S2     _prevErr_cart,B2  ; |121| 
-
-           MVKL    .S2     _u_cart,B10       ; |124| 
-||         MVKL    .S1     _err_cart,A12     ; |121| 
-
-           MVKL    .S2     _err_pend,B13     ; |114| 
-||         MVKL    .S1     _u_pend,A13       ; |124| 
-||         ZERO    .D2     B12               ; |112| 
-
-           MVKH    .S2     0xc1200000,B12    ; |112| 
-||         MVKH    .S1     _err_pend,A14     ; |112| 
-||         ZERO    .D2     B9                ; |115| 
-
-           MVKH    .S1     _prevErr_pend,A7  ; |116| 
-||         MVKH    .S2     0x41a00000,B9     ; |115| 
-
-           CMPGTSP .S1     A15,A5,A5         ; |112| 
-||         MVKH    .S2     _err_pend,B8      ; |115| 
-
-           XOR     .L2X    1,A5,B0           ; |112| 
-||         MVKH    .S2     _prevErr_pend,B5  ; |115| 
-||         MVKH    .S1     0xbe4ccccd,A11    ; |120| 
-
-   [ B0]   LDW     .D1T1   *A14,A5           ; |112| 
-||         MVKH    .S2     _u_pend,B11       ; |115| 
-||         MVKH    .S1     _sumErr_pend,A4   ; |114| 
-
-           MVKH    .S2     RL6,B3            ; |125| 
-||         MVKH    .S1     _err_cart,A2      ; |120| 
-
-           MVKH    .S1     _err_pend,A8      ; |116| 
-||         MVKH    .S2     _err_cart,B1      ; |119| 
-
-           MVKH    .S2     _PWMOut,B7        ; |125| 
-||         MVKH    .S1     _err_cart,A1      ; |120| 
-
-           MVKH    .S1     _err_pend,A10     ; |115| 
-||         MVKH    .S2     _prevErr_cart,B2  ; |121| 
-
-   [ B0]   CMPLTSP .S2X    A5,B12,B12        ; |112| 
-||         MVKH    .S1     _u_cart,A9        ; |120| 
-
-   [ B0]   XOR     .L2     1,B12,B0          ; |112| 
-||         MVKH    .S2     _u_cart,B10       ; |124| 
-||         MVKH    .S1     _err_cart,A12     ; |121| 
-
-   [!B0]   B       .S1     L9                ; |112| 
-||         MV      .L2X    A0,B4             ; |115| 
-||         MVKH    .S2     0xb951b717,B6     ; |120| 
-
-           MVKH    .S2     _sumErr_cart,B4   ; |120| 
-||         MVKH    .S1     _u_pend,A13       ; |124| 
-
-           MVKL    .S2     _sumErr_cart,B4   ; |119| 
-||         MV      .L1X    B4,A0             ; |120| 
-||         MVKL    .S1     _sumErr_pend,A6   ; |115| 
-
-           MVKH    .S1     _sumErr_pend,A6   ; |115| 
-||         MVKH    .S2     _sumErr_cart,B4   ; |119| 
-||         ZERO    .D2     B6                ; |115| 
-||         MV      .L1X    B6,A3             ; |116| 
-
-           MV      .D2     B13,B4            ; |119| 
-||         MV      .L1X    B4,A5             ; |119| 
-||         MVKL    .S1     0x3e0f5c29,A15    ; |115| 
-||         MVKH    .S2     0x41200000,B6     ; |115| 
-
-           MVKH    .S2     _err_pend,B4      ; |114| 
-||         MVKH    .S1     0x3e0f5c29,A15    ; |115| 
-
-           ; BRANCH OCCURS                   ; |112| 
-;** --------------------------------------------------------------------------*
-
-           LDW     .D2T2   *B4,B4            ; |114| 
-||         LDW     .D1T1   *A4,A14           ; |114| 
-
-           NOP             4
-           ADDSP   .L1X    B4,A14,A14        ; |114| 
-           NOP             3
-           STW     .D1T1   A14,*A4           ; |114| 
-
-           LDW     .D1T1   *A6,A6            ; |115| 
-||         LDW     .D2T2   *B5,B5            ; |115| 
-
-           LDW     .D1T1   *A10,A4           ; |115| 
-||         LDW     .D2T2   *B8,B4            ; |115| 
-
-           NOP             4
-
-           MPYSP   .M1     A6,A15,A4         ; |115| 
-||         MPYSP   .M2     B4,B9,B4          ; |115| 
-||         SUBSP   .L2X    A4,B5,B5          ; |115| 
-
-           NOP             3
-
-           ADDSP   .L2X    A4,B4,B4          ; |115| 
-||         MPYSP   .M2     B5,B6,B5          ; |115| 
-
-           NOP             3
-           ADDSP   .L2     B5,B4,B4          ; |115| 
-           NOP             3
-           STW     .D2T2   B4,*B11           ; |115| 
-           LDW     .D1T1   *A8,A4            ; |116| 
-           NOP             4
-           STW     .D1T1   A4,*A7            ; |116| 
-
-           LDW     .D2T2   *B1,B4            ; |119| 
-||         LDW     .D1T1   *A5,A4            ; |119| 
-
-           NOP             4
-           ADDSP   .L1X    B4,A4,A4          ; |119| 
-           MV      .S2X    A0,B4             ; |119| 
+           NOP             1
+   [ A1]   B       .S1     L9                ; |113| 
            NOP             2
-           STW     .D1T1   A4,*A5            ; |119| 
-           LDW     .D2T2   *B4,B6            ; |120| 
-           LDW     .D2T2   *+SP(16),B4       ; |120| 
-           LDW     .D1T1   *A1,A0            ; |120| 
-           LDW     .D1T1   *A2,A4            ; |120| 
+   [ A1]   CMPLTSP .S2X    A3,B4,B0          ; |112| 
+   [ A1]   MVKL    .S2     _mostPlusPos,B4   ; |112| 
+   [ A1]   MVKH    .S2     _mostPlusPos,B4   ; |112| 
+           ; BRANCH OCCURS                   ; |113| 
+;** --------------------------------------------------------------------------*
+           LDW     .D1T1   *A5,A4            ; |116| 
+           MVKL    .S2     _y_pend,B4        ; |117| 
+           MVKH    .S2     _y_pend,B4        ; |117| 
            NOP             2
-           LDW     .D2T2   *B4,B5            ; |120| 
-           MV      .S2X    A3,B4
-           NOP             3
+           CMPLTSP .S1     A4,A3,A1          ; |116| 
+   [!A1]   B       .S1     L10               ; |116| 
+           MVKL    .S1     _mostMinusPos,A0  ; |117| 
+           MVKH    .S1     _mostMinusPos,A0  ; |117| 
 
-           LDW     .D2T2   *+SP(12),B6
-||         SUBSP   .L2X    A0,B5,B4          ; |120| 
-||         MPYSP   .M2     B6,B4,B5          ; |120| 
+   [!A1]   MVKL    .S1     _mode,A0          ; |121| 
+|| [ A1]   LDW     .D2T2   *B4,B4            ; |117| 
+|| [ A1]   LDW     .D1T1   *A0,A3            ; |117| 
 
-           MPYSP   .M1     A4,A11,A0         ; |120| 
-           NOP             3
-
-           MPYSP   .M2     B4,B6,B4          ; |120| 
-||         ADDSP   .L1X    B5,A0,A0          ; |120| 
-
-           NOP             3
-           ADDSP   .L1X    B4,A0,A0          ; |120| 
-           NOP             3
-           STW     .D1T1   A0,*A9            ; |120| 
-           LDW     .D1T2   *A12,B4           ; |121| 
-           NOP             4
-           STW     .D2T2   B4,*B2            ; |121| 
-
-           LDW     .D2T2   *B10,B4           ; |124| 
-||         LDW     .D1T1   *A13,A0           ; |124| 
-
-           NOP             3
-           B       .S2     B7                ; |125| 
-           ADDSP   .L2X    B4,A0,B4          ; |124| 
-           NOP             3
-
-           STW     .D2T2   B4,*+SP(4)        ; |124| 
-||         MV      .S1X    B4,A4             ; |124| 
-
-RL6:       ; CALL OCCURS                     ; |125| 
-           STW     .D2T1   A4,*+SP(8)        ; |125| 
+   [!A1]   MVKH    .S1     _mode,A0          ; |121| 
+   [!A1]   LDW     .D1T1   *A0,A0            ; |121| 
+           ; BRANCH OCCURS                   ; |116| 
+;** --------------------------------------------------------------------------*
+           NOP             2
+           CMPGTSP .S2X    A3,B4,B0          ; |117| 
+           MVKL    .S2     _mostMinusPos,B4  ; |117| 
+           MVKH    .S2     _mostMinusPos,B4  ; |117| 
 ;** --------------------------------------------------------------------------*
 L9:    
-
-           MVKL    .S1     _sumErr_swup_cart,A6 ; |133| 
-||         MVKL    .S2     _mode,B7          ; |129| 
-
-           MVKL    .S2     0x3c23d70a,B6     ; |134| 
-||         MVKL    .S1     _u_swup_cart,A9   ; |138| 
-
-           MVKL    .S2     RL8,B3            ; |138| 
-||         MVKL    .S1     _err_swup_cart,A1 ; |133| 
-
-           MVKL    .S1     _err_swup_cart,A8 ; |130| 
-||         MVKL    .S2     _prevErr_swup_cart,B8 ; |135| 
-
-           MVKL    .S1     _err_swup_cart,A0 ; |134| 
-||         MVKL    .S2     _err_swup_cart,B9 ; |135| 
-
-           MVKL    .S1     _y_cart,A7        ; |130| 
-||         MVKL    .S2     _PWMOut,B4        ; |138| 
-
-           MVKL    .S1     _y_pend,A4        ; |146| 
-||         MVKL    .S2     _sumErr_swup_cart,B10 ; |134| 
-
-           MVKL    .S1     _err_swup_cart,A3 ; |134| 
-||         MVKL    .S2     _prevErr_swup_cart,B2 ; |134| 
-
-           MVKL    .S1     _u_swup_cart,A10  ; |134| 
-||         MVKH    .S2     _mode,B7          ; |129| 
-
-           MVKH    .S1     _sumErr_swup_cart,A6 ; |133| 
-||         LDW     .D2T2   *B7,B0            ; |129| 
-||         MVKL    .S2     _R_swup_cart,B5   ; |130| 
-
-           MVKH    .S1     _u_swup_cart,A9   ; |138| 
-||         MVKL    .S2     0x3dcccccd,B1     ; |134| 
-
-           MVKH    .S2     0x3c23d70a,B6     ; |134| 
-||         MVKH    .S1     _err_swup_cart,A1 ; |133| 
-||         ZERO    .D1     A5                ; |134| 
-
-           MVKH    .S2     RL8,B3            ; |138| 
-||         MVKH    .S1     0x40a00000,A5     ; |134| 
-
-           MVKH    .S1     _err_swup_cart,A8 ; |130| 
-||         MVKH    .S2     _prevErr_swup_cart,B8 ; |135| 
-
-   [ B0]   B       .S1     L10               ; |129| 
-||         MVKH    .S2     _err_swup_cart,B9 ; |135| 
-
-           MVKH    .S2     _PWMOut,B4        ; |138| 
-||         MVKH    .S1     _err_swup_cart,A0 ; |134| 
-
-           MVKH    .S1     _y_cart,A7        ; |130| 
-||         MVKH    .S2     _sumErr_swup_cart,B10 ; |134| 
-
-           MVKH    .S1     _y_pend,A4        ; |146| 
-||         MVKH    .S2     _prevErr_swup_cart,B2 ; |134| 
-
-           MVKH    .S2     _R_swup_cart,B5   ; |130| 
-||         MVKH    .S1     _err_swup_cart,A3 ; |134| 
-
-           MV      .L2X    A6,B7             ; |133| 
-||         MVKH    .S1     _u_swup_cart,A10  ; |134| 
-||         MVKH    .S2     0x3dcccccd,B1     ; |134| 
-||         ZERO    .L1     A2                ; |146| 
-|| [!B0]   LDW     .D2T2   *B5,B5            ; |130| 
-|| [!B0]   LDW     .D1T1   *A7,A4            ; |130| 
-
-           ; BRANCH OCCURS                   ; |129| 
-;** --------------------------------------------------------------------------*
+           MVKL    .S1     _y_pend,A0        ; |117| 
+           MVKH    .S1     _y_pend,A0        ; |117| 
+   [ B0]   LDW     .D1T1   *A0,A0            ; |117| 
            NOP             4
-           SUBSP   .L1X    B5,A4,A4          ; |130| 
-           NOP             3
-           STW     .D1T1   A4,*A8            ; |130| 
-
-           LDW     .D1T1   *A1,A4            ; |133| 
-||         LDW     .D2T2   *B7,B5            ; |133| 
-
-           NOP             4
-           ADDSP   .L2X    A4,B5,B5          ; |133| 
-           NOP             3
-           STW     .D2T2   B5,*B7            ; |133| 
-
-           LDW     .D2T2   *B2,B7            ; |134| 
-||         LDW     .D1T1   *A3,A3            ; |134| 
-
-           LDW     .D2T2   *B10,B5           ; |134| 
-||         LDW     .D1T1   *A0,A0            ; |134| 
-
-           NOP             4
-
-           SUBSP   .L2X    A3,B7,B6          ; |134| 
-||         MPYSP   .M1     A0,A5,A0          ; |134| 
-||         MPYSP   .M2     B5,B6,B5          ; |134| 
-
-           NOP             3
-
-           MPYSP   .M2     B6,B1,B5          ; |134| 
-||         ADDSP   .L1X    B5,A0,A0          ; |134| 
-
-           NOP             3
-           ADDSP   .L1X    B5,A0,A0          ; |134| 
-           NOP             3
-           STW     .D1T1   A0,*A10           ; |134| 
-           LDW     .D2T2   *B9,B5            ; |135| 
-           NOP             4
-
-           STW     .D2T2   B5,*B8            ; |135| 
-||         B       .S2     B4                ; |138| 
-
-           LDW     .D1T1   *A9,A4            ; |138| 
-           NOP             4
-RL8:       ; CALL OCCURS                     ; |138| 
-           B       .S1     L17               ; |139| 
-
-           STW     .D2T1   A4,*+SP(8)        ; |138| 
-||         MVKL    .S2     _err_pend,B4      ; |175| 
-
-           MVKL    .S2     _UMAddData,B5     ; |175| 
-           MVKL    .S2     _R_pend,B7        ; |175| 
-           MVKH    .S2     _err_pend,B4      ; |175| 
-           MVKH    .S2     _UMAddData,B5     ; |175| 
-           ; BRANCH OCCURS                   ; |139| 
+   [ B0]   STW     .D2T1   A0,*B4            ; |117| 
+           MVKL    .S1     _mode,A0          ; |121| 
+           MVKH    .S1     _mode,A0          ; |121| 
+           LDW     .D1T1   *A0,A0            ; |121| 
 ;** --------------------------------------------------------------------------*
 L10:    
-           LDW     .D1T1   *A4,A4            ; |146| 
-           MVKL    .S1     _mostPlusPos,A3   ; |147| 
-           MVKH    .S1     _mostPlusPos,A3   ; |147| 
-           MVKL    .S2     _y_pend,B4        ; |147| 
-           MVKH    .S2     _y_pend,B4        ; |147| 
-           CMPGTSP .S1     A4,A2,A1          ; |146| 
+           MVKL    .S1     _err_pend,A6      ; |122| 
+           MVKH    .S1     _err_pend,A6      ; |122| 
+           NOP             2
+           CMPEQ   .L1     A0,1,A1           ; |121| 
+   [!A1]   B       .S1     L11               ; |121| 
+           ZERO    .D1     A5                ; |122| 
+           MVKH    .S1     0x41200000,A5     ; |122| 
+   [ A1]   MVKL    .S2     0xbd4ccccd,B4     ; |130| 
 
-   [ A1]   LDW     .D1T1   *A3,A3            ; |147| 
-|| [ A1]   LDW     .D2T2   *B4,B4            ; |147| 
+   [ A1]   MVKL    .S2     _prevErr_cart,B4  ; |130| 
+|| [ A1]   STW     .D2T2   B4,*+SP(12)       ; |130| 
 
-           MVKL    .S1     _y_pend,A0        ; |150| 
-   [ A1]   B       .S1     L11               ; |148| 
-           ZERO    .D1     A4                ; |150| 
-           MVKH    .S1     _y_pend,A0        ; |150| 
-   [ A1]   CMPLTSP .S2X    A3,B4,B0          ; |147| 
-   [ A1]   MVKL    .S2     _mostPlusPos,B4   ; |147| 
-   [ A1]   MVKH    .S2     _mostPlusPos,B4   ; |147| 
-           ; BRANCH OCCURS                   ; |148| 
+   [ A1]   MVKL    .S2     _sumErr_cart,B4   ; |130| 
+|| [ A1]   STW     .D2T2   B4,*+SP(16)       ; |130| 
+
+           ; BRANCH OCCURS                   ; |121| 
 ;** --------------------------------------------------------------------------*
-           LDW     .D1T1   *A0,A3            ; |150| 
-           MVKL    .S1     _mostMinusPos,A0  ; |151| 
-           MVKL    .S2     _y_pend,B4        ; |151| 
-           MVKH    .S1     _mostMinusPos,A0  ; |151| 
-           MVKH    .S2     _y_pend,B4        ; |151| 
-           CMPLTSP .S1     A3,A4,A1          ; |150| 
-   [!A1]   B       .S1     L12               ; |150| 
-   [ A1]   LDW     .D1T1   *A0,A3            ; |151| 
-           NOP             3
-   [ A1]   LDW     .D2T2   *B4,B4            ; |151| 
-           ; BRANCH OCCURS                   ; |150| 
+
+           MVKL    .S2     0xb951b717,B4     ; |130| 
+||         MV      .S1X    B4,A0             ; |130| 
+
+           LDW     .D2T2   *+SP(12),B4       ; |130| 
+||         MV      .S2     B4,B6
+
+           MVKL    .S1     _err_pend,A14     ; |122| 
+           MVKL    .S2     _err_pend,B8      ; |125| 
+           MVKL    .S1     _prevErr_pend,A7  ; |126| 
+           MVKL    .S2     _prevErr_pend,B5  ; |125| 
+           MVKH    .S2     0xbd4ccccd,B4     ; |130| 
+           STW     .D2T2   B4,*+SP(12)       ; |130| 
+           LDW     .D2T2   *+SP(16),B4       ; |125| 
+           MVKL    .S1     0xbe4ccccd,A11    ; |130| 
+
+           MVKL    .S2     _u_pend,B11       ; |125| 
+||         MVKL    .S1     _sumErr_pend,A4   ; |124| 
+
+           MVKL    .S2     RL6,B3            ; |135| 
+||         MVKL    .S1     _err_cart,A2      ; |130| 
+
+           MVKL    .S1     _err_pend,A8      ; |126| 
+||         MVKL    .S2     _err_cart,B1      ; |129| 
+
+           MVKH    .S2     _prevErr_cart,B4  ; |130| 
+||         MVKL    .S1     _err_cart,A1      ; |130| 
+
+           STW     .D2T2   B4,*+SP(16)       ; |124| 
+||         MVKL    .S1     _err_pend,A10     ; |125| 
+||         MVKL    .S2     _PWMOut,B7        ; |135| 
+
+           LDW     .D1T1   *A6,A15           ; |122| 
+||         MVKL    .S1     _u_cart,A9        ; |130| 
+||         MVKL    .S2     _prevErr_cart,B2  ; |131| 
+
+           MVKL    .S2     _u_cart,B10       ; |134| 
+||         MVKL    .S1     _err_cart,A12     ; |131| 
+
+           MVKL    .S2     _err_pend,B13     ; |124| 
+||         MVKL    .S1     _u_pend,A13       ; |134| 
+||         ZERO    .D2     B12               ; |122| 
+
+           MVKH    .S2     0xc1200000,B12    ; |122| 
+||         MVKH    .S1     _err_pend,A14     ; |122| 
+||         ZERO    .D2     B9                ; |125| 
+
+           MVKH    .S1     _prevErr_pend,A7  ; |126| 
+||         MVKH    .S2     0x41a00000,B9     ; |125| 
+
+           CMPGTSP .S1     A15,A5,A5         ; |122| 
+||         MVKH    .S2     _err_pend,B8      ; |125| 
+
+           XOR     .L2X    1,A5,B0           ; |122| 
+||         MVKH    .S2     _prevErr_pend,B5  ; |125| 
+||         MVKH    .S1     0xbe4ccccd,A11    ; |130| 
+
+   [ B0]   LDW     .D1T1   *A14,A5           ; |122| 
+||         MVKH    .S2     _u_pend,B11       ; |125| 
+||         MVKH    .S1     _sumErr_pend,A4   ; |124| 
+
+           MVKH    .S2     RL6,B3            ; |135| 
+||         MVKH    .S1     _err_cart,A2      ; |130| 
+
+           MVKH    .S1     _err_pend,A8      ; |126| 
+||         MVKH    .S2     _err_cart,B1      ; |129| 
+
+           MVKH    .S2     _PWMOut,B7        ; |135| 
+||         MVKH    .S1     _err_cart,A1      ; |130| 
+
+           MVKH    .S1     _err_pend,A10     ; |125| 
+||         MVKH    .S2     _prevErr_cart,B2  ; |131| 
+
+   [ B0]   CMPLTSP .S2X    A5,B12,B12        ; |122| 
+||         MVKH    .S1     _u_cart,A9        ; |130| 
+
+   [ B0]   XOR     .L2     1,B12,B0          ; |122| 
+||         MVKH    .S2     _u_cart,B10       ; |134| 
+||         MVKH    .S1     _err_cart,A12     ; |131| 
+
+   [!B0]   B       .S1     L11               ; |122| 
+||         MV      .L2X    A0,B4             ; |125| 
+||         MVKH    .S2     0xb951b717,B6     ; |130| 
+
+           MVKH    .S2     _sumErr_cart,B4   ; |130| 
+||         MVKH    .S1     _u_pend,A13       ; |134| 
+
+           MVKL    .S2     _sumErr_cart,B4   ; |129| 
+||         MV      .L1X    B4,A0             ; |130| 
+||         MVKL    .S1     _sumErr_pend,A6   ; |125| 
+
+           MVKH    .S1     _sumErr_pend,A6   ; |125| 
+||         MVKH    .S2     _sumErr_cart,B4   ; |129| 
+||         ZERO    .D2     B6                ; |125| 
+||         MV      .L1X    B6,A3             ; |126| 
+
+           MV      .D2     B13,B4            ; |129| 
+||         MV      .L1X    B4,A5             ; |129| 
+||         MVKL    .S1     0x3e0f5c29,A15    ; |125| 
+||         MVKH    .S2     0x41200000,B6     ; |125| 
+
+           MVKH    .S2     _err_pend,B4      ; |124| 
+||         MVKH    .S1     0x3e0f5c29,A15    ; |125| 
+
+           ; BRANCH OCCURS                   ; |122| 
 ;** --------------------------------------------------------------------------*
+
+           LDW     .D2T2   *B4,B4            ; |124| 
+||         LDW     .D1T1   *A4,A14           ; |124| 
+
            NOP             4
-           CMPGTSP .S2X    A3,B4,B0          ; |151| 
-           MVKL    .S2     _mostMinusPos,B4  ; |151| 
-           MVKH    .S2     _mostMinusPos,B4  ; |151| 
+           ADDSP   .L1X    B4,A14,A14        ; |124| 
+           NOP             3
+           STW     .D1T1   A14,*A4           ; |124| 
+
+           LDW     .D1T1   *A6,A6            ; |125| 
+||         LDW     .D2T2   *B5,B5            ; |125| 
+
+           LDW     .D1T1   *A10,A4           ; |125| 
+||         LDW     .D2T2   *B8,B4            ; |125| 
+
+           NOP             4
+
+           MPYSP   .M1     A6,A15,A4         ; |125| 
+||         MPYSP   .M2     B4,B9,B4          ; |125| 
+||         SUBSP   .L2X    A4,B5,B5          ; |125| 
+
+           NOP             3
+
+           ADDSP   .L2X    A4,B4,B4          ; |125| 
+||         MPYSP   .M2     B5,B6,B5          ; |125| 
+
+           NOP             3
+           ADDSP   .L2     B5,B4,B4          ; |125| 
+           NOP             3
+           STW     .D2T2   B4,*B11           ; |125| 
+           LDW     .D1T1   *A8,A4            ; |126| 
+           NOP             4
+           STW     .D1T1   A4,*A7            ; |126| 
+
+           LDW     .D2T2   *B1,B4            ; |129| 
+||         LDW     .D1T1   *A5,A4            ; |129| 
+
+           NOP             4
+           ADDSP   .L1X    B4,A4,A4          ; |129| 
+           MV      .S2X    A0,B4             ; |129| 
+           NOP             2
+           STW     .D1T1   A4,*A5            ; |129| 
+           LDW     .D2T2   *B4,B5            ; |130| 
+           LDW     .D2T2   *+SP(16),B4       ; |130| 
+           LDW     .D1T1   *A1,A0            ; |130| 
+           LDW     .D1T1   *A2,A4            ; |130| 
+           NOP             2
+           LDW     .D2T2   *B4,B6            ; |130| 
+           LDW     .D2T2   *+SP(12),B4
+           NOP             3
+           SUBSP   .L2X    A0,B6,B6          ; |130| 
+
+           MPYSP   .M1     A4,A11,A0         ; |130| 
+||         MPYSP   .M2X    B5,A3,B5
+
+           NOP             3
+
+           MPYSP   .M2     B6,B4,B4          ; |130| 
+||         ADDSP   .L1X    B5,A0,A0          ; |130| 
+
+           NOP             3
+           ADDSP   .L1X    B4,A0,A0          ; |130| 
+           NOP             3
+           STW     .D1T1   A0,*A9            ; |130| 
+           LDW     .D1T2   *A12,B4           ; |131| 
+           NOP             4
+           STW     .D2T2   B4,*B2            ; |131| 
+
+           LDW     .D2T2   *B10,B4           ; |134| 
+||         LDW     .D1T1   *A13,A0           ; |134| 
+
+           NOP             3
+           B       .S2     B7                ; |135| 
+           ADDSP   .L2X    B4,A0,B4          ; |134| 
+           NOP             3
+
+           MV      .S1X    B4,A4             ; |134| 
+||         STW     .D2T2   B4,*+SP(4)        ; |134| 
+
+RL6:       ; CALL OCCURS                     ; |135| 
+           STW     .D2T1   A4,*+SP(8)        ; |135| 
 ;** --------------------------------------------------------------------------*
 L11:    
-           MVKL    .S1     _y_pend,A0        ; |151| 
-           MVKH    .S1     _y_pend,A0        ; |151| 
-   [ B0]   LDW     .D1T1   *A0,A0            ; |151| 
+           MVKL    .S2     _mode,B4          ; |140| 
+           MVKL    .S2     _prevErr_swup_cart,B1 ; |146| 
+
+           MVKL    .S2     _err_swup_cart,B2 ; |146| 
+||         MVKL    .S1     _sumErr_swup_cart,A0 ; |144| 
+
+           MVKL    .S2     _R_swup_cart,B5   ; |141| 
+||         MVKL    .S1     _err_swup_cart,A7 ; |144| 
+
+           MVKL    .S2     0x3c23d70a,B7     ; |145| 
+||         MVKL    .S1     _u_swup_cart,A8   ; |149| 
+
+           MVKL    .S2     RL8,B3            ; |149| 
+||         MVKL    .S1     _u_swup_cart,A1   ; |145| 
+
+           MVKL    .S1     _err_swup_cart,A5 ; |141| 
+||         MVKL    .S2     _sumErr_swup_cart,B11 ; |145| 
+
+           MVKL    .S2     _PWMOut,B9        ; |149| 
+||         MVKL    .S1     _err_swup_cart,A4 ; |145| 
+
+           MVKL    .S1     _y_cart,A3        ; |141| 
+||         MVKH    .S2     _mode,B4          ; |140| 
+
+           LDW     .D2T2   *B4,B0            ; |140| 
+||         MVKL    .S1     _err_swup_cart,A9 ; |145| 
+||         MVKL    .S2     _prevErr_swup_cart,B10 ; |145| 
+
+           MVKH    .S1     _sumErr_swup_cart,A0 ; |144| 
+||         MVKL    .S2     0x3dcccccd,B8     ; |145| 
+
+           MVKH    .S1     _err_swup_cart,A7 ; |144| 
+||         MVKH    .S2     _prevErr_swup_cart,B1 ; |146| 
+
+           MVKH    .S1     _u_swup_cart,A8   ; |149| 
+||         MVKH    .S2     _err_swup_cart,B2 ; |146| 
+||         ZERO    .D1     A6                ; |145| 
+
+           MVKH    .S2     _R_swup_cart,B5   ; |141| 
+||         MVKH    .S1     0x40a00000,A6     ; |145| 
+
+   [ B0]   B       .S1     L12               ; |140| 
+||         MVKH    .S2     0x3c23d70a,B7     ; |145| 
+
+           MVKH    .S2     RL8,B3            ; |149| 
+||         MVKH    .S1     _u_swup_cart,A1   ; |145| 
+
+           MVKH    .S1     _err_swup_cart,A5 ; |141| 
+||         MVKH    .S2     _sumErr_swup_cart,B11 ; |145| 
+
+           MVKH    .S2     _PWMOut,B9        ; |149| 
+||         MVKH    .S1     _err_swup_cart,A4 ; |145| 
+
+           MVKH    .S1     _y_cart,A3        ; |141| 
+||         MVKH    .S2     _prevErr_swup_cart,B10 ; |145| 
+
+           MV      .L2X    A0,B6             ; |144| 
+||         MVKH    .S2     0x3dcccccd,B8     ; |145| 
+||         MVKH    .S1     _err_swup_cart,A9 ; |145| 
+|| [!B0]   LDW     .D2T2   *B5,B4            ; |141| 
+|| [!B0]   LDW     .D1T1   *A3,A0            ; |141| 
+
+           ; BRANCH OCCURS                   ; |140| 
+;** --------------------------------------------------------------------------*
            NOP             4
-   [ B0]   STW     .D2T1   A0,*B4            ; |151| 
+           SUBSP   .L1X    B4,A0,A0          ; |141| 
+           NOP             3
+           STW     .D1T1   A0,*A5            ; |141| 
+
+           LDW     .D1T1   *A7,A0            ; |144| 
+||         LDW     .D2T2   *B6,B4            ; |144| 
+
+           NOP             4
+           ADDSP   .L2X    A0,B4,B4          ; |144| 
+           NOP             3
+           STW     .D2T2   B4,*B6            ; |144| 
+
+           LDW     .D1T1   *A4,A3            ; |145| 
+||         LDW     .D2T2   *B10,B5           ; |145| 
+
+           LDW     .D2T2   *B11,B4           ; |145| 
+||         LDW     .D1T1   *A9,A0            ; |145| 
+
+           NOP             4
+
+           MPYSP   .M1     A3,A6,A0          ; |145| 
+||         SUBSP   .L2X    A0,B5,B4          ; |145| 
+||         MPYSP   .M2     B4,B7,B5          ; |145| 
+
+           NOP             3
+
+           ADDSP   .L1X    B5,A0,A0          ; |145| 
+||         MPYSP   .M2     B4,B8,B4          ; |145| 
+
+           NOP             3
+           ADDSP   .L1X    B4,A0,A0          ; |145| 
+           NOP             3
+           STW     .D1T1   A0,*A1            ; |145| 
+           LDW     .D2T2   *B2,B4            ; |146| 
+           NOP             4
+
+           STW     .D2T2   B4,*B1            ; |146| 
+||         B       .S2     B9                ; |149| 
+
+           LDW     .D1T1   *A8,A4            ; |149| 
+           NOP             4
+RL8:       ; CALL OCCURS                     ; |149| 
+           STW     .D2T1   A4,*+SP(8)        ; |149| 
 ;** --------------------------------------------------------------------------*
 L12:    
+           MVKL    .S1     _y_pend,A0        ; |153| 
 
-           MVKL    .S2     _R_pend,B4        ; |154| 
-||         MVKL    .S1     _mostPlusPos,A0   ; |154| 
+           MVKL    .S2     _prevPendPos,B4   ; |153| 
+||         MVKH    .S1     _y_pend,A0        ; |153| 
 
-           MVKH    .S2     _R_pend,B4        ; |154| 
-||         MVKH    .S1     _mostPlusPos,A0   ; |154| 
+           LDW     .D1T1   *A0,A0            ; |153| 
+||         MVKL    .S2     _UMAddData,B5     ; |156| 
 
-           LDW     .D2T2   *B4,B4            ; |154| 
-||         LDW     .D1T1   *A0,A0            ; |154| 
+           MVKL    .S2     _R_pend,B8        ; |156| 
+           MVKL    .S2     _err_pend,B7      ; |156| 
+           MVKH    .S2     _prevPendPos,B4   ; |153| 
+           MVKH    .S2     _UMAddData,B5     ; |156| 
 
-           MVKL    .S2     _prevPendPos,B5   ; |159| 
-           MVKH    .S2     _prevPendPos,B5   ; |159| 
-           MVKL    .S2     RL10,B3           ; |160| 
-           MVKH    .S2     RL10,B3           ; |160| 
-           SUBSP   .L1X    B4,A0,A3          ; |154| 
-           MVKL    .S2     _remainedAngleToTheGoal,B4 ; |154| 
-           MVKL    .S1     _y_pend,A0        ; |159| 
-           MVKH    .S2     _remainedAngleToTheGoal,B4 ; |154| 
+           STW     .D2T1   A0,*B4            ; |153| 
+||         MVKH    .S2     _R_pend,B8        ; |156| 
 
-           MVKH    .S1     _y_pend,A0        ; |159| 
-||         STW     .D2T1   A3,*B4            ; |154| 
+           LDW     .D2T2   *+SP(8),B6        ; |156| 
+||         MVKL    .S1     _err_cart,A0      ; |156| 
+||         MVKH    .S2     _err_pend,B7      ; |156| 
 
+           B       .S2     B5                ; |156| 
+||         MVKH    .S1     _err_cart,A0      ; |156| 
+||         LDW     .D2T1   *B8,A4            ; |156| 
+
+           LDW     .D1T2   *A0,B4            ; |156| 
+||         LDW     .D2T1   *B7,A6            ; |156| 
+
+           MVKL    .S2     RL10,B3           ; |156| 
+           MVKH    .S2     RL10,B3           ; |156| 
+           NOP             2
+RL10:      ; CALL OCCURS                     ; |156| 
+           MVKL    .S1     _TINTCnt,A0       ; |159| 
+           MVKH    .S1     _TINTCnt,A0       ; |159| 
            LDW     .D1T1   *A0,A3            ; |159| 
-           ZERO    .D1     A0                ; |159| 
-           MVKL    .S2     _PWMOut,B4        ; |160| 
-           MVKH    .S2     _PWMOut,B4        ; |160| 
-           ZERO    .D2     B6                ; |163| 
-           CMPEQSP .S1     A3,A0,A1          ; |159| 
-   [ A1]   LDW     .D2T1   *B5,A4            ; |159| 
-           ZERO    .D1     A3                ; |159| 
-           MVKL    .S2     _y_pend,B5        ; |163| 
-           MVKL    .S1     _remainedAngleToTheGoal,A0 ; |160| 
-           MVKH    .S2     _y_pend,B5        ; |163| 
-   [ A1]   CMPEQSP .S1     A4,A3,A1          ; |159| 
-   [!A1]   B       .S1     L13               ; |159| 
-           MVKH    .S1     _remainedAngleToTheGoal,A0 ; |160| 
-           NOP             4
-           ; BRANCH OCCURS                   ; |159| 
-;** --------------------------------------------------------------------------*
-           B       .S2     B4                ; |160| 
-           LDW     .D1T1   *A0,A4            ; |160| 
-           NOP             4
-RL10:      ; CALL OCCURS                     ; |160| 
-           B       .S1     L16               ; |161| 
+           MVK     .S2     1,B4              ; |160| 
+           NOP             3
 
-           MVKL    .S1     _y_pend,A0        ; |171| 
-||         STW     .D2T1   A4,*+SP(8)        ; |168| 
+           MVKL    .S1     _TFlag,A3         ; |160| 
+||         ADD     .D1     1,A3,A4           ; |159| 
 
-           MVKH    .S1     _y_pend,A0        ; |171| 
-           LDW     .D1T1   *A0,A0            ; |171| 
-           NOP             2
+           STW     .D1T1   A4,*A0            ; |159| 
+||         MVKH    .S1     _TFlag,A3         ; |160| 
+
+           STW     .D1T2   B4,*A3            ; |160| 
+           LDW     .D2T2   *+SP(144),B13     ; |161| 
+           LDW     .D2T2   *+SP(140),B12     ; |161| 
+           LDW     .D2T2   *+SP(136),B11     ; |161| 
+           LDW     .D2T2   *+SP(132),B10     ; |161| 
+           LDW     .D2T2   *+SP(128),B9      ; |161| 
+           LDW     .D2T2   *+SP(100),B2      ; |161| 
+           LDW     .D2T2   *+SP(96),B1       ; |161| 
+           LDW     .D2T2   *+SP(92),B0       ; |161| 
+           LDW     .D2T1   *+SP(88),A15      ; |161| 
+           LDW     .D2T1   *+SP(84),A14      ; |161| 
+           LDW     .D2T1   *+SP(80),A13      ; |161| 
+           LDW     .D2T1   *+SP(76),A12      ; |161| 
+           LDW     .D2T1   *+SP(72),A11      ; |161| 
+           LDW     .D2T1   *+SP(68),A10      ; |161| 
+           LDW     .D2T1   *+SP(64),A9       ; |161| 
+           LDW     .D2T1   *+SP(60),A8       ; |161| 
+           LDW     .D2T1   *+SP(56),A7       ; |161| 
+           LDW     .D2T1   *+SP(48),A5       ; |161| 
+           LDW     .D2T1   *+SP(36),A2       ; |161| 
+           LDW     .D2T1   *+SP(32),A1       ; |161| 
+           LDW     .D2T2   *+SP(112),B5      ; |161| 
+           LDW     .D2T2   *+SP(124),B8      ; |161| 
+           LDW     .D2T2   *+SP(120),B7      ; |161| 
+           LDW     .D2T2   *+SP(104),B3      ; |161| 
+           LDW     .D2T2   *+SP(116),B6      ; |161| 
+           LDW     .D2T1   *+SP(52),A6       ; |161| 
+           LDW     .D2T1   *+SP(28),A0       ; |161| 
+           LDW     .D2T1   *+SP(44),A4       ; |161| 
+
+           B       .S2     IRP               ; |161| 
+||         LDW     .D2T2   *+SP(108),B4      ; |161| 
+
+           LDW     .D2T1   *+SP(40),A3       ; |161| 
+           ADDK    .S2     144,SP            ; |161| 
+           NOP             3
            ; BRANCH OCCURS                   ; |161| 
-;** --------------------------------------------------------------------------*
-L13:    
-           LDW     .D2T2   *B5,B4            ; |163| 
-           MVKL    .S1     _prevPendPos,A0   ; |163| 
-           MVKH    .S1     _prevPendPos,A0   ; |163| 
-           ZERO    .D1     A5                ; |163| 
-           MVKL    .S2     RL12,B3           ; |164| 
-           CMPEQSP .S2     B4,B6,B0          ; |163| 
-   [ B0]   LDW     .D1T1   *A0,A6            ; |163| 
-           MV      .S1X    B0,A0             ; |163| 
-           MVKL    .S1     _remainedAngleToTheGoal,A4 ; |164| 
-           MVKL    .S2     _y_pend,B4        ; |167| 
-           SET     .S1     A3,31,31,A3       ; |164| 
-   [ B0]   CMPGTSP .S1     A6,A5,A0          ; |163| 
-           MV      .S2X    A0,B0             ; |163| 
-   [!B0]   B       .S1     L14               ; |163| 
-           MVKL    .S2     _PWMOut,B5        ; |164| 
-           MVKH    .S2     RL12,B3           ; |164| 
-           MVKH    .S2     _PWMOut,B5        ; |164| 
-           MVKH    .S2     _y_pend,B4        ; |167| 
-           MVKH    .S1     _remainedAngleToTheGoal,A4 ; |164| 
-           ; BRANCH OCCURS                   ; |163| 
-;** --------------------------------------------------------------------------*
-
-           B       .S2     B5                ; |164| 
-||         LDW     .D1T1   *A4,A0            ; |164| 
-
-           NOP             4
-           XOR     .S1     A0,A3,A4          ; |164| 
-RL12:      ; CALL OCCURS                     ; |164| 
-           B       .S1     L16               ; |165| 
-
-           MVKL    .S1     _y_pend,A0        ; |171| 
-||         STW     .D2T1   A4,*+SP(8)        ; |168| 
-
-           MVKH    .S1     _y_pend,A0        ; |171| 
-           LDW     .D1T1   *A0,A0            ; |171| 
-           NOP             2
-           ; BRANCH OCCURS                   ; |165| 
-;** --------------------------------------------------------------------------*
-L14:    
-           LDW     .D2T2   *B4,B4            ; |167| 
-           MVKL    .S1     _prevPendPos,A0   ; |167| 
-           MVKH    .S1     _prevPendPos,A0   ; |167| 
-           ZERO    .D1     A4                ; |167| 
-           MVKL    .S2     RL14,B3           ; |168| 
-           CMPEQSP .S2     B4,B6,B0          ; |167| 
-   [ B0]   LDW     .D1T1   *A0,A5            ; |167| 
-           MV      .S1X    B0,A0             ; |167| 
-           MVKH    .S2     RL14,B3           ; |168| 
-           MVKL    .S2     _PWMOut,B4        ; |168| 
-           MVKL    .S1     _remainedAngleToTheGoal,A3 ; |168| 
-   [ B0]   CMPLTSP .S1     A5,A4,A0          ; |167| 
-           MV      .S2X    A0,B0             ; |167| 
-   [!B0]   B       .S1     L15               ; |167| 
-           MVKH    .S2     _PWMOut,B4        ; |168| 
-           MVKH    .S1     _remainedAngleToTheGoal,A3 ; |168| 
-   [!B0]   MVKL    .S1     _y_pend,A0        ; |171| 
-           NOP             2
-           ; BRANCH OCCURS                   ; |167| 
-;** --------------------------------------------------------------------------*
-           B       .S2     B4                ; |168| 
-           LDW     .D1T1   *A3,A4            ; |168| 
-           NOP             4
-RL14:      ; CALL OCCURS                     ; |168| 
-           STW     .D2T1   A4,*+SP(8)        ; |168| 
-           MVKL    .S1     _y_pend,A0        ; |171| 
-;** --------------------------------------------------------------------------*
-L15:    
-           MVKH    .S1     _y_pend,A0        ; |171| 
-           LDW     .D1T1   *A0,A0            ; |171| 
-           NOP             2
-;** --------------------------------------------------------------------------*
-L16:    
-           MVKL    .S2     _prevPendPos,B4   ; |171| 
-           MVKH    .S2     _prevPendPos,B4   ; |171| 
-           STW     .D2T1   A0,*B4            ; |171| 
-           MVKL    .S2     _err_pend,B4      ; |175| 
-           MVKL    .S2     _UMAddData,B5     ; |175| 
-           MVKL    .S2     _R_pend,B7        ; |175| 
-           MVKH    .S2     _err_pend,B4      ; |175| 
-           MVKH    .S2     _UMAddData,B5     ; |175| 
-;** --------------------------------------------------------------------------*
-L17:    
-
-           LDW     .D2T2   *+SP(8),B6        ; |175| 
-||         MVKH    .S2     _R_pend,B7        ; |175| 
-||         MVKL    .S1     _err_cart,A0      ; |175| 
-
-           B       .S2     B5                ; |175| 
-||         LDW     .D2T1   *B4,A6            ; |175| 
-||         MVKH    .S1     _err_cart,A0      ; |175| 
-
-           LDW     .D1T2   *A0,B4            ; |175| 
-||         LDW     .D2T1   *B7,A4            ; |175| 
-
-           MVKL    .S2     RL16,B3           ; |175| 
-           MVKH    .S2     RL16,B3           ; |175| 
-           NOP             2
-RL16:      ; CALL OCCURS                     ; |175| 
-           MVKL    .S1     _TINTCnt,A0       ; |178| 
-           MVKH    .S1     _TINTCnt,A0       ; |178| 
-           LDW     .D1T1   *A0,A3            ; |178| 
-           MVK     .S2     1,B4              ; |179| 
-           NOP             3
-
-           MVKL    .S1     _TFlag,A3         ; |179| 
-||         ADD     .D1     1,A3,A4           ; |178| 
-
-           STW     .D1T1   A4,*A0            ; |178| 
-||         MVKH    .S1     _TFlag,A3         ; |179| 
-
-           STW     .D1T2   B4,*A3            ; |179| 
-           LDW     .D2T2   *+SP(144),B13     ; |180| 
-           LDW     .D2T2   *+SP(140),B12     ; |180| 
-           LDW     .D2T2   *+SP(136),B11     ; |180| 
-           LDW     .D2T2   *+SP(132),B10     ; |180| 
-           LDW     .D2T2   *+SP(128),B9      ; |180| 
-           LDW     .D2T2   *+SP(124),B8      ; |180| 
-           LDW     .D2T2   *+SP(100),B2      ; |180| 
-           LDW     .D2T2   *+SP(96),B1       ; |180| 
-           LDW     .D2T2   *+SP(92),B0       ; |180| 
-           LDW     .D2T1   *+SP(88),A15      ; |180| 
-           LDW     .D2T1   *+SP(84),A14      ; |180| 
-           LDW     .D2T1   *+SP(80),A13      ; |180| 
-           LDW     .D2T1   *+SP(76),A12      ; |180| 
-           LDW     .D2T1   *+SP(72),A11      ; |180| 
-           LDW     .D2T1   *+SP(68),A10      ; |180| 
-           LDW     .D2T1   *+SP(64),A9       ; |180| 
-           LDW     .D2T1   *+SP(60),A8       ; |180| 
-           LDW     .D2T1   *+SP(56),A7       ; |180| 
-           LDW     .D2T1   *+SP(48),A5       ; |180| 
-           LDW     .D2T1   *+SP(36),A2       ; |180| 
-           LDW     .D2T1   *+SP(32),A1       ; |180| 
-           LDW     .D2T2   *+SP(120),B7      ; |180| 
-           LDW     .D2T2   *+SP(112),B5      ; |180| 
-           LDW     .D2T2   *+SP(104),B3      ; |180| 
-           LDW     .D2T2   *+SP(116),B6      ; |180| 
-           LDW     .D2T1   *+SP(52),A6       ; |180| 
-           LDW     .D2T1   *+SP(28),A0       ; |180| 
-           LDW     .D2T1   *+SP(44),A4       ; |180| 
-
-           B       .S2     IRP               ; |180| 
-||         LDW     .D2T2   *+SP(108),B4      ; |180| 
-
-           LDW     .D2T1   *+SP(40),A3       ; |180| 
-           ADDK    .S2     144,SP            ; |180| 
-           NOP             3
-           ; BRANCH OCCURS                   ; |180| 
 
 
 ;******************************************************************************
