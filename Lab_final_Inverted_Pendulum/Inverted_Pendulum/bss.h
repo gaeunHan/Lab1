@@ -8,6 +8,7 @@ extern char tmp_string[SIZE_OF_RESPACKET];
 // Interrupt.c
 extern unsigned int TFlag;
 extern float y_pend;
+extern float y_cart;
 // debugging var inside of Ineterrupt.c
 extern float mostPlusPos;
 extern float mostMinusPos;

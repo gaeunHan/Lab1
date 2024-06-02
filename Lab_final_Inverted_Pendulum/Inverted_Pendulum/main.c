@@ -140,7 +140,7 @@ float PWMOut(float dutyratio)
 		dutyratio = 49.5;
 	}
 
-	// dutyration <-> PWM conversion
+	// dutyratio <-> PWM conversion
 	duty = (dutyratio + 50) * 0xfff/100.0;
 
 	*PWMLEFT = duty;
@@ -185,16 +185,16 @@ float GetPendulumPos(){
 
 void swingUp(){		
 	// reduce energy as the pendulum going higher;
-	rightSWUPcartPos = rightSWUPcartPos - mostPlusPos;
-	leftSWUPcartPos = leftSWUPcartPos + mostMinusPos;
+	// rightSWUPcartPos = rightSWUPcartPos - mostPlusPos;
+	// leftSWUPcartPos = leftSWUPcartPos + mostMinusPos;
 
 	// start by moving cart to the right: move pendulum to the left
 	if(y_pend == 0 && prevPendPos == 0){
 		R_swup_cart = initSWUPcartPos;
 	}
 
-	// from the right side: move cart to the right
-	else if(prevPendPos > 0){
+	// pendulum is coming down from the right side: let's move cart to the right
+	else if(prevPendPos > 0 && fabs(R_swup_cart - y_cart) < 3){
 		if(mostPlusPos <= 90){
 			if(prevPendPos == mostPlusPos) R_swup_cart = rightSWUPcartPos;
 		}
@@ -203,12 +203,12 @@ void swingUp(){
 		}
 	}
 
-	// from the left side: move cart to the left
-	else if(prevPendPos < 0){
+	// pendulum is coming down from the left side: move cart to the left
+	else if(prevPendPos < 0 && fabs(R_swup_cart - y_cart) < 3){
 		if(mostMinusPos >= -90){
 			if(prevPendPos == mostMinusPos) R_swup_cart = leftSWUPcartPos;
 		}
-		else if(mostMinusPos < -90 && mostMinusPos < -180){
+		else if(mostMinusPos < -90 && mostMinusPos > -180){
 			if(prevPendPos < y_pend && y_pend == -90) R_swup_cart = leftSWUPcartPos;
 		}
 	}
@@ -246,7 +246,7 @@ void main()
 		}
 
 		// if the pendulum is located within balancing range, change the mode
-		if(y_pend >= 170 || y_pend <= 190){
+		if(y_pend >= 170 && y_pend <= 190){
 			mode = BALANCING;
 		}
 

@@ -71,9 +71,9 @@ float prevErr_pend = 0.0f, sumErr_pend = 0.0f;
 float prevErr_cart = 0.0f, sumErr_cart = 0.0f;
 
 // swing-up cart PID controller
-#define Kp_swup_cart 5.0f
-#define Kd_swup_cart 0.1f
-#define Ki_swup_cart 0.01f
+#define Kp_swup_cart 0.5f
+#define Kd_swup_cart 20.0f
+#define Ki_swup_cart 0.0f
 float prevErr_swup_cart = 0.0f, sumErr_swup_cart = 0.0f;
 
 // variable for swing-up mode
