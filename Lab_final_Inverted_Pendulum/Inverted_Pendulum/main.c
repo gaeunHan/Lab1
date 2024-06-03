@@ -14,6 +14,7 @@
 
 #define ENCPULSE 1024.0
 #define initSWUPcartPos 500.0
+#define ess 3.0
 
 // timer varriable
 unsigned int TINTCnt;
@@ -184,32 +185,45 @@ float GetPendulumPos(){
 }
 
 void swingUp(){		
-	// reduce energy as the pendulum going higher;
-	// rightSWUPcartPos = rightSWUPcartPos - mostPlusPos;
-	// leftSWUPcartPos = leftSWUPcartPos + mostMinusPos;
-
 	// start by moving cart to the right: move pendulum to the left
 	if(y_pend == 0 && prevPendPos == 0){
 		R_swup_cart = initSWUPcartPos;
 	}
 
-	// pendulum is coming down from the right side: let's move cart to the right
-	else if(prevPendPos > 0 && fabs(R_swup_cart - y_cart) < 3){
-		if(mostPlusPos <= 90){
-			if(prevPendPos == mostPlusPos) R_swup_cart = rightSWUPcartPos;
-		}
-		else if(mostPlusPos > 90 && mostPlusPos < 180){
-			if(prevPendPos > y_pend && y_pend == 90) R_swup_cart = rightSWUPcartPos;
-		}
-	}
-
-	// pendulum is coming down from the left side: move cart to the left
-	else if(prevPendPos < 0 && fabs(R_swup_cart - y_cart) < 3){
-		if(mostMinusPos >= -90){
-			if(prevPendPos == mostMinusPos) R_swup_cart = leftSWUPcartPos;
-		}
-		else if(mostMinusPos < -90 && mostMinusPos > -180){
-			if(prevPendPos < y_pend && y_pend == -90) R_swup_cart = leftSWUPcartPos;
+	// cart가 reference pos에 위치했을 때,
+	else if(fabs(R_swup_cart - y_cart) = ess){
+		// pendulum이 우측으로 올라갔던 상황에서, 
+		if(prevPendPos > 0){			
+			// 우측 최고 높이가 90도 이하라면 최고 높이에서 카트를 움직인다.
+			if(mostPlusPos <= 90 && mostPlusPos > 0){
+				if(prevPendPos == mostPlusPos){
+					rightSWUPcartPos = initSWUPcartPos - 2*mostPlusPos;
+					R_swup_cart = rightSWUPcartPos;
+				} 
+			}
+			// 우측 최고 높이가 90도 이상이라면 90도로 내려올때까지 기다렸다가 카트를 움직인다. 
+			else if(mostPlusPos > 90 && mostPlusPos < 180)
+				if(prevPendPos > y_pend && y_pend == 90){
+					rightSWUPcartPos = initSWUPcartPos - 2*mostPlusPos;
+					R_swup_cart = rightSWUPcartPos;
+				} 
+			}
+		// pendulum이 좌측으로 올라갔던 상황에서, 
+		else if(prevPendPos < 0){			
+			// 좌측 최고 높이가 -90도 이하라면 최고 높이에서 카트를 움직인다.
+			if(mostMinusPos >= -90 && mostMinusPos < 0){
+				if(prevPendPos == mostMinusPos){
+					leftSWUPcartPos = -initSWUPcartPos - 2*mostMinusPos;
+					R_swup_cart = leftSWUPcartPos;
+				} 
+			}
+			// 좌측 최고 높이가 -90도 이상이라면 -90도로 내려올때까지 기다렸다가 카트를 움직인다. 
+			else if(mostMinusPos < -90 && mostMinusPos > -180){
+				if(prevPendPos < y_pend && y_pend == -90){
+					leftSWUPcartPos = -initSWUPcartPos - 2*mostMinusPos;
+					R_swup_cart = leftSWUPcartPos;
+				} 
+			}
 		}
 	}
 }
