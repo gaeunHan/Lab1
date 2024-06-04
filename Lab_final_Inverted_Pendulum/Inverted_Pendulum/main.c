@@ -196,14 +196,14 @@ void swingUp(){
 		if(prevPendPos > 0){			
 			// 우측 최고 높이가 90도 이하라면 최고 높이에서 카트를 움직인다.
 			if(mostPlusPos <= 90 && mostPlusPos > 0){
-				if(prevPendPos == mostPlusPos){
+				if(prevPendPos < mostPlusPos){
 					rightSWUPcartPos = initSWUPcartPos - 2*mostPlusPos;
 					R_swup_cart = rightSWUPcartPos;
 				} 
 			}
 			// 우측 최고 높이가 90도 이상이라면 90도로 내려올때까지 기다렸다가 카트를 움직인다. 
 			else if(mostPlusPos > 90 && mostPlusPos < 180)
-				if(prevPendPos > y_pend && y_pend == 90){
+				if(prevPendPos > y_pend && y_pend < 90){
 					rightSWUPcartPos = initSWUPcartPos - 2*mostPlusPos;
 					R_swup_cart = rightSWUPcartPos;
 				} 
@@ -212,14 +212,14 @@ void swingUp(){
 		else if(prevPendPos < 0){			
 			// 좌측 최고 높이가 -90도 이하라면 최고 높이에서 카트를 움직인다.
 			if(mostMinusPos >= -90 && mostMinusPos < 0){
-				if(prevPendPos == mostMinusPos){
+				if(prevPendPos > mostMinusPos){
 					leftSWUPcartPos = -initSWUPcartPos - 2*mostMinusPos;
 					R_swup_cart = leftSWUPcartPos;
 				} 
 			}
 			// 좌측 최고 높이가 -90도 이상이라면 -90도로 내려올때까지 기다렸다가 카트를 움직인다. 
 			else if(mostMinusPos < -90 && mostMinusPos > -180){
-				if(prevPendPos < y_pend && y_pend == -90){
+				if(prevPendPos < y_pend && y_pend > -90){
 					leftSWUPcartPos = -initSWUPcartPos - 2*mostMinusPos;
 					R_swup_cart = leftSWUPcartPos;
 				} 
